@@ -1,0 +1,501 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.3cm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\frenchspacing
+
+\newcommand{\statut}[1]{{\footnotesize\textsf{[#1]}}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Heff}{\hat{H}_{\mathrm{eff}}}
+\newcommand{\Hsys}{\hat{H}_{\mathrm{sys}}}
+
+\theoremstyle{definition}
+\newtheorem{postulat}{Postulat}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+
+\title{\vspace{-1.0cm}\textbf{Unit\'e 3 --- Dualit\'e d'\'echelle compactifi\'ee :\\
+une voie g\'eom\'etrique vers l'unification du quantique et de la gravitation}\\[5pt]
+\large Un seul champ d'\'echelle, des trous noirs \`a l'inflation, et un pont vers l'existence quantique intermittente}
+\author{Hassane Bakkaoui\\ \small Chercheur ind\'ependant --- bakkahassa@hotmail.com}
+\date{\small Juin 2026 $\cdot$ synth\`ese (gr-qc / astro-ph.CO / quant-ph)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+L'unification de la m\'ecanique quantique et de la relativit\'e g\'en\'erale reste ouverte.
+Nous proposons que leurs deux faces \'emergent d'une m\^eme structure : la compactification
+des axes d'\'echelle, spatial et temporel, en cercles ---
+$\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$ sous $\mathbb{Z}_2\times\mathbb{Z}_2$. Un
+seul champ d'\'echelle, coupl\'e non minimalement via $f=1+\beta(\cos\psi+\cos\chi)$ et portant
+un potentiel born\'e $V=\alpha(2-\cos\psi-\cos\chi)$, gouverne les deux r\'egimes. Nous
+\'etablissons : (i) une inflation naturelle \`a couplage verrouill\'e, pr\'edictive ---
+$(n_s,r)$ et une contrainte sur $\beta$ ; (ii) l'absence de tout trou noir r\'egulier dans le
+secteur \emph{statique} (cl\^oture), robuste au d\'egel de l'axe temporel ; (iii) en
+effondrement, que le verdict --- la courbure est-elle plafonn\'ee ? --- est
+\emph{d\'ependant de la r\'eduction} et ouvert : il tient \`a la nature du p\^ole $\infty^*$
+(\S\ref{sec:pole}) ; (iv) un pont reliant l'axe temporel $\chi$ au temps quantique de
+l'hypoth\`ese de discontinuit\'e d'existence quantique (HDEQ), la gravit\'e modulant le temps.
+La m\'etrique d'espace de champ est d\'efinie positive ($f>0$, B1), la bande viable l'intervalle
+ouvert $\beta\in(-0{,}5;-0{,}15)$ ; les axes d'\'echelle sont des cercles internes
+($\sigma$-mod\`ele), sans dimension de genre temps ni fant\^ome (F2) ; la propagation libre ne
+viole pas Lorentz. Le facteur d'existence est d\'eriv\'e exactement, $\varepsilon=E(k)/K(k)$.
+$\alpha$ est fix\'e par l'amplitude scalaire $A_s$ ($\alpha\approx0{,}5$--$1{,}2\times10^{-9}\,\Mpl^4$,
+\'echelle GUT), d'o\`u $\tau_0\approx3{,}5\times10^{-37}$~s \emph{au $f_s\approx5$--$6$ de
+l'inflation} et un running $dn_s/d\ln k\approx-6{,}5\times10^{-4}$ (A1) ; le r\'e\'echelonnement
+$\Heff=\varepsilon\Hsys$ est montr\'e via une horloge relationnelle de Page--Wootters (D1) ; la
+modulation gravitationnelle $\tau_0(R)$ se r\'eduit en laboratoire \`a la dilatation
+temporelle de la RG, mais $\tau_0\to\infty$ \`a la courbure d'effondrement $R_c$ (D4).
+\textbf{Honn\^etet\'e sur le p\'erim\`etre.} Le secteur inflationnaire reproduit, sans
+l'am\'eliorer, l'inflation naturelle non minimale p\'eriodique de la litt\'erature ; la
+nouveaut\'e n'est pas l\`a. Le test rigoureux (E1) montre le secteur horloge non discriminant
+($\varepsilon=1-10^{-112}$) : le CMB est le seul juge, et la signature propre du cadre
+\emph{serait} la corr\'elation inter-secteurs $\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$ ---
+une conjecture conditionnelle \`a la r\'eduction (\S\ref{sec:pole}), non un th\'eor\`eme. Chaque
+\'enonc\'e est \'etiquet\'e selon son statut.
+
+\smallskip\noindent\textbf{Mots-cl\'es :} dualit\'e d'\'echelle ; gravit\'e scalaire-tenseur ;
+couplage non minimal ; inflation naturelle ; trous noirs r\'eguliers ; existence quantique
+intermittente ; d\'ecoh\'erence intrins\`eque ; horloge relationnelle ; unification.\\
+\textbf{PACS :} 04.50.Kd, 04.70.Bw, 98.80.Cq, 03.65.Ta, 04.62.+v.\quad
+\textbf{MSC :} 83C57, 83D05, 83F05, 81P15.
+
+\smallskip\noindent\textit{Statut \'epist\'emique :} \statut{preuve} alg\`ebre exacte / calcul
+formel $\cdot$ \statut{num\'erique} int\'egration reproductible $\cdot$ \statut{conjecture}
+plausible, non prouv\'e $\cdot$ \statut{heuristique} analogie $\cdot$ \statut{sp\'eculation}
+ouvert $\cdot$ \statut{ouvert} \`a \'etablir $\cdot$ \statut{\`a v\'erifier} r\'ef.\ externe.
+Aucune conjecture n'est pr\'esent\'ee comme un th\'eor\`eme.
+\end{abstract}
+
+% =====================================================================
+\section{Introduction}
+R\'econcilier m\'ecanique quantique et relativit\'e g\'en\'erale est un probl\`eme ouvert depuis
+un si\`ecle. C\^ot\'e gravitation, deux exigences p\`esent sur toute physique du r\'egime de
+Planck : faire dispara\^itre les singularit\'es [3--7] et rendre compte de l'expansion
+acc\'el\'er\'ee primordiale [8, 9]. C\^ot\'e quantique, la d\'ecoh\'erence et la s\'election d'une
+base privil\'egi\'ee doivent \^etre expliqu\'ees sans environnement externe ad hoc [2, 20]. Les
+programmes \'etablis (cordes, gravit\'e \`a boucles, g\'eom\'etrie non commutative, gravit\'e
+semi-classique hybride) abordent ces fronts par des voies distinctes.
+
+Nous explorons une unique hypoth\`ese g\'eom\'etrique. L'axe d'\'echelle logarithmique,
+habituellement non compact, est pris pour un cercle : par projection st\'er\'eographique,
+l'\'echelle de Planck (p\^ole $P$) et une \'echelle « unifi\'ee » (p\^ole $\infty^*$) deviennent
+deux p\^oles d'une m\^eme vari\'et\'e [1]. Il y a deux tels axes --- spatial ($\psi$) et temporel
+($\chi$) --- d'o\`u l'ar\`ene $\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$. L'axe spatial
+gouverne la face gravitationnelle/cosmologique [1] ; l'axe temporel, la face quantique --- le
+temps de l'hypoth\`ese de discontinuit\'e d'existence quantique (HDEQ) [2].
+
+\paragraph{Une clarification ontologique, d'embl\'ee.} L'HDEQ ne postule pas un temps discret.
+Le temps reste un param\`etre continu ; ce qui est intermittent, c'est l'existence active des
+syst\`emes quantiques, en cycles de dur\'ee $\tau_0$ (fraction active $\varepsilon$). Le
+qualificatif « temporel » pour l'axe $\chi$ d\'esigne le r\^ole d'horloge qu'il joue
+(\S\ref{sec:quantique}), non une signature m\'etrique de genre temps.
+
+\paragraph{P\'erim\`etre et honn\^etet\'e \'epist\'emique.} Ce travail ne pr\'etend pas r\'esoudre
+l'unification \`a lui seul. Il propose une direction coh\'erente et falsifiable : les choix de
+mod\'elisation sont assum\'es, les r\'esultats \'etiquet\'es selon leur statut, et c'est \`a la
+communaut\'e de tester, \'etendre ou r\'efuter.
+
+% =====================================================================
+\section{Cadre formel : l'ar\`ene et l'action}
+\begin{postulat}[compactification]
+La vari\'et\'e fondamentale est $\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$, les axes
+d'\'echelle \'etant des cercles via $\psi=2\arctan[\ln(\lambda/\ell_P)]$ et
+$\chi=2\arctan[\ln(\tau/\tau_P)]$. Les p\^oles $\pm\pi$ sont identifi\'es ($\infty^*$) ; $0$ est
+le point de Planck $P$.
+\end{postulat}
+
+\subsection{Action, m\'etrique d'espace de champ (B1) et bande viable}
+\begin{equation}
+S=\int d^4x\,\sqrt{-g}\Big[\tfrac12 fR-\tfrac12\omega\big((\partial\psi)^2+(\partial\chi)^2\big)-V\Big],
+\quad f=1+\beta(\cos\psi+\cos\chi),\quad V=\alpha(2-\cos\psi-\cos\chi).
+\end{equation}
+\statut{preuve} (B1) Au repère d'Einstein, la m\'etrique d'espace de champ $\mathcal{G}_{ab}$
+est d\'efinie positive $\Leftrightarrow f>0$ : une partie cin\'etique $\omega/f$ (d\'efinie
+positive) plus une partie non minimale de rang 1 semi-d\'efinie positive. La bande viable est
+l'intervalle ouvert $\beta\in(-0{,}5;-0{,}15)$ (\`a $\beta=-1/2$, $f\to0$ en $P$).
+\statut{preuve} (F2) $S^1_\psi,S^1_\chi$ sont des cercles internes (cible $\sigma$-mod\`ele
+euclidienne), non des dimensions d'espace-temps ; $\chi$ n'est pas une coordonn\'ee de genre
+temps $\to$ pas de fant\^ome, pas de courbe temporelle ferm\'ee. L'enroulement $=$ la charge
+d'\'echelle topologique.
+
+% =====================================================================
+\section{Le secteur gravitationnel et cosmologique (« l'infiniment grand »)}\label{sec:cosmo}
+\statut{preuve} Aux champs gel\'es, la gravit\'e d'Einstein \'emerge ; au vide sym\'etrique $P$
+($V=0$), la constante cosmologique s'annule. Au p\^ole $\infty^*$, la source se r\'eduit \`a une
+\'energie de vide pure, donnant un espace localement de Sitter de taux
+$H^2=2\alpha/[3(1-\beta)]$ (un axe) ou $4\alpha/[3(1-2\beta)]$ (deux axes), avec scalaire de
+Kretschmann fini $K=24H^4$.
+
+En cosmologie homog\`ene, le champ canonique $\varphi=f_s\psi$ voit le potentiel
+$V=\alpha[1-\cos(\varphi/f_s)]$ : une inflation naturelle \`a couplage non minimal verrouill\'e
+--- $f=1+\beta\cos\psi$ a la m\^eme structure que le potentiel (\'etudi\'e ind\'ependamment dans
+[16]). \statut{num\'erique} L'int\'egration part de $\infty^*$ (phase de Sitter) et roule
+jusqu'\`a $P$ ($\Lambda=0$), avec sortie gracieuse. Pr\'edictions de roulement lent (repère
+d'Einstein) :
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccl}
+\toprule
+$\beta$ & $f_s$ ($\Mpl$) & $n_s$ & $r$ & statut\\
+\midrule
+$0$ & $7$ & $0{,}960$ & $0{,}078$ & $r$ trop grand\\
+$+0{,}3$ & $7$ & $0{,}949$ & $0{,}128$ & exclu\\
+$-0{,}3$ & $5$ & $0{,}958$ & $0{,}017$ & compatible (bord)\\
+$-0{,}3$ & $6$ & $0{,}959$ & $0{,}027$ & compatible (bord)\\
+$-0{,}3$ & $7$ & $0{,}960$ & $0{,}036$ & au bord BK18\\
+\bottomrule
+\end{tabular}
+\caption{\small Roulement lent $(n_s,r)$ \`a $N=55$. Cible Planck$+$BK :
+$n_s=0{,}9649\pm0{,}004$, $r<0{,}036$.}\label{tab:nsr}
+\end{table}
+
+Pour le signe naturel $\beta\ge0$, $r\gtrsim0{,}08$ est exclu [12, 13]. La fen\^etre viable est
+une bande \'etroite $\beta\in(-0{,}5;-0{,}15)$ avec \textbf{$f_s\approx5$--$6\,\Mpl$}
+(intervalle ouvert, cf.\ II.A), donnant $r\approx0{,}02$--$0{,}04$ corr\'el\'e \`a
+$n_s\approx0{,}96$. \statut{num\'erique} \emph{Bemol honn\^ete (P1).} Sur cette bande
+$n_s\approx0{,}958$--$0{,}961$, soit $\sim1$--$2\sigma$ sous la valeur centrale de Planck : le
+cadre vit \emph{au bord} du contour. Les donn\'ees CMB fournissent une contrainte sur le
+couplage de dualit\'e d'\'echelle $\beta$ dans ce cadre (la ph\'enom\'enologie $(n_s,r)$ \'etant
+partag\'ee avec [16, 24, 25]), testable par Simons Observatory [27] et LiteBIRD [14]
+($\sigma(r)\sim10^{-3}$) d'ici 2030.\footnote{Le projet CMB-S4 (DOE--NSF), longtemps
+l'instrument de r\'ef\'erence pour ce test, a \'et\'e arr\^et\'e : le 9 juillet 2025, le DOE et la
+NSF ont d\'eclar\'e ne plus pouvoir le soutenir (arr\^et ordonn\'e), il n'est donc plus financ\'e
+[15]. La falsifiabilit\'e demeure, port\'ee par Simons Observatory (Chili, en service), LiteBIRD
+($\sim$2032) et BICEP/Keck (en cours). \statut{\`a v\'erifier}}
+
+\statut{num\'erique} (A1) Le roulement lent au second ordre avec la m\'etrique d'espace de champ
+exacte reproduit la Table~\ref{tab:nsr} \`a mieux que $0{,}5\%$, et fixe $\alpha$ par
+$A_s=2{,}1\times10^{-9}$ : $\alpha\approx0{,}5$--$1{,}2\times10^{-9}\,\Mpl^4$, soit une \'echelle
+d'inflation $V^{1/4}\sim1{,}1$--$1{,}4\times10^{16}$~GeV (GUT). Au $f_s\approx5$--$6$ de
+l'inflation, cela donne $\tau_0=2\pi\sqrt{\omega/\alpha}\approx3{,}4$--$3{,}8\times10^{-37}$~s
+(coh\'erent : l'horloge utilise d\'esormais le \emph{m\^eme} $f_s$ que l'inflation, ce qui
+r\'esout le d\'ecalage ant\'erieur $f_s=57$ donnant $r\approx0{,}14$, exclu). Pr\'ediction stable
+sur la bande : le running $dn_s/d\ln k\approx-6{,}5\times10^{-4}$ --- compatible avec Planck
+($-0{,}004\pm0{,}007$). (Reliquat : Mukhanov--Sasaki mode-par-mode, sous-pourcent ;
+$(n_s,r,\alpha)$ calcul\'es sur la trajectoire repr\'esentative \`a un champ, le traitement
+complet \`a deux champs --- offset de $f$ en $\chi=0$, effets de virage --- restant une
+hypoth\`ese non test\'ee, piste A2.)
+
+\paragraph{Honn\^etet\'e sur la nouveaut\'e.} Ce secteur reproduit, sans l'am\'eliorer,
+l'inflation naturelle non minimale p\'eriodique de Ferreira--Notari--Simeon [16], son extension
+scalaire-tenseur [24], et les analyses $(n_s,r,\text{running})$ face \`a BICEP/Keck [25]. La
+nouveaut\'e du pr\'esent travail n'est donc pas la ph\'enom\'enologie inflationnaire, mais la
+tentative d'unification inter-secteurs (\S\ref{sec:pole}).
+
+% =====================================================================
+\section{Le secteur statique : aucun trou noir r\'egulier (cl\^oture)}\label{sec:static}
+\statut{preuve}\statut{num\'erique} \`A un champ [1], le profil radial statique est clos : la
+branche gel\'ee $\psi\equiv-\pi$ est exactement Schwarzschild--de Sitter ; la branche roulante
+d\'eveloppe un horizon singulier (effondrement de $B=e^{\Phi+\Lambda}$, masse de Misner--Sharp
+n\'egative, $R$ divergent). Nous appuyons la cl\^oture sur l'argument \emph{robuste} plut\^ot
+que sur un tableau hors-bande : par Derrick $+$ topologie, le profil statique (reliant
+$\infty^*$ \`a $P$) est un \emph{demi-soliton non prot\'eg\'e} $N=\tfrac12$, donc contractible
+--- aucune solution r\'eguli\`ere interpolante n'existe, pour tout $\beta$ de la bande. Le
+soliton entier $N=1$ a une masse $8\sqrt{\omega\alpha}\approx2$--$5\times10^{15}$~GeV (\'echelle
+GUT ; $\approx3\times10^{15}$ au centre $f_s\approx6$, avec $\alpha$ fix\'e en A1) --- valeur
+harmonis\'ee avec le $f_s$ corrig\'e (P1).
+
+\paragraph{D\'egel de l'axe temporel.} \statut{preuve} En rendant $\chi$ dynamique,
+$\chi\equiv0$ reste une solution exacte et reproduit la cl\^oture, mais le couplage de $\chi$
+\`a $R$ renormalise la gravit\'e : sur la tranche $\chi=0$,
+$f_{\mathrm{eff}}=(1+\beta)+\beta\cos\psi$, et le seuil de stabilit\'e se d\'eplace
+($\beta_c=-1/4$ pour deux axes). La conclusion de cl\^oture est robuste ; la valeur pr\'ecise du
+seuil est d\'ependante de la r\'eduction ($-1/3$ mono-axe, $-1/4$ sur la tranche $\chi=0$, $-1/6$
+sur la diagonale --- voir \S\ref{sec:pole}).
+
+% =====================================================================
+\section{Le p\^ole $\infty^*$ : une tension structurelle entre cl\^oture et d\'eroulement}\label{sec:pole}
+\statut{num\'erique} L'effondrement \emph{dynamique} (non statique) plafonne-t-il la courbure ?
+La r\'eponse tient \`a la nature du p\^ole $\infty^*$ --- qui n'est \emph{pas} ind\'ependante de
+la r\'eduction. C'est le point central, que nous consignons comme le r\'esultat structurel de
+cette synth\`ese : une tension ouverte, non un verdict tranch\'e.
+
+\paragraph{Lecture mono-axe / Jordan.} Sur l'unique axe actif ($\chi$ gel\'e), pour le
+potentiel de Jordan $V$, $\infty^*$ est un maximum ($V''(-\pi)=-\alpha<0$). L'effondrement
+sph\'erique homog\`ene avec champ roulant pousse alors $\psi$ \emph{\`a travers} $\infty^*$ : la
+courbure n'est pas plafonn\'ee, aucun c\oe ur r\'egulier ne se forme. Dans cette lecture, les
+deux verdicts --- sortie gracieuse en cosmologie, pas de c\oe ur r\'egulier en effondrement ---
+partagent la cause « $\infty^*$ est un sommet ».
+
+\paragraph{Lecture \`a deux champs / repère d'Einstein.} Mais la cosmologie qui fixe $(n_s,r)$
+est, stricto sensu, un syst\`eme \`a deux champs sur la diagonale $\psi=\chi$.
+\statut{num\'erique} Dans le paysage diagonal en repère d'Einstein $U=V/f^2$, la nature de
+$\infty^*$ change de signe \`a $\beta=-1/6$ : pour $\beta>-1/6$ c'est un maximum (roule), mais
+pour $\beta<-1/6$ --- soit \emph{toute la bande viable} $\beta\in(-0{,}5;-0{,}15)$ --- $\infty^*$
+est un \emph{minimum local pi\'eg\'e (un faux vide)} derri\`ere une barri\`ere interne
+$\theta_b$. Dans cette lecture, un effondrement poussant le champ vers $\infty^*$ pourrait l'y
+\emph{retenir} (c\oe ur de Sitter) plut\^ot que de le traverser --- ce qui pointerait au
+contraire vers une courbure plafonn\'ee, soit un c\oe ur r\'egulier \emph{possible}.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.74\textwidth]{figs_u3/fig_pole.png}
+\caption{\small \statut{num\'erique} Paysage diagonal en repère d'Einstein
+$U(\theta)/\alpha=2(1-\cos\theta)/(1+2\beta\cos\theta)^2$ ($\psi=\chi=\theta$, forme close
+exacte). Pour $\beta<-1/6$ (vert, bleu --- toute la bande viable) $\infty^*$ ($\theta=\pi$) est
+un \emph{minimum pi\'eg\'e} derri\`ere une barri\`ere (faux vide) ; pour $\beta\ge-1/6$ (gris,
+rouge) c'est un maximum (le champ traverse). La cl\^oture veut $\infty^*$ pi\'eg\'e, le
+d\'eroulement le veut traversable : le m\^eme p\^ole ne peut \^etre les deux.}\label{fig:pole}
+\end{figure}
+
+\paragraph{La tension.} Les deux lectures divergent sur la nature m\^eme de $\infty^*$, donc
+sur la r\'egularisation de l'effondrement. Elles ne sont pas cosm\'etiques. La cl\^oture
+\emph{statique} repose sur $\infty^*$ pi\'eg\'e (Derrick : le champ ne peut connecter $\infty^*$
+\`a $P$, la seule solution statique est le Schwarzschild--de Sitter gel\'e), tandis que l'image
+litt\'erale du « d\'eroulement » (le parchemin, le champ s'enroulant \emph{\`a travers}
+$\infty^*$) exige $\infty^*$ traversable. Le m\^eme p\^ole ne peut \^etre les deux, et la bande
+$\beta<-1/6$ qui donne la cl\^oture est exactement celle qui obstrue le d\'eroulement dynamique.
+Nous consignons donc :
+\begin{itemize}
+\item la cl\^oture \textbf{statique} (aucun trou noir r\'egulier) est robuste --- elle d\'ecoule
+de Derrick $+$ topologie (demi-soliton contractible $N=\tfrac12$) et tient \`a travers les
+r\'eductions. \statut{preuve}
+\item le verdict de l'effondrement \textbf{dynamique} est d\'ependant de la r\'eduction et
+\emph{ouvert} : traverse-et-non-plafonn\'e dans la lecture mono-axe/$V$, mais faux vide pi\'eg\'e
+(donc candidat \`a une courbure plafonn\'ee, un c\oe ur r\'egulier) dans la lecture \`a deux
+champs en repère d'Einstein, sur toute la bande viable. \statut{conjecture}\statut{ouvert}
+\end{itemize}
+
+\paragraph{Un raccourci qui \'echoue.} On pourrait esp\'erer qu'une vraie dynamique multichamp
+(une « spirale » : le champ s'\'ecartant de la diagonale en tournant) supprime $r$ ou soutienne
+le d\'eroulement. \statut{num\'erique} Une int\'egration compl\`ete \`a deux champs avec \'elan
+lat\'eral inject\'e montre qu'il n'en est rien : le virage est transitoire ($\omega/H\approx1{,}6$
+au d\'epart) puis amorti par le frottement de Hubble bien avant la fen\^etre CMB ; $r$ reste
+$\approx0{,}046$, jamais supprim\'e. La raison est structurelle --- $P$ est un creux ponctuel,
+pas une vall\'ee annulaire, rien ne soutient une orbite. Le « d\'eroulement » se lit donc au
+mieux comme un \'enonc\'e \emph{topologique/spatial} (la charge enti\`ere de soliton $N$), et le
+d\'eroulement \emph{temporel} litt\'eral (une trajectoire enroul\'ee $N\ge1$ \`a travers
+$\infty^*$) comme une signature \emph{conditionnelle} (oscillations log-p\'eriodiques)
+disponible seulement \emph{hors} de la bande viable --- non comme un m\'ecanisme dynamique
+\'etabli.
+
+\paragraph{La seule ouverture, c\^ot\'e quantique.} S'il existe une r\'egularisation dans la
+bande viable, le candidat n'est pas le roulement classique mais l'horloge quantique : \`a la
+courbure d'effondrement $R_c=2\alpha/|\beta|$, la masse effective de $\chi$ s'annule et
+$\tau_0\to\infty$ (D4, \S\ref{sec:quantique}) --- le cycle ne se referme plus, ce qui pourrait
+interdire la travers\'ee classique et retenir le champ en $\infty^*$. C'est la seule voie par
+laquelle la boucle d'unification pourrait se fermer. \statut{sp\'eculation}
+
+% =====================================================================
+\section{Le secteur quantique et le pont (« l'infiniment petit »)}\label{sec:quantique}
+\subsection{Le facteur d'existence d\'eriv\'e exactement (D1)}
+\statut{preuve} L'oscillation de $\chi$ dans $V$ est un pendule (sine-Gordon). Pour une
+amplitude $\chi_{\max}$ (module elliptique $k=\sin(\chi_{\max}/2)$), l'identit\'e sur
+$\langle\mathrm{sn}^2\rangle$ donne la forme exacte (v\'erifi\'ee en int\'egrant
+$\chi''=-\sin\chi$ \`a $10^{-16}$) :
+\[
+\varepsilon=\langle\cos^2(\chi/2)\rangle=\frac{E(k)}{K(k)},\qquad \tau_0(k)=4\sqrt{\omega/\alpha}\,K(k).
+\]
+\`A petite amplitude $\varepsilon\to1-\chi_{\max}^2/8$ et $\tau_0\to2\pi\sqrt{\omega/\alpha}$.
+En s'approchant de la s\'eparatrice ($\infty^*$), $\varepsilon\to0$ (suspension). $\varepsilon$
+n'est donc plus un param\`etre libre : c'est $E(k)/K(k)$, fix\'e par l'amplitude.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.66\textwidth]{figs_u3/fig_epsilon.png}
+\caption{\small \statut{num\'erique} Le facteur d'existence $\varepsilon=E(k)/K(k)$,
+$k=\sin(\chi_{\max}/2)$ (v\'erifi\'e contre le pendule $\langle\cos^2(\chi/2)\rangle$ \`a
+$10^{-6}$). \`A petite amplitude $\varepsilon\to1-\chi_{\max}^2/8$ (MQ continue) ; \`a la
+s\'eparatrice $\varepsilon\to0$ (suspension). $\varepsilon$ est d\'eriv\'e, pas libre.}\label{fig:eps}
+\end{figure}
+
+\subsection{R\'ealisation op\'eratorielle (D1) et modulation gravitationnelle (D4)}
+\statut{conjecture} (r\'ealis\'ee, D1) $\chi$ est une horloge relationnelle de Page--Wootters
+[22] : sur $\mathcal{H}_{\mathrm{horloge}}\otimes\mathcal{H}_{\mathrm{sys}}$ avec une contrainte
+intemporelle, le syst\`eme \'evolue par rapport \`a $\chi$ --- d\'efinissant « temporel » comme
+un r\^ole d'horloge, sans signature de genre temps (r\'eponse \`a F2). Pour $\Hsys$
+\emph{constant}, l'\'evolution moduldee par $g(\chi)=\cos^2(\chi/2)$ donne sur une p\'eriode
+$\hat U(\tau_0)=\exp(-i\Hsys\varepsilon\tau_0)$, soit $\Heff=\varepsilon\Hsys$ --- le r\'esultat
+de Floquet $\Omega_F=\varepsilon\Omega_R$ de [2], ici v\'erifi\'e pour $\Hsys$ constant (qubit
+modul\'e, erreur $\sim10^{-11}$) ; le cas non commutant (Floquet complet) est estim\'e
+n\'egligeable mais \emph{non} prouv\'e. \statut{ouvert} d\'eriver la contrainte intemporelle de
+l'action de $\chi$ ; exactitude de la r\'eduction \`a deux \'etats.
+
+\statut{preuve} (D4) Le couplage de $\chi$ \`a $R$ d\'eplace sa masse effective :
+$\tau_0(R)=2\pi\sqrt{\omega/(\alpha+\tfrac12\beta\Mpl^2 R)}$. Deux effets, \`a ne pas confondre.
+(A) $\sqrt{-g_{00}}\approx1+\phi/c^2$ : dilatation gravitationnelle standard ($\tau_0$ est un
+scalaire de temps propre), observable mais non nouvelle --- c'est la RG. (B) le d\'ecalage
+dynamique $\delta\tau_0/\tau_0\approx-(\beta/4)(\Mpl^2 R/\alpha)\propto R$ local : il s'annule
+dans le vide et vaut $\sim10^{-81}$ dans la mati\`ere --- inobservable. Mais \`a
+$R_c=2\alpha/|\beta|$ (le seuil d'effondrement de \S\ref{sec:pole}), la masse effective de
+$\chi$ s'annule : $\tau_0\to\infty$, l'horloge quantique g\`ele. Le m\^eme $R_c$ qui d\'eclenche
+la descente fait diverger le cycle --- une r\'ealisation concr\`ete du pi\'egeage en $\infty^*$
+\statut{conjecture}. ($\tau_0(R)$ est en petite amplitude ; le comportement exact pr\`es de
+$R_c$ requiert le potentiel anharmonique complet.)
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.66\textwidth]{figs_u3/fig_tau0R.png}
+\caption{\small \statut{num\'erique} Modulation gravitationnelle
+$\tau_0(R)/\tau_0(0)=1/\sqrt{1-R/R_c}$, $R_c=2\alpha/|\beta|$. La p\'eriode de l'horloge diverge
+quand la courbure approche le seuil d'effondrement $R_c$ : l'horloge quantique g\`ele --- la
+seule voie candidate pour que le secteur quantique r\'egularise l'effondrement.}\label{fig:tau0R}
+\end{figure}
+
+\subsection{S\'ecurit\'e Lorentz du temps quantique}
+\statut{preuve} $\tau_0\sim10^{-37}$~s correspond \`a $\hbar/\tau_0\approx10^{13}$~GeV ; il faut
+v\'erifier qu'aucune violation de Lorentz n'en r\'esulte (temps de vol des photons, LHAASO). Une
+existence intermittente ne viole Lorentz que par une modification de la relation de dispersion
+d\'ependant de l'impulsion. Or (i) l'\'evolution propre de $\hat H$ est exactement lin\'eaire en
+phase \`a tous ordres en $\tau_0$ (Proposition 1 de l'HDEQ) ; (ii) l'action de Maxwell est
+invariante de Weyl en $D=4$, donc le photon est aveugle au facteur conforme $f(\chi)$. La
+dispersion du photon libre reste exactement $\omega=|p|c$ : aucun signal LHAASO. La seule
+correction (anomalie de trace QED) est logarithmique, non en puissance de $E/E_{\mathrm{QG}}$
+--- aucun terme LIV lin\'eaire. \statut{\`a v\'erifier}
+
+\subsection{Test inter-secteurs (E1) : le CMB est le seul juge}
+\statut{num\'erique} Sur l'$\alpha$ fix\'e en A1, $\tau_0\in[2{,}5;5{,}3]\times10^{-37}$~s. Point
+d\'ecisif : l'unification retire la libert\'e sur $\varepsilon$. Le pont lie $\varepsilon$ au
+d\'eplacement actuel du champ, lequel \'egale l'\'energie noire ; num\'eriquement
+$\psi_{\mathrm{aujourd'hui}}\sim10^{-56}$~rad, donc $\varepsilon=1-3\times10^{-112}$.
+Cons\'equences : l'effet Yb$^+$ $\Delta\Gamma/\Gamma=1-\varepsilon^2\approx10^{-112}$, la
+d\'ecoh\'erence intrins\`eque sous le plancher, la r\'esonance \`a $\Delta E\approx1{,}2\times10^{13}$~GeV
+--- tout le secteur horloge de l'HDEQ est inobservable. \emph{Bemol (ouvert).} Le cadre pose
+$\Lambda=0$ au vide $P$, alors que l'\'energie noire observ\'ee est non nulle ; l'identit\'e
+« r\'esidu actuel $=$ \'energie noire » qui fixe $\varepsilon=1-10^{-112}$ n'est pas d\'eriv\'ee,
+et la r\'econciliation avec le $\Lambda$ observ\'e reste ouverte (une lecture en quintessence
+r\'esiduelle, $\varepsilon$ l\'eg\`erement sous $1$, porterait $\Lambda>0$ au prix d'un
+ajustement fin). La conclusion « horloges non discriminantes » tient dans les deux lectures.
+\statut{ouvert}
+
+\paragraph{Verdict E1 (rigoureux).} Le cadre passe le test de coh\'erence, mais la confrontation
+n'est pas sym\'etrique : le c\^ot\'e horloge est satisfait trivialement ($\varepsilon\approx1$).
+Toute la charge de falsifiabilit\'e repose donc sur le CMB ($n_s\approx0{,}96$,
+$r\approx0{,}02$--$0{,}04$, running $\approx-6{,}5\times10^{-4}$). Le « m\^eme $(\alpha,\omega)$
+pour le CMB et les horloges » est rempli automatiquement c\^ot\'e horloge --- \`a ne \emph{pas}
+pr\'esenter comme un test discriminant.
+
+% =====================================================================
+\section{Vue d'ensemble et crit\`ere de falsifiabilit\'e}
+La vision est un ansatz, non un r\'esultat : une ar\`ene unique dont les lois connues sont ses
+deux r\'egimes limites. (\emph{Infiniment grand :}) champs lents $\to$ relativit\'e g\'en\'erale,
+$\Lambda=0$ au vide, inflation. (\emph{Infiniment petit :}) dynamique du cercle $\chi\to$
+existence intermittente, d\'ecoh\'erence (HDEQ). La charni\`ere est l'axe $\chi$, qui se couple
+\`a la courbure et module le temps quantique via la gravit\'e. Les deux faces sont jointes par
+un pont d\'esormais partiellement prouv\'e ($\varepsilon$ d\'eriv\'e, modulation incluse ; la
+construction op\'eratorielle compl\`ete reste ouverte).
+
+Le crit\`ere de v\'erit\'e est num\'erique, mais asym\'etrique : le CMB
+$(n_s,r,\text{running})$ est le juge ; les horloges atomiques fournissent une contrainte de
+coh\'erence automatiquement satisfaite ($\varepsilon\approx1$), non un test discriminant. La
+signature \emph{propos\'ee} pour ce cadre --- qu'aucun observable cosmologique isol\'e ne
+poss\`ede, $(n_s,r,\text{running})$ \'etant partag\'es avec [16, 24, 25] --- est la corr\'elation
+inter-secteurs $\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$ : le m\^eme couplage devrait ajuster
+l'inflation et satisfaire les seuils de cl\^oture des trous noirs. \emph{Cette corr\'elation est
+une conjecture conditionnelle \`a la r\'eduction} (\S\ref{sec:pole}), non un th\'eor\`eme : avec
+trois seuils candidats ($-1/3,-1/4,-1/6$), « $\beta(\text{cl\^oture})$ » n'est pas encore un
+nombre unique, de sorte que trancher la r\'eduction (piste A2) est le pr\'ealable pour en faire
+un v\'eritable discriminant. C'est l\`a que vivrait la falsifiabilit\'e, testable via
+LiteBIRD / Simons Observatory.
+
+% =====================================================================
+\section{Statut \'epist\'emique et limitations}
+\begin{table}[h]\centering\small
+\begin{tabular}{p{0.66\textwidth}l}
+\toprule
+Contenu & Statut\\
+\midrule
+Action finie ; limite RG ; inflation naturelle \`a couplage verrouill\'e, $(n_s,r)$ et une
+contrainte sur $\beta$ ; cl\^oture \emph{statique} robuste (Derrick $+$ topologie) ;
+$\mathcal{G}_{ab}$ d\'efinie positive (B1) ; sant\'e $\sigma$-mod\`ele, pas de fant\^ome/CTC
+(F2) ; s\'ecurit\'e Lorentz du photon ; $\varepsilon=E(k)/K(k)$ d\'eriv\'e ; $\alpha$ fix\'e par
+$A_s$, running $\approx-6{,}5\times10^{-4}$ (A1) ; $f_s\approx5$--$6$ et $\tau_0$ coh\'erents.
+& \statut{preuve}\statut{num\'erique}\\
+\midrule
+$\Heff=\varepsilon\Hsys$ via horloge de Page--Wootters, restreint \`a $\Hsys$ constant (D1) ;
+$\tau_0(R)$ d\'eriv\'e, $\tau_0\to\infty$ \`a $R_c$ (D4) ; E1 : secteur horloge non discriminant,
+CMB seul juge. & \statut{conjecture} (r\'ealis\'ee)\\
+\midrule
+\textbf{Tension ouverte centrale :} la nature de $\infty^*$ (traversable vs pi\'eg\'e) gouverne
+le verdict \emph{dynamique} d'effondrement et la signature inter-secteurs ; r\'eduction non
+tranch\'ee (piste A2). D\'eriver la contrainte de Page--Wootters de l'action de $\chi$ ;
+r\'econcilier $\Lambda=0$ vs \'energie noire observ\'ee ; effondrement inhomog\`ene ; pi\'egeage
+quantique en $\infty^*$ (r\'egularisation) ; r\`egle de Born ; s\'election d'une branche ;
+Mukhanov--Sasaki mode-par-mode. & \statut{ouvert}\statut{sp\'eculation}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent La distinction des statuts n'est pas un ornement mais une part constitutive de la
+m\'ethode : elle garantit que ce travail peut \^etre r\'eutilis\'e sans qu'aucun \'enonc\'e
+d\'epasse ce qui est r\'eellement \'etabli.
+
+% =====================================================================
+\section{Conclusion}
+Un unique champ de dualit\'e d'\'echelle, sur une ar\`ene \`a axes compactifi\'es (cercles
+internes, non des dimensions d'espace-temps), engendre une cosmologie inflationnaire pr\'edictive
+et falsifiable, r\`egle la question du trou noir r\'egulier \emph{statique} par une cause
+structurelle (Derrick $+$ topologie), et offre un pont vers le temps quantique de l'HDEQ
+d\'esormais partiellement prouv\'e : le facteur d'existence $\varepsilon=E(k)/K(k)$ est
+d\'eriv\'e, le m\'ecanisme actif/inactif et la propagation libre s\^ure pour Lorentz \'etablis.
+La r\'egularisation \emph{dynamique}, en revanche, n'est pas tranch\'ee : elle tient \`a la
+nature du p\^ole $\infty^*$, traversable dans une r\'eduction et faux vide pi\'eg\'e dans une
+autre --- une tension que nous consignons comme le probl\`eme ouvert central, le gel de
+l'horloge \`a $R_c$ \'etant la seule voie candidate pour fermer la boucle. Ce n'est pas une
+cl\^oture de l'unification ; c'est une direction dont la nature m\^eme est d'\^etre r\'efutable.
+C'est le prix --- l'\'etiquetage honn\^ete de chaque \'enonc\'e --- auquel une intuition
+individuelle peut devenir une direction collective.
+
+\paragraph{Remerciements.} L'auteur remercie les outils de calcul formel et num\'erique
+(SymPy, SciPy), qui ont permis la v\'erification syst\'ematique \`a chaque \'etape, et la
+communaut\'e gr-qc/hep-th/quant-ph pour les standards de rigueur et de falsifiabilit\'e qui ont
+guid\'e ce travail. La formalisation a \'et\'e conduite en dialogue avec des syst\`emes
+d'assistance analytique, sous la direction de l'auteur, \`a qui revient l'enti\`ere
+responsabilit\'e du contenu scientifique.
+
+% =====================================================================
+\section*{Reproductibilit\'e}
+Les r\'esultats num\'eriques et les v\'erifications symboliques sont reproduits par deux scripts
+autonomes (NumPy/SymPy/SciPy/Matplotlib), aux sections cod\'ees pour \^etre propres \`a ce
+document (aucune collision avec d'autres jeux de scripts) :
+\begin{itemize}
+\item[{\texttt{[S1]}}] facteur d'existence $\varepsilon=E(k)/K(k)$ v\'erifi\'e contre le pendule $\langle\cos^2(\chi/2)\rangle$ ; petite amplitude $\varepsilon\to1-\chi_{\max}^2/8$ ; $\tau_0(k)=4\sqrt{\omega/\alpha}\,K(k)$.
+\item[{\texttt{[S2]}}] nature de $\infty^*$ : seuil diagonal $\beta=-1/6$ (pi\'eg\'e/roule) et masse transverse isocourbure (changement de signe \`a $\beta=-1/4$).
+\item[{\texttt{[S3]}}] inflation bande viable $f_s=5$--$6$ : $(n_s,r)$ diagonale vs mono (accord) ; $\alpha$, $V^{1/4}$, $\tau_0\approx3{,}5\times10^{-37}$~s, masse du soliton (P1).
+\item[{\texttt{[S4]}}] modulation gravitationnelle $\tau_0(R)$ ; $R_c=2\alpha/|\beta|$ ; $\delta\tau_0/\tau_0=-(\beta/4)\Mpl^2R/\alpha$.
+\item[{\texttt{[S5]}}] test de la spirale (int\'egration \`a deux champs) : le virage est amorti, $r$ jamais supprim\'e.
+\end{itemize}
+Fichiers : \texttt{U3\_SYNTH\_reproductible.py} (calculs) et \texttt{Synthese\_figures.py}
+(Fig.~\ref{fig:eps}, \ref{fig:pole}, \ref{fig:tau0R}). \emph{Convention} : $\Mpl=1$ ; $\alpha$
+s'annule dans les rapports $(n_s,r)$. Le pr\'efixe \texttt{U3\_SYNTH\_} et les codes
+\texttt{[S$\cdot$]} sont sp\'ecifiques \`a ce document.
+
+% =====================================================================
+\begin{thebibliography}{99}\small
+\bibitem{u1} H.\ Bakkaoui, \textit{Champ de dualit\'e d'\'echelle en gravit\'e} (cadre, corrections et r\'esultats), Zenodo (2026).
+\bibitem{u2} H.\ Bakkaoui, \textit{Discontinuit\'e d'existence quantique (HDEQ)}, Zenodo (2026).
+\bibitem{bardeen} J.\ M.\ Bardeen, Proc.\ GR5 (Tbilisi, 1968), p.\ 174.
+\bibitem{hayward} S.\ A.\ Hayward, \textit{Phys.\ Rev.\ Lett.} \textbf{96}, 031103 (2006).
+\bibitem{dymnikova} I.\ Dymnikova, \textit{Gen.\ Relativ.\ Gravit.} \textbf{24}, 235 (1992).
+\bibitem{penrose} R.\ Penrose, \textit{Phys.\ Rev.\ Lett.} \textbf{14}, 57 (1965).
+\bibitem{he} S.\ W.\ Hawking \& G.\ F.\ R.\ Ellis, \textit{The Large Scale Structure of Space-Time} (CUP, 1973).
+\bibitem{guth} A.\ H.\ Guth, \textit{Phys.\ Rev.\ D} \textbf{23}, 347 (1981).
+\bibitem{ffo} K.\ Freese, J.\ A.\ Frieman \& A.\ V.\ Olinto, \textit{Phys.\ Rev.\ Lett.} \textbf{65}, 3233 (1990).
+\bibitem{bek} J.\ D.\ Bekenstein, \textit{Phys.\ Rev.\ D} \textbf{51}, R6608 (1995).
+\bibitem{bezr} F.\ L.\ Bezrukov \& M.\ Shaposhnikov, \textit{Phys.\ Lett.\ B} \textbf{659}, 703 (2008).
+\bibitem{planck} Planck Collaboration, \textit{Astron.\ Astrophys.} \textbf{641}, A10 (2020).
+\bibitem{bk} BICEP/Keck Collaboration, \textit{Phys.\ Rev.\ Lett.} \textbf{127}, 151301 (2021).
+\bibitem{litebird} LiteBIRD Collaboration, \textit{Prog.\ Theor.\ Exp.\ Phys.} \textbf{2023}, 042F01 (2023).
+\bibitem{cmbs4} K.\ N.\ Abazajian \textit{et al.} (CMB-S4), arXiv:1610.02743 (2016) --- \emph{projet arr\^et\'e, juillet 2025}.
+\bibitem{fns} R.\ Z.\ Ferreira, A.\ Notari \& G.\ Simeon, \textit{JCAP} \textbf{11} (2018) 021.
+\bibitem{fmm} V.\ P.\ Frolov, M.\ A.\ Markov \& V.\ F.\ Mukhanov, \textit{Phys.\ Rev.\ D} \textbf{41}, 383 (1990).
+\bibitem{rv} C.\ Rovelli \& F.\ Vidotto, \textit{Int.\ J.\ Mod.\ Phys.\ D} \textbf{23}, 1442026 (2014).
+\bibitem{cr} A.\ Connes \& C.\ Rovelli, \textit{Class.\ Quantum Grav.} \textbf{11}, 2899 (1994).
+\bibitem{zurek} W.\ H.\ Zurek, \textit{Rev.\ Mod.\ Phys.} \textbf{75}, 715 (2003).
+\bibitem{kaiser} D.\ I.\ Kaiser, \textit{Phys.\ Rev.\ D} \textbf{81}, 084044 (2010).
+\bibitem{pw} D.\ N.\ Page \& W.\ K.\ Wootters, \textit{Phys.\ Rev.\ D} \textbf{27}, 2885 (1983).
+\bibitem{bars} I.\ Bars, \textit{Class.\ Quantum Grav.} \textbf{18}, 3113 (2001). \statut{\`a v\'erifier}
+\bibitem{simeon} G.\ Simeon, arXiv:2002.07625 (2020).
+\bibitem{bostan} I.\ D.\ Bostan, arXiv:2209.02434 (2022).
+\bibitem{mv} C.\ Marletto \& V.\ Vedral, \textit{Phys.\ Rev.\ D} \textbf{95}, 043510 (2017).
+\bibitem{so} Simons Observatory Collaboration (P.\ Ade \textit{et al.}), \textit{JCAP} \textbf{02} (2019) 056, arXiv:1808.07445.
+\end{thebibliography}
+
+\end{document}

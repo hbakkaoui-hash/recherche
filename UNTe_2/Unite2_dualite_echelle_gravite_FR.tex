@@ -1,0 +1,537 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.3cm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\frenchspacing
+
+\newcommand{\statut}[1]{{\footnotesize\textsf{[#1]}}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+
+\theoremstyle{plain}
+\newtheorem{theoreme}{Th\'eor\`eme}
+\newtheorem{postulat}{Postulat}
+\newtheorem{resultat}{R\'esultat}
+\theoremstyle{remark}
+\newtheorem*{consequence}{Cons\'equence}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+
+\title{\vspace{-1.0cm}\textbf{Unit\'e 2 --- Un champ de dualit\'e d'\'echelle compactifi\'e :\\
+cl\^oture du secteur statique et inflation naturelle falsifiable}\\[5pt]
+\large Couplage non minimal verrouill\'e et signature inter-secteurs $\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$}
+\author{Hassane Bakkaoui\\ \small Chercheur ind\'ependant --- bakkahassa@hotmail.com}
+\date{\small Juin 2026 $\cdot$ document autonome (gr-qc / astro-ph.CO)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+\textbf{Contexte.} La r\'esolution des singularit\'es et l'origine de l'inflation sont
+deux exigences d'une physique du r\'egime de Planck. \textbf{Probl\`eme.} Nous \'etudions
+si un unique champ de dualit\'e d'\'echelle $\psi$ --- issu de la compactification de
+l'axe d'\'echelle en un cercle, couplant non minimalement \`a la courbure via
+$f\propto1+\beta\cos\psi$ et portant un potentiel born\'e $V=\alpha(1-\cos\psi)$ ---
+peut \`a la fois r\'egulariser la singularit\'e de Schwarzschild et engendrer l'inflation.
+\textbf{M\'ethode.} Le champ est trait\'e dans deux r\'egimes : profil radial statique
+(trous noirs) et fond cosmologique homog\`ene (inflation), avec passage au repère
+d'Einstein. Tous les calculs tensoriels sont v\'erifi\'es par calcul formel et les
+\'equations int\'egr\'ees num\'eriquement. \textbf{R\'esultats.} (i) Le p\^ole unifi\'e
+engendre un c\oe ur de Sitter exact ($w=-1$, $K=24H^4$ fini) de stabilit\'e radiale
+gouvern\'ee par un seuil exact $\beta_c=-1/3$. (ii) En coordonn\'ees p\'en\'etrant
+l'horizon, $\psi\equiv-\pi$ est exactement Schwarzschild--de Sitter, et la branche
+« roulante » d\'eveloppe un horizon singulier : le secteur statique ne produit aucun
+trou noir r\'egulier. (iii) Le secteur cosmologique est une inflation naturelle \`a
+couplage non minimal topologiquement verrouill\'e ; il fournit des pr\'edictions
+$(n_s,r)$, et --- $\alpha$ \'etant fix\'e par l'amplitude scalaire $A_s$ --- une \'echelle
+d'inflation $V^{1/4}\sim10^{16}$~GeV et une pr\'ediction de running
+$dn_s/d\ln k\approx-6{,}5\times10^{-4}$. (iv) Le champ \'etant \`a valeurs dans $S^1$
+($\pi_1=\mathbb{Z}$), le profil statique est un demi-soliton non prot\'eg\'e ($N=\tfrac12$),
+dont l'enroulement redonne topologiquement la cl\^oture et identifie un soliton
+d'\'echelle $N=1$ de masse $8\sqrt{\omega\alpha}$. \textbf{Conclusion.} Le cadre n'est
+probablement pas une th\'eorie de trous noirs r\'eguliers, mais un mod\`ele inflationnaire
+pr\'edictif et falsifiable par LiteBIRD et Simons Observatory. Sa signature propre n'est
+aucun observable cosmologique isol\'e --- partag\'es avec [14, 16, 17] --- mais la
+corr\'elation inter-secteurs : le m\^eme $\beta$ doit ajuster $(n_s,r)$ et satisfaire les
+seuils de cl\^oture des trous noirs.
+
+\smallskip\noindent\textbf{Mots-cl\'es :} trous noirs r\'eguliers ; c\oe ur de Sitter ;
+gravit\'e scalaire-tenseur ; couplage non minimal ; inflation naturelle ;
+coordonn\'ees d'Eddington--Finkelstein ; charge d'\'echelle topologique ; soliton de
+sine-Gordon ; fond diffus cosmologique.\\
+\textbf{PACS :} 04.70.Bw, 04.50.Kd, 98.80.Cq, 04.62.+v.\quad\textbf{MSC :} 83C57, 83D05, 83F05.
+
+\smallskip\noindent\textit{Statut \'epist\'emique :} \statut{preuve} calcul formel exact $\cdot$
+\statut{num\'erique} int\'egration reproductible $\cdot$ \statut{conjecture} plausible, non
+prouv\'e $\cdot$ \statut{heuristique} analogie $\cdot$ \statut{sp\'eculation} ouvert $\cdot$
+\statut{ouvert} \`a \'etablir $\cdot$ \statut{\`a v\'erifier} r\'ef.\ externe. Aucune conjecture
+n'est pr\'esent\'ee comme un th\'eor\`eme.
+\end{abstract}
+
+\paragraph{Note liminaire.} Le pr\'esent travail proc\`ede d'une intuition de d\'epart ---
+la compactification de l'axe d'\'echelle en un cercle --- \'elabor\'ee de mani\`ere autonome,
+sans connaissance de la litt\'erature cosmologique aff\'erente. Le recensement
+bibliographique n'a \'et\'e entrepris qu'une fois le cadre \'etabli ; il en ressort que
+certains secteurs recoupent des r\'esultats publi\'es, notamment l'inflation naturelle \`a
+couplage non minimal p\'eriodique proportionnel au potentiel [14], son extension
+scalaire-tenseur [16] et les analyses $(n_s,r,\text{running})$ face \`a BICEP/Keck [17].
+Ces recoupements, non anticip\'es, illustrent une convergence ind\'ependante ; nous les
+citons explicitement afin de positionner honn\^etement l'apport propre de ce travail, qui
+r\'eside dans le cadrage unifi\'e d'un m\^eme champ d'\'echelle (r\'egimes trou noir et
+cosmologique) et la lecture topologique du secteur statique.
+
+% =====================================================================
+\section{Introduction}
+\subsection{Contexte et motivation physique}
+Deux exigences p\`esent sur toute physique du r\'egime de Planck : faire dispara\^itre les
+singularit\'es de la relativit\'e g\'en\'erale, et rendre compte de la phase d'expansion
+acc\'el\'er\'ee primordiale. Les m\'etriques de trou noir r\'egulier [1, 2, 3] montrent qu'une
+singularit\'e centrale peut \^etre remplac\'ee par un c\oe ur de Sitter de courbure finie
+($w=-1$), au prix d'une violation de la condition d'\'energie forte autoris\'ee par les
+th\'eor\`emes de singularit\'e [4, 5]. Sym\'etriquement, l'inflation [6, 7] requiert un champ
+scalaire roulant lentement dans un potentiel plat. La question structurante est de
+savoir si un m\^eme ingr\'edient fondamental engendre ces deux ph\'enom\`enes, plut\^ot que de
+les postuler s\'epar\'ement.
+
+Le cadre de dualit\'e d'\'echelle compactifi\'ee [15] propose un tel ingr\'edient. Son
+hypoth\`ese centrale est que l'axe d'\'echelle logarithmique $u=\ln(\lambda/\ell_P)$,
+habituellement non compact, est en r\'ealit\'e un cercle : par projection st\'er\'eographique
+$\psi=2\arctan u\in(-\pi,\pi]$, l'\'echelle de Planck ($\psi=0$, p\^ole $P$) et une \'echelle
+« unifi\'ee » ($\psi=\pm\pi$ identifi\'es, p\^ole $\infty^*$) deviennent deux p\^oles d'une
+m\^eme vari\'et\'e. Le champ d'\'echelle $\psi$ se couple non minimalement \`a la courbure.
+
+\subsection{\'Etat de l'art et lacune}
+Les c\oe urs de Sitter r\'eguliers sont, dans la litt\'erature, des ans\"atze g\'eom\'etriques :
+la source $w=-1$ est introduite \`a la main [1, 2, 3]. Les th\'eor\`emes de non-chevelure [8]
+contraignent fortement les champs scalaires statiques autour des horizons. C\^ot\'e
+cosmologie, l'inflation naturelle [7] est sous tension : Planck$+$BICEP/Keck [10, 11]
+repoussent son rapport tenseur/scalaire $r$ au-del\`a des bornes pour des constantes de
+d\'esint\'egration accessibles, tandis que les couplages non minimaux \`a la Higgs [9]
+abaissent $r$. La lacune combl\'ee est l'\'etude d'un champ fondamental dont le couplage non
+minimal n'est pas libre mais verrouill\'e par la m\^eme structure trigonom\'etrique que le
+potentiel, examin\'e simultan\'ement dans les r\'egimes trou noir et cosmologique.
+
+\subsection{Contributions}
+Nous \'etablissons quatre r\'esultats : (1) un c\oe ur de Sitter exact et un seuil de
+stabilit\'e exact $\beta_c=-1/3$ (Th\'eor\`eme~\ref{thm:core}) ; (2) la cl\^oture du secteur
+statique --- $\psi\equiv-\pi$ est exactement Schwarzschild--de Sitter et la branche
+roulante est singuli\`ere, d'o\`u aucun trou noir r\'egulier (R\'esultat~\ref{res:closure}) ;
+(3) l'identification du secteur cosmologique \`a une inflation naturelle \`a couplage
+verrouill\'e, avec pr\'edictions $(n_s,r)$, $\alpha$ fix\'e et running, et premi\`ere contrainte
+sur $\beta$ (R\'esultat~\ref{res:infl}) ; (4) une charge d'\'echelle topologique
+($\pi_1(S^1)=\mathbb{Z}$) dont le secteur statique est un demi-soliton non prot\'eg\'e
+(R\'esultat~\ref{res:topo}).
+
+% =====================================================================
+\section{Cadre formel}
+\subsection{Postulats et d\'efinitions}
+\begin{postulat}[compactification]
+La vari\'et\'e fondamentale est $\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$, les
+axes d'\'echelle \'etant des cercles via $\psi=2\arctan[\ln(\lambda/\ell_P)]$. Les p\^oles
+$\psi=\pm\pi$ sont identifi\'es ($\infty^*$) ; $\psi=0$ est le point de Planck $P$.
+\end{postulat}
+\begin{postulat}[sym\'etrie et r\'egularit\'e]
+L'action est invariante sous le groupe de Klein $G=\mathbb{Z}_2\times\mathbb{Z}_2$
+agissant par $(\psi,\chi)\mapsto(-\psi,-\chi)$, et toutes ses fonctions sont born\'ees
+sur le cercle (d'o\`u $\cos\psi$ plut\^ot que $\cosh u$).
+\end{postulat}
+En unit\'es de Planck r\'eduites ($\Mpl=1$, $\hbar=c=1$, signature $-+++$) et en gelant
+l'axe temporel $\chi\equiv0$ :
+\begin{equation}
+S=\int d^4x\,\sqrt{-g}\Big[\tfrac12 f(\psi)R-\tfrac12\omega(\partial\psi)^2-V(\psi)\Big],
+\quad f=1+\beta\cos\psi,\quad V=\alpha(1-\cos\psi),
+\end{equation}
+avec $\omega=f_s^2>0$, $|\beta|<1$, $\alpha>0$. On a $V(0)=0$ (minimum, $P$) et
+$V(-\pi)=2\alpha$ (maximum, $\infty^*$).
+
+\subsection{Construction math\'ematique}
+\statut{preuve} (v\'erifi\'e par calcul formel) La variation donne le syst\`eme
+scalaire-tenseur
+\begin{equation}
+f\,G_{\mu\nu}=\omega\,\partial_\mu\psi\,\partial_\nu\psi
+-g_{\mu\nu}\big[\tfrac12\omega(\partial\psi)^2+V\big]+\nabla_\mu\nabla_\nu f-g_{\mu\nu}\Box f,
+\qquad \omega\,\Box\psi=V'(\psi)-\tfrac12 f'(\psi)R.
+\end{equation}
+Dans le repère de Jordan, on emploie la m\'etrique statique
+$ds^2=-e^{2\Phi}dt^2+e^{2\Lambda}dr^2+r^2d\Omega^2$ et la m\'etrique FLRW
+$ds^2=-dt^2+a^2d\mathbf{x}^2$. Au repère d'Einstein ($\tilde g=f g$), l'action devient
+celle d'un champ canonique, avec
+\begin{equation}
+U(\psi)=\frac{V}{f^2},\qquad K(\psi)=\frac{\omega}{f}+\frac32\Big(\frac{f'}{f}\Big)^2,
+\qquad d\varphi=\sqrt{K}\,d\psi.
+\end{equation}
+
+\subsection{Propri\'et\'es structurelles}
+\statut{preuve} (\'etablies dans [15]) (i) L'action est finie partout, $\infty^*$ inclus.
+(ii) La sym\'etrie $\mathbb{Z}_2\times\mathbb{Z}_2$ interdit le m\'elange $\psi\chi$ :
+matrice de masse diagonale, aucun mode de Goldstone (impossible pour une sym\'etrie
+discr\`ete). (iii) Au vide sym\'etrique $P$, $V=0$ donc $\Lambda=0$. (iv) Aux champs gel\'es,
+la gravit\'e d'Einstein \'emerge avec $G_{\mathrm{eff}}=1/(8\pi f)$, born\'ee entre
+$G/(1+\beta)$ ($P$) et $G/(1-\beta)$ ($\infty^*$) : le signe naturel du couplage est
+$\beta\ge0$.
+\par\smallskip
+(v) \statut{preuve} (B1) La m\'etrique d'espace de champ $K(\psi)$ du repère d'Einstein
+est d\'efinie positive $\Leftrightarrow f>0\Leftrightarrow\beta\in(-1/2,+1/2)$ : elle est
+la somme d'une partie cin\'etique ($\omega/f$) d\'efinie positive et d'une partie non
+minimale $\tfrac32(f'/f)^2$ semi-d\'efinie positive (rang 1). Le couplage non minimal ne
+peut donc qu'ajouter de la positivit\'e --- il ne cr\'ee jamais de fant\^ome. \`A
+$\beta=-1/2$, $f\to0$ au vide $P$ (le repère d'Einstein d\'eg\'en\`ere) : la bande est ouverte.
+
+% =====================================================================
+\section{R\'esultats principaux}
+\subsection{C\oe ur de Sitter exact et seuil de stabilit\'e $\beta_c=-1/3$}
+Sur la m\'etrique statique, $R$ est \'elimin\'e par la trace de l'\'equation tensorielle ;
+\statut{preuve} les trois r\'esidus ($tt$, $rr$, scalaire) sont alors exactement
+lin\'eaires en $(\Lambda',\Phi',\psi'')$ (Annexe~A).
+
+\begin{theoreme}[c\oe ur de Sitter et seuil de couplage]\label{thm:core}
+Au p\^ole $\infty^*$ ($\psi=-\pi$, $\psi'=0$), la source se r\'eduit \`a une \'energie de
+vide pure et l'espace-temps est localement de Sitter :
+\begin{equation}
+H^2=\frac{2\alpha}{3(1-\beta)},\qquad K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=24H^4\ (\text{fini}),
+\qquad \rho=2\alpha,\ \ p_r=-2\alpha,\ \ w=-1.
+\end{equation}
+La fluctuation radiale $\psi=-\pi+\delta$ ob\'eit \`a $\omega\Box\delta=\kappa^2\omega\delta$
+avec $\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]$. Comme $|\beta|<1$, $\infty^*$ est
+radialement stable (pi\'eg\'e) pour $\beta>-1/3$ et instable (\'echappement) pour
+$\beta<-1/3$, avec le seuil exact $\boxed{\beta_c=-1/3}$.
+\end{theoreme}
+
+\footnotetext{} % placeholder
+\paragraph{Note (r\'eduction).} Ce seuil $\beta_c=-1/3$ est propre \`a la \emph{r\'eduction
+mono-axe statique} ($\chi$ gel\'e). Un traitement cosmologique \`a deux champs le long de
+la diagonale $\psi=\chi$ d\'eplace le seuil \`a $-1/6$ ; la conclusion de cl\^oture
+(aucun trou noir r\'egulier statique) est robuste ind\'ependamment de la r\'eduction.
+
+\begin{consequence}[obstruction de Derrick]
+Pour le signe naturel $\beta\ge-1/3$, le champ ne peut connecter $\infty^*$ au vide :
+l'\'energie de gradient \'etant positive, le maximum de $V$ devient un minimum du potentiel
+m\'ecanique effectif $-V$, et le champ y reste pi\'eg\'e. La fen\^etre d'\'echappement
+$\beta<-1/3$ n'existe que par le terme non minimal $\tfrac12 f'R$.
+\end{consequence}
+
+\subsection{Cl\^oture du secteur statique en coordonn\'ees d'Eddington--Finkelstein}
+La carte statique se termine \`a un horizon ($e^{-2\Lambda}\to0$) ; \statut{num\'erique}
+l'int\'egration sortante depuis le c\oe ur montre, dans les deux r\'egimes, qu'un horizon se
+forme exactement au rayon de Sitter $r_H=1/H=\sqrt{3(1-\beta)/(2\alpha)}$ (rapport
+num\'erique/th\'eorie $=1{,}0000$). Pour traverser, on passe \`a la carte entrante
+$ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2$, r\'eguli\`ere tant que $B$ reste fini (Annexe~A).
+
+\begin{resultat}[aucun trou noir r\'egulier]\label{res:closure}
+\statut{preuve} $\psi\equiv-\pi$ est solution exacte : $A(r)=1-2M/r-H^2r^2$, $B\equiv1$
+(Schwarzschild--de Sitter). Le r\'egime pi\'eg\'e $\beta>-1/3$ est donc asymptotiquement de
+Sitter, non un trou noir asymptotiquement plat. \statut{num\'erique} Dans le r\'egime
+d'\'echappement $\beta<-1/3$, le champ roule de $-\pi$ vers $0$, mais $B=e^{\Phi+\Lambda}$
+s'effondre vers $0$ au rayon de Sitter putatif : la masse de Misner--Sharp
+$m=(r/2)(1-A/B^2)$ devient n\'egative et le scalaire de Ricci diverge \`a rayon fini.
+Aucune solution statique sph\'erique n'interpole un c\oe ur de Sitter r\'egulier et un
+ext\'erieur asymptotiquement plat.
+\end{resultat}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccc}
+\toprule
+$r$ & $\psi$ & $m$ (Misner--Sharp) & $g_{rr}=A/B^2$ & $|R|$ (Ricci)\\
+\midrule
+$0{,}01$ & $-3{,}132$ & $+5\times10^{-10}$ & $1{,}00$ & $10^{-2}$\\
+$47{,}1$ & $-1{,}4$ & $-3\times10^{7}$ & $1{,}3\times10^{6}$ & $6\times10^{11}$\\
+$75{,}5$ & $-0{,}002$ & $-10^{56}$ & $3\times10^{54}$ & $10^{73}$\\
+\bottomrule
+\end{tabular}
+\caption{\small R\'egime d'\'echappement ($\beta=-0{,}7$, $\alpha=10^{-4}$) : la branche
+roulante est singuli\`ere.}\label{tab:escape}
+\end{table}
+
+\subsection{Le secteur cosmologique : inflation naturelle \`a couplage verrouill\'e}
+En cosmologie homog\`ene, le gradient devient temporel : $(\partial\psi)^2=-\dot\psi^2$.
+\statut{preuve} La courbure du potentiel en $\infty^*$ est $V''(-\pi)=-\alpha<0$ :
+$\infty^*$ est un sommet instable, d'o\`u le champ d\'evale vers $P$ (Fig.~\ref{fig:paysage}).
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.72\textwidth]{figs/fig_paysage.png}
+\caption{\small \statut{num\'erique} Paysage du potentiel en repère d'Einstein,
+$U(\psi)/\alpha=(1-\cos\psi)/(1+\beta\cos\psi)^2$ (forme close exacte). Le vrai vide $P$
+est en $\psi=0$ ($U=0$), le p\^ole unifi\'e $\infty^*$ en $\psi=\pm\pi$. Pour la valeur
+favoris\'ee par le CMB ($\beta=-0{,}3$), l'inflaton d\'evale de $\infty^*$ vers $P$ le long
+d'une colline r\'eguli\`ere ; le couplage verrouill\'e $f=1+\beta\cos\psi$ en fa\c{c}onne la
+forme.}\label{fig:paysage}
+\end{figure}
+
+\begin{resultat}[inflation naturelle, pr\'edictions, $\alpha$ fix\'e et contrainte sur $\beta$]\label{res:infl}
+Avec le champ canonique $\varphi=f_s\psi$, le potentiel s'\'ecrit
+$V=\alpha[1-\cos(\varphi/f_s)]$ : c'est l'inflation naturelle [7] de constante $f_s$,
+dot\'ee d'un couplage non minimal verrouill\'e $f=1+\beta\cos\psi$ (m\^eme $\beta$ que la
+gravit\'e) ; cette structure p\'eriodique a \'et\'e \'etudi\'ee ind\'ependamment par [14, 16].
+\statut{num\'erique} L'int\'egration FLRW part de $\infty^*$ (phase de Sitter,
+$H^2=2\alpha/[3(1-\beta)]$, identique \`a l'\'echelle du c\oe ur de la
+R\'esultat~\ref{res:closure}) et roule jusqu'\`a $P$ ($\Lambda=0$), avec sortie gracieuse.
+Les pr\'edictions de roulement lent au repère d'Einstein (Table~\ref{tab:nsr}) donnent :
+pour $\beta\ge0$, $r\gtrsim0{,}08$ (exclu) ; pour $\beta\approx-0{,}3$, $r\approx0{,}02$--$0{,}05$
+et $n_s\approx0{,}96$ (au bord). Les donn\'ees CMB constituent la premi\`ere contrainte sur
+$\beta$ dans ce cadre.
+\end{resultat}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccl}
+\toprule
+$\beta$ & $f_s$ ($\Mpl$) & $n_s$ & $r$ & statut\\
+\midrule
+$0$ (naturel) & $7$ & $0{,}960$ & $0{,}078$ & $r$ trop grand\\
+$+0{,}3$ & $7$ & $0{,}949$ & $0{,}128$ & exclu\\
+$+0{,}6$ & $7$ & $0{,}930$ & $0{,}193$ & exclu\\
+$-0{,}3$ & $5$ & $0{,}958$ & $0{,}017$ & compatible\\
+$-0{,}3$ & $7$ & $0{,}960$ & $0{,}036$ & au bord\\
+\bottomrule
+\end{tabular}
+\caption{\small Pr\'edictions $(n_s,r)$ \`a $N=55$ e-folds (cible Planck$+$BK :
+$n_s=0{,}9649\pm0{,}004$, $r<0{,}036$).}\label{tab:nsr}
+\end{table}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.78\textwidth]{figs/fig_nsr.png}
+\caption{\small \statut{num\'erique} Pr\'edictions $(n_s,r)$ \`a $N=55$ (points de la
+Table~\ref{tab:nsr}) face \`a Planck ($n_s=0{,}9649\pm0{,}004$) et BK18 ($r<0{,}036$,
+exclu au-dessus). Le signe de $\beta$ d\'eplace $r$ : $\beta\ge0$ est exclu ; la fen\^etre
+viable est $\beta\approx-0{,}3$ ($r\approx0{,}02$--$0{,}04$, $n_s\approx0{,}96$).}\label{fig:nsr}
+\end{figure}
+
+\statut{num\'erique} \textbf{(A1) $\alpha$ fix\'e et running.} Le roulement lent au second
+ordre avec la m\'etrique d'espace de champ $K(\psi)$ reproduit la Table~\ref{tab:nsr} \`a
+mieux que $0{,}5\%$, et fixe $\alpha$ par l'amplitude scalaire $A_s=2{,}1\times10^{-9}$ :
+$\alpha\approx0{,}5$--$1{,}2\times10^{-9}\,\Mpl^4$ (cas central $\beta=-0{,}3$, $f_s=7$ :
+$\alpha=1{,}18\times10^{-9}$), soit une \'echelle d'inflation $V^{1/4}\sim1$--$2\times10^{16}$~GeV
+(GUT). Pr\'ediction stable sur la bande : le running $dn_s/d\ln k\approx-6{,}5\times10^{-4}$
+--- compatible avec Planck ($-0{,}004\pm0{,}007$), sous le seuil actuel, possiblement
+accessible \`a la prochaine g\'en\'eration, mais non distinctif : il appartient \`a la classe
+[14, 16, 17]. Reliquat \statut{ouvert} : r\'esolution mode-par-mode de Mukhanov--Sasaki,
+attendue au sous-pourcent.
+
+\paragraph{Statut de la signature $\Delta\sim0{,}044$.} \statut{num\'erique} La trajectoire
+de fond est monotone (demi-p\'eriode du cosinus) : le spectre primordial est lisse, sans
+caract\'eristique log-p\'eriodique. La signature $\Delta\sim0{,}044$ \'evoqu\'ee dans [15]
+n'est pas reproduite par la dynamique minimale ; elle exigerait un m\'ecanisme
+suppl\'ementaire (trajectoire enroul\'ee $N\ge1$, ou axe $\chi$ non gel\'e). \statut{ouvert}
+
+\subsection{Charge d'\'echelle topologique et demi-soliton}
+Le champ $\psi$ \'etant \`a valeurs dans $S^1$, ses configurations sont class\'ees par
+$\pi_1(S^1)=\mathbb{Z}$. \statut{preuve} Dans la r\'eduction effective \`a $1{+}1$~D, le
+courant $j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi$, de charge
+$N=(1/2\pi)(\psi_f-\psi_i)$, est conserv\'e identiquement ($\partial_\mu j^\mu\equiv0$),
+ind\'ependamment des \'equations du mouvement, de la m\'etrique, de $f$ et de $V$. Sur le
+cercle, $V=2\alpha\sin^2(\psi/2)$ est un sine-Gordon \`a vide unique. La charge est
+enti\`ere ssi les deux extr\'emit\'es reposent sur le vide $P$.
+
+\begin{resultat}[demi-soliton non prot\'eg\'e]\label{res:topo}
+\statut{preuve} Le profil de la R\'esultat~\ref{res:closure}, reliant le c\oe ur
+$\psi(0)=-\pi$ ($\infty^*$) \`a l'asymptotique $\psi(\infty)=0$ ($P$), porte la charge
+$N=\tfrac12$. Une extr\'emit\'e gisant sur le maximum de $V$, il n'est pas prot\'eg\'e :
+l'arc $\infty^*\!\to P$ est contractible, et sa contraction co\"incide avec le
+« roulement ». La cl\^oture du secteur statique s'en d\'eduit sans int\'egration. L'unique
+charge enti\`ere non triviale ($\psi:0\to2\pi$) est le soliton $N=1$, de masse de
+Bogomol'nyi $M_{N=1}=8\sqrt{\omega\alpha}$ (Annexe~D).
+\end{resultat}
+
+\paragraph{Lien observationnel.} \statut{conjecture} En cosmologie, $N$ compte les
+p\'eriodes parcourues par l'inflaton. La trajectoire monotone ($N=\tfrac12$) donne un
+spectre lisse ; une trajectoire enroul\'ee ($N\ge1$, traversant $\infty^*$) serait la seule
+source d'oscillations log-p\'eriodiques. Le test est une r\'esolution de Mukhanov--Sasaki
+sur un fond $N\ge1$.
+
+% =====================================================================
+\section{Implications physiques}
+\subsection{Interpr\'etation}
+Le m\^eme champ d'\'echelle est b\'enin dans le temps et obstru\'e dans l'espace. En
+cosmologie, $\infty^*$ est une colline d'o\`u le champ roule : il engendre l'inflation et
+une sortie naturelle vers $\Lambda=0$. En statique, $\infty^*$ est un puits : le champ y
+reste pi\'eg\'e et l'espace-temps n'est qu'un Schwarzschild--de Sitter. Le fait remarquable
+est que la m\^eme \'echelle de Sitter $H^2=2\alpha/[3(1-\beta)]$ appara\^it comme horizon
+cosmologique du c\oe ur statique et comme taux de Hubble inflationnaire : signature de
+l'origine commune des deux ph\'enom\`enes.
+
+\subsection{Limitations et honn\^etet\'e \'epist\'emique}
+(i) La cl\^oture (R\'esultat~\ref{res:closure}) ne concerne que les configurations statiques
+sph\'eriques ; un effondrement dynamique pourrait produire un c\oe ur r\'egulier transitoire
+(trait\'e en travail compagnon). (ii) Les pr\'edictions (R\'esultat~\ref{res:infl}) reposent
+sur le roulement lent ; $\alpha$ est fix\'e par $A_s$ sur cette base valid\'ee (running
+$-6{,}5\times10^{-4}$), un traitement Mukhanov--Sasaki mode-par-mode restant un
+raffinement sous-pourcent (non un pr\'ealable). (iii) La signature $\Delta\sim0{,}044$
+n'est pas \'etablie. (iv) Les constantes $\alpha,\beta,f_s$ ne sont pas d\'eriv\'ees de
+premiers principes ; $\beta$ est seulement contraint par les donn\'ees. Aucun de ces
+points n'est pr\'esent\'e comme r\'esolu. \statut{ouvert}
+
+% =====================================================================
+\section{Protocoles exp\'erimentaux}
+\subsection{Test discriminant principal : le rapport tenseur/scalaire}
+Le mod\`ele pr\'edit, dans sa fen\^etre viable ($\beta\approx-0{,}3$, $f_s\approx5$--$7\,\Mpl$,
+$N=50$--$60$), un rapport $r\approx0{,}02$--$0{,}05$ corr\'el\'e \`a $n_s\approx0{,}96$. La
+mesure de $r$ par LiteBIRD [12] et Simons Observatory [18], de sensibilit\'e
+$\sigma(r)\sim10^{-3}$, est le test discriminant\footnote{Le projet CMB-S4 (DOE--NSF),
+longtemps consid\'er\'e comme l'instrument de r\'ef\'erence pour ce test, a \'et\'e arr\^et\'e :
+le 9 juillet 2025, le DOE et la NSF ont d\'eclar\'e ne plus pouvoir soutenir le projet
+(arr\^et ordonn\'e), qui n'est donc plus financ\'e [13]. La falsifiabilit\'e de la pr\'ediction
+demeure, port\'ee par Simons Observatory (Chili, en service), LiteBIRD (lancement vis\'e
+$\sim$2032, con\c{c}u pour $\sigma(r)<10^{-3}$) et BICEP/Keck (en cours). \statut{\`a v\'erifier}}
+: une non-d\'etection \`a $r<0{,}01$ exclurait le mod\`ele ; une d\'etection \`a $r\sim0{,}03$
+avec $n_s\approx0{,}96$ le corroborerait.
+
+\subsection{La signature propre : coh\'erence inter-secteurs}
+[le test qui distingue ce cadre] Aucun observable cosmologique isol\'e ($n_s$, $r$,
+running) ne distingue ce mod\`ele de l'inflation naturelle non minimale [14, 16, 17]. Sa
+signature propre est une corr\'elation : le signe et la valeur de $\beta$ pr\'ef\'er\'es par le
+CMB ($\beta\approx-0{,}3$) doivent \^etre confront\'es au secteur trou noir, o\`u le seuil
+$\beta_c=-1/3$ gouverne la stabilit\'e du c\oe ur de Sitter. Une m\^eme valeur de $\beta$ doit
+ajuster $(n_s,r)$ et se situer du bon c\^ot\'e du seuil de cl\^oture. Une tension persistante
+entre les deux secteurs serait un \'echec structurel ; leur accord serait la v\'eritable
+corroboration du cadre unifi\'e.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.74\textwidth]{figs/fig_seuil.png}
+\caption{\small \statut{num\'erique} Diagnostic de stabilit\'e radiale au p\^ole $\infty^*$
+($\propto-\kappa^2$, forme close $(1+3\beta)/(1-\beta)$), changeant de signe au seuil exact
+$\beta_c=-1/3$ : $\beta>-1/3$ pi\'eg\'e (c\oe ur de Sitter stable, Schwarzschild--de Sitter),
+$\beta<-1/3$ \'echappement (branche roulante singuli\`ere). La valeur favoris\'ee par le CMB
+($\beta\approx-0{,}3$, bande $-0{,}5$ \`a $-0{,}15$) tombe \emph{juste} du c\^ot\'e pi\'eg\'e :
+c'est la visualisation de la signature $\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$.}\label{fig:seuil}
+\end{figure}
+
+\subsection{Falsifiabilit\'e et bornes}
+Le mod\`ele vit dans une bande \'etroite du plan $(n_s,r)$. Bornes actuelles : $\beta\ge0$
+d\'ej\`a exclu ($r\gtrsim0{,}08>0{,}036$) ; $\beta\lesssim-0{,}6$ exclu (inflation
+insuffisante). Seule survit la bande $-0{,}5\lesssim\beta\lesssim-0{,}15$, enti\`erement
+testable \`a l'horizon 2030.
+
+% =====================================================================
+\section{Discussion et comparaison}
+\subsection{Rapport avec les approches concurrentes}
+Contrairement aux trous noirs r\'eguliers ph\'enom\'enologiques [1, 2, 3], o\`u la source
+$w=-1$ est postul\'ee, nous d\'erivons le c\oe ur de Sitter d'une action et montrons qu'il ne
+se raccorde pas \`a un ext\'erieur plat en statique --- en accord avec l'esprit des
+th\'eor\`emes de non-chevelure [8]. Pour l'inflation, le couplage non minimal verrouill\'e
+distingue le mod\`ele de l'inflation naturelle nue [7] et de l'inflation \`a la Higgs [9] :
+le couplage n'est pas libre mais fix\'e par la m\^eme structure que le potentiel, ce qui
+transforme un param\`etre d'ajustement en une grandeur contrainte par la gravit\'e. La
+structure p\'eriodique elle-m\^eme rejoint [14, 16], dont nous nous distinguons par le
+cadrage inter-secteurs.
+
+\subsection{Questions ouvertes}
+Quatre directions, hors du champ du pr\'esent travail \statut{ouvert} : (i) la corr\'elation
+$\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$ --- pos\'ee en signature au \S\,V.B ---
+m\'erite une \'etude conjointe quantitative ; (ii) la r\'esolution mode-par-mode de
+Mukhanov--Sasaki pour confirmer $(n_s,r,\text{running})$ au sous-pourcent ; (iii)
+l'origine \'eventuelle d'oscillations log-p\'eriodiques via une trajectoire multi-p\'eriodes
+($N\ge1$) ou l'axe temporel $\chi$ non gel\'e ; (iv) le secteur dynamique d'effondrement
+gravitationnel, seule avenue restante pour une r\'egularisation de trou noir (travail
+compagnon).
+
+% =====================================================================
+\section{Conclusion}
+Un unique champ de dualit\'e d'\'echelle, trait\'e dans deux r\'egimes, produit deux verdicts
+oppos\'es et tous deux instructifs. En statique, il \'echoue \`a r\'egulariser la singularit\'e :
+le p\^ole unifi\'e engendre un c\oe ur de Sitter exact mais in\'evitablement gel\'e
+(Schwarzschild--de Sitter) ou singulier, et aucun trou noir r\'egulier n'existe --- avec un
+seuil exact $\beta_c=-1/3$ comme sous-produit. En cosmologie, le m\^eme champ engendre une
+inflation naturelle \`a couplage verrouill\'e, pr\'edictive et falsifiable, dont $\alpha$ est
+fix\'e (\'echelle GUT) et qui pr\'edit un running $dn_s/d\ln k\approx-6{,}5\times10^{-4}$. La
+signature propre du cadre n'est pas un observable cosmologique isol\'e, mais la corr\'elation
+$\beta(\mathrm{CMB})=\beta(\text{cl\^oture})$. Le programme se r\'eoriente d'une th\'eorie de
+trous noirs vers une th\'eorie de l'histoire cosmologique, pour la premi\`ere fois testable
+par l'observation.
+
+\paragraph{Remerciements.} L'auteur remercie les outils de calcul formel et num\'erique
+(SymPy, SciPy) qui ont permis la v\'erification syst\'ematique de chaque \'etape, et la
+communaut\'e gr-qc/hep-th pour les standards de rigueur et de falsifiabilit\'e qui ont guid\'e
+ce travail. La formalisation a \'et\'e conduite en dialogue avec des syst\`emes d'assistance
+analytique, sous la direction de l'auteur, \`a qui revient l'enti\`ere responsabilit\'e du
+contenu scientifique.
+
+% =====================================================================
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\section{D\'etails techniques}
+\textbf{Syst\`eme statique.} Avec l'\'elimination de $R$ par la trace, les r\'esidus
+($tt$), ($rr$) et scalaire sont lin\'eaires en $(\Lambda',\Phi',\psi'')$ et r\'esolus
+ponctuellement par inversion $3\times3$ ; le tenseur d'Einstein mixte est valid\'e contre
+le vide de Schwarzschild. \textbf{Carte d'Eddington--Finkelstein.} Pour
+$ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2$, on a $g_{vv}=0$, $g_{vr}=1/B$, $g_{rr}=A/B^2$,
+$\sqrt{-g}=Br^2$, et $G_{rr}=2B'/(rB)$. Le syst\`eme $3\times3$ pour $(A',B',\psi'')$ est
+lin\'eaire (r\'esidu de lin\'earit\'e exactement nul). L'horizon est une surface
+caract\'eristique ($g_{rr}=A/B^2\to0$) ; la r\'egularit\'e impose $\Pi(r_H)=0$ avec
+$\Pi=(Ar^2/B)\psi'$. \textbf{Cosmologie.} Le fond FLRW r\'esout la contrainte de Friedmann
+$3fH^2=\tfrac12\omega\dot\psi^2+V-3H\dot f$ et l'\'equation d'acc\'el\'eration.
+
+\section{V\'erifications dimensionnelles}
+En unit\'es $\hbar=c=1$, $\Mpl=1$ : $[\alpha]=[V]=\ell_P^{-4}$, $[H^2]=\ell_P^{-2}$,
+coh\'erent avec $H^2=2\alpha/[3(1-\beta)]$ car $f$ porte la dimension $\Mpl^2$
+($f(-\pi)=(1-\beta)\Mpl^2$), d'o\`u $[H^2]=[\alpha]/\Mpl^2=\ell_P^{-2}$. $\beta$ et $\psi$
+sont sans dimension ; $f_s$ a la dimension de $\Mpl$. $K=24H^4$ a la dimension
+$\ell_P^{-4}$, attendue pour $R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$.
+
+\section{Comparaison quantitative \`a la litt\'erature}
+Pour l'inflation naturelle nue ($\beta=0$), nos valeurs ($n_s=0{,}960$, $r=0{,}078$ \`a
+$f_s=7\,\Mpl$, $N=55$) reproduisent les r\'esultats standard [7, 10] et confirment la
+tension connue avec [11]. L'effet du couplage verrouill\'e ($\beta<0$ abaisse $r$ ;
+$\beta>0$ l'augmente) est analogue en sens \`a l'effet d'un couplage non minimal \`a la
+Higgs [9], mais de magnitude contr\^ol\'ee par l'unique param\`etre gravitationnel $\beta$. Le
+running pr\'edit ($\approx-6{,}5\times10^{-4}$) est coh\'erent avec les analyses
+$(n_s,r,\text{running})$ de cette classe [17]. Le c\oe ur de Sitter ($w=-1$, $K=24H^4$)
+co\"incide avec la structure interne des trous noirs r\'eguliers [2, 3], mais sans le
+raccordement asymptotiquement plat que ces mod\`eles postulent.
+
+\section{Courant topologique et borne de Bogomol'nyi}
+Pour $\psi\in S^1$, $j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi$ v\'erifie
+$\partial_\mu j^\mu\equiv0$ par antisym\'etrie, sans usage des \'equations du mouvement ;
+$N=(1/2\pi)\oint d\psi$ est un invariant d'homotopie. L'\'energie statique plate
+$E=\int[\tfrac12\omega\psi'^2+V]dr$ admet la borne $E\ge\int\sqrt{2\omega V}\,|d\psi|$,
+satur\'ee pour $\sqrt\omega\,\psi'=\sqrt{2V}$, soit le kink
+$\psi(r)=4\arctan e^{\sqrt{\alpha/\omega}(r-r_0)}$, de largeur $\sim\sqrt{\omega/\alpha}$,
+et $M_{N=1}=2\sqrt{\omega\alpha}\int_0^{2\pi}|\sin(\psi/2)|\,d\psi=8\sqrt{\omega\alpha}$. Le
+demi-soliton ($\psi:-\pi\to0$) a une \'energie $4\sqrt{\omega\alpha}$ mais relie le maximum
+au vide : il n'est pas BPS et se contracte (\S\,III.D).
+
+% =====================================================================
+% =====================================================================
+\section*{Reproductibilit\'e}
+Les r\'esultats num\'eriques et la v\'erification symbolique sont reproduits par deux scripts
+autonomes (NumPy/SymPy/SciPy/Matplotlib), aux sections cod\'ees pour \^etre propres \`a ce
+document :
+\begin{itemize}
+\item[{\texttt{[G1]}}] g\'eom\'etrie en repère d'Einstein ($U=V/f^2$, $K=\omega/f+\tfrac32(f'/f)^2$) et positivit\'e $K>0\Leftrightarrow f>0\Leftrightarrow|\beta|<1$ (mono-axe).
+\item[{\texttt{[G2]}}] seuil de cl\^oture : signe de $\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]$, racine exacte $\beta_c=-1/3$.
+\item[{\texttt{[G3]}}] c\oe ur de Sitter : $H^2=2\alpha/[3(1-\beta)]$, $r_H=1/H$, Kretschmann $=24H^4$.
+\item[{\texttt{[G4]}}] inflation : $(n_s,r)$ \`a $N=55$ (roulement lent, m\'etrique $K$) --- reproduit la Table~\ref{tab:nsr} ; $\alpha$ fix\'e par $A_s$ ($V^{1/4}\approx1{,}4\times10^{16}$~GeV), running.
+\item[{\texttt{[G5]}}] topologie : charge $N$, soliton $M_{N=1}=8\sqrt{\omega\alpha}$, demi-soliton $4\sqrt{\omega\alpha}$.
+\end{itemize}
+Fichiers : \texttt{U2\_GRAV\_reproductible.py} (calculs) et \texttt{Gravite\_figures.py}
+(Fig.~\ref{fig:paysage}--\ref{fig:seuil}). \emph{Convention} : $\alpha$ s'annule dans les
+rapports $(n_s,r)$ et ne fixe que l'\'echelle absolue ; $\Mpl=1$ sauf mention contraire. Le
+pr\'efixe \texttt{U2\_GRAV\_} et les codes \texttt{[G$\cdot$]} sont sp\'ecifiques \`a ce document.
+
+\begin{thebibliography}{99}\small
+\bibitem{bardeen} J.\ M.\ Bardeen, \textit{Non-singular general-relativistic gravitational collapse}, Proc.\ GR5 (Tbilisi, 1968), p.\ 174.
+\bibitem{hayward} S.\ A.\ Hayward, \textit{Phys.\ Rev.\ Lett.} \textbf{96}, 031103 (2006).
+\bibitem{dymnikova} I.\ Dymnikova, \textit{Gen.\ Relativ.\ Gravit.} \textbf{24}, 235 (1992).
+\bibitem{penrose} R.\ Penrose, \textit{Phys.\ Rev.\ Lett.} \textbf{14}, 57 (1965).
+\bibitem{he} S.\ W.\ Hawking \& G.\ F.\ R.\ Ellis, \textit{The Large Scale Structure of Space-Time} (Cambridge Univ.\ Press, 1973).
+\bibitem{guth} A.\ H.\ Guth, \textit{Phys.\ Rev.\ D} \textbf{23}, 347 (1981).
+\bibitem{ffo} K.\ Freese, J.\ A.\ Frieman \& A.\ V.\ Olinto, \textit{Phys.\ Rev.\ Lett.} \textbf{65}, 3233 (1990).
+\bibitem{bek} J.\ D.\ Bekenstein, \textit{Phys.\ Rev.\ D} \textbf{51}, R6608 (1995).
+\bibitem{bezr} F.\ L.\ Bezrukov \& M.\ Shaposhnikov, \textit{Phys.\ Lett.\ B} \textbf{659}, 703 (2008).
+\bibitem{planck} Planck Collaboration (Y.\ Akrami \textit{et al.}), \textit{Astron.\ Astrophys.} \textbf{641}, A10 (2020).
+\bibitem{bk} BICEP/Keck Collaboration (P.\ A.\ R.\ Ade \textit{et al.}), \textit{Phys.\ Rev.\ Lett.} \textbf{127}, 151301 (2021).
+\bibitem{litebird} LiteBIRD Collaboration (E.\ Allys \textit{et al.}), \textit{Prog.\ Theor.\ Exp.\ Phys.} \textbf{2023}, 042F01 (2023).
+\bibitem{cmbs4} K.\ N.\ Abazajian \textit{et al.} (CMB-S4), \textit{CMB-S4 Science Book}, arXiv:1610.02743 (2016) --- \emph{projet arr\^et\'e en juillet 2025}.
+\bibitem{fns} R.\ Z.\ Ferreira, A.\ Notari \& G.\ Simeon, \textit{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{11} (2018) 021, arXiv:1806.05511.
+\bibitem{recueil} H.\ Bakkaoui, \textit{Compactification de dualit\'e d'\'echelle : cadre, corrections et r\'esultats}, recueil v1.1 (2026).
+\bibitem{simeon} G.\ Simeon, \textit{Scalar-tensor extension of Natural Inflation}, arXiv:2002.07625 (2020).
+\bibitem{bostan} I.\ D.\ Bostan, \textit{Non-minimally coupled Natural Inflation and BICEP/Keck constraints}, arXiv:2209.02434 (2022).
+\bibitem{so} Simons Observatory Collaboration (P.\ Ade \textit{et al.}), \textit{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{02} (2019) 056, arXiv:1808.07445.
+\end{thebibliography}
+
+\end{document}

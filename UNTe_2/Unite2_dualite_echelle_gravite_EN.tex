@@ -1,0 +1,505 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.3cm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\newcommand{\statut}[1]{{\footnotesize\textsf{[#1]}}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{postulate}{Postulate}
+\newtheorem{result}{Result}
+\theoremstyle{remark}
+\newtheorem*{consequence}{Consequence}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+
+\title{\vspace{-1.0cm}\textbf{Unit 2 --- A compactified scale-duality field:\\
+closure of the static sector and falsifiable natural inflation}\\[5pt]
+\large Locked non-minimal coupling and inter-sector signature $\beta(\mathrm{CMB})=\beta(\text{closure})$}
+\author{Hassane Bakkaoui\\ \small Independent researcher --- bakkahassa@hotmail.com}
+\date{\small June 2026 $\cdot$ standalone document (gr-qc / astro-ph.CO)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+\textbf{Context.} Singularity resolution and the origin of inflation are two requirements
+of any Planck-regime physics. \textbf{Problem.} We study whether a single scale-duality
+field $\psi$ --- arising from the compactification of the scale axis into a circle, coupled
+non-minimally to curvature via $f\propto1+\beta\cos\psi$ and carrying a bounded potential
+$V=\alpha(1-\cos\psi)$ --- can both regularise the Schwarzschild singularity and drive
+inflation. \textbf{Method.} The field is treated in two regimes: a static radial profile
+(black holes) and a homogeneous cosmological background (inflation), with passage to the
+Einstein frame. All tensor calculations are verified by symbolic computation and the
+equations integrated numerically. \textbf{Results.} (i) The unified pole generates an exact
+de Sitter core ($w=-1$, $K=24H^4$ finite) whose radial stability is governed by an exact
+threshold $\beta_c=-1/3$. (ii) In horizon-penetrating coordinates, $\psi\equiv-\pi$ is
+exactly Schwarzschild--de Sitter, and the « rolling » branch develops a singular horizon:
+the static sector produces no regular black hole. (iii) The cosmological sector is a natural
+inflation with a topologically locked non-minimal coupling; it provides predictions
+$(n_s,r)$, and --- $\alpha$ being fixed by the scalar amplitude $A_s$ --- an inflation scale
+$V^{1/4}\sim10^{16}$~GeV and a running prediction $dn_s/d\ln k\approx-6.5\times10^{-4}$.
+(iv) The field being $S^1$-valued ($\pi_1=\mathbb{Z}$), the static profile is an unprotected
+half-soliton ($N=\tfrac12$), whose winding topologically recovers the closure and identifies
+a scale soliton $N=1$ of mass $8\sqrt{\omega\alpha}$. \textbf{Conclusion.} The framework is
+probably not a theory of regular black holes, but a predictive inflationary model
+falsifiable by LiteBIRD and the Simons Observatory. Its distinctive signature is no isolated
+cosmological observable --- shared with [14, 16, 17] --- but the inter-sector correlation:
+the same $\beta$ must fit $(n_s,r)$ and satisfy the black-hole closure thresholds.
+
+\smallskip\noindent\textbf{Keywords:} regular black holes; de Sitter core; scalar-tensor
+gravity; non-minimal coupling; natural inflation; Eddington--Finkelstein coordinates;
+topological scale charge; sine-Gordon soliton; cosmic microwave background.\\
+\textbf{PACS:} 04.70.Bw, 04.50.Kd, 98.80.Cq, 04.62.+v.\quad\textbf{MSC:} 83C57, 83D05, 83F05.
+
+\smallskip\noindent\textit{Epistemic status:} \statut{proof} exact symbolic computation $\cdot$
+\statut{numerical} reproducible integration $\cdot$ \statut{conjecture} plausible, not proven $\cdot$
+\statut{heuristic} analogy $\cdot$ \statut{speculation} open $\cdot$ \statut{open} to be
+established $\cdot$ \statut{to check} external ref. No conjecture is presented as a theorem.
+\end{abstract}
+
+\paragraph{Preliminary note.} The present work proceeds from an initial intuition --- the
+compactification of the scale axis into a circle --- developed independently, without
+knowledge of the relevant cosmological literature. The bibliographic survey was undertaken
+only once the framework was established; it turns out that certain sectors overlap with
+published results, notably natural inflation with a periodic non-minimal coupling
+proportional to the potential [14], its scalar-tensor extension [16], and the
+$(n_s,r,\text{running})$ analyses against BICEP/Keck [17]. These overlaps, not anticipated,
+illustrate an independent convergence; we cite them explicitly so as to position honestly
+the specific contribution of this work, which lies in the unified framing of a single scale
+field (black-hole and cosmological regimes) and the topological reading of the static sector.
+
+% =====================================================================
+\section{Introduction}
+\subsection{Context and physical motivation}
+Two requirements weigh on any Planck-regime physics: removing the singularities of general
+relativity, and accounting for the primordial accelerated-expansion phase. Regular
+black-hole metrics [1, 2, 3] show that a central singularity can be replaced by a de Sitter
+core of finite curvature ($w=-1$), at the cost of a strong-energy-condition violation
+permitted by the singularity theorems [4, 5]. Symmetrically, inflation [6, 7] requires a
+scalar field slowly rolling in a flat potential. The structuring question is whether a single
+fundamental ingredient generates both phenomena, rather than postulating them separately.
+
+The compactified scale-duality framework [15] proposes such an ingredient. Its central
+hypothesis is that the logarithmic scale axis $u=\ln(\lambda/\ell_P)$, usually non-compact,
+is in fact a circle: through the stereographic projection $\psi=2\arctan u\in(-\pi,\pi]$, the
+Planck scale ($\psi=0$, pole $P$) and a « unified » scale ($\psi=\pm\pi$ identified, pole
+$\infty^*$) become two poles of one manifold. The scale field $\psi$ couples non-minimally
+to curvature.
+
+\subsection{State of the art and gap}
+Regular de Sitter cores are, in the literature, geometric ans\"atze: the $w=-1$ source is
+inserted by hand [1, 2, 3]. The no-hair theorems [8] strongly constrain static scalar fields
+around horizons. On the cosmology side, natural inflation [7] is under tension:
+Planck$+$BICEP/Keck [10, 11] push its tensor-to-scalar ratio $r$ beyond the bounds for
+accessible decay constants, while non-minimal Higgs-like couplings [9] lower $r$. The gap
+filled is the study of a fundamental field whose non-minimal coupling is not free but locked
+by the same trigonometric structure as the potential, examined simultaneously in the
+black-hole and cosmological regimes.
+
+\subsection{Contributions}
+We establish four results: (1) an exact de Sitter core and an exact stability threshold
+$\beta_c=-1/3$ (Theorem~\ref{thm:core}); (2) the closure of the static sector ---
+$\psi\equiv-\pi$ is exactly Schwarzschild--de Sitter and the rolling branch is singular,
+hence no regular black hole (Result~\ref{res:closure}); (3) the identification of the
+cosmological sector with a natural inflation with locked coupling, with predictions
+$(n_s,r)$, $\alpha$ fixed and running, and a first constraint on $\beta$
+(Result~\ref{res:infl}); (4) a topological scale charge ($\pi_1(S^1)=\mathbb{Z}$) whose
+static sector is an unprotected half-soliton (Result~\ref{res:topo}).
+
+% =====================================================================
+\section{Formal framework}
+\subsection{Postulates and definitions}
+\begin{postulate}[compactification]
+The fundamental manifold is $\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$, the scale
+axes being circles via $\psi=2\arctan[\ln(\lambda/\ell_P)]$. The poles $\psi=\pm\pi$ are
+identified ($\infty^*$); $\psi=0$ is the Planck point $P$.
+\end{postulate}
+\begin{postulate}[symmetry and regularity]
+The action is invariant under the Klein group $G=\mathbb{Z}_2\times\mathbb{Z}_2$ acting by
+$(\psi,\chi)\mapsto(-\psi,-\chi)$, and all its functions are bounded on the circle (hence
+$\cos\psi$ rather than $\cosh u$).
+\end{postulate}
+In reduced Planck units ($\Mpl=1$, $\hbar=c=1$, signature $-+++$) and freezing the temporal
+axis $\chi\equiv0$:
+\begin{equation}
+S=\int d^4x\,\sqrt{-g}\Big[\tfrac12 f(\psi)R-\tfrac12\omega(\partial\psi)^2-V(\psi)\Big],
+\quad f=1+\beta\cos\psi,\quad V=\alpha(1-\cos\psi),
+\end{equation}
+with $\omega=f_s^2>0$, $|\beta|<1$, $\alpha>0$. One has $V(0)=0$ (minimum, $P$) and
+$V(-\pi)=2\alpha$ (maximum, $\infty^*$).
+
+\subsection{Mathematical construction}
+\statut{proof} (verified by symbolic computation) Variation gives the scalar-tensor system
+\begin{equation}
+f\,G_{\mu\nu}=\omega\,\partial_\mu\psi\,\partial_\nu\psi
+-g_{\mu\nu}\big[\tfrac12\omega(\partial\psi)^2+V\big]+\nabla_\mu\nabla_\nu f-g_{\mu\nu}\Box f,
+\qquad \omega\,\Box\psi=V'(\psi)-\tfrac12 f'(\psi)R.
+\end{equation}
+In the Jordan frame, we use the static metric
+$ds^2=-e^{2\Phi}dt^2+e^{2\Lambda}dr^2+r^2d\Omega^2$ and the FLRW metric
+$ds^2=-dt^2+a^2d\mathbf{x}^2$. In the Einstein frame ($\tilde g=f g$), the action becomes
+that of a canonical field, with
+\begin{equation}
+U(\psi)=\frac{V}{f^2},\qquad K(\psi)=\frac{\omega}{f}+\frac32\Big(\frac{f'}{f}\Big)^2,
+\qquad d\varphi=\sqrt{K}\,d\psi.
+\end{equation}
+
+\subsection{Structural properties}
+\statut{proof} (established in [15]) (i) The action is finite everywhere, $\infty^*$
+included. (ii) The $\mathbb{Z}_2\times\mathbb{Z}_2$ symmetry forbids $\psi\chi$ mixing:
+diagonal mass matrix, no Goldstone mode (impossible for a discrete symmetry). (iii) At the
+symmetric vacuum $P$, $V=0$ so $\Lambda=0$. (iv) At frozen field, Einstein gravity emerges
+with $G_{\mathrm{eff}}=1/(8\pi f)$, bounded between $G/(1+\beta)$ ($P$) and $G/(1-\beta)$
+($\infty^*$): the natural sign of the coupling is $\beta\ge0$.
+\par\smallskip
+(v) \statut{proof} (B1) The Einstein-frame field-space metric $K(\psi)$ is positive definite
+$\Leftrightarrow f>0\Leftrightarrow|\beta|<1$ (mono-axis): it is the sum of a kinetic part
+($\omega/f$) positive definite and a non-minimal part $\tfrac32(f'/f)^2$ positive
+semi-definite (rank 1). The non-minimal coupling can therefore only add positivity --- it
+never creates a ghost. As $f\to0$ ($|\beta|\to1$) the Einstein frame degenerates; the band
+$|\beta|<1$ is open.
+
+% =====================================================================
+\section{Main results}
+\subsection{Exact de Sitter core and stability threshold $\beta_c=-1/3$}
+On the static metric, $R$ is eliminated by the trace of the tensor equation; \statut{proof}
+the three residuals ($tt$, $rr$, scalar) are then exactly linear in
+$(\Lambda',\Phi',\psi'')$ (Appendix~A).
+
+\begin{theorem}[de Sitter core and coupling threshold]\label{thm:core}
+At the pole $\infty^*$ ($\psi=-\pi$, $\psi'=0$), the source reduces to a pure vacuum energy
+and the spacetime is locally de Sitter:
+\begin{equation}
+H^2=\frac{2\alpha}{3(1-\beta)},\qquad K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=24H^4\ (\text{finite}),
+\qquad \rho=2\alpha,\ \ p_r=-2\alpha,\ \ w=-1.
+\end{equation}
+The radial fluctuation $\psi=-\pi+\delta$ obeys $\omega\Box\delta=\kappa^2\omega\delta$ with
+$\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]$. Since $|\beta|<1$, $\infty^*$ is radially
+stable (trapped) for $\beta>-1/3$ and unstable (escaping) for $\beta<-1/3$, with the exact
+threshold $\boxed{\beta_c=-1/3}$.
+\end{theorem}
+
+\paragraph{Note (reduction).} This threshold $\beta_c=-1/3$ is specific to the
+\emph{static mono-axis reduction} ($\chi$ frozen). A two-field cosmological treatment along
+the diagonal $\psi=\chi$ shifts the threshold to $-1/6$; the closure conclusion (no static
+regular black hole) is robust regardless of the reduction.
+
+\begin{consequence}[Derrick obstruction]
+For the natural sign $\beta\ge-1/3$, the field cannot connect $\infty^*$ to the vacuum: the
+gradient energy being positive, the maximum of $V$ becomes a minimum of the effective
+mechanical potential $-V$, and the field remains trapped there. The escape window
+$\beta<-1/3$ exists only through the non-minimal term $\tfrac12 f'R$.
+\end{consequence}
+
+\subsection{Closure of the static sector in Eddington--Finkelstein coordinates}
+The static chart ends at a horizon ($e^{-2\Lambda}\to0$); \statut{numerical} the outgoing
+integration from the core shows, in both regimes, that a horizon forms exactly at the de
+Sitter radius $r_H=1/H=\sqrt{3(1-\beta)/(2\alpha)}$ (numerical/theory ratio $=1.0000$). To
+cross it, one passes to the ingoing chart $ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2$, regular as
+long as $B$ stays finite (Appendix~A).
+
+\begin{result}[no regular black hole]\label{res:closure}
+\statut{proof} $\psi\equiv-\pi$ is an exact solution: $A(r)=1-2M/r-H^2r^2$, $B\equiv1$
+(Schwarzschild--de Sitter). The trapped regime $\beta>-1/3$ is therefore asymptotically de
+Sitter, not an asymptotically flat black hole. \statut{numerical} In the escaping regime
+$\beta<-1/3$, the field rolls from $-\pi$ towards $0$, but $B=e^{\Phi+\Lambda}$ collapses to
+$0$ at the putative de Sitter radius: the Misner--Sharp mass $m=(r/2)(1-A/B^2)$ becomes
+negative and the Ricci scalar diverges at finite radius. No spherical static solution
+interpolates a regular de Sitter core and an asymptotically flat exterior.
+\end{result}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccc}
+\toprule
+$r$ & $\psi$ & $m$ (Misner--Sharp) & $g_{rr}=A/B^2$ & $|R|$ (Ricci)\\
+\midrule
+$0.01$ & $-3.132$ & $+5\times10^{-10}$ & $1.00$ & $10^{-2}$\\
+$47.1$ & $-1.4$ & $-3\times10^{7}$ & $1.3\times10^{6}$ & $6\times10^{11}$\\
+$75.5$ & $-0.002$ & $-10^{56}$ & $3\times10^{54}$ & $10^{73}$\\
+\bottomrule
+\end{tabular}
+\caption{\small Escaping regime ($\beta=-0.7$, $\alpha=10^{-4}$): the rolling branch is
+singular.}\label{tab:escape}
+\end{table}
+
+\subsection{The cosmological sector: natural inflation with locked coupling}
+In homogeneous cosmology the gradient becomes temporal: $(\partial\psi)^2=-\dot\psi^2$.
+\statut{proof} The potential curvature at $\infty^*$ is $V''(-\pi)=-\alpha<0$: $\infty^*$ is
+an unstable summit, hence the field rolls down towards $P$ (Fig.~\ref{fig:paysage}).
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.72\textwidth]{figs_en/fig_paysage.png}
+\caption{\small \statut{numerical} Einstein-frame potential landscape,
+$U(\psi)/\alpha=(1-\cos\psi)/(1+\beta\cos\psi)^2$ (exact closed form). The true vacuum $P$ is
+at $\psi=0$ ($U=0$), the unified pole $\infty^*$ at $\psi=\pm\pi$. For the CMB-favoured value
+($\beta=-0.3$), the inflaton rolls from $\infty^*$ down to $P$ along a smooth hill; the
+locked coupling $f=1+\beta\cos\psi$ shapes it.}\label{fig:paysage}
+\end{figure}
+
+\begin{result}[natural inflation, predictions, $\alpha$ fixed and constraint on $\beta$]\label{res:infl}
+With the canonical field $\varphi=f_s\psi$, the potential reads $V=\alpha[1-\cos(\varphi/f_s)]$:
+this is natural inflation [7] with constant $f_s$, endowed with a locked non-minimal coupling
+$f=1+\beta\cos\psi$ (same $\beta$ as gravity); this periodic structure was studied
+independently by [14, 16]. \statut{numerical} The FLRW integration starts at $\infty^*$ (de
+Sitter phase, $H^2=2\alpha/[3(1-\beta)]$, identical to the core scale of
+Result~\ref{res:closure}) and rolls to $P$ ($\Lambda=0$), with a graceful exit. The
+slow-roll predictions in the Einstein frame (Table~\ref{tab:nsr}) give: for $\beta\ge0$,
+$r\gtrsim0.08$ (excluded); for $\beta\approx-0.3$, $r\approx0.02$--$0.05$ and $n_s\approx0.96$
+(borderline). CMB data constitute the first constraint on $\beta$ in this framework.
+\end{result}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccl}
+\toprule
+$\beta$ & $f_s$ ($\Mpl$) & $n_s$ & $r$ & status\\
+\midrule
+$0$ (natural) & $7$ & $0.960$ & $0.078$ & $r$ too large\\
+$+0.3$ & $7$ & $0.949$ & $0.128$ & excluded\\
+$+0.6$ & $7$ & $0.930$ & $0.193$ & excluded\\
+$-0.3$ & $5$ & $0.958$ & $0.017$ & compatible\\
+$-0.3$ & $7$ & $0.960$ & $0.036$ & borderline\\
+\bottomrule
+\end{tabular}
+\caption{\small Predictions $(n_s,r)$ at $N=55$ e-folds (target Planck$+$BK:
+$n_s=0.9649\pm0.004$, $r<0.036$).}\label{tab:nsr}
+\end{table}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.78\textwidth]{figs_en/fig_nsr.png}
+\caption{\small \statut{numerical} Predictions $(n_s,r)$ at $N=55$ (points from
+Table~\ref{tab:nsr}) against Planck ($n_s=0.9649\pm0.004$) and BK18 ($r<0.036$, excluded
+above). The sign of $\beta$ shifts $r$: $\beta\ge0$ is excluded; the viable window is
+$\beta\approx-0.3$ ($r\approx0.02$--$0.04$, $n_s\approx0.96$).}\label{fig:nsr}
+\end{figure}
+
+\statut{numerical} \textbf{(A1) $\alpha$ fixed and running.} Second-order slow-roll with the
+field-space metric $K(\psi)$ reproduces Table~\ref{tab:nsr} to better than $0.5\%$, and fixes
+$\alpha$ via the scalar amplitude $A_s=2.1\times10^{-9}$:
+$\alpha\approx0.5$--$1.2\times10^{-9}\,\Mpl^4$ (central case $\beta=-0.3$, $f_s=7$:
+$\alpha=1.18\times10^{-9}$), i.e.\ an inflation scale $V^{1/4}\sim1$--$2\times10^{16}$~GeV
+(GUT). A prediction stable over the band: the running
+$dn_s/d\ln k\approx-6.5\times10^{-4}$ --- compatible with Planck ($-0.004\pm0.007$), below
+the current threshold, possibly accessible to the next generation, but not distinctive: it
+belongs to the class [14, 16, 17]. Remainder \statut{open}: a mode-by-mode Mukhanov--Sasaki
+resolution, expected at the sub-percent level.
+
+\paragraph{Status of the $\Delta\sim0.044$ signature.} \statut{numerical} The background
+trajectory is monotonic (half-period of the cosine): the primordial spectrum is smooth,
+without log-periodic feature. The $\Delta\sim0.044$ signature evoked in [15] is not
+reproduced by the minimal dynamics; it would require an additional mechanism (a wound
+trajectory $N\ge1$, or an unfrozen $\chi$ axis). \statut{open}
+
+\subsection{Topological scale charge and half-soliton}
+The field $\psi$ being $S^1$-valued, its configurations are classified by
+$\pi_1(S^1)=\mathbb{Z}$. \statut{proof} In the effective $1{+}1$~D reduction, the current
+$j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi$, of charge $N=(1/2\pi)(\psi_f-\psi_i)$,
+is identically conserved ($\partial_\mu j^\mu\equiv0$), independently of the equations of
+motion, the metric, $f$ and $V$. On the circle, $V=2\alpha\sin^2(\psi/2)$ is a sine-Gordon
+with a unique vacuum. The charge is integer iff both endpoints rest on the vacuum $P$.
+
+\begin{result}[unprotected half-soliton]\label{res:topo}
+\statut{proof} The profile of Result~\ref{res:closure}, connecting the core $\psi(0)=-\pi$
+($\infty^*$) to the asymptotic $\psi(\infty)=0$ ($P$), carries charge $N=\tfrac12$. With one
+endpoint lying on the maximum of $V$, it is not protected: the arc $\infty^*\!\to P$ is
+contractible, and its contraction coincides with the « rolling ». The closure of the static
+sector follows without integration. The unique non-trivial integer charge ($\psi:0\to2\pi$)
+is the soliton $N=1$, of Bogomol'nyi mass $M_{N=1}=8\sqrt{\omega\alpha}$ (Appendix~D).
+\end{result}
+
+\paragraph{Observational link.} \statut{conjecture} In cosmology, $N$ counts the periods
+travelled by the inflaton. The monotonic trajectory ($N=\tfrac12$) gives a smooth spectrum;
+a wound trajectory ($N\ge1$, crossing $\infty^*$) would be the only source of log-periodic
+oscillations. The test is a Mukhanov--Sasaki resolution on an $N\ge1$ background.
+
+% =====================================================================
+\section{Physical implications}
+\subsection{Interpretation}
+The same scale field is benign in time and obstructed in space. In cosmology, $\infty^*$ is a
+hill from which the field rolls: it generates inflation and a natural exit towards
+$\Lambda=0$. In the static case, $\infty^*$ is a well: the field stays trapped and the
+spacetime is merely Schwarzschild--de Sitter. The remarkable fact is that the same de Sitter
+scale $H^2=2\alpha/[3(1-\beta)]$ appears as the cosmological horizon of the static core and
+as the inflationary Hubble rate: a signature of the common origin of the two phenomena.
+
+\subsection{Limitations and epistemic honesty}
+(i) The closure (Result~\ref{res:closure}) concerns only spherical static configurations; a
+dynamical collapse could produce a transient regular core (treated in a companion work).
+(ii) The predictions (Result~\ref{res:infl}) rest on slow-roll; $\alpha$ is fixed by $A_s$ on
+this validated basis (running $-6.5\times10^{-4}$), a mode-by-mode Mukhanov--Sasaki treatment
+remaining a sub-percent refinement (not a prerequisite). (iii) The $\Delta\sim0.044$
+signature is not established. (iv) The constants $\alpha,\beta,f_s$ are not derived from
+first principles; $\beta$ is only constrained by the data. None of these points is presented
+as resolved. \statut{open}
+
+% =====================================================================
+\section{Experimental protocols}
+\subsection{Main discriminating test: the tensor-to-scalar ratio}
+The model predicts, in its viable window ($\beta\approx-0.3$, $f_s\approx5$--$7\,\Mpl$,
+$N=50$--$60$), a ratio $r\approx0.02$--$0.05$ correlated with $n_s\approx0.96$. The
+measurement of $r$ by LiteBIRD [12] and the Simons Observatory [18], with sensitivity
+$\sigma(r)\sim10^{-3}$, is the discriminating test\footnote{The CMB-S4 project (DOE--NSF),
+long considered the reference instrument for this test, has been halted: on 9 July 2025 the
+DOE and NSF declared they could no longer support the project (orderly shutdown), which is
+therefore no longer funded [13]. The falsifiability of the prediction remains, carried by the
+Simons Observatory (Chile, operating), LiteBIRD (launch targeted $\sim$2032, designed for
+$\sigma(r)<10^{-3}$) and BICEP/Keck (ongoing). \statut{to check}}: a non-detection at
+$r<0.01$ would exclude the model; a detection at $r\sim0.03$ with $n_s\approx0.96$ would
+corroborate it.
+
+\subsection{The distinctive signature: inter-sector consistency}
+[the test that distinguishes this framework] No isolated cosmological observable ($n_s$,
+$r$, running) distinguishes this model from non-minimal natural inflation [14, 16, 17]. Its
+distinctive signature is a correlation: the sign and value of $\beta$ favoured by the CMB
+($\beta\approx-0.3$) must be confronted with the black-hole sector, where the threshold
+$\beta_c=-1/3$ governs the stability of the de Sitter core. A single value of $\beta$ must
+fit $(n_s,r)$ and lie on the right side of the closure threshold. A persistent tension
+between the two sectors would be a structural failure; their agreement would be the true
+corroboration of the unified framework.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.74\textwidth]{figs_en/fig_seuil.png}
+\caption{\small \statut{numerical} Radial-stability diagnostic at the pole $\infty^*$
+($\propto-\kappa^2$, closed form $(1+3\beta)/(1-\beta)$), changing sign at the exact
+threshold $\beta_c=-1/3$: $\beta>-1/3$ trapped (stable de Sitter core, Schwarzschild--de
+Sitter), $\beta<-1/3$ escaping (singular rolling branch). The CMB-favoured value
+($\beta\approx-0.3$, band $-0.5$ to $-0.15$) falls \emph{just} on the trapped side: this is
+the visualisation of the signature $\beta(\mathrm{CMB})=\beta(\text{closure})$.}\label{fig:seuil}
+\end{figure}
+
+\subsection{Falsifiability and bounds}
+The model lives in a narrow band of the $(n_s,r)$ plane. Current bounds: $\beta\ge0$ already
+excluded ($r\gtrsim0.08>0.036$); $\beta\lesssim-0.6$ excluded (insufficient inflation). Only
+the band $-0.5\lesssim\beta\lesssim-0.15$ survives, fully testable by the 2030 horizon.
+
+% =====================================================================
+\section{Discussion and comparison}
+\subsection{Relation to competing approaches}
+Unlike phenomenological regular black holes [1, 2, 3], where the $w=-1$ source is postulated,
+we derive the de Sitter core from an action and show that it does not connect to a flat
+exterior in the static case --- in agreement with the spirit of the no-hair theorems [8].
+For inflation, the locked non-minimal coupling distinguishes the model from bare natural
+inflation [7] and from Higgs-like inflation [9]: the coupling is not free but fixed by the
+same structure as the potential, turning a tuning parameter into a quantity constrained by
+gravity. The periodic structure itself joins [14, 16], from which we differ by the
+inter-sector framing.
+
+\subsection{Open questions}
+Four directions, outside the scope of the present work \statut{open}: (i) the correlation
+$\beta(\mathrm{CMB})=\beta(\text{closure})$ --- posed here as a signature (\S\,V.B) ---
+deserves a joint quantitative study; (ii) the mode-by-mode Mukhanov--Sasaki resolution to
+confirm $(n_s,r,\text{running})$ at the sub-percent level; (iii) the possible origin of
+log-periodic oscillations via a multi-period trajectory ($N\ge1$) or an unfrozen temporal
+axis $\chi$; (iv) the dynamical sector of gravitational collapse, the only remaining avenue
+for a black-hole regularisation (companion work).
+
+% =====================================================================
+\section{Conclusion}
+A single scale-duality field, treated in two regimes, produces two opposite and both
+instructive verdicts. In the static case, it fails to regularise the singularity: the
+unified pole generates an exact de Sitter core but one inevitably frozen
+(Schwarzschild--de Sitter) or singular, and no regular black hole exists --- with an exact
+threshold $\beta_c=-1/3$ as a by-product. In cosmology, the same field generates a natural
+inflation with locked coupling, predictive and falsifiable, whose $\alpha$ is fixed (GUT
+scale) and which predicts a running $dn_s/d\ln k\approx-6.5\times10^{-4}$. The distinctive
+signature of the framework is not an isolated cosmological observable, but the correlation
+$\beta(\mathrm{CMB})=\beta(\text{closure})$. The programme reorients from a theory of black
+holes towards a theory of cosmological history, testable by observation for the first time.
+
+\paragraph{Acknowledgements.} The author thanks the symbolic and numerical computation tools
+(SymPy, SciPy) that enabled the systematic verification of each step, and the gr-qc/hep-th
+community for the standards of rigour and falsifiability that guided this work. The
+formalisation was carried out in dialogue with analytic-assistance systems, under the
+author's direction, with whom full responsibility for the scientific content rests.
+
+% =====================================================================
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\section{Technical details}
+\textbf{Static system.} With $R$ eliminated by the trace, the ($tt$), ($rr$) and scalar
+residuals are linear in $(\Lambda',\Phi',\psi'')$ and solved pointwise by $3\times3$
+inversion; the mixed Einstein tensor is validated against the Schwarzschild vacuum.
+\textbf{Eddington--Finkelstein chart.} For $ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2$, one has
+$g_{vv}=0$, $g_{vr}=1/B$, $g_{rr}=A/B^2$, $\sqrt{-g}=Br^2$, and $G_{rr}=2B'/(rB)$. The
+$3\times3$ system for $(A',B',\psi'')$ is linear (linearity residual exactly zero). The
+horizon is a characteristic surface ($g_{rr}=A/B^2\to0$); regularity imposes $\Pi(r_H)=0$
+with $\Pi=(Ar^2/B)\psi'$. \textbf{Cosmology.} The FLRW background solves the Friedmann
+constraint $3fH^2=\tfrac12\omega\dot\psi^2+V-3H\dot f$ and the acceleration equation.
+
+\section{Dimensional checks}
+In units $\hbar=c=1$, $\Mpl=1$: $[\alpha]=[V]=\ell_P^{-4}$, $[H^2]=\ell_P^{-2}$, consistent
+with $H^2=2\alpha/[3(1-\beta)]$ since $f$ carries the dimension $\Mpl^2$
+($f(-\pi)=(1-\beta)\Mpl^2$), whence $[H^2]=[\alpha]/\Mpl^2=\ell_P^{-2}$. $\beta$ and $\psi$
+are dimensionless; $f_s$ has the dimension of $\Mpl$. $K=24H^4$ has dimension $\ell_P^{-4}$,
+as expected for $R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$.
+
+\section{Quantitative comparison with the literature}
+For bare natural inflation ($\beta=0$), our values ($n_s=0.960$, $r=0.078$ at $f_s=7\,\Mpl$,
+$N=55$) reproduce the standard results [7, 10] and confirm the known tension with [11]. The
+effect of the locked coupling ($\beta<0$ lowers $r$; $\beta>0$ raises it) is analogous in
+direction to that of a non-minimal Higgs-like coupling [9], but of a magnitude controlled by
+the single gravitational parameter $\beta$. The predicted running ($\approx-6.5\times10^{-4}$)
+is consistent with the $(n_s,r,\text{running})$ analyses of this class [17]. The de Sitter
+core ($w=-1$, $K=24H^4$) coincides with the interior structure of regular black holes [2, 3],
+but without the asymptotically flat matching those models postulate.
+
+\section{Topological current and Bogomol'nyi bound}
+For $\psi\in S^1$, $j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi$ satisfies
+$\partial_\mu j^\mu\equiv0$ by antisymmetry, without use of the equations of motion;
+$N=(1/2\pi)\oint d\psi$ is a homotopy invariant. The flat static energy
+$E=\int[\tfrac12\omega\psi'^2+V]dr$ admits the bound $E\ge\int\sqrt{2\omega V}\,|d\psi|$,
+saturated for $\sqrt\omega\,\psi'=\sqrt{2V}$, i.e.\ the kink
+$\psi(r)=4\arctan e^{\sqrt{\alpha/\omega}(r-r_0)}$, of width $\sim\sqrt{\omega/\alpha}$, and
+$M_{N=1}=2\sqrt{\omega\alpha}\int_0^{2\pi}|\sin(\psi/2)|\,d\psi=8\sqrt{\omega\alpha}$. The
+half-soliton ($\psi:-\pi\to0$) has energy $4\sqrt{\omega\alpha}$ but connects the maximum to
+the vacuum: it is not BPS and contracts (\S\,III.D).
+
+% =====================================================================
+\section*{Reproducibility}
+The numerical results and the symbolic verification are reproduced by two standalone scripts
+(NumPy/SymPy/SciPy/Matplotlib), with sections coded so as to be specific to this document:
+\begin{itemize}
+\item[{\texttt{[G1]}}] Einstein-frame geometry ($U=V/f^2$, $K=\omega/f+\tfrac32(f'/f)^2$) and positivity $K>0\Leftrightarrow f>0\Leftrightarrow|\beta|<1$ (mono-axis).
+\item[{\texttt{[G2]}}] closure threshold: sign of $\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]$, exact root $\beta_c=-1/3$.
+\item[{\texttt{[G3]}}] de Sitter core: $H^2=2\alpha/[3(1-\beta)]$, $r_H=1/H$, Kretschmann $=24H^4$.
+\item[{\texttt{[G4]}}] inflation: $(n_s,r)$ at $N=55$ (slow-roll, metric $K$) --- reproduces Table~\ref{tab:nsr}; $\alpha$ fixed by $A_s$ ($V^{1/4}\approx1.4\times10^{16}$~GeV), running.
+\item[{\texttt{[G5]}}] topology: charge $N$, soliton $M_{N=1}=8\sqrt{\omega\alpha}$, half-soliton $4\sqrt{\omega\alpha}$.
+\end{itemize}
+Files: \texttt{U2\_GRAV\_reproductible.py} (calculations) and \texttt{Gravite\_figures.py}
+(Fig.~\ref{fig:paysage}--\ref{fig:seuil}). \emph{Convention}: $\alpha$ cancels in the
+$(n_s,r)$ ratios and fixes only the absolute scale; $\Mpl=1$ unless otherwise stated. The
+prefix \texttt{U2\_GRAV\_} and the \texttt{[G$\cdot$]} codes are specific to this document.
+
+% =====================================================================
+\begin{thebibliography}{99}\small
+\bibitem{bardeen} J.\ M.\ Bardeen, \textit{Non-singular general-relativistic gravitational collapse}, Proc.\ GR5 (Tbilisi, 1968), p.\ 174.
+\bibitem{hayward} S.\ A.\ Hayward, \textit{Phys.\ Rev.\ Lett.} \textbf{96}, 031103 (2006).
+\bibitem{dymnikova} I.\ Dymnikova, \textit{Gen.\ Relativ.\ Gravit.} \textbf{24}, 235 (1992).
+\bibitem{penrose} R.\ Penrose, \textit{Phys.\ Rev.\ Lett.} \textbf{14}, 57 (1965).
+\bibitem{he} S.\ W.\ Hawking \& G.\ F.\ R.\ Ellis, \textit{The Large Scale Structure of Space-Time} (Cambridge Univ.\ Press, 1973).
+\bibitem{guth} A.\ H.\ Guth, \textit{Phys.\ Rev.\ D} \textbf{23}, 347 (1981).
+\bibitem{ffo} K.\ Freese, J.\ A.\ Frieman \& A.\ V.\ Olinto, \textit{Phys.\ Rev.\ Lett.} \textbf{65}, 3233 (1990).
+\bibitem{bek} J.\ D.\ Bekenstein, \textit{Phys.\ Rev.\ D} \textbf{51}, R6608 (1995).
+\bibitem{bezr} F.\ L.\ Bezrukov \& M.\ Shaposhnikov, \textit{Phys.\ Lett.\ B} \textbf{659}, 703 (2008).
+\bibitem{planck} Planck Collaboration (Y.\ Akrami \textit{et al.}), \textit{Astron.\ Astrophys.} \textbf{641}, A10 (2020).
+\bibitem{bk} BICEP/Keck Collaboration (P.\ A.\ R.\ Ade \textit{et al.}), \textit{Phys.\ Rev.\ Lett.} \textbf{127}, 151301 (2021).
+\bibitem{litebird} LiteBIRD Collaboration (E.\ Allys \textit{et al.}), \textit{Prog.\ Theor.\ Exp.\ Phys.} \textbf{2023}, 042F01 (2023).
+\bibitem{cmbs4} K.\ N.\ Abazajian \textit{et al.} (CMB-S4), \textit{CMB-S4 Science Book}, arXiv:1610.02743 (2016) --- \emph{project halted in July 2025}.
+\bibitem{fns} R.\ Z.\ Ferreira, A.\ Notari \& G.\ Simeon, \textit{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{11} (2018) 021, arXiv:1806.05511.
+\bibitem{recueil} H.\ Bakkaoui, \textit{Compactified scale duality: framework, corrections and results}, collection v1.1 (2026).
+\bibitem{simeon} G.\ Simeon, \textit{Scalar-tensor extension of Natural Inflation}, arXiv:2002.07625 (2020).
+\bibitem{bostan} I.\ D.\ Bostan, \textit{Non-minimally coupled Natural Inflation and BICEP/Keck constraints}, arXiv:2209.02434 (2022).
+\bibitem{so} Simons Observatory Collaboration (P.\ Ade \textit{et al.}), \textit{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{02} (2019) 056, arXiv:1808.07445.
+\end{thebibliography}
+
+\end{document}

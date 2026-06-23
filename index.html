@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassane Bakkaoui — Recherche indépendante</title>
+<meta name="description" content="Travaux de recherche de Hassane Bakkaoui : dualité d'échelle compactifiée, gravité quantique, cosmologie, et problèmes d'Erdős.">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Rendu des formules LaTeX -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      macros: {
+        lcm: "\\operatorname{lcm}",
+        fpole: "\\infty^{*}"
+      }
+    },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea'] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+
+<header class="hero">
+  <nav class="nav">
+    <span class="nav-logo">H. Bakkaoui</span>
+    <div class="nav-links">
+      <a href="#physique">Physique</a>
+      <a href="#maths">Mathématiques</a>
+      <a href="#projets">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Chercheur indépendant · physique théorique &amp; mathématiques</p>
+    <h1>Hassane Bakkaoui</h1>
+    <p class="hero-sub">
+      Un programme de recherche sur la <strong>dualité d'échelle compactifiée</strong> —
+      reliant gravité, cosmologie et mécanique quantique — accompagné de travaux
+      en théorie des nombres.
+    </p>
+    <div class="hero-actions">
+      <a href="#physique" class="btn btn-primary">Voir les publications ↓</a>
+      <a href="mailto:bakkahassa@hotmail.com" class="btn btn-ghost">Me contacter</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="physique" class="section">
+    <div class="section-head">
+      <h2 class="section-title">Physique — Programme « Dualité d'échelle compactifiée »</h2>
+      <p class="section-intro">
+        Cinq unités autonomes explorant une même idée : faire de l'échelle une
+        dimension interne compacte et en déduire la physique. L'Unité 3 en donne la synthèse.
+      </p>
+    </div>
+    <div id="physique-grid" class="grid"></div>
+  </section>
+
+  <section id="maths" class="section section-alt">
+    <div class="section-head">
+      <h2 class="section-title">Mathématiques</h2>
+      <p class="section-intro">Théorie des nombres : problèmes d'Erdős et contributions associées.</p>
+    </div>
+    <div id="maths-grid" class="grid"></div>
+  </section>
+
+  <section id="projets" class="section">
+    <div class="section-head">
+      <h2 class="section-title">Projets</h2>
+      <p class="section-intro">Applications et outils logiciels.</p>
+    </div>
+    <div id="projets-grid" class="grid"></div>
+  </section>
+
+  <section id="contact" class="section section-alt">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact">
+      <p>Pour toute question, remarque ou collaboration :</p>
+      <a href="mailto:bakkahassa@hotmail.com" class="btn btn-primary">bakkahassa@hotmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Hassane Bakkaoui · Chercheur indépendant</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="render.js"></script>
+</body>
+</html>

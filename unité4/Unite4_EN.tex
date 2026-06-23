@@ -1,0 +1,337 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.3cm}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black,citecolor=blue!55!black]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlength{\emergencystretch}{2.5em}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\lhead{\footnotesize Compactified scale duality}\rhead{\footnotesize Unit 4}
+\cfoot{\thepage}
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\st}[1]{\textbf{\textcolor{blue!45!black}{[#1]}}}
+\newcommand{\fpole}{\infty^*}
+\title{\vspace{-1.2cm}\textbf{Unit 4 --- Gravitational collapse, metastable false vacuum,\\ isocurvature, and exact Mukhanov--Sasaki spectrum}\\[4pt]
+\large A compactified scale-duality field: pole metastability and inflationary prediction}
+\author{Hassane Bakkaoui\\ \small Independent researcher --- \texttt{bakkahassa@hotmail.com}}
+\date{\small June 2026 $\cdot$ standalone document --- reproducible computations (gr-qc / astro-ph.CO)}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+\noindent\textbf{Framework.} A single scale field, on $\mathcal{M}=M_{3+1}\times S^1_\psi\times S^1_\chi$ under $\mathbb{Z}_2\times\mathbb{Z}_2$, governs gravity/cosmology and the quantum sector. \textbf{Results.} Three points are established reproducibly: (i) the decay action of the de Sitter false vacuum at $\fpole$ is obtained \emph{exactly} in closed form $B_{\rm HM}=24\pi^2(3\beta+\tfrac12)^2/\alpha$, confirming a practically eternal metastability and vanishing exactly at the threshold $\beta_c=-1/6$; (ii) the diagonal trajectory is shown to be geodesic ($\dot\theta=0$), so that the entropy$\to$adiabatic transfer during inflation is zero, the covariant entropic mass is computed exactly, and the produced isocurvature ($\beta_{\rm iso}\!\sim\!0.3$--$0.8$) is confirmed $\gg$ the Planck bound --- its fate depending on an explicit reheating model; (iii) the scalar spectrum is solved \emph{mode by mode} (Mukhanov--Sasaki), the correction to $n_s$ is sub-percent, $\alpha$ is fixed by $A_s$ giving a GUT inflation scale $V^{1/4}\!\approx\!1.1$--$1.5\times10^{16}$~GeV. \textbf{Honesty.} The dynamical selection (nonlinear collapse), the full reheating model, and the origin of $\Lambda_{\rm obs}$ remain open. Each statement carries its status.\\
+\textbf{Status:} \st{proof} exact $\cdot$ \st{numerical} reproducible $\cdot$ \st{conjecture} argued $\cdot$ \st{open} to be established $\cdot$ \st{to check} external ref.
+\end{abstract}
+
+\section{Introduction}
+The programme explores a single geometric hypothesis: the scale axes, usually non-compact, are circles. The Planck scale (pole $P$) and a ``unified'' scale (pole $\fpole$) become two poles of one manifold, one spatial ($\psi$, gravitational face), the other temporal ($\chi$, quantum face). \emph{Scope}: not to solve unification, but to propose a coherent, falsifiable, honestly labelled direction. This document addresses false-vacuum decay, the entropic sector, and the exact spectrum.
+
+\section{The framework in one page}
+Action (Jordan frame):
+\begin{equation}
+S=\int\!\sqrt{-g}\Big[\tfrac12 f R-\tfrac12\omega\big((\partial\psi)^2+(\partial\chi)^2\big)-V\Big],\quad
+f=1+\beta(\cos\psi+\cos\chi),\ \ V=\alpha(2-\cos\psi-\cos\chi),\ \ \omega=f_s^2. \tag{1}
+\end{equation}
+The conformal map $\tilde g_{\mu\nu}=f g_{\mu\nu}$ ($\Omega^2=f$) brings it to the Einstein frame, with potential and field-space metric
+\begin{equation}
+U=\frac{V}{f^2},\qquad \mathcal{G}_{ab}=\frac1f\Big[\omega\,\delta_{ab}+\tfrac32\frac{f_{,a}f_{,b}}{f}\Big]. \tag{2}
+\end{equation}
+Two exact facts \st{proof}: (a) health (no ghost) $f>0\Leftrightarrow\beta\in(-\tfrac12,+\tfrac12)$; (b) the closure threshold, fixed by the exact diagonal Hessian (SymPy) at the pole $\fpole=(\pi,\pi)$ ($f=1-2\beta$), the fixed point of the exchange isometry $\psi\leftrightarrow\chi$:
+\begin{equation}
+m^2_{\rm eff}(\fpole)=-\frac{\alpha(1+6\beta)}{\omega(1-2\beta)^2},\qquad U(\fpole)=\frac{4\alpha}{(1-2\beta)^2},\qquad \boxed{\beta_c=-1/6}. \tag{0}
+\end{equation}
+Along the diagonal $\psi=\chi=\theta$ ($f=1+2\beta\cos\theta$),
+\begin{equation}
+U_{\rm diag}(\theta)=\frac{2\alpha(1-\cos\theta)}{(1+2\beta\cos\theta)^2},\qquad
+K_\parallel=\frac{2\omega}{f}+\frac{6\beta^2\sin^2\theta}{f^2},\qquad(\beta_{\rm eff}=2\beta). \tag{3}
+\end{equation}
+
+\paragraph{Recap (Units 1--3).}
+\st{proof}\st{numerical} At frozen fields, Einstein gravity emerges ($G_{\rm eff}=1/8\pi f$); the branch $\psi\equiv-\pi$ is exactly Schwarzschild--de Sitter; no static regular black hole (closure). Intermittent quantum existence is unitary, $\hat H_{\rm eff}=\varepsilon\hat H_{\rm sys}$, $\varepsilon=\langle\cos^2(\chi/2)\rangle=E(k)/K(k)$, period $\tau_0=2\pi\sqrt{\omega/\alpha}\approx3.5\times10^{-37}$~s. The inflationary band $(n_s,r)$ is detailed below (Mukhanov--Sasaki spectrum). Proper signature: $\beta(\text{CMB})=\beta(\text{closure})$.
+
+\section{Collapse and bifurcation at the threshold $\beta_c$}\label{sec:bif}
+\subsection{Homogeneous collapse: the bifurcation (11a)}
+\st{numerical}\st{proof} In a homogeneous contracting domain ($H<0$), the diagnostic $\ddot\psi(0)\propto-(1+6\beta)$ and the effective mass at the pole flip \emph{exactly} at $\beta_c=-1/6$: $\beta<\beta_c\Rightarrow\fpole$ minimum (trapped); $\beta>\beta_c\Rightarrow$ maximum (escapes) (Fig.~\ref{fig:11a}, left). \emph{Honest limit} \st{proof}: anti-friction ($H<0$) eventually dislodges the field even on the stable side (Fig.~\ref{fig:11a}, right) --- true trapping is inhomogeneous (\S\ref{sec:11b}).
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.99\textwidth]{figs_u4_en/fig_bifurcation.png}
+\caption{\small \textbf{11a --- bifurcation.} \emph{Left}: $m^2_{\rm eff}(\fpole)=-\alpha(1+6\beta)/[\omega(1-2\beta)^2]$ changes sign at $\beta_c=-1/6$ ($m^2>0$ trapped for $\beta<\beta_c$, $m^2<0$ escapes for $\beta>\beta_c$); the CMB window straddles the threshold. \emph{Right}: two homogeneous-collapse trajectories, pull toward $\fpole$ ($\beta<\beta_c$) vs repulsion ($\beta>\beta_c$). \emph{Reading}: the sign of $m^2_{\rm eff}$ at the pole fixes the trapped side; it is the local diagnostic of metastability.}
+\label{fig:11a}
+\end{figure}
+
+\subsection{Inhomogeneous perturbations: the gradient stabilizes (11b)}\label{sec:11b}
+\st{proof} Linearizing $\delta\varphi_k$ on a contracting de Sitter background frozen at $\fpole$: the gradient $k^2/a^2$ is strictly stabilizing; the tachyonic instability requires $m^2_{\rm eff}<0$ ($\beta>\beta_c$). Hence a Jeans length $\lambda_c$ finite \emph{only} for $\beta>\beta_c$ (Fig.~\ref{fig:11b}). For $\beta<\beta_c$, no tachyonic mode $\Rightarrow$ $\fpole$ linearly stable, an admissible remnant. The diagonal and entropic modes flip together (isotropic Hessian, $U_{\psi\chi}=0$). Verified with SymPy.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.66\textwidth]{figs_u4_en/fig_jeans.png}
+\caption{\small \textbf{11b --- stabilizing gradient.} Jeans length $\lambda_c(\beta)$, infinite for $\beta<\beta_c=-1/6$ (no tachyonic mode), finite for $\beta>\beta_c$. \emph{Reading}: it is the gradient, not the homogeneous sign alone, that ensures the linear stability of the false vacuum for $\beta<\beta_c$.}
+\label{fig:11b}
+\end{figure}
+
+\section{The remnant as a de Sitter false vacuum, and its lifetime}\label{sec:A2}
+\subsection{The potential landscape}
+\st{proof} Along the diagonal, the extrema of $U$ are: the true vacuum $P$ ($\theta=0$, $U=0$), the false vacuum $\fpole$ ($\theta=\pi$, $U(\fpole)=4\alpha/(1-2\beta)^2$), and an internal barrier at $\cos\theta^*=(1+4\beta)/(2\beta)$, which exists only for $\beta\in(-\tfrac12,-\tfrac16)$. At $\beta_c$, the barrier merges with $\fpole$ (bifurcation). For $\beta<\beta_c$, $U$ is a double well (Fig.~\ref{fig:land}). Substituting $\cos\theta^*$ into (3) simplifies exactly:
+\begin{equation}
+U(\theta^*)=-\frac{\alpha}{4\beta(1+2\beta)}\ (>0\ \text{for}\ \beta\in(-\tfrac12,-\tfrac16)). \tag{4}
+\end{equation}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.78\textwidth]{figs_u4_en/fig_landscape.png}
+\caption{\small \textbf{Landscape $U_{\rm diag}(\theta)/\alpha$.} For $\beta<\beta_c=-1/6$ (green, purple) a false vacuum appears at $\fpole$ behind a barrier; for $\beta>\beta_c$ (red) $\fpole$ is a simple maximum. Dots mark the barrier top $\theta^*$. \emph{Reading}: the double well is the geometric condition of metastability; its disappearance at $\beta_c$ is exactly the closure threshold (0).}
+\label{fig:land}
+\end{figure}
+
+\subsection{Instanton regime: Hawking--Moss, not Coleman--De Luccia}
+\st{numerical} The decay of a de Sitter false vacuum proceeds either by a Coleman--De Luccia (CDL) bubble or by a homogeneous Hawking--Moss (HM) jump. The Batra--Kleban criterion states that the CDL instanton exists only if the canonical tachyonic curvature at the top satisfies $|m^2_{\rm top}|/H^2_{\rm top}>4$. The computation gives, over the whole window $\beta\in[-0.30;-0.17]$ and $f_s\in\{4,5,7\}$,
+\begin{equation}
+\frac{|m^2_{\rm top}|}{H^2_{\rm top}}\ \approx\ \frac{3}{4f_s^2}\ \sim\ 6\times10^{-4}\text{ to }7\times10^{-2}\ \ll\ 4. \tag{5}
+\end{equation}
+The barrier, spread over a super-Planckian excursion ($\Delta\varphi_c\sim f_s\Mpl$), is too flat against the de Sitter curvature: \textbf{only Hawking--Moss operates, CDL does not exist}.
+
+\subsection{Exact action and lifetime}
+\st{proof} (SymPy). The HM action, $B_{\rm HM}=24\pi^2\Mpl^4\big[1/U(\fpole)-1/U(\theta^*)\big]$, reduces exactly to
+\begin{equation}
+\boxed{\,B_{\rm HM}(\beta)=\frac{24\pi^2}{\alpha}\Big(3\beta+\tfrac12\Big)^2=\frac{6\pi^2}{\alpha}(6\beta+1)^2\,}\qquad(\Mpl=1). \tag{6}
+\end{equation}
+The factor $(3\beta+\tfrac12)^2$ \emph{vanishes exactly at} $\beta=-1/6=\beta_c$: barrier and false vacuum merge, the exponent drops to zero. This is a strong internal-consistency check against the threshold (0), obtained by an independent computation.
+
+\st{numerical} With $\alpha\sim10^{-9}\Mpl^4$ (GUT scale, fixed by $A_s$, cf.\ \S\ref{sec:A4}), $B_{\rm HM}$ varies strongly with $\beta$ (Fig.~\ref{fig:bhm}, Tab.~\ref{tab:bhm}). The lifetime in Hubble times is $\sim e^{B}$: \textbf{practically eternal} over the whole window.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lccc}
+\toprule
+$\beta$ & $B_{\rm HM}$ ($\alpha=10^{-9}$) & survival $\sim e^B$ (Hubble times) & regime \\
+\midrule
+$-0.30$ & $3.8\times10^{10}$ & $10^{1.6\times10^{10}}$ & robust false vacuum \\
+$-0.25$ & $1.5\times10^{10}$ & $10^{6.4\times10^{9}}$ & robust \\
+$-0.21$ & $4.0\times10^{9}$  & $10^{1.7\times10^{9}}$ & robust \\
+$-0.17$ & $2.4\times10^{7}$  & $10^{1.0\times10^{7}}$ & weak but eternal \\
+$-1/6$  & $0$ & --- & bifurcation: false vacuum disappears \\
+\bottomrule
+\end{tabular}
+\caption{\small \textbf{Hawking--Moss action and lifetime.} $B_{\rm HM}$ depends only on $(\alpha,\beta)$, not on $f_s$. Even at the edge $\beta\to\beta_c$ (small $B$), the lifetime stays astronomically larger than the age of the Universe.}
+\label{tab:bhm}
+\end{table}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.72\textwidth]{figs_u4_en/fig_BHM.png}
+\caption{\small \textbf{$B_{\rm HM}(\beta)$ (log scale, $\alpha=10^{-9}$).} The action decreases continuously to $0$ at $\beta_c=-1/6$. \emph{Reading}: the deeper into the double-well region ($\beta$ very negative), the more shielded the false vacuum; near the threshold it thins but stays eternal.}
+\label{fig:bhm}
+\end{figure}
+
+\paragraph{Conclusion (metastability).} Metastability moves from \st{conjecture} to \st{proof} (closed form of $B$) $+$ \st{numerical} (HM regime, lifetimes). \emph{Remaining} \st{open}: the fluctuation prefactor of the rate, and the connection to the ``metastable regular black hole'' interpretation (depends on the dynamical selection).
+
+\section{Two-field trajectory and isocurvature}\label{sec:A3}
+\subsection{The diagonal is geodesic: no transfer during inflation}
+\st{proof} The $(n_s,r)$ band had first been obtained by a \emph{single-field reduction} (axis $\chi$ frozen, $U(\psi)=\alpha(1-\cos\psi)/(1+\beta\cos\psi)^2$) --- the main caveat of the prediction. We lift it here by treating both fields. Setting $\psi=\theta+\delta$, $\chi=\theta-\delta$, the exchange symmetry $\psi\leftrightarrow\chi$ enforces $\partial U/\partial\delta|_{\delta=0}=0$: the diagonal $\psi=\chi$ is a \emph{protected trajectory}, and, as the fixed-point set of the exchange isometry, totally geodesic. (SymPy.) $f,V,\mathcal{G}$ being symmetric under $\psi\leftrightarrow\chi$, the entropic component of the gradient vanishes identically on the diagonal:
+\begin{equation}
+V_{,\psi}-V_{,\chi}=\alpha(\sin\psi-\sin\chi)\ \xrightarrow{\psi=\chi}\ 0. \tag{7}
+\end{equation}
+The trajectory is therefore a field-space geodesic: \textbf{the turning rate $\dot\theta_\perp=0$}, so the entropy$\to$adiabatic transfer \emph{during inflation} is zero, $T_{RS}=0$. The curvature $\mathcal{R}$ is conserved super-horizon and is not contaminated by the entropic sector. The entropic kinetic normalization is exactly $K_\perp=2\omega/f$.
+
+\subsection{The adiabatic spectrum shifts: lifting the single-field reduction}
+\st{numerical} Along the diagonal, the adiabatic field sees $U_{\rm diag}$ with an effective coupling $\beta_{\rm eff}=2\beta$ (Eq.~3), which makes $n_s$ \emph{redder} by about $0.003$--$0.007$ relative to the single-field reduction:
+\begin{center}\small
+\begin{tabular}{ccc}
+\toprule
+$\beta$ & single-field $(n_s,r)$ & diagonal $(n_s,r)$ \\
+\midrule
+$-0.45$ & $(0.955;\,0.022)$ & $(0.948;\,0.019)$ \\
+$-1/3$  & $(0.959;\,0.033)$ & $(0.955;\,0.031)$ \\
+$-0.30$ & $(0.960;\,0.036)$ & $(0.957;\,0.036)$ \\
+$-0.15$ & $(0.962;\,0.055)$ & $(0.962;\,0.063)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+(slow-roll, reduction comparison; the exact Mukhanov--Sasaki spectrum of the diagonal is given in \S\ref{sec:A4}, Tab.~\ref{tab:ms}.) The surviving window thus moves toward less negative $\beta$: the end $\beta=-0.45$ drops out ($n_s=0.948$ too low). The shift ($\sim0.005$ in $n_s$) is of order the Planck error bar --- not negligible. It is the diagonal trajectory, not the single-field reduction, that provides the reference prediction (\S\ref{sec:A4}).
+
+\subsection{Covariant entropic mass and produced isocurvature}
+\st{proof}\st{numerical} With the covariant Hessian $V_{;ss}=\hat e_s^a\hat e_s^b(\nabla_a\nabla_b V)$ and the field-space Ricci scalar $R_{\rm fs}$ (both computed exactly, cf.\ scripts), the entropic mass is $m^2_s=V_{;ss}+\varepsilon\,R_{\rm fs}H^2$ (the turning term $\propto\dot\theta_\perp$ vanishing). Over the convergence window, $m^2_s>0$ (the diagonal is a \emph{valley}, hence an attractor: the field does not escape it) but $|m^2_s|\lesssim0.02\,H^2$: the entropic mode is \emph{light}, nearly scale-invariant ($n_{\rm iso}-1\approx\pm0.01$). The cause is physical: the large $f_s$ that makes inflation viable weighs down the kinetic term and lightens the entropic mode accordingly. Being light and decoupled, it is amplified as a spectator up to
+\begin{equation}
+\beta_{\rm iso}\ \approx\ 0.3\text{--}0.8\quad\text{at the end of inflation},\qquad\text{i.e.\ }10\text{--}20\times\text{ the Planck bound }(\beta_{\rm iso}<0.038). \tag{8}
+\end{equation}
+The value is quantified in Fig.~\ref{fig:iso}a. Crucial fact: $P_S\approx P_R$ at production --- the entropy is not a negligible spectator.
+
+\subsection{Reheating conversion: the open point, quantified}
+\st{conjecture} At the end of inflation, $\mathcal{R}=\mathcal{R}_*$, $S=T_{SS}S_*$. The reheating transition acts via a transfer matrix $\delta N$: $\mathcal{R}_f=\mathcal{R}+\mathcal{T}_{RS}S$, $S_f=\mathcal{T}_{SS}S$. Two limits (Fig.~\ref{fig:iso}b):
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt]
+\item \textbf{Symmetric reheating} (universal coupling). The \emph{universal} matter coupling already adopted in the framework (the $U$-conformal branch, $\eta=0$, which secures the atomic-clock and quasar bounds) makes $\psi$ and $\chi$ thermalize identically: no separate species carries the $\psi$--$\chi$ isocurvature, which converts to adiabatic (curvaton-type). Then $\mathcal{T}_{SS}\to0\Rightarrow\beta_{\rm iso}\to0$ and $\mathcal{T}_{RS}\to0\Rightarrow(n_s,r)$ \emph{unchanged}. An unsought structural consistency: the \emph{same} choice that passes the laboratory tests also avoids the observable isocurvature. Physically motivated limit, but conditioned on an exact $\psi\leftrightarrow\chi$ symmetry at reheating.
+\item \textbf{Asymmetric reheating} ($\Gamma_\psi\neq\Gamma_\chi$): curvaton-type conversion, $\mathcal{T}_{RS}\neq0$. Since $P_S\approx P_R$, the effect is $O(1)$: for $(\beta{=}{-}0.20,f_s{=}5)$, $(n_s,r)$ drifts from $(0.957;0.027)$ to $(0.998;\!\to\!0)$ depending on the conversion degree, passing through the Planck center at moderate conversion ($\sin^2\Theta\approx0.19$).
+\end{itemize}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.98\textwidth]{figs_u4_en/fig_isocurvature.png}
+\caption{\small \textbf{(a)} Produced $\beta_{\rm iso}$ at the end of inflation $\gg$ Planck bound (green zone) over the whole window $\Rightarrow$ a reheating conversion is \emph{required}. \textbf{(b)} Drift of $(n_s,r)$ under curvaton conversion ($\beta{=}{-}0.20$, $f_s{=}5$): the ``sym.'' point ($\mathcal{T}_{RS}=0$) is the inflationary prediction; increasing conversion (squares) shifts $(n_s,r)$ --- moderate, it improves the fit; strong, it excludes it. \emph{Reading}: the $(n_s,r)$ prediction is firm only in the symmetric limit; any reheating imbalance shifts it by $O(0.04)$.}
+\label{fig:iso}
+\end{figure}
+
+\paragraph{Conclusion (isocurvature).} Established \st{proof}: $\dot\theta_\perp=0$, $T_{RS}=0$ (no inflationary contamination). Established \st{numerical}: light entropic mass, $\beta_{\rm iso}\sim0.3$--$0.8\gg$ Planck at production. The universal coupling makes the symmetric limit --- isocurvature converted to adiabatic, hence avoided --- the most natural one \st{conjecture}. Remaining \st{open}: the reheating model (rates $\Gamma_\psi,\Gamma_\chi$, transport $\delta N$) that quantifies the conversion and its possible shift of $(n_s,r)$; until it is done, the diagonal prediction is a \emph{first approximation}.
+
+\paragraph{Clarifications.}
+\st{numerical} The canonical field mass near $P$ is $m_\varphi\approx1.9\times10^{13}$~GeV ($\sim10^{55}H_0$): $\sim55$ orders too heavy for quintessence. It relaxes to the vacuum ($\varepsilon=1$, $\Lambda_{\rm field}\to0$); dark energy is a \emph{separate sector} (the cosmological-constant problem is not solved). The Page--Wootters bridge holds in the non-commuting case to $\sim10^{-22}$ ($\hat H_{\rm eff}(t)=\varepsilon\hat H_{\rm sys}(t)$, correction $\sim\tau_0\omega_{\rm sys}$).
+
+\section{Exact Mukhanov--Sasaki spectrum and fixing of $\alpha$}\label{sec:A4}
+\subsection{Method}
+\st{numerical} Since $T_{RS}=0$ (\S\ref{sec:A3}), the adiabatic spectrum is effectively single-field along the diagonal. We solve the Mukhanov--Sasaki equation for the comoving curvature $\mathcal{R}_k$ in e-folds,
+\begin{equation}
+\mathcal{R}_k''+\big(3-\varepsilon_H+\tfrac{d\ln\varepsilon_H}{dN}\big)\mathcal{R}_k'+\Big(\frac{k}{aH}\Big)^2\mathcal{R}_k=0, \tag{9}
+\end{equation}
+with sub-horizon Bunch--Davies conditions and super-horizon plateau reading, on a background integrated \emph{exactly} (no slow-roll approximation). The pivot is at $N_*=55$. The tensor follows the consistency relation $r=16\varepsilon_H$ (exact to $<1\%$ here), $n_t=-r/8$.
+
+\subsection{Results}
+\st{numerical} The scalar normalization is verified ($P_R/P_R^{\rm SR}\approx1.03$, the gap being the MS correction). The correction to $n_s$ is \textbf{sub-percent} and systematic (toward the blue, $+0.0006$ to $+0.0009$). Fixing $\alpha$ via $A_s=2.1\times10^{-9}$:
+\begin{equation}
+\alpha\approx(2\text{--}8)\times10^{-10}\Mpl^4,\qquad V^{1/4}\approx1.1\text{--}1.5\times10^{16}\ \text{GeV}\quad(\textbf{GUT scale}),\qquad \alpha_s\approx-6\times10^{-4}. \tag{10}
+\end{equation}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{cccccccc}
+\toprule
+$f_s$ & $\beta$ & $n_s$ (MS) & $n_s$ (SR) & $\Delta n_s$ & $r$ & $n_t$ & $V^{1/4}$ (GeV)\\
+\midrule
+5 & $-0.30$ & $0.9470$ & $0.9461$ & $+0.0009$ & $0.014$ & $-0.002$ & $1.11\times10^{16}$\\
+5 & $-0.24$ & $0.9537$ & $0.9529$ & $+0.0008$ & $0.022$ & $-0.003$ & $1.24\times10^{16}$\\
+5 & $-0.20$ & $0.9571$ & $0.9564$ & $+0.0008$ & $0.028$ & $-0.004$ & $1.32\times10^{16}$\\
+7 & $-0.30$ & $0.9567$ & $0.9561$ & $+0.0006$ & $0.037$ & $-0.005$ & $1.42\times10^{16}$\\
+7 & $-0.26$ & $0.9585$ & $0.9579$ & $+0.0006$ & $0.043$ & $-0.005$ & $1.47\times10^{16}$\\
+\bottomrule
+\end{tabular}
+\caption{\small \textbf{Exact Mukhanov--Sasaki spectrum} vs slow-roll. The correction $\Delta n_s$ is sub-percent and shifts $n_s$ toward the blue. $\alpha$ (hence $V^{1/4}$) is fixed by $A_s$.}
+\label{tab:ms}
+\end{table}
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.82\textwidth]{figs_u4_en/fig_nsr.png}
+\caption{\small \textbf{$(n_s,r)$ --- exact MS prediction} against Planck 2018 + BK18 (published marginalized values, not re-run by MCMC). \emph{Reading}: the window survives at $\sim1.5$--$2\sigma$ but is \emph{slightly too red} relative to the Planck center ($0.9649$); the best point ($f_s{=}7,\beta\!\approx\!-0.26$) reaches $n_s=0.959$. The corner $f_s{=}7,\beta\gtrsim-0.28$ is excluded by $r$. The whole domain predicts $r\gtrsim0.014\gg$ detection floor $\Rightarrow$ decisive test by LiteBIRD/Simons Observatory.}
+\label{fig:nsr}
+\end{figure}
+
+\paragraph{Articulation isocurvature $\leftrightarrow$ spectrum.} The MS correction ($+0.001$) is too small to recenter the prediction on Planck; conversely, a \emph{moderate} curvaton conversion shifts $n_s$ toward the blue by $\sim+0.007$, which would bring it to the Planck center. The MS spectrum thus fixes the ``pre-reheating'' prediction to $<0.001$; its final recentering depends on the entropic sector. The two steps are coupled.
+
+\paragraph{RG/QM consistency.}
+\st{proof}\st{numerical} The frozen-field branch reproduces Schwarzschild--de Sitter; for $M=3M_\odot$, observers at 12 and 100~km, the GR values are returned identically (residual gap $\sim10^{-43}$, de Sitter term):
+\begin{center}\small
+\begin{tabular}{lcc}
+\toprule
+Quantity & Standard GR & Framework (scale field) \\
+\midrule
+Schwarzschild radius $R_S$ & 8.86 km & 8.86 km \\
+Ratio $\nu_B/\nu_A$ & 0.536 & 0.536 \\
+Dilation $d\tau_B/d\tau_A$ & 1.87 & 1.87 \\
+\bottomrule
+\end{tabular}
+\end{center}
+On the QM side --- oscillator in a field, via $\hat H_{\rm eff}=\varepsilon\hat H_{\rm sys}$ ($\varepsilon\to1$): the structural quantities are identical to QM ($x_0=-0.176$~pm, $\langle n\rangle=1.34\times10^{-7}$, $\chi=2.82\times10^{-38}$~F$\cdot$m$^2$), the energies being $\times\varepsilon$; gap $\sim10^{-22}$. Both limits are recovered exactly; the proper physics lives at strong curvature and on cosmological scales.
+
+\section{Synthesis and overall epistemic status}
+Table~\ref{tab:statut} summarizes, statement by statement, what is established and on what grounds.
+\begin{table}[ht]\centering\small
+\begin{tabular}{p{0.70\textwidth}l}
+\toprule
+Statement & Status \\
+\midrule
+GR recovered ($\sim10^{-43}$); QM recovered ($\varepsilon\to1$, $\sim10^{-22}$) & \st{proof}+\st{numerical} \\
+No static regular black hole; $\beta_c=-1/6$; finite de Sitter core & \st{proof}+\st{numerical} \\
+Bifurcation 11a; stabilizing gradient 11b; trapped $=\beta<-1/6$ & \st{proof}+\st{numerical} \\
+False vacuum at $\fpole$; $U(\fpole)=4\alpha/(1-2\beta)^2$ & \st{proof} \\
+\textbf{Decay action} $B_{\rm HM}=24\pi^2(3\beta+\tfrac12)^2/\alpha$; HM regime, $\to0$ at $\beta_c$ & \st{proof}+\st{numerical} \\
+Geodesic diagonal, $T_{RS}=0$; no inflationary contamination of $(n_s,r)$ & \st{proof} \\
+Light entropic mass; $\beta_{\rm iso}\sim0.3$--$0.8\gg$ Planck at production & \st{numerical} \\
+Symmetric conversion $\Rightarrow\beta_{\rm iso}\to0$ no drift; asym.\ $\Rightarrow$ drift $O(0.04)$ & \st{conjecture} \\
+\textbf{Exact MS spectrum}; sub-percent $n_s$ correction; $\alpha$ by $A_s$, $V^{1/4}\!\sim$ GUT & \st{numerical} \\
+$\varepsilon=1$ (field at vacuum); $\Lambda_{\rm field}\to0$; dark energy separate & \st{numerical} \\
+Non-commuting Page--Wootters bridge to $\sim10^{-22}$ & \st{conjecture} (1\textsuperscript{st} order) \\
+Dynamical selection; reheating model; origin of $\Lambda_{\rm obs}$; non-pert.\ PW GUT & \st{open} \\
+\bottomrule
+\end{tabular}
+\caption{\small Overall epistemic status of the framework.}\label{tab:statut}
+\end{table}
+
+\section{Open steps (in order)}
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt]
+\item \textbf{Dynamical selection} \st{open} (decisive): nonlinear inhomogeneous collapse (numerical relativity tested for convergence, double-null \`a la Christodoulou, minimally coupled scalar with $U(\phi)$). The reduced implementation failed (high-frequency instability); probably beyond a single script.
+\item \textbf{Reheating model} \st{open}: rates $\Gamma_\psi,\Gamma_\chi$, multi-field transport $\delta N$, to fix the angle $\Theta$ and decide the entropic conversion (\S\ref{sec:A3}) --- it determines the final shift of $(n_s,r)$.
+\item \textbf{False-vacuum decay --- prefactor} \st{open}: fluctuation determinant beyond the exponential (6); connection to the regular-black-hole interpretation.
+\item \textbf{Official contours} \st{to check}: real Planck/BK MCMC chains (the present figure uses published marginalized values).
+\item \textbf{Origin of $\Lambda_{\rm obs}$} \st{open}: clarify ``separate sector'' vs mechanism (without claiming to solve it).
+\end{enumerate}
+
+\section*{Note ($\ast$) --- Observational status of next-generation CMB (June 2026)}
+\small The flagship CMB-S4 project (DOE--NSF) was halted: after the withdrawal of the South Pole facilities and a ``Chile-only'' redesign proposed in June 2025, the DOE and NSF stated on \textbf{9 July 2025} that they could no longer support the project. There is therefore no funded CMB-S4 anymore. The falsifiability of the $(n_s,r)$ prediction stands, carried by real next-generation experiments: \emph{Simons Observatory} (Chile, operating), \emph{LiteBIRD} (JAXA, launch targeted $\sim$2032, designed for $\delta r<10^{-3}$) and \emph{BICEP/Keck} (ongoing). Only the instrument and schedule change; the targeted detection floor $r\sim10^{-3}$ remains. \st{to check}
+\normalsize
+
+\section*{Reproducibility}
+All numerical and symbolic results are reproduced by two standalone scripts (SymPy/SciPy/NumPy/Matplotlib), with sections coded \texttt{[V1]\dots[V6]} specific to this document:
+\begin{itemize}[leftmargin=1.4em,itemsep=0pt]
+\item[\texttt{[V1]}] threshold $\beta_c=-1/6$: exact diagonal Hessian, $m^2_{\rm eff}(\fpole)$, bifurcation (Fig.~\ref{fig:11a}).
+\item[\texttt{[V2]}] landscape $U_{\rm diag}$: barrier $\cos\theta^*=(1+4\beta)/(2\beta)$, $U(\theta^*)$, $U(\fpole)$ (Fig.~\ref{fig:land}).
+\item[\texttt{[V3]}] exact Hawking--Moss action $B_{\rm HM}=24\pi^2(3\beta+\tfrac12)^2/\alpha\to0$ at $\beta_c$; Batra--Kleban criterion (HM, not CDL); lifetimes (Tab.~\ref{tab:bhm}, Fig.~\ref{fig:bhm}).
+\item[\texttt{[V4]}] geodesic diagonal $V_{,\psi}-V_{,\chi}=0$; entropic mass $m^2_s$, $\beta_{\rm iso}$ (Fig.~\ref{fig:iso}).
+\item[\texttt{[V5]}] stabilizing gradient / Jeans length (Fig.~\ref{fig:11b}).
+\item[\texttt{[V6]}] exact Mukhanov--Sasaki spectrum $(n_s,r)$, fixing $\alpha$ by $A_s$, $V^{1/4}$ (Tab.~\ref{tab:ms}, Fig.~\ref{fig:nsr}).
+\end{itemize}
+Files: \texttt{U4\_VIDE\_reproductible.py} (computations) and \texttt{Unite4\_figures.py} (FR + EN figures). The prefix \texttt{U4\_VIDE\_} and the \texttt{[V$\cdot$]} codes are specific to this document. \emph{Convention}: $\Mpl=1$ (reduced) unless stated; an epistemic status on each statement.
+
+\section*{Appendix --- Numerical checks: GR (Schwarzschild) and QM (displaced oscillator)}
+\small
+The two calculations below quantify the \emph{two limits} of the ``RG/QM consistency'' section: general relativity recovered at frozen field ($\sim10^{-43}$), quantum mechanics recovered at $\varepsilon\to1$ ($\sim10^{-22}$). Data: $G=6.674\times10^{-11}$, $c=2.998\times10^{8}$, $M_\odot=1.989\times10^{30}$ (SI); electron $m=9.11\times10^{-31}$~kg, $q=-e=-1.602\times10^{-19}$~C, $\hbar=1.055\times10^{-34}$~J$\cdot$s.
+
+\paragraph{A.1 Schwarzschild gravitational redshift (GR limit).}
+Black hole $M=3M_\odot=5.967\times10^{30}$~kg; two static observers at $R_A=12$~km and $R_B=100$~km; $\nu_A=10^{15}$~Hz.
+\emph{(1) Schwarzschild radius.} $R_S=2GM/c^2=8.86$~km.
+\emph{(2) Position.} $R_A,R_B>R_S$: both observers are outside the horizon ($R_S/2R_A\approx0.37$, $A$ very compact).
+\emph{(3) Redshift.} The static proper time is $d\tau=\sqrt{1-R_S/r}\,dt$, and $dt$ is the same along the radial photon geodesic (stationary metric), hence
+\begin{equation}
+\frac{\nu_B}{\nu_A}=\frac{d\tau_A}{d\tau_B}=\sqrt{\frac{1-R_S/R_A}{1-R_S/R_B}}. \tag{A.1}
+\end{equation}
+\emph{(4) Numerics.} $R_S/R_A=0.738$, $R_S/R_B=0.0886$; $\nu_B/\nu_A=\sqrt{0.262/0.911}=\sqrt{0.287}\approx\boxed{0.536}$, i.e.\ $\nu_B\approx5.36\times10^{14}$~Hz (green $\lambda\!\approx\!500$~nm seen as orange $\lambda\!\approx\!560$~nm: redshift).
+\emph{(5--6) Dilation.} $d\tau_B/d\tau_A=1/0.536\approx\boxed{1.87}$: time runs $1.87\times$ faster for $B$. One signal per proper second of $A$ is received every $\Delta\tau_B\approx1.87$~s; after 100 emitted, $B$ has received only $\approx53$.
+\emph{(7) Limit $R_A\to R_S$.} $\sqrt{1-R_S/R_A}\to0\Rightarrow\nu_B/\nu_A\to0$: infinite redshift at the horizon; $A$'s proper time ``freezes'' as seen from outside, while $A$ crosses the horizon in finite proper time.
+\emph{Link to the framework.} The frozen-field branch $\psi\equiv-\pi$ is exactly Schwarzschild--de Sitter: these three values ($R_S$, $\nu_B/\nu_A$, $d\tau_B/d\tau_A$) are returned identically, the residual gap ($\sim10^{-43}$) coming from the de Sitter term alone. \st{proof}\st{numerical}
+
+\paragraph{A.2 Displaced harmonic oscillator in a uniform field (QM limit).}
+$\hat H=\hat p^2/2m+\tfrac12 m\omega^2\hat x^2-q\mathcal{E}\hat x$, with $\omega=10^{15}$~rad/s, $\mathcal{E}=10^{6}$~V/m.
+\emph{(1) Normal form.} With $\hat x=\sqrt{\hbar/2m\omega}\,(\hat a+\hat a^\dagger)$,
+$\hat H=\hbar\omega(\hat a^\dagger\hat a+\tfrac12)-q\mathcal{E}\sqrt{\hbar/2m\omega}\,(\hat a+\hat a^\dagger)$. The displacement $\hat a'=\hat a-\alpha$, $\alpha=q\mathcal{E}/\sqrt{2m\hbar\omega^3}$ (Weyl translation operator --- the \emph{same} conformal hinge as $\Omega=\sqrt f$ on the gravity side), gives
+\begin{equation}
+\hat H=\hbar\omega\Big(\hat a'^\dagger\hat a'+\tfrac12\Big)-\frac{q^2\mathcal{E}^2}{2m\omega^2},\qquad
+E_n=\hbar\omega\Big(n+\tfrac12\Big)-\frac{q^2\mathcal{E}^2}{2m\omega^2}. \tag{A.2}
+\end{equation}
+The spectrum is rigidly shifted, levels remaining equally spaced by $\hbar\omega$.
+\emph{(2) Energy shift.} $\Delta E=-q^2\mathcal{E}^2/(2m\omega^2)\approx-1.41\times10^{-26}$~J $\approx-8.8\times10^{-8}$~eV; since $\hbar\omega\approx0.66$~eV, $|\Delta E|/\hbar\omega\approx1.3\times10^{-7}$ (perturbative regime).
+\emph{(3) Displaced center.} $V_{\rm eff}'=m\omega^2x-q\mathcal{E}=0\Rightarrow x_0=q\mathcal{E}/(m\omega^2)=\boxed{-0.176~\text{pm}}$ (the electron, negative charge, shifts opposite to the field); the frequency stays $\omega$.
+\emph{(4) Coherent ground state.} $\hat a'|0'\rangle=0\Rightarrow\hat a|0'\rangle=\alpha|0'\rangle$: $|0'\rangle=|\alpha\rangle=e^{-|\alpha|^2/2}\sum_n(\alpha^n/\sqrt{n!})|n\rangle$, with $\langle\hat a^\dagger\hat a\rangle=|\alpha|^2=q^2\mathcal{E}^2/(2m\hbar\omega^3)\approx\boxed{1.34\times10^{-7}}\ll1$.
+\emph{(5) Mean position.} $\langle0'|\hat x|0'\rangle=\sqrt{\hbar/2m\omega}\,(2\alpha)=q\mathcal{E}/(m\omega^2)=x_0$.
+\emph{(6) Susceptibility.} $P=q\langle\hat x\rangle=q^2\mathcal{E}/(m\omega^2)$, hence $\chi=\partial P/\partial\mathcal{E}=q^2/(m\omega^2)\approx\boxed{2.82\times10^{-38}~\text{F}\cdot\text{m}^2}$ (consistent with an atomic polarizability, $\sim2.5\times10^{-3}\,a_0^3$).
+\emph{Link to the framework.} Through $\hat H_{\rm eff}=\varepsilon\hat H_{\rm sys}$, only the energies are multiplied by $\varepsilon$; the \emph{structural} quantities ($x_0$, $\langle n\rangle$, $\chi$) are unchanged. At $\varepsilon\to1$ standard quantum mechanics is recovered exactly (gap $\sim10^{-22}$, cf.\ the RG/QM consistency section). \st{proof}\st{numerical}
+\normalsize
+
+\section*{Collaboration note}
+The conceptual framework --- the original intuition, the physical hypotheses, and the modelling choices --- is entirely the author's, who bears full scientific responsibility for it. The mathematical formalization, the symbolic and numerical checks, and the writing of the manuscripts were carried out in iterative dialogue with an artificial-intelligence assistant, under the author's direction and supervision. Final validation belongs to the author and to the experimental community.
+
+\section*{Acknowledgments}
+The symbolic and numerical checks and the figures of this work rely on free, open-source software developed and maintained by the scientific community: the Python ecosystem --- NumPy, SciPy, SymPy, Matplotlib --- and the \TeX/\LaTeX{} typesetting system. The author thanks the communities that maintain these open tools.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{P18} Planck Collaboration (Y.\ Akrami \textit{et al.}), \textit{Astron.\ Astrophys.} \textbf{641}, A10 (2020).
+\bibitem{BK18} BICEP/Keck Collaboration (P.\ A.\ R.\ Ade \textit{et al.}), \textit{Phys.\ Rev.\ Lett.} \textbf{127}, 151301 (2021).
+\bibitem{HM} S.\ W.\ Hawking \& I.\ G.\ Moss, \textit{Phys.\ Lett.\ B} \textbf{110}, 35 (1982).
+\bibitem{CDL} S.\ Coleman \& F.\ De Luccia, \textit{Phys.\ Rev.\ D} \textbf{21}, 3305 (1980).
+\bibitem{BatraKleban} N.\ Batra \& M.\ Kleban, \textit{Phys.\ Rev.\ D} \textbf{76}, 103510 (2007). [to check]
+\bibitem{GWBM} C.\ Gordon, D.\ Wands, B.\ A.\ Bassett \& R.\ Maartens, \textit{Phys.\ Rev.\ D} \textbf{63}, 023506 (2001).
+\bibitem{PW} D.\ N.\ Page \& W.\ K.\ Wootters, \textit{Phys.\ Rev.\ D} \textbf{27}, 2885 (1983).
+\bibitem{MS} V.\ F.\ Mukhanov, H.\ A.\ Feldman \& R.\ H.\ Brandenberger, \textit{Phys.\ Rep.} \textbf{215}, 203 (1992).
+\bibitem{Choptuik} M.\ W.\ Choptuik, \textit{Phys.\ Rev.\ Lett.} \textbf{70}, 9 (1993).
+\bibitem{U14} H.\ Bakkaoui, Units 1--3, Zenodo, 2026.
+\end{thebibliography}
+
+\end{document}

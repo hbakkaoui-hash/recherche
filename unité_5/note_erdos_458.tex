@@ -1,0 +1,211 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+
+\title[A reduction and verification for Erd\H{o}s problem \#458]{A reduction, a classification, and a verification up to $10^{12}$\\ for Erd\H{o}s problem \#458}
+\author{Hassane Bakkaoui}
+\address{Independent researcher}
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+Erd\H{o}s and Graham asked whether $[1,\ldots,p_{k+1}-1] < p_k\,[1,\ldots,p_k]$ for all $k\ge 1$, where $[1,\ldots,n]=\lcm(1,\ldots,n)$ and $p_k$ is the $k$-th prime (Erd\H{o}s problem \#458). We reduce the question to the cohabitation of prime powers inside a single prime gap, classify rigorously all configurations that could produce a counterexample, and verify the inequality for all $k$ with $p_{k+1}\le 10^{12}$ by an exhaustive enumeration of the $80\,070$ proper prime powers below that bound: exactly five prime gaps below $10^{12}$ contain more than one prime power, the largest ratio being $6/7$ at the gap $(7,11)$. As a consequence, the inequality holds for all sufficiently large $k$ under a Legendre-type gap hypothesis together with a weak Pillai-type hypothesis on near-coincidences of prime powers. Every statement below is labelled as rigorous, conditional, or heuristic.
+\end{abstract}
+
+\maketitle
+
+\section{The problem}
+
+Throughout, $[1,\ldots,n]$ denotes $\lcm(1,2,\ldots,n)$ and $p_k$ the $k$-th prime. Erd\H{o}s and Graham \cite[p.~91]{ErGr80} asked:
+
+\begin{quote}
+Is it true that, for all $k\ge 1$,
+\begin{equation}\label{eq:458}
+[1,\ldots,p_{k+1}-1] \;<\; p_k\,[1,\ldots,p_k]\,?
+\end{equation}
+\end{quote}
+
+This is problem \#458 in Bloom's catalogue \cite{Bl458}, where it is recorded as open and falsifiable; the related OEIS sequence is A056604 \cite{OEIS}. Erd\H{o}s and Graham write that \eqref{eq:458} is ``almost certainly'' true but that a proof is beyond reach, the first obstruction being the possibility of several primes $q$ with $p_k<q^2<p_{k+1}$, whose exclusion is essentially Legendre's conjecture; they add that ``the small primes also cause trouble.'' The purpose of this note is to make both obstructions precise and exhaustive: we classify \emph{all} configurations that could violate \eqref{eq:458} (Theorem~\ref{thm:class}), we determine \emph{exactly} which small primes cause trouble below $10^{12}$ (Section~\ref{sec:verif}), and we record the resulting conditional statement (Theorem~\ref{thm:cond}).
+
+\section{Reduction and classification}\label{sec:red}
+
+\textbf{[Rigorous.]} The following facts are elementary; we include the short proofs for completeness.
+
+\begin{lemma}\label{lem:jump}
+For $n\ge 2$, $[1,\ldots,n]/[1,\ldots,n-1]=q$ if $n=q^a$ is a prime power ($a\ge1$), and $=1$ otherwise.
+\end{lemma}
+
+\begin{proof}
+Standard: $[1,\ldots,n]=\exp(\psi(n))$ with $\psi$ the second Chebyshev function, which jumps by $\log q$ exactly at prime powers $q^a$.
+\end{proof}
+
+Fix $k\ge1$ and write $p=p_k$, $P=p_{k+1}$. Since the open interval $(p,P)$ contains no prime, Lemma~\ref{lem:jump} gives
+\begin{equation}\label{eq:ratio}
+\frac{[1,\ldots,P-1]}{[1,\ldots,p]} \;=\; \prod_{\substack{q^a\in(p,P)\\ a\ge 2}} q \;=:\; R_k ,
+\end{equation}
+the product running over the proper prime powers lying strictly between $p$ and $P$ (equivalently, in $(p, P-1]$). Hence:
+
+\begin{lemma}\label{lem:red}
+Inequality \eqref{eq:458} holds at $k$ if and only if $R_k<p_k$.
+\end{lemma}
+
+\begin{lemma}\label{lem:basic}
+Let $p\ge 2$ and let $q^a, r^b$ ($a,b\ge2$) be proper prime powers in $(p,P)$. Then:
+\begin{enumerate}
+\item[(i)] distinct prime powers in $(p,P)$ have distinct bases;
+\item[(ii)] if $(p,P)$ contains exactly one proper prime power $q^a$, then $R_k=q<p$;
+\item[(iii)] if $(p,P)$ contains exactly two proper prime powers with exponent multiset $\{2,a\}$, $a\ge3$, then $R_k<p$ provided $p>32$;
+\item[(iv)] if $(p,P)$ contains exactly two proper prime powers with both exponents $\ge3$, then $R_k<p$ provided $p>4$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Bertrand's postulate, $P<2p$, so every prime power in $(p,P)$ lies in $(p,2p)$.
+(i) If $q^a<q^b$ lie in $(p,2p)$ then $q^b\ge q\cdot q^a\ge 2q^a>2p$, a contradiction.
+(ii) $q\le (q^a)^{1/2}<(2p)^{1/2}<p$ for all $p\ge2$.
+(iii) $R_k=qr<(2p)^{1/2}(2p)^{1/3}=(2p)^{5/6}$, and $(2p)^{5/6}<p \iff p>2^5=32$.
+(iv) $R_k=qr<(2p)^{2/3}$, and $(2p)^{2/3}<p\iff p>4$.
+\end{proof}
+
+\begin{theorem}[Classification of potential violations]\label{thm:class}
+Let $p_k\ge 37$. If \eqref{eq:458} fails at $k$, then the gap $(p_k,p_{k+1})$ contains
+\begin{enumerate}
+\item[\textup{(I)}] two squares of distinct primes, $q^2<r^2$; or
+\item[\textup{(II)}] two proper prime powers $q^a<r^b$ with $a,b\ge 3$.
+\end{enumerate}
+Moreover, in case \textup{(I)} the failure is automatic: two distinct prime squares in one gap always force $R_k>p_k$. In case \textup{(II)} with $a=b$, the gap satisfies $p_{k+1}-p_k>\tfrac{3}{2^{1/3}}\,p_k^{2/3}$.
+\end{theorem}
+
+\begin{proof}
+Suppose $R_k\ge p_k$ and let $m$ be the number of proper prime powers in the gap. By Lemma~\ref{lem:basic}(ii)--(iv), $m\le2$ forces either $m=2$ with both exponents equal to $2$ --- case (I) --- or no failure. If $m\ge3$ and the gap does not contain two prime squares, then at most one exponent equals $2$, so at least two exponents are $\ge3$ --- case (II).
+
+Automatic failure in (I): $q^2>p_k$ gives $q>\sqrt{p_k}$, and $r>q$ gives $R_k\ge qr>q^2>p_k$.
+
+Gap bound in (II) with $a=b\ge3$: the bases are distinct primes by Lemma~\ref{lem:basic}(i), so $r\ge q+1$ and
+$r^a-q^a\ge a\,q^{a-1} = a\,q^a/q > 3\,p_k/(2p_k)^{1/3} = \tfrac{3}{2^{1/3}}\,p_k^{2/3}$,
+using $q\le(2p_k)^{1/a}\le(2p_k)^{1/3}$.
+\end{proof}
+
+\begin{remark}\label{rem:I}
+\textbf{[Rigorous.]} Case (I) forces a prime gap longer than $2\sqrt{p_k}$: indeed $r\ge q+1$ gives $p_{k+1}-p_k > r^2-q^2 \ge 2q+1 > 2\sqrt{p_k}$. Note that even the Riemann Hypothesis only yields gaps $O(\sqrt{p}\,\log p)$, which does not exclude case (I); its exclusion is of the strength of Legendre's conjecture, as already observed in \cite{Bl458}. Two distinct prime squares $q^2<r^2$ in one gap would in particular leave the interval $(q^2,(q+1)^2)$ free of primes, i.e.\ exhibit a counterexample to Legendre's conjecture.
+\end{remark}
+
+\begin{remark}\label{rem:II}
+\textbf{[Rigorous / conditional.]} In case (II) with equal exponents, the gap exceeds $\tfrac{3}{2^{1/3}}p_k^{2/3}$, which contradicts $p_{k+1}-p_k\ll p_k^{0.525}$ \cite{BHP} for all sufficiently large $k$; below any fixed bound the configuration is checked directly (Section~\ref{sec:verif}). In case (II) with distinct exponents $a\ne b$, the two powers satisfy $|q^a-r^b|<p_{k+1}-p_k$ with $q^a,r^b\approx p_k$: a Pillai-type near-coincidence of perfect powers. Such configurations are expected to be extremely rare, but their unconditional exclusion is open; this is a second, less visible obstruction to \eqref{eq:458}, distinct from the Legendre-type one.
+\end{remark}
+
+\section{Exhaustive verification up to $10^{12}$}\label{sec:verif}
+
+\textbf{[Rigorous computation.]} By Lemma~\ref{lem:basic}(ii), a violation requires at least two proper prime powers in one gap. We therefore enumerated \emph{all} proper prime powers $q^a\le 10^{12}$ ($a\ge2$) --- there are $80\,070$ of them --- sorted them, and for each consecutive pair tested whether a prime lies strictly between them; if not, the pair cohabits in a single prime gap, which we then reconstructed in full and tested via Lemma~\ref{lem:red}. All primality tests concern integers below $2^{64}$, where the Baillie--PSW test as implemented in SymPy is deterministic (no BPSW pseudoprime exists below $2^{64}$ \cite{Gil}). The script is reproduced verbatim in Appendix~\ref{app:script}.
+
+The results were cross-checked by three fully independent computations: (a) a brute-force evaluation of the exact integers $[1,\ldots,n]$ by iterated $\gcd$, with no recourse to the reduction of Section~\ref{sec:red}, confirming \eqref{eq:458} directly for all $p_{k+1}\le 10^{5}$; (b) a segmented Eratosthenes sieve up to $10^{9}$, using no probabilistic primality test whatsoever, which recovers exactly the same five cohabitations; (c) a re-run of the full enumeration up to $10^{12}$ using a self-contained deterministic Miller--Rabin test with the witness set $\{2,3,\ldots,37\}$ (exact for $n<3.317\cdot10^{24}$ \cite{SW}), independent of SymPy, with identical output.
+
+\begin{theorem}\label{thm:verif}
+Inequality \eqref{eq:458} holds for every $k$ with $p_{k+1}\le 10^{12}$. Exactly five prime gaps below $10^{12}$ contain more than one proper prime power, namely:
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Gap $(p_k,p_{k+1})$ & Prime powers & $R_k$ & $R_k/p_k$ \\
+\midrule
+$(7,\,11)$        & $2^3,\ 3^2$        & $6$    & $0.8571$ \\
+$(23,\,29)$       & $5^2,\ 3^3$        & $15$   & $0.6522$ \\
+$(113,\,127)$     & $11^2,\ 5^3$       & $55$   & $0.4867$ \\
+$(2179,\,2203)$   & $3^7,\ 13^3$       & $39$   & $0.0179$ \\
+$(32749,\,32771)$ & $181^2,\ 2^{15}$   & $362$  & $0.0111$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+In particular, the maximum of $R_k/p_k$ over the whole range is $6/7$, attained at $k=4$, and every prime gap with $32771<p_{k+1}\le 10^{12}$ contains at most one proper prime power.
+\end{theorem}
+
+\begin{remark}
+\textbf{[Rigorous.]} No prime gap below $10^{12}$ contains two distinct prime squares; all five cohabitations above are of mixed type (one square and one higher power, or two higher powers of distinct exponents), and none comes close to a violation. The two configurations of Theorem~\ref{thm:class} are thus both empirically absent in a wide range, in line with the heuristic of Remark~\ref{rem:heur}.
+\end{remark}
+
+\section{A conditional statement}
+
+\begin{hypothesis}[L]\label{hyp:L}
+There is $k_0$ such that $p_{k+1}-p_k\le 2\sqrt{p_k}$ for all $k\ge k_0$.
+\end{hypothesis}
+
+\begin{hypothesis}[P]\label{hyp:P}
+Only finitely many pairs of proper prime powers $q^a\ne r^b$ with $a,b\ge3$ satisfy $|q^a-r^b|\le 2\sqrt{\max(q^a,r^b)}$.
+\end{hypothesis}
+
+Hypothesis (L) follows from Legendre-type conjectures (and from Cram\'er's model); Hypothesis (P) is a very weak form of Pillai's conjecture. Neither is known.
+
+\begin{theorem}[Conditional]\label{thm:cond}
+Assume Hypotheses \textup{(L)} and \textup{(P)}. Then \eqref{eq:458} holds for all sufficiently large $k$.
+\end{theorem}
+
+\begin{proof}
+Let $k$ be large and suppose \eqref{eq:458} fails. By Theorem~\ref{thm:class}, the gap contains configuration (I) or (II). Configuration (I) forces $p_{k+1}-p_k>2\sqrt{p_k}$ (Remark~\ref{rem:I}), contradicting (L). In configuration (II), under (L) the two powers satisfy $|q^a-r^b|<2\sqrt{p_k}\le 2\sqrt{\max(q^a,r^b)}$; for $a=b$ this contradicts the gap bound of Theorem~\ref{thm:class} (which exceeds $2\sqrt{p_k}$ for $p_k$ large), and for $a\ne b$ hypothesis (P) leaves only finitely many possibilities.
+\end{proof}
+
+\begin{remark}\label{rem:heur}
+\textbf{[Heuristic.]} In Cram\'er's model the expected number of prime gaps ever containing two prime squares is essentially zero ($\sum_q \exp(-c\sqrt{q^2}/\log q^2)<\infty$-type estimates), and Pillai near-coincidences of size $\sqrt{x}$ near $x$ are likewise expected to be finite in number. The data of Theorem~\ref{thm:verif} --- five cohabitations, all below $33\,000$, with $R_k/p_k$ decaying rapidly --- is consistent with this. We emphasise, however, that a proof of \eqref{eq:458} appears out of reach: excluding (I) requires gap bounds of strength $\sqrt{p}$, beyond even the Riemann Hypothesis, and excluding (II) for $a\ne b$ requires Pillai-type results that are equally unavailable.
+\end{remark}
+
+\section*{Acknowledgements}
+This note benefited from computational assistance and verification by the Claude language model (Anthropic). All mathematical claims were derived and checked independently as described above; any error is the author's.
+
+\begin{thebibliography}{9}
+\bibitem{BHP} R.~C. Baker, G.~Harman, J.~Pintz, \emph{The difference between consecutive primes, II}, Proc. London Math. Soc. (3) \textbf{83} (2001), 532--562.
+\bibitem{Bl458} T.~F. Bloom, \emph{Erd\H{o}s Problem \#458}, \url{https://www.erdosproblems.com/458}, accessed June 2026.
+\bibitem{ErGr80} P.~Erd\H{o}s, R.~L. Graham, \emph{Old and new problems and results in combinatorial number theory}, Monographies de L'Enseignement Math\'ematique \textbf{28}, Gen\`eve, 1980, p.~91.
+\bibitem{Gil} J.~Gilchrist, \emph{Pseudoprime enumeration with probabilistic primality tests} (verification that no Baillie--PSW pseudoprime exists below $2^{64}$, building on J.~Feitsma's tables), 2013. [Reference to be finalised before posting.]
+\bibitem{SW} J.~Sorenson, J.~Webster, \emph{Strong pseudoprimes to twelve prime bases}, Math. Comp. \textbf{86} (2017), 985--1003. [Bound $3.317\cdot10^{24}$ for witnesses $\{2,\ldots,37\}$; reference to be double-checked before posting.]
+\bibitem{OEIS} OEIS Foundation Inc., \emph{The On-Line Encyclopedia of Integer Sequences}, sequence A056604, \url{https://oeis.org/A056604}.
+\end{thebibliography}
+
+\appendix
+\section{Verification script (Python 3.12, exact arithmetic)}\label{app:script}
+{\small
+\begin{verbatim}
+from sympy import primerange, isprime, nextprime
+from math import isqrt
+import bisect
+
+LIMIT = 10**12
+powers = []                      # (value, base, exponent), exponent >= 2
+for q in primerange(2, isqrt(LIMIT) + 1):
+    v, a = q*q, 2
+    while v <= LIMIT:
+        powers.append((v, q, a)); v *= q; a += 1
+powers.sort()                    # 80,070 proper prime powers
+
+cohab = []                       # adjacent pairs with no prime in between
+for i in range(len(powers) - 1):
+    v1 = powers[i][0]; v2 = powers[i+1][0]
+    if nextprime(v1) > v2:       # v1, v2 composite => same prime gap
+        cohab.append((powers[i], powers[i+1]))
+
+violations = 0
+for (v1, q1, a1), (v2, q2, a2) in cohab:
+    lo = v1
+    while not isprime(lo): lo -= 1          # p_k
+    hi = nextprime(v2)                       # p_{k+1}
+    iL = bisect.bisect_right(powers, (lo, 10**18, 0))
+    iR = bisect.bisect_left(powers, (hi, 0, 0))
+    grp = powers[iL:iR]
+    R = 1
+    for v, q, a in grp: R *= q
+    print(lo, hi, grp, R, R/lo)
+    if R >= lo: violations += 1
+print("violations:", violations)             # output: 0
+\end{verbatim}
+}
+\end{document}

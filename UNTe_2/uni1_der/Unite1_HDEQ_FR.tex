@@ -1,0 +1,483 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.4cm}
+\usepackage{hyperref}
+\frenchspacing
+
+% ---- Macros ----------------------------------------------------------
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\vert #2\rangle}
+\newcommand{\Hext}{\mathcal{H}_{\mathrm{ext}}}
+\newcommand{\Hsys}{\mathcal{H}_{\mathrm{sys}}}
+\newcommand{\Htemp}{\mathcal{H}_{\mathrm{temp}}}
+\newcommand{\Usys}{\hat{U}_{\mathrm{sys}}}
+\newcommand{\Hsysop}{\hat{H}_{\mathrm{sys}}}
+\newcommand{\Heff}{\hat{H}_{\mathrm{eff}}}
+\newcommand{\Iext}{\hat{I}_{\mathrm{ext}}}
+\newcommand{\Isys}{\hat{I}_{\mathrm{sys}}}
+\newcommand{\statut}[1]{{\footnotesize\textsf{[#1]}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Th\'eor\`eme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemme}
+\newtheorem{corollary}{Corollaire}
+\theoremstyle{definition}
+\newtheorem{definition}{D\'efinition}
+\theoremstyle{remark}
+\newtheorem*{scope}{Port\'ee}
+
+\title{\textbf{Unit\'e 1 --- Discontinuit\'e d'existence des particules quantiques}\\[2pt]
+\large Existence intermittente, d\'ephasage intrins\`eque et s\'election de la base privil\'egi\'ee (HDEQ)}
+\author{Hassane Bakkaoui\\ \small Chercheur ind\'ependant --- bakkahassa@hotmail.com}
+\date{\small juin 2026 $\cdot$ document autonome (quant-ph)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Nous introduisons l'\emph{Hypoth\`ese de Discontinuit\'e de l'Existence Quantique}
+(HDEQ) : l'existence active d'un syst\`eme quantique est intermittente. Au sein
+d'un temps continu, l'\'evolution alterne, par cycles de dur\'ee caract\'eristique
+$\tau_0$, entre une phase active de dynamique hamiltonienne et une phase
+inactive de suspension dynamique. Quatre points sont \'etablis, avec un soin
+particulier port\'e \`a la port\'ee de chaque \'enonc\'e.
+\textbf{(i)} L'\'evolution intermittente, impl\'ement\'ee par une dilatation contr\^ol\'ee
+$\hat{U}(\tau_0)$ sur $\Hext=\Hsys\otimes\Htemp$, est \emph{globalement unitaire}
+(Th\'eor\`eme~1, \statut{preuve}). Cette unitarit\'e est \emph{structurelle} : elle
+garantit la coh\'erence interne mais ne produit, \`a elle seule, aucune d\'ecoh\'erence.
+\textbf{(ii)} Un crit\`ere de stabilit\'e de phase s\'electionne comme base privil\'egi\'ee
+les \'etats propres du hamiltonien effectif $\Heff$ (Proposition~1, \statut{preuve}) ;
+nous pr\'ecisons le r\'egime o\`u cette base co\"incide avec les pointeurs d'einselection
+et celui o\`u elle en diff\`ere.
+\textbf{(iii)} La d\'ecoh\'erence appara\^it \emph{non} de l'intermittence mais d'une
+extension : une dispersion $\delta\tau_0$ des dur\'ees de cycle, qui agit comme un
+canal de d\'ephasage param\'etrique. Selon que $\delta\tau_0$ est quasi-statique ou
+dynamiquement stochastique, on obtient un d\'ephasage inhomog\`ene refocalisable
+($T_2^\ast$, gaussien) ou un plancher de d\'ecoh\'erence irr\'eversible ($T_2$, exponentiel) ;
+seul le second m\'erite le qualificatif d'« irr\'eductible » \statut{num\'erique}.
+\textbf{(iv)} Prise de fa\c{c}on structurellement consistante (le hamiltonien effectif
+est $\Heff=\varepsilon\Hsysop$, « prescription B »), HDEQ rend un facteur $\varepsilon$
+universel \emph{inobservable} dans les rapports de fr\'equences et de taux ; la
+relation $\Gamma_{\mathrm{HDEQ}}=\varepsilon^2\Gamma_{\mathrm{QED}}$ rel\`eve d'une
+\emph{prescription distincte} (A) non d\'erivable du seul postulat, et n'est pas
+simultan\'ement coh\'erente avec~(i)--(ii). Le secteur spectroscopique est donc
+non discriminant ; la signature primaire est le d\'ephasage intrins\`eque de~(iii).
+Le facteur d'existence $\varepsilon$ et la p\'eriode $\tau_0$ sont ici ph\'enom\'enologiques ;
+une origine g\'eom\'etrique possible ($\varepsilon=E(k)/K(k)$) est esquiss\'ee en conclusion.
+Le cadre ne pr\'etend pas r\'esoudre le probl\`eme de la mesure dans sa forme forte.
+\par\smallskip
+\noindent\textit{Statut :} \statut{preuve} exact $\cdot$ \statut{num\'erique} reproductible $\cdot$
+\statut{conjecture} argument\'e $\cdot$ \statut{heuristique} analogie $\cdot$
+\statut{sp\'eculation} $\cdot$ \statut{\`a v\'erifier} r\'ef. externe $\cdot$
+\statut{ouvert} \`a \'etablir.
+\end{abstract}
+
+% ---------------------------------------------------------------------
+\section{Note m\'ethodologique}
+Ce manuscrit r\'esulte d'une m\'ethodologie particuli\`ere. L'intuition originale a \'et\'e
+formul\'ee par l'auteur autour de 1990 ; sa mise en cadre math\'ematique a \'et\'e men\'ee
+dans un dialogue it\'eratif avec des syst\`emes d'assistance analytique, sous la
+direction et la supervision de l'auteur. Chaque \'enonc\'e porte une balise de statut
+\'epist\'emique ; les r\'esultats balis\'es \statut{preuve} (Th\'eor\`eme~1, Proposition~1)
+sont d\'emontr\'es explicitement dans le corps (\S\ref{sec:cadre}, \S\ref{sec:base}). La
+validation scientifique finale appartient \`a la communaut\'e exp\'erimentale ; l'enti\`ere
+responsabilit\'e du contenu revient \`a l'auteur.
+
+% ---------------------------------------------------------------------
+\section{Introduction}
+\subsection{Intuition d'origine}
+Dans un atome d'hydrog\`ene, le noyau ($R_{\mathrm{nuc}}\approx1{,}2\times10^{-15}$~m)
+occupe, dans le volume atomique ($R_{\mathrm{at}}\approx0{,}5\times10^{-10}$~m), une
+fraction infime de l'espace : $\eta_{\mathrm{sp}}\equiv(R_{\mathrm{nuc}}/R_{\mathrm{at}})^3
+\approx1{,}4\times10^{-14}$. \statut{heuristique} Par coh\'erence dimensionnelle :
+si l'existence de la mati\`ere est clairsem\'ee dans la dimension spatiale, examinons
+une intermittence analogue de son existence \emph{active} dans la dimension
+temporelle --- non une granularit\'e du temps, mais une activit\'e dynamique qui
+s'allume et s'\'eteint au sein d'un temps continu. Le r\^ole de $\eta_{\mathrm{sp}}$
+est strictement heuristique, non une contribution math\'ematique de HDEQ.
+
+\subsection{Formulation du postulat}
+On introduit le facteur d'existence $\varepsilon\equiv\tau_{\mathrm{actif}}/\tau_0\in(0,1]$,
+o\`u $\tau_0$ est la dur\'ee d'un cycle et $\tau_{\mathrm{actif}}=\varepsilon\tau_0$ la
+fraction active. La fraction compl\'ementaire $(1-\varepsilon)\tau_0$ est une suspension
+dynamique. $\varepsilon\to1$ r\'ecup\`ere l'\'evolution continue ; $\varepsilon\ll1$
+correspond \`a une existence maximalement intermittente.
+
+\subsection{Ce que HDEQ adresse et n'adresse pas}
+HDEQ propose un m\'ecanisme structurel pour (a) la s\'election de la base privil\'egi\'ee
+et (b) un d\'ephasage intrins\`eque ne requ\'erant aucun \emph{bain spatial}. Il ne
+pr\'etend pas d\'eriver la r\`egle de Born, ni r\'esoudre la s\'election d'une branche
+unique. \emph{Avertissement de cadrage} : la d\'ecoh\'erence de~\S\ref{sec:deco}
+provient d'une dispersion stochastique de $\tau_0$, qui constitue math\'ematiquement
+un canal de bruit classique ; « sans environnement » signifie ici « sans bain
+spatial », non « sans aucune source de bruit ».
+
+% ---------------------------------------------------------------------
+\section{Cadre formel et unitarit\'e}\label{sec:cadre}
+\subsection{Postulat et espace de Hilbert \'elargi}
+L'\'evolution se d\'eroule par cycles de dur\'ee $\tau_0$ : pendant $\varepsilon\tau_0$ le
+syst\`eme \'evolue unitairement sous $\Hsysop$ ; pendant $(1-\varepsilon)\tau_0$ son
+\'evolution est suspendue. Le param\`etre temps reste continu ; c'est l'\emph{action}
+de $\Hsysop$ qui est intermittente. On introduit
+\[
+\Htemp=\mathrm{span}\{\ket{a},\ket{i}\},\quad
+\Hext=\Hsys\otimes\Htemp,\quad
+\hat{P}=\Isys\otimes\ket{a}\bra{a},\;\;
+\hat{Q}=\Isys\otimes\ket{i}\bra{i},
+\]
+avec $\hat{P}^2=\hat{P}$, $\hat{Q}^2=\hat{Q}$, $\hat{P}\hat{Q}=\hat{Q}\hat{P}=0$,
+$\hat{P}+\hat{Q}=\Iext$. On pose $\Usys=\exp(-i\Hsysop\varepsilon\tau_0/\hbar)$ et
+le rel\`evement $\tilde{U}_{\mathrm{sys}}=\Usys\otimes\hat{I}_{\mathrm{temp}}$.
+
+\subsection{Th\'eor\`eme 1 (unitarit\'e globale)}
+
+\begin{definition}[propagateur de cycle]
+$\hat{U}(\tau_0)=\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}
+=\Usys\otimes\ket{a}\bra{a}+\Isys\otimes\ket{i}\bra{i}$ : \'evolution syst\`eme sur la
+branche active, identit\'e sur la branche inactive (dilatation contr\^ol\'ee).
+\end{definition}
+
+\begin{lemma}[commutation tensorielle]\label{lem:comm}
+$[\hat{P},\tilde{A}]=[\hat{Q},\tilde{A}]=0$ pour $\tilde{A}=\hat{A}\otimes\hat{I}_{\mathrm{temp}}$.
+\end{lemma}
+\begin{proof}
+$\hat{P}$ et $\tilde A$ agissent sur des facteurs disjoints :
+$(\hat A\otimes\hat I)(\hat I\otimes\ket{a}\bra{a})=\hat A\otimes\ket{a}\bra{a}
+=(\hat I\otimes\ket{a}\bra{a})(\hat A\otimes\hat I)$.
+\end{proof}
+
+\begin{theorem}\label{thm:unit}\statut{preuve}
+$\hat{U}(\tau_0)\in\mathrm{U}(\Hext)$.
+\end{theorem}
+\begin{proof}
+$\hat{U}^\dagger=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger+\hat{Q}$. Alors
+$\hat{U}^\dagger\hat{U}
+=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\tilde{U}_{\mathrm{sys}}\hat{P}
++\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\hat{Q}
++\hat{Q}\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}^2$.
+Le terme~1 vaut $\hat P^2=\hat P$ ($\tilde U_{\mathrm{sys}}$ unitaire) ; les termes
+2 et 3 s'annulent par le Lemme~\ref{lem:comm} et $\hat P\hat Q=0$ ; le terme~4 vaut
+$\hat Q$. D'o\`u $\hat U^\dagger\hat U=\hat P+\hat Q=\Iext$, et sym\'etriquement
+$\hat U\hat U^\dagger=\Iext$.
+\end{proof}
+
+\begin{corollary}[cr\'eneau et hamiltonien effectif]\label{cor:floquet}\statut{preuve}
+$\hat U(\tau_0)$ co\"incide, sur la branche active, avec le propagateur du hamiltonien
+cr\'eneau $\hat H(t)=\chi(t)\Hsysop$ ($\chi\in\{0,1\}$, p\'eriode $\tau_0$). Pour
+$\Hsysop$ ind\'ependant du temps, chaque cycle applique sur la branche active le propagateur $\exp(-i\Hsysop\varepsilon\tau_0/\hbar)$, et la composition de $N$ cycles donne
+\[
+\hat U(N\tau_0)=\exp\!\big(-\tfrac{i}{\hbar}\,\varepsilon\Hsysop\,T\big),
+\quad T=N\tau_0,
+\qquad\Longrightarrow\qquad
+\boxed{\;\Heff=\varepsilon\,\Hsysop\;}
+\]
+(hamiltonien de Floquet), la limite continue \'etant imm\'ediate. Pour $\Hsysop(t)$,
+$\Heff=\varepsilon\bar{H}+O(\tau_0)$ (d\'eveloppement de Magnus).
+\end{corollary}
+
+\begin{scope}
+Le Th\'eor\`eme~\ref{thm:unit} est une \emph{garantie structurelle de coh\'erence} :
+toute \'evolution engendr\'ee par un g\'en\'erateur hermitien est unitaire. Deux
+cons\'equences cadrent le reste du document.
+\textbf{(U1)} L'unitarit\'e globale implique qu'\emph{aucune d\'ecoh\'erence ne d\'ecoule de
+l'intermittence seule} ; la d\'ecoh\'erence de~\S\ref{sec:deco} provient d'un ingr\'edient
+ajout\'e (\S\ref{sec:disp}). \textbf{(U2)} La d\'erivation fixe
+$\Heff=\varepsilon\Hsysop$ (prescription~B) ; ce choix structurel conditionne la
+ph\'enom\'enologie (\S\ref{sec:exp}).
+\end{scope}
+
+% ---------------------------------------------------------------------
+\section{D\'ephasage intrins\`eque}\label{sec:deco}
+\subsection{Origine du d\'ephasage : une extension explicite}\label{sec:disp}
+\statut{conjecture} Le calcul ci-dessous repose sur une \emph{extension
+ph\'enom\'enologique} : l'hypoth\`ese que les dur\'ees \'el\'ementaires varient l\'eg\`erement,
+$\tau_0^{(i)}=\tau_0+\xi_i$, $\langle\xi_i\rangle=0$,
+$\langle\xi_i\xi_j\rangle=(\delta\tau_0)^2\delta_{ij}$. Cette dispersion n'est
+\emph{pas} une cons\'equence du postulat fondamental ; moyenner sur $\{\xi_i\}$ est
+math\'ematiquement un canal de d\'ephasage classique. La nature physique de $\xi_i$
+d\'etermine le r\'egime de d\'ecoh\'erence --- point d\'ecisif, trait\'e ci-dessous.
+
+\subsection{Deux r\'egimes, deux conclusions}
+Soit $\Delta\Phi(T)=\sum_{i=1}^{N}\delta\phi_i(T)$ la phase relative accumul\'ee entre
+deux branches macroscopiquement distinctes. La d\'ecoh\'erence est d\'efinie par
+$\mathrm{Var}(\Delta\Phi(T_{\mathrm{dec}}))=1$. Mod\`ele : sur $T=n\tau_0$ cycles, la phase d'un constituant est $\phi=(\bar E/\hbar)\sum_j\tau_{\mathrm{actif}}^{(j)}$, sensible \`a la dispersion $\{\xi_i\}$ des dur\'ees de cycle.
+
+\paragraph{(a) Dispersion quasi-statique ($T_2^\ast$, refocalisable).} Si $\xi_i$ est
+\emph{fig\'e} par constituant, l'\'ecart de phase est \emph{corr\'el\'e} sur tous les cycles et cro\^it $\propto(\bar E/\hbar)(\delta\tau_0/\tau_0)\,T$ ; somm\'e sur $N$ constituants ind\'ependants, il donne une variance \emph{quadratique}
+\[
+\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar E/\hbar)^2\,(\delta\tau_0/\tau_0)^2\,T^2,
+\qquad
+T_{\mathrm{dec}}^{-1}\propto \sqrt{N}\,\frac{\delta\tau_0}{\tau_0^2},
+\]
+d\'ecroissance \emph{gaussienne}. \statut{num\'erique} Ce r\'egime est un d\'ephasage
+\emph{inhomog\`ene}, en principe \emph{refocalisable par \'echo} (de type Hahn) : il
+ne constitue donc \emph{pas} un plancher irr\'eductible.
+
+\paragraph{(b) Dispersion dynamique ($T_2$, irr\'eductible).} Si $\xi_i$ \emph{refluctue}
+de cycle en cycle (processus stochastique), l'\'ecart de phase effectue une \emph{marche al\'eatoire} de pas $(\bar E/\hbar)\delta\tau_0$ sur $n=T/\tau_0$ cycles (variance $\propto n$), d'o\`u une variance \emph{lin\'eaire} en
+$T$,
+\[
+\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar E/\hbar)^2\,(\delta\tau_0)^2\,\frac{T}{\tau_0},
+\qquad
+T_{\mathrm{dec}}^{-1}\propto N\,\frac{(\delta\tau_0)^2}{\tau_0^3},
+\]
+d\'ecroissance \emph{exponentielle}, \emph{non} refocalisable. \statut{num\'erique}
+\emph{Seul ce r\'egime} m\'erite le qualificatif d'« irr\'eductible ». Le pr\'efacteur
+d\'epend de l'\'energie caract\'eristique $\bar E$ (prise $\sim\hbar/\tau_0$ pour
+l'estimation) ; la valeur pr\'ecise reste \statut{ouvert}.
+
+\paragraph{Distinction avec la d\'ecoh\'erence environnementale.} Dans les deux cas, le
+pr\'efacteur ne d\'epend que de param\`etres \emph{intrins\`eques} ($\delta\tau_0,\tau_0,N$),
+non d'un bain externe ; un syst\`eme id\'ealement isol\'e du milieu se d\'ephaserait encore.
+Mais HDEQ \emph{est} un mod\`ele de bruit (intrins\`eque), conceptuellement voisin des
+mod\`eles d'effondrement spontan\'e (\S\ref{sec:pos}). Noter l'\emph{exposant en $N$} :
+$\sqrt N$ (statique) ou $N$ (dynamique), \`a comparer au scaling souvent lin\'eaire ou
+super-lin\'eaire des mod\`eles collisionnels --- point \`a exploiter pour la
+discrimination exp\'erimentale (\S\ref{sec:exp}).
+
+% ---------------------------------------------------------------------
+\section{S\'election de la base privil\'egi\'ee}\label{sec:base}
+
+\begin{definition}[amplitude de survie]
+Pour $\ket{\psi}\in\mathrm{Dom}(\Heff)$, $\lVert\psi\rVert=1$ :
+$A_\psi(t)=\bra{\psi}e^{-i\Heff t/\hbar}\ket{\psi}$. L'\'etat $\ket{\psi}$ est
+\emph{\'etat pointeur} (phase stable) ssi $\lvert A_\psi(t)\rvert=1$ pour tout $t$.
+\end{definition}
+
+\begin{proposition}\label{prop:base}\statut{preuve}
+$\lvert A_\psi(t)\rvert=1\ \forall t\iff\ket{\psi}$ est \'etat propre de $\Heff$.
+\end{proposition}
+\begin{proof}
+$(\Leftarrow)$ imm\'ediat. $(\Rightarrow)$ par Cauchy--Schwarz,
+$\lvert A_\psi(t)\rvert\le\lVert\psi\rVert\,\lVert e^{-i\Heff t/\hbar}\psi\rVert=1$,
+avec \'egalit\'e ssi $e^{-i\Heff t/\hbar}\ket{\psi}=\lambda(t)\ket{\psi}$,
+$\lvert\lambda(t)\rvert=1$. Comme $\ket{\psi}\in\mathrm{Dom}(\Heff)$, le th\'eor\`eme de
+Stone donne la d\'erivabilit\'e en $t=0$ :
+$-\tfrac{i}{\hbar}\Heff\ket{\psi}=\lambda'(0)\ket{\psi}$, soit
+$\Heff\ket{\psi}=(i\hbar\lambda'(0))\ket{\psi}$ (valeur propre r\'eelle).
+\end{proof}
+
+\begin{corollary}[d\'efaut de module \`a l'ordre $\tau_0^2$]\statut{preuve}
+Le d\'eveloppement \`a temps court $A_\psi(t)=1-\tfrac{i}{\hbar}\langle\Heff\rangle t-\tfrac{1}{2\hbar^2}\langle\Heff^2\rangle t^2+O(t^3)$ donne $\lvert A_\psi(t)\rvert^2=1-(\Delta H_{\mathrm{eff}}/\hbar)^2 t^2+O(t^4)$, avec
+$(\Delta H_{\mathrm{eff}})^2=\langle\Heff^2\rangle-\langle\Heff\rangle^2$. Le d\'efaut
+s'annule ssi $\ket{\psi}$ est \'etat propre, co\"incidant avec la borne de Zénon \`a
+temps court.
+\end{corollary}
+
+\begin{scope}
+Le crit\`ere s\'electionne $\mathrm{Spec}(\Heff)$. \textbf{(1)} Avec
+$\Heff=\varepsilon\Hsysop$, c'est la base d'\emph{\'energie} de $\Hsysop$. Si
+$\Heff=\hat H_S+\hat H_A+\hat H_{SA}$ inclut un couplage de mesure \emph{fort}, ses
+\'etats propres approchent la base d'interaction, donc les pointeurs d'einselection ;
+en r\'egime \emph{libre/faible}, la base d'\'energie en \emph{diff\`ere} (base
+quasi-localis\'ee). La s\'election est donc \emph{d\'ependante du r\'egime}
+\statut{conjecture}. \textbf{(2)} M\'ecanisme de type Zénon : le gating stabilise la
+base propre du g\'en\'erateur. \textbf{(3)} La Proposition identifie une \emph{base},
+non la s\'election d'un r\'esultat unique ni la r\`egle de Born.
+\end{scope}
+
+% ---------------------------------------------------------------------
+\section{La r\`egle de Born comme postulat heuristique}
+\statut{ouvert} Une d\'erivation rigoureuse de la r\`egle de Born \`a partir d'un cadre
+dynamique reste un probl\`eme ouvert pour tous les cadres connus (Gleason suppose la
+structure mesure-th\'eorique ; Deutsch--Wallace des axiomes de rationalit\'e ; Zurek une
+structure d'intrication). HDEQ ne rompt pas cette impasse : la fr\'equence des
+r\'esultats est prise comme postulat heuristique. Une analyse de port\'ee pr\'ecise ce statut (\S\ref{sec:portee-q}) : Born est h\'erit\'e de la quantification canonique standard, non d\'eriv\'e du secteur d'\'echelle.
+
+% ---------------------------------------------------------------------
+\section{Directions exp\'erimentales}\label{sec:exp}
+\subsection{Direction I : d\'ephasage intrins\`eque par interf\'erom\'etrie}
+\statut{num\'erique} La signature \emph{primaire} du cadre. Sa nature d\'epend du r\'egime
+de~\S\ref{sec:deco} : un plancher \emph{irr\'eductible} suppose une dispersion
+\emph{dynamique} (cas b, d\'ecroissance exponentielle, $T_{\mathrm{dec}}^{-1}\propto
+N(\delta\tau_0)^2/\tau_0^3$) ; le cas statique (a) est en principe annulable par \'echo
+et ne constitue pas un test fondamental. L'interf\'erom\'etrie mol\'eculaire ($\sim$25\,000~amu
+aujourd'hui ; extension vis\'ee $10^6$--$10^8$~amu en ultra-vide cryog\'enique) doit
+\emph{s\'eparer le scaling en $N$} de HDEQ ($\sqrt N$ ou $N$ selon le r\'egime) de celui
+du bruit r\'esiduel, \`a $N$ fix\'e et avec calibration ind\'ependante de $\Gamma_{\mathrm{env}}$.
+
+\subsection{Direction II : transitions atomiques --- non discriminante sous le cadre consistant}
+\statut{ouvert} \emph{Deux prescriptions de gating.} \textbf{(A)} gater la seule
+interaction $\hat H_{\mathrm{int}}$ (\'evolution libre maintenue) : la r\`egle d'or donne
+$\Gamma=|\langle f|\varepsilon\hat H_{\mathrm{int}}|i\rangle|^2\rho
+=\varepsilon^2\Gamma_{\mathrm{QED}}$, fr\'equences inchang\'ees. \textbf{(B)} gater tout
+$\Hsysop$ : $\Heff=\varepsilon\Hsysop$ r\'e\'echelonne \emph{toutes} les \'energies.
+\begin{itemize}
+\item Le postulat fondamental, d\'eriv\'e proprement (Cor.~\ref{cor:floquet}), \emph{est}
+la prescription~B. La prescription~A requiert un \emph{ingr\'edient suppl\'ementaire}
+(gating s\'electif de l'interaction) non contenu dans le postulat unique.
+\item Sous B, tout rapport de fr\'equences ou de taux vaut $\nu_1/\nu_2=\omega_1/\omega_2$ :
+$\varepsilon$ \emph{s'annule}. Un $\varepsilon$ universel est donc \emph{inobservable}
+en spectroscopie comparative, y compris par les meilleures horloges (incertitude
+$3\times10^{-18}$). Le secteur spectroscopique est non discriminant.
+\item La relation $\Gamma=\varepsilon^2\Gamma_{\mathrm{QED}}$ et la relation centrale
+$\Heff=\varepsilon\Hsysop$ \emph{ne sont pas simultan\'ement coh\'erentes} : elles
+appartiennent \`a des prescriptions diff\'erentes. Adopter B (coh\'erence structurelle)
+rend la Direction~II \emph{nulle} ; adopter A en fait une pr\'ediction \emph{conditionnelle}
+\`a un postulat additionnel.
+\end{itemize}
+\emph{Conclusion :} sauf \`a motiver ind\'ependamment la prescription~A, la
+spectroscopie atomique ne contraint pas HDEQ. C'est coh\'erent avec la non-observabilit\'e
+des horloges. La transition d'horloge E3 de $^{171}$Yb$^+$ (sub-Hz) serait de toute
+fa\c{c}on inutilisable.
+
+\subsection{Direction III (exploratoire) : r\'esonances stroboscopiques}
+\statut{sp\'eculation} Par analogie avec Floquet ($\Omega_F=\varepsilon\Omega_R$), des
+structures p\'eriodiques pourraient appara\^itre \`a $\Delta E=2\pi\hbar/\tau_0$. Amplitude,
+transcription boost-invariante et confrontation aux donn\'ees restent ouvertes.
+
+% ---------------------------------------------------------------------
+\section{Extension \`a la th\'eorie quantique des champs}
+\statut{preuve} Soit $\mathcal{F}_{\mathrm{ext}}=\mathcal{F}_{\mathrm{sys}}\otimes\Htemp$.
+Les op\'erateurs de cr\'eation/annihilation commutent avec les projecteurs
+($[\hat P,\hat a(p)]=0$, $\hat P$ agissant comme l'identit\'e sur la partie syst\`eme) ;
+les relations canoniques \`a temps \'egaux sont pr\'eserv\'ees.
+\emph{Identification ontologique} \statut{conjecture} : les phases inactives
+\emph{pourraient} s'identifier aux fluctuations du vide ; cette lecture est distincte du
+formalisme de niveau~I, qui reste valable ind\'ependamment.
+\emph{Port\'ee UV} \statut{preuve} : HDEQ ne porte pas de coupure UV dynamique \`a
+$\Lambda_{\mathrm{UV}}=\hbar/\tau_0$ --- une telle coupure serait intenable
+(LHAASO/GRB~221009A $E_{\mathrm{QG},1}\gtrsim10\,E_{\mathrm{Planck}}$~\statut{\`a v\'erifier} ;
+$g-2$ \'electron et muon). Le niveau~I (unitarit\'e, base privil\'egi\'ee, d\'ephasage) est
+ind\'ependant de cette question.
+
+% ---------------------------------------------------------------------
+\section{Positionnement : NCG, CSL, Zénon, Trotter}\label{sec:pos}
+\textbf{G\'eom\'etrie non commutative.} Le programme de Connes et le flot modulaire de
+Connes--Rovelli partagent avec HDEQ le rejet du temps continu comme donn\'ee premi\`ere
+et la d\'ecoh\'erence sans bain spatial ; $\hat P(\tau_0)$ pourrait s'interpr\'eter comme
+un \'echantillonnage discret de l'automorphisme modulaire de Tomita--Takesaki
+\statut{conjecture}.
+\textbf{Mod\`eles d'effondrement (CSL/GRW).} La d\'ecoh\'erence-par-dispersion de
+\S\ref{sec:deco} est math\'ematiquement un canal de d\'ephasage stochastique, proche de
+CSL \emph{sans saut} : HDEQ pr\'eserve l'unitarit\'e globale (sur $\Hext$) l\`a o\`u CSL
+ajoute un bruit non unitaire sur $\Hsys$. Distinction \`a expliciter \statut{conjecture}.
+\textbf{Dynamique de Zénon.} La Proposition~\ref{prop:base} est une stabilisation de
+type Zénon (le sous-espace propre du g\'en\'erateur est stabilis\'e par le gating r\'ep\'et\'e).
+\textbf{Trotter.} Le formalisme gat\'e est formellement une \'evolution de Trotter avec
+pas « idle » ; la sp\'ecificit\'e de HDEQ est l'\emph{interpr\'etation ontologique} (existence
+active intermittente) et la dispersion $\delta\tau_0$, non le d\'ecoupage temporel
+lui-m\^eme \statut{heuristique}.
+
+% ---------------------------------------------------------------------
+\section{Discussion, limites et port\'ee}
+\subsection{Port\'ee vis-\`a-vis de la question d'unification}
+HDEQ \'etablit le m\'ecanisme du \emph{secteur quantique} --- existence
+intermittente, d\'ephasage intrins\`eque, s\'election de la base privil\'egi\'ee --- et
+fournit le facteur d'existence $\varepsilon$ et la structure de gating. Il ne
+porte \emph{pas}, \`a lui seul, sur la question « la gravitation est-elle
+quantique ? ». Dans le cadre o\`u la m\'etrique $g_{\mu\nu}$ demeure un champ
+\emph{classique} (action tenseur-scalaire en $\tfrac12 fR$, $\Omega=\sqrt f$
+reliant les cadres de Jordan et d'Einstein), le couplage gravit\'e$\,\leftrightarrow\,$quantique
+entre par la modulation $\tau_0(R)=2\pi\sqrt{\omega/(\alpha+\tfrac12\beta
+M_{\mathrm{Pl}}^2 R)}$, dont l'effet dynamique
+$\delta\tau_0/\tau_0=-(\beta/4)M_{\mathrm{Pl}}^2 R/\alpha$ est inobservable dans
+la mati\`ere ($\sim10^{-81}$) et ne devient d\'eterminant qu'\`a la courbure critique
+$R_c=2\alpha/|\beta|$. Le traitement de cette question rel\`eve d'un niveau de
+\emph{synth\`ese} ult\'erieur, o\`u tous les secteurs sont dans le p\'erim\`etre ; la
+m\'etrique y restant classique, le cadre prend une position \emph{falsifiable} (absence
+d'intrication induite gravitationnellement). Le pr\'esent travail en est un
+\emph{pr\'erequis quantique}, non une r\'eponse. \statut{ouvert}
+
+\subsection{Limitations honn\^etes}
+\begin{itemize}
+\item $\tau_0$ et $\varepsilon$ sont ph\'enom\'enologiques, non d\'eriv\'es de premiers principes (une origine g\'eom\'etrique est conjectur\'ee, cf.\ \S\ref{sec:origine}).
+\item La dispersion $\xi_i$ et l'hypoth\`ese gaussienne sont des couches explicites ; le caract\`ere « irr\'eductible » exige le r\'egime \emph{dynamique} (\S\ref{sec:deco}b).
+\item Le Th\'eor\`eme~\ref{thm:unit} est structurel : il ne produit pas la d\'ecoh\'erence.
+\item Le crit\`ere de base privil\'egi\'ee d\'epend du r\'egime (\S\ref{sec:base}).
+\item La s\'election d'une branche unique n'est pas r\'esolue ; la r\`egle de Born est heuristique (cf.\ port\'ee, \S\ref{sec:portee-q}).
+\item Le secteur spectroscopique est non discriminant sous la prescription consistante (B).
+\end{itemize}
+
+\subsection{Origine de $\varepsilon$ et $\tau_0$ : une direction g\'eom\'etrique}\label{sec:origine}
+\statut{conjecture} HDEQ laisse $\varepsilon,\tau_0$ libres. Une origine g\'eom\'etrique
+est conjectur\'ee : l'oscillation d'un champ d'\'echelle compactifi\'e $\chi$, lu comme
+horloge relationnelle de Page--Wootters, engendrerait le cr\'eneau et fixerait
+\[
+\varepsilon=\langle\cos^2(\chi/2)\rangle=\frac{E(k)}{K(k)},\quad
+k=\sin(\chi_{\max}/2),\qquad
+\tau_0=2\pi\sqrt{\omega/\alpha}\approx3{,}5\times10^{-37}\ \mathrm{s}.
+\]
+\statut{preuve} Si cette origine est retenue, l'identit\'e se d\'erive exactement. R\'eduction homog\`ene ($\chi=\chi(t)$) : $\mathcal L_\chi=\tfrac12\omega\dot\chi^2-\alpha(1-\cos\chi)$ ; Euler--Lagrange donne $\omega\ddot\chi+\alpha\sin\chi=0$, et l'int\'egrale premi\`ere (avec $\dot\chi=0$ en $\chi_{\max}$) $\dot\chi=\sqrt{2\alpha/\omega}\,\sqrt{\cos\chi-\cos\chi_{\max}}$. Avec $k=\sin(\chi_{\max}/2)$ et la substitution $\sin(\chi/2)=k\sin\varphi$,
+\[
+dt=\sqrt{\tfrac{\omega}{\alpha}}\,\frac{d\varphi}{\sqrt{1-k^2\sin^2\varphi}},\qquad
+\tau_0=4\sqrt{\tfrac{\omega}{\alpha}}\,K(k),\qquad
+\varepsilon=\frac{\int_0^{\pi/2}\!\sqrt{1-k^2\sin^2\varphi}\,d\varphi}{\int_0^{\pi/2}\!d\varphi/\sqrt{1-k^2\sin^2\varphi}}=\frac{E(k)}{K(k)},
+\]
+la derni\`ere \'egalit\'e car $\cos^2(\chi/2)=1-k^2\sin^2\varphi$ (les $\sqrt{\omega/\alpha}$ se simplifient). La machinerie pendule/int\'egrales elliptiques est classique~\cite{Landau}. \`A petite amplitude ($k\to0$) : $\tau_0\to2\pi\sqrt{\omega/\alpha}$ et $\varepsilon\to1-\chi_{\max}^2/8$ ; \`a la s\'eparatrice ($\chi_{\max}\to\pi\equiv\infty^*$, $k\to1$) : $K\to\infty$, $\varepsilon\to0$ (suspension).
+Au vide $\varepsilon\to1$, rendant les effets intermittents inobservables.
+
+\subsection{Port\'ee du secteur quantique : un m\'ecanisme g\'eom\'etrique du temps construit sur la MQ}\label{sec:portee-q}
+\statut{preuve} HDEQ niveau-I h\'erite la r\`egle de Born de sa quantification canonique standard ; il ne la d\'erive pas et ne s'en \'ecarte pas. D\`es que le secteur quantique est un espace de Hilbert complexe muni d'une dynamique unitaire (Th\'eor\`eme~\ref{thm:unit}), les d\'erivations structurelles usuelles (Gleason~\cite{Gleason} ; Masanes--Galley--M\"uller~\cite{MGM}) s'appliquent. Le secteur d'\'echelle, lui, est enti\`erement r\'eel : le champ $\chi$ est un angle r\'eel sur $S^1_\chi$ gouvern\'e par un lagrangien de pendule, $\mathcal{L}_\chi=-\tfrac12\omega(\partial\chi)^2-\alpha(1-\cos\chi)$, et le facteur d'existence $\varepsilon=\langle\cos^2(\chi/2)\rangle=E(k)/K(k)$ y est une moyenne temporelle r\'eelle \statut{preuve}. L'unit\'e imaginaire n'entre qu'apr\`es la g\'eom\'etrie, en deux points : \`a la quantification de $\chi$ (\'equation de Mathieu/Schr\"odinger) et au passage relationnel de Page--Wootters, $\hat H_{\mathrm{eff}}=\varepsilon\hat H_{\mathrm{sys}}$, qui pr\'esuppose une horloge d\'ej\`a quantique.
+
+Que cette fronti\`ere soit de principe, non une lacune, tient \`a deux arguments ind\'ependants. (i) \emph{Interne} : la sym\'etrie inter-secteurs $\mathbb{Z}_2\times\mathbb{Z}_2$ est discr\`ete ; le th\'eor\`eme de Noether ne s'y applique pas, donc aucun courant bilin\'eaire $j^0\sim\psi^*\psi$ n'en d\'ecoule (le courant associ\'e \`a la p\'eriodicit\'e de l'angle r\'eel est lin\'eaire en $\partial\chi$, une impulsion d'\'echelle). (ii) \emph{Externe} : sous la r\`egle de composition standard, une formulation r\'eelle de la th\'eorie quantique fait des pr\'edictions distinctes de la formulation complexe, ce que l'exp\'erience tranche en faveur du complexe~\cite{Renou,Chen} ; l'unit\'e imaginaire est donc empiriquement requise, non extractible d'un lagrangien r\'eel seul.
+
+\emph{\'Enonc\'e de port\'ee.} La fermeture d'\'echelle explique l'horloge, le temps relationnel et le facteur d'existence $\varepsilon$ --- tous r\'eels et d\'eriv\'es. Elle n'explique pas l'origine de la structure complexe. \textbf{HDEQ est donc un m\'ecanisme g\'eom\'etrique du temps construit sur la m\'ecanique quantique, et non une d\'erivation de la m\'ecanique quantique depuis la fermeture d'\'echelle.}
+
+\subsection{Conclusion}
+HDEQ propose un cadre m\'ecaniste pour la s\'election structurelle de la base privil\'egi\'ee
+et pour un d\'ephasage intrins\`eque, pr\'eservant l'unitarit\'e globale par construction et
+compatible avec les contraintes ph\'enom\'enologiques actuelles. Ses revendications sont
+calibr\'ees : l'unitarit\'e est structurelle ; la d\'ecoh\'erence « irr\'eductible » suppose une
+dispersion dynamique ; la spectroscopie atomique est non discriminante sous la
+prescription consistante. La signature primaire testable est le d\'ephasage intrins\`eque
+en interf\'erom\'etrie de masse. L'origine de $\varepsilon,\tau_0$ pourrait \^etre port\'ee
+par une g\'eom\'etrie d'\'echelle compactifi\'ee --- direction laiss\'ee \`a un d\'eveloppement
+ult\'erieur, sous la port\'ee pr\'ecis\'ee au \S\ref{sec:portee-q}.
+
+% ---------------------------------------------------------------------
+\paragraph{Index des symboles.}
+$\varepsilon$ facteur d'existence ; $\tau_0$ dur\'ee de cycle ; $\hat P,\hat Q$
+projecteurs actif/inactif ; $\Heff=\varepsilon\Hsysop$ hamiltonien effectif ;
+$\delta\tau_0$ dispersion intrins\`eque ; $N$ nombre de constituants ; $\chi(t)$
+cr\'eneau ; $\Gamma$ taux de transition.
+
+\paragraph{Balises.} Les r\'esultats \statut{preuve} (Th\'eor\`eme~\ref{thm:unit},
+Corollaire~\ref{cor:floquet}, Proposition~\ref{prop:base}) sont d\'emontr\'es dans le
+corps. Les estimations de \S\ref{sec:deco} sont \statut{num\'erique}/\statut{ouvert}.
+Les r\'ef\'erences externes marqu\'ees \statut{\`a v\'erifier} (bornes LHAASO, valeurs $g-2$
+r\'ecentes) doivent faire l'objet d'une v\'erification bibliographique finale avant d\'ep\^ot.
+
+% ---------------------------------------------------------------------
+\section*{Reproductibilit\'e}
+Les \'enonc\'es \statut{num\'erique} et la v\'erification symbolique des r\'esultats
+\statut{preuve} sont reproduits par un script autonome (NumPy/SciPy), aux sections
+cod\'ees pour \^etre propres \`a ce document :
+\begin{itemize}
+\item[{\texttt{[H1]}}] Th\'eor\`eme~\ref{thm:unit} : v\'erification de l'unitarit\'e globale $\hat U^\dagger\hat U=\Iext$ et de la composition $\hat U(N\tau_0)=e^{-i\varepsilon\Hsysop N\tau_0}$ sur la branche active ($\Heff=\varepsilon\Hsysop$).
+\item[{\texttt{[H2]}}] Proposition~\ref{prop:base} : amplitude de survie $|A_\psi(t)|=1$ pour un \'etat propre, $<1$ sinon, et accord du coefficient en $t^2$ avec $(\Delta H_{\mathrm{eff}})^2$.
+\item[{\texttt{[H3]}}] D\'ephasage : Monte-Carlo des deux r\'egimes --- exposant en $T$ valant $2$ (quasi-statique, gaussien, refocalisable) et $1$ (dynamique, exponentiel, irr\'eductible), variance $\propto N$ dans les deux cas.
+\item[{\texttt{[H4]}}] Constantes : $\eta_{\mathrm{sp}}$, $\varepsilon=E(k)/K(k)$ (avec $\varepsilon\to1$ quand $k\to0$), \'echelles $\hbar/\tau_0$ et $2\pi\hbar/\tau_0$.
+\end{itemize}
+Fichier : \texttt{U1\_HDEQ\_reproductible.py}. \emph{Convention} : $\hbar=\tau_0=1$ sauf
+mention contraire. Le pr\'efixe \texttt{U1\_HDEQ\_} et les codes \texttt{[H$\cdot$]} sont
+sp\'ecifiques \`a ce document, pour \'eviter toute collision avec d'autres jeux de scripts.
+
+\begin{thebibliography}{99}
+\bibitem{vN} J. von Neumann, \textit{Mathematische Grundlagen der Quantenmechanik} (Springer, 1932).
+\bibitem{GRW} G. C. Ghirardi, A. Rimini \& T. Weber, \textit{Phys. Rev. D} \textbf{34}, 470 (1986).
+\bibitem{Bassi} A. Bassi \textit{et al.}, \textit{Rev. Mod. Phys.} \textbf{85}, 471 (2013).
+\bibitem{Zurek} W. H. Zurek, \textit{Rev. Mod. Phys.} \textbf{75}, 715 (2003).
+\bibitem{Gleason} A. M. Gleason, \textit{J. Math. Mech.} \textbf{6}, 885 (1957).
+\bibitem{CL} A. O. Caldeira \& A. J. Leggett, \textit{Physica A} \textbf{121}, 587 (1983).
+\bibitem{JZ} E. Joos \& H. D. Zeh, \textit{Z. Phys. B} \textbf{59}, 223 (1985).
+\bibitem{Fein} Y. A. Fein \textit{et al.}, \textit{Nature Phys.} \textbf{15}, 1242 (2019).
+\bibitem{Fan} X. Fan \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{130}, 071801 (2023). \statut{\`a v\'erifier}
+\bibitem{CR} A. Connes \& C. Rovelli, \textit{Class. Quantum Grav.} \textbf{11}, 2899 (1994).
+\bibitem{PW} D. N. Page \& W. K. Wootters, \textit{Phys. Rev. D} \textbf{27}, 2885 (1983).
+\bibitem{Huntemann} N. Huntemann \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{116}, 063001 (2016).
+\bibitem{LHAASO} Collaboration LHAASO, contrainte de violation de Lorentz sur GRB~221009A. \statut{\`a v\'erifier}
+\bibitem{MGM} L. Masanes, T. D. Galley \& M. P. M\"uller, \textit{Nat. Commun.} \textbf{10}, 1361 (2019).
+\bibitem{Renou} M.-O. Renou \textit{et al.}, \textit{Nature} \textbf{600}, 625 (2021).
+\bibitem{Chen} M.-C. Chen \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{128}, 040403 (2022).
+\bibitem{Landau} L. D. Landau \& E. M. Lifchitz, \textit{M\'ecanique} (Mir, 1969).
+\end{thebibliography}
+
+\end{document}

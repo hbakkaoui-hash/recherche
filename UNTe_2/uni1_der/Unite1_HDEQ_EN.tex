@@ -1,0 +1,482 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.4cm}
+\usepackage{hyperref}
+
+% ---- Macros ----------------------------------------------------------
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\vert #2\rangle}
+\newcommand{\Hext}{\mathcal{H}_{\mathrm{ext}}}
+\newcommand{\Hsys}{\mathcal{H}_{\mathrm{sys}}}
+\newcommand{\Htemp}{\mathcal{H}_{\mathrm{temp}}}
+\newcommand{\Usys}{\hat{U}_{\mathrm{sys}}}
+\newcommand{\Hsysop}{\hat{H}_{\mathrm{sys}}}
+\newcommand{\Heff}{\hat{H}_{\mathrm{eff}}}
+\newcommand{\Iext}{\hat{I}_{\mathrm{ext}}}
+\newcommand{\Isys}{\hat{I}_{\mathrm{sys}}}
+\newcommand{\statut}[1]{{\footnotesize\textsf{[#1]}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{scope}{Scope}
+
+\title{\textbf{Unit 1 --- Existence Discontinuity of Quantum Particles}\\[2pt]
+\large Intermittent existence, intrinsic dephasing and selection of the preferred basis (HDEQ)}
+\author{Hassane Bakkaoui\\ \small Independent researcher --- bakkahassa@hotmail.com}
+\date{\small June 2026 $\cdot$ standalone document (quant-ph)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We introduce the \emph{Hypothesis of Quantum Existence Discontinuity} (HDEQ):
+the active existence of a quantum system is intermittent. Within a continuous
+time, the evolution alternates, in cycles of characteristic duration $\tau_0$,
+between an active phase of Hamiltonian dynamics and an inactive phase of
+dynamical suspension. Four points are established, with particular care given to
+the scope of each statement.
+\textbf{(i)} The intermittent evolution, implemented by a controlled gating
+$\hat{U}(\tau_0)$ on $\Hext=\Hsys\otimes\Htemp$, is \emph{globally unitary}
+(Theorem~1, \statut{proof}). This unitarity is \emph{structural}: it guarantees
+internal consistency but by itself produces no decoherence.
+\textbf{(ii)} A phase-stability criterion selects, as the preferred basis, the
+eigenstates of the effective Hamiltonian $\Heff$ (Proposition~1, \statut{proof});
+we specify the regime where this basis coincides with the einselection pointer
+states and the regime where it differs.
+\textbf{(iii)} Decoherence arises \emph{not} from intermittency but from an
+extension: a dispersion $\delta\tau_0$ of the cycle durations, which acts as a
+parametric dephasing channel. Depending on whether $\delta\tau_0$ is
+quasi-static or dynamically stochastic, one obtains either a refocusable
+inhomogeneous dephasing ($T_2^\ast$, Gaussian) or an irreversible decoherence
+floor ($T_2$, exponential); only the latter deserves the label « irreducible »
+\statut{numerical}.
+\textbf{(iv)} Taken in a structurally consistent way (the effective Hamiltonian
+is $\Heff=\varepsilon\Hsysop$, « prescription B »), HDEQ renders a universal
+factor $\varepsilon$ \emph{unobservable} in ratios of frequencies and rates; the
+relation $\Gamma_{\mathrm{HDEQ}}=\varepsilon^2\Gamma_{\mathrm{QED}}$ belongs to a
+\emph{distinct prescription} (A), not derivable from the postulate alone, and is
+not simultaneously consistent with~(i)--(ii). The spectroscopic sector is therefore
+non-discriminating; the primary signature is the intrinsic dephasing of~(iii).
+The existence factor $\varepsilon$ and the period $\tau_0$ are here
+phenomenological; a possible geometric origin ($\varepsilon=E(k)/K(k)$) is
+sketched in the conclusion. The framework does not claim to solve the measurement
+problem in its strong form.
+\par\smallskip
+\noindent\textit{Status:} \statut{proof} exact $\cdot$ \statut{numerical} reproducible $\cdot$
+\statut{conjecture} argued $\cdot$ \statut{heuristic} analogy $\cdot$
+\statut{speculation} $\cdot$ \statut{to check} external ref. $\cdot$
+\statut{open} to be established.
+\end{abstract}
+
+% ---------------------------------------------------------------------
+\section{Methodological note}
+This manuscript results from a particular methodology. The original intuition
+was formulated by the author around 1990; its mathematical framing was carried
+out in an iterative dialogue with analytic-assistance systems, under the
+author's direction and supervision. Each statement carries an epistemic status
+label; the results labelled \statut{proof} (Theorem~1, Proposition~1) are
+proved explicitly in the body (\S\ref{sec:cadre}, \S\ref{sec:base}). Final
+scientific validation belongs to the experimental community; full responsibility
+for the content rests with the author.
+
+% ---------------------------------------------------------------------
+\section{Introduction}
+\subsection{Original intuition}
+In a hydrogen atom, the nucleus ($R_{\mathrm{nuc}}\approx1.2\times10^{-15}$~m)
+occupies, within the atomic volume ($R_{\mathrm{at}}\approx0.5\times10^{-10}$~m), a
+minute fraction of space: $\eta_{\mathrm{sp}}\equiv(R_{\mathrm{nuc}}/R_{\mathrm{at}})^3
+\approx1.4\times10^{-14}$. \statut{heuristic} By dimensional analogy: if the
+existence of matter is sparse along the spatial dimension, let us examine an
+analogous intermittency of its \emph{active} existence along the temporal
+dimension --- not a granularity of time, but a dynamical activity that switches
+on and off within a continuous time. The role of $\eta_{\mathrm{sp}}$ is strictly
+heuristic, not a mathematical input of HDEQ.
+
+\subsection{Statement of the postulate}
+We introduce the existence factor $\varepsilon\equiv\tau_{\mathrm{active}}/\tau_0\in(0,1]$,
+where $\tau_0$ is the cycle duration and $\tau_{\mathrm{active}}=\varepsilon\tau_0$ the
+active fraction. The complementary fraction $(1-\varepsilon)\tau_0$ is a dynamical
+suspension. $\varepsilon\to1$ recovers continuous evolution; $\varepsilon\ll1$
+corresponds to a maximally intermittent existence.
+
+\subsection{What HDEQ addresses and does not address}
+HDEQ proposes a structural mechanism for (a) the selection of the preferred basis
+and (b) an intrinsic dephasing requiring no \emph{spatial bath}. It does not claim
+to derive the Born rule, nor to solve the selection of a single branch.
+\emph{Framing caveat}: the decoherence of~\S\ref{sec:deco} arises from a stochastic
+dispersion of $\tau_0$, which is mathematically a classical noise channel; « without
+environment » here means « without spatial bath », not « without any source of noise ».
+
+% ---------------------------------------------------------------------
+\section{Formal framework and unitarity}\label{sec:cadre}
+\subsection{Postulate and enlarged Hilbert space}
+Evolution proceeds in cycles of duration $\tau_0$: during $\varepsilon\tau_0$ the
+system evolves unitarily under $\Hsysop$; during $(1-\varepsilon)\tau_0$ its
+evolution is suspended. The time parameter remains continuous; it is the
+\emph{action} of $\Hsysop$ that is intermittent. We introduce
+\[
+\Htemp=\mathrm{span}\{\ket{a},\ket{i}\},\quad
+\Hext=\Hsys\otimes\Htemp,\quad
+\hat{P}=\Isys\otimes\ket{a}\bra{a},\;\;
+\hat{Q}=\Isys\otimes\ket{i}\bra{i},
+\]
+with $\hat{P}^2=\hat{P}$, $\hat{Q}^2=\hat{Q}$, $\hat{P}\hat{Q}=\hat{Q}\hat{P}=0$,
+$\hat{P}+\hat{Q}=\Iext$. We set $\Usys=\exp(-i\Hsysop\varepsilon\tau_0/\hbar)$ and
+the lift $\tilde{U}_{\mathrm{sys}}=\Usys\otimes\hat{I}_{\mathrm{temp}}$.
+
+\subsection{Theorem 1 (global unitarity)}
+
+\begin{definition}[cycle propagator]
+$\hat{U}(\tau_0)=\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}
+=\Usys\otimes\ket{a}\bra{a}+\Isys\otimes\ket{i}\bra{i}$: system evolution on the
+active branch, identity on the inactive branch (controlled gating).
+\end{definition}
+
+\begin{lemma}[tensor commutation]\label{lem:comm}
+$[\hat{P},\tilde{A}]=[\hat{Q},\tilde{A}]=0$ for $\tilde{A}=\hat{A}\otimes\hat{I}_{\mathrm{temp}}$.
+\end{lemma}
+\begin{proof}
+$\hat{P}$ and $\tilde A$ act on disjoint factors:
+$(\hat A\otimes\hat I)(\hat I\otimes\ket{a}\bra{a})=\hat A\otimes\ket{a}\bra{a}
+=(\hat I\otimes\ket{a}\bra{a})(\hat A\otimes\hat I)$.
+\end{proof}
+
+\begin{theorem}\label{thm:unit}\statut{proof}
+$\hat{U}(\tau_0)\in\mathrm{U}(\Hext)$.
+\end{theorem}
+\begin{proof}
+$\hat{U}^\dagger=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger+\hat{Q}$. Then
+$\hat{U}^\dagger\hat{U}
+=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\tilde{U}_{\mathrm{sys}}\hat{P}
++\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\hat{Q}
++\hat{Q}\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}^2$.
+Term~1 equals $\hat P^2=\hat P$ ($\tilde U_{\mathrm{sys}}$ unitary); terms 2 and 3
+vanish by Lemma~\ref{lem:comm} and $\hat P\hat Q=0$; term~4 equals $\hat Q$. Hence
+$\hat U^\dagger\hat U=\hat P+\hat Q=\Iext$, and symmetrically
+$\hat U\hat U^\dagger=\Iext$.
+\end{proof}
+
+\begin{corollary}[gating and effective Hamiltonian]\label{cor:floquet}\statut{proof}
+$\hat U(\tau_0)$ coincides, on the active branch, with the propagator of the
+square-wave Hamiltonian $\hat H(t)=\chi(t)\Hsysop$ ($\chi\in\{0,1\}$, period
+$\tau_0$). For time-independent $\Hsysop$, each cycle applies on the active branch the propagator $\exp(-i\Hsysop\varepsilon\tau_0/\hbar)$, and composing $N$ cycles gives
+\[
+\hat U(N\tau_0)=\exp\!\big(-\tfrac{i}{\hbar}\,\varepsilon\Hsysop\,T\big),
+\quad T=N\tau_0,
+\qquad\Longrightarrow\qquad
+\boxed{\;\Heff=\varepsilon\,\Hsysop\;}
+\]
+(Floquet Hamiltonian), the continuous limit being immediate. For $\Hsysop(t)$,
+$\Heff=\varepsilon\bar{H}+O(\tau_0)$ (Magnus expansion).
+\end{corollary}
+
+\begin{scope}
+Theorem~\ref{thm:unit} is a \emph{structural consistency guarantee}: any
+evolution generated by a Hermitian generator is unitary. Two consequences frame
+the rest of the document.
+\textbf{(U1)} Global unitarity implies that \emph{no decoherence follows from
+intermittency alone}; the decoherence of~\S\ref{sec:deco} arises from an added
+ingredient (\S\ref{sec:disp}). \textbf{(U2)} The derivation fixes
+$\Heff=\varepsilon\Hsysop$ (prescription~B); this structural choice conditions the
+phenomenology (\S\ref{sec:exp}).
+\end{scope}
+
+% ---------------------------------------------------------------------
+\section{Intrinsic dephasing}\label{sec:deco}
+\subsection{Origin of the dephasing: an explicit extension}\label{sec:disp}
+\statut{conjecture} The computation below rests on a \emph{phenomenological
+extension}: the assumption that the elementary durations vary slightly,
+$\tau_0^{(i)}=\tau_0+\xi_i$, $\langle\xi_i\rangle=0$,
+$\langle\xi_i\xi_j\rangle=(\delta\tau_0)^2\delta_{ij}$. This dispersion is
+\emph{not} a consequence of the fundamental postulate; averaging over $\{\xi_i\}$
+is mathematically a classical dephasing channel. The physical nature of $\xi_i$
+determines the decoherence regime --- a decisive point, treated below.
+
+\subsection{Two regimes, two conclusions}
+Let $\Delta\Phi(T)=\sum_{i=1}^{N}\delta\phi_i(T)$ be the relative phase accumulated
+between two macroscopically distinct branches. Decoherence is defined by
+$\mathrm{Var}(\Delta\Phi(T_{\mathrm{dec}}))=1$. Model: over $T=n\tau_0$ cycles, a constituent's phase is $\phi=(\bar E/\hbar)\sum_j\tau_{\mathrm{active}}^{(j)}$, sensitive to the cycle-duration dispersion $\{\xi_i\}$.
+
+\paragraph{(a) Quasi-static dispersion ($T_2^\ast$, refocusable).} If $\xi_i$ is
+\emph{frozen} per constituent, the phase offset is \emph{correlated} across all cycles and grows $\propto(\bar E/\hbar)(\delta\tau_0/\tau_0)\,T$; summed over $N$ independent constituents it yields a \emph{quadratic} variance
+\[
+\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar E/\hbar)^2\,(\delta\tau_0/\tau_0)^2\,T^2,
+\qquad
+T_{\mathrm{dec}}^{-1}\propto \sqrt{N}\,\frac{\delta\tau_0}{\tau_0^2},
+\]
+a \emph{Gaussian} decay. \statut{numerical} This regime is an \emph{inhomogeneous}
+dephasing, in principle \emph{refocusable by echo} (Hahn-type): it therefore does
+\emph{not} constitute an irreducible floor.
+
+\paragraph{(b) Dynamic dispersion ($T_2$, irreducible).} If $\xi_i$
+\emph{re-fluctuates} cycle by cycle (a stochastic process), the phase offset performs a \emph{random walk} of step $(\bar E/\hbar)\delta\tau_0$ over $n=T/\tau_0$ cycles (variance $\propto n$), so the variance becomes
+\emph{linear} in $T$,
+\[
+\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar E/\hbar)^2\,(\delta\tau_0)^2\,\frac{T}{\tau_0},
+\qquad
+T_{\mathrm{dec}}^{-1}\propto N\,\frac{(\delta\tau_0)^2}{\tau_0^3},
+\]
+an \emph{exponential} decay, \emph{not} refocusable. \statut{numerical}
+\emph{Only this regime} deserves the label « irreducible ». The prefactor depends
+on the characteristic energy $\bar E$ (taken $\sim\hbar/\tau_0$ for the estimate);
+the precise value remains \statut{open}.
+
+\paragraph{Distinction from environmental decoherence.} In both cases, the
+prefactor depends only on \emph{intrinsic} parameters ($\delta\tau_0,\tau_0,N$),
+not on an external bath; a system ideally isolated from its surroundings would
+still dephase. But HDEQ \emph{is} a noise model (intrinsic), conceptually close
+to spontaneous-collapse models (\S\ref{sec:pos}). Note the \emph{$N$-exponent}:
+$\sqrt N$ (static) or $N$ (dynamic), to be compared with the often linear or
+super-linear scaling of collisional models --- a point to exploit for
+experimental discrimination (\S\ref{sec:exp}).
+
+% ---------------------------------------------------------------------
+\section{Selection of the preferred basis}\label{sec:base}
+
+\begin{definition}[survival amplitude]
+For $\ket{\psi}\in\mathrm{Dom}(\Heff)$, $\lVert\psi\rVert=1$:
+$A_\psi(t)=\bra{\psi}e^{-i\Heff t/\hbar}\ket{\psi}$. The state $\ket{\psi}$ is a
+\emph{pointer state} (stable phase) iff $\lvert A_\psi(t)\rvert=1$ for all $t$.
+\end{definition}
+
+\begin{proposition}\label{prop:base}\statut{proof}
+$\lvert A_\psi(t)\rvert=1\ \forall t\iff\ket{\psi}$ is an eigenstate of $\Heff$.
+\end{proposition}
+\begin{proof}
+$(\Leftarrow)$ immediate. $(\Rightarrow)$ by Cauchy--Schwarz,
+$\lvert A_\psi(t)\rvert\le\lVert\psi\rVert\,\lVert e^{-i\Heff t/\hbar}\psi\rVert=1$,
+with equality iff $e^{-i\Heff t/\hbar}\ket{\psi}=\lambda(t)\ket{\psi}$,
+$\lvert\lambda(t)\rvert=1$. Since $\ket{\psi}\in\mathrm{Dom}(\Heff)$, Stone's
+theorem gives differentiability at $t=0$:
+$-\tfrac{i}{\hbar}\Heff\ket{\psi}=\lambda'(0)\ket{\psi}$, i.e.
+$\Heff\ket{\psi}=(i\hbar\lambda'(0))\ket{\psi}$ (real eigenvalue).
+\end{proof}
+
+\begin{corollary}[modulus defect at order $\tau_0^2$]\statut{proof}
+The short-time expansion $A_\psi(t)=1-\tfrac{i}{\hbar}\langle\Heff\rangle t-\tfrac{1}{2\hbar^2}\langle\Heff^2\rangle t^2+O(t^3)$ gives $\lvert A_\psi(t)\rvert^2=1-(\Delta H_{\mathrm{eff}}/\hbar)^2 t^2+O(t^4)$, with
+$(\Delta H_{\mathrm{eff}})^2=\langle\Heff^2\rangle-\langle\Heff\rangle^2$. The
+defect vanishes iff $\ket{\psi}$ is an eigenstate, coinciding with the
+short-time Zeno bound.
+\end{corollary}
+
+\begin{scope}
+The criterion selects $\mathrm{Spec}(\Heff)$. \textbf{(1)} With
+$\Heff=\varepsilon\Hsysop$, this is the \emph{energy} basis of $\Hsysop$. If
+$\Heff=\hat H_S+\hat H_A+\hat H_{SA}$ includes a \emph{strong} measurement
+coupling, its eigenstates approach the interaction basis, hence the einselection
+pointer states; in the \emph{free/weak} regime, the energy basis \emph{differs}
+from them (quasi-localised basis). Selection is therefore \emph{regime-dependent}
+\statut{conjecture}. \textbf{(2)} Zeno-type mechanism: the gating stabilises the
+eigenbasis of the generator. \textbf{(3)} The Proposition identifies a
+\emph{basis}, not the selection of a single outcome nor the Born rule.
+\end{scope}
+
+% ---------------------------------------------------------------------
+\section{The Born rule as a heuristic postulate}
+\statut{open} A rigorous derivation of the Born rule from a dynamical framework
+remains an open problem for all known frameworks (Gleason assumes the
+measure-theoretic structure; Deutsch--Wallace rationality axioms; Zurek an
+entanglement structure). HDEQ does not break this impasse: the frequency of
+outcomes is taken as a heuristic postulate. A scope analysis sharpens this status (\S\ref{sec:portee-q}): Born is inherited from standard canonical quantization, not derived from the scale sector.
+
+% ---------------------------------------------------------------------
+\section{Experimental directions}\label{sec:exp}
+\subsection{Direction I: intrinsic dephasing by interferometry}
+\statut{numerical} The \emph{primary} signature of the framework. Its nature
+depends on the regime of~\S\ref{sec:deco}: an \emph{irreducible} floor requires a
+\emph{dynamic} dispersion (case b, exponential decay, $T_{\mathrm{dec}}^{-1}\propto
+N(\delta\tau_0)^2/\tau_0^3$); the static case (a) is in principle cancellable by
+echo and does not constitute a fundamental test. Molecular interferometry
+($\sim$25\,000~amu today; targeted extension $10^6$--$10^8$~amu in cryogenic
+ultra-vacuum) must \emph{separate the $N$-scaling} of HDEQ ($\sqrt N$ or $N$
+depending on regime) from that of the residual noise, at fixed $N$ and with an
+independent calibration of $\Gamma_{\mathrm{env}}$.
+
+\subsection{Direction II: atomic transitions --- non-discriminating under the consistent framework}
+\statut{open} \emph{Two gating prescriptions.} \textbf{(A)} gate only the
+interaction $\hat H_{\mathrm{int}}$ (free evolution maintained): the golden rule
+gives $\Gamma=|\langle f|\varepsilon\hat H_{\mathrm{int}}|i\rangle|^2\rho
+=\varepsilon^2\Gamma_{\mathrm{QED}}$, frequencies unchanged. \textbf{(B)} gate the
+full $\Hsysop$: $\Heff=\varepsilon\Hsysop$ rescales \emph{all} energies.
+\begin{itemize}
+\item The fundamental postulate, properly derived (Cor.~\ref{cor:floquet}),
+\emph{is} prescription~B. Prescription~A requires an \emph{additional ingredient}
+(selective gating of the interaction) not contained in the single postulate.
+\item Under B, every ratio of frequencies or rates equals $\nu_1/\nu_2=\omega_1/\omega_2$:
+$\varepsilon$ \emph{cancels}. A universal $\varepsilon$ is therefore
+\emph{unobservable} in comparative spectroscopy, including by the best clocks
+(uncertainty $3\times10^{-18}$). The spectroscopic sector is non-discriminating.
+\item The relation $\Gamma=\varepsilon^2\Gamma_{\mathrm{QED}}$ and the central
+relation $\Heff=\varepsilon\Hsysop$ are \emph{not simultaneously consistent}: they
+belong to different prescriptions. Adopting B (structural consistency) renders
+Direction~II \emph{null}; adopting A makes it a prediction \emph{conditional} on
+an additional postulate.
+\end{itemize}
+\emph{Conclusion:} unless prescription~A is independently motivated, atomic
+spectroscopy does not constrain HDEQ. This is consistent with the
+non-observability of the clocks. The E3 clock transition of $^{171}$Yb$^+$
+(sub-Hz) would in any case be unusable.
+
+\subsection{Direction III (exploratory): stroboscopic resonances}
+\statut{speculation} By analogy with Floquet ($\Omega_F=\varepsilon\Omega_R$),
+periodic structures could appear at $\Delta E=2\pi\hbar/\tau_0$. Amplitude,
+boost-invariant transcription and confrontation with data remain open.
+
+% ---------------------------------------------------------------------
+\section{Extension to quantum field theory}
+\statut{proof} Let $\mathcal{F}_{\mathrm{ext}}=\mathcal{F}_{\mathrm{sys}}\otimes\Htemp$.
+The creation/annihilation operators commute with the projectors
+($[\hat P,\hat a(p)]=0$, $\hat P$ acting as the identity on the system part);
+the equal-time canonical relations are preserved.
+\emph{Ontological identification} \statut{conjecture}: the inactive phases
+\emph{could} be identified with vacuum fluctuations; this reading is distinct
+from the level-I formalism, which remains valid independently.
+\emph{UV scope} \statut{proof}: HDEQ carries no dynamical UV cutoff at
+$\Lambda_{\mathrm{UV}}=\hbar/\tau_0$ --- such a cutoff would be untenable
+(LHAASO/GRB~221009A $E_{\mathrm{QG},1}\gtrsim10\,E_{\mathrm{Planck}}$~\statut{to check};
+electron and muon $g-2$). Level~I (unitarity, preferred basis, dephasing) is
+independent of this question.
+
+% ---------------------------------------------------------------------
+\section{Positioning: NCG, CSL, Zeno, Trotter}\label{sec:pos}
+\textbf{Non-commutative geometry.} Connes' programme and the Connes--Rovelli
+modular flow share with HDEQ the rejection of continuous time as a primary datum
+and decoherence without a spatial bath; $\hat P(\tau_0)$ could be interpreted as
+a discrete sampling of the Tomita--Takesaki modular automorphism \statut{conjecture}.
+\textbf{Collapse models (CSL/GRW).} The dispersion-induced decoherence of
+\S\ref{sec:deco} is mathematically a stochastic dephasing channel, close to CSL
+\emph{without jumps}: HDEQ preserves global unitarity (on $\Hext$) where CSL adds
+non-unitary noise on $\Hsys$. Distinction to be made explicit \statut{conjecture}.
+\textbf{Zeno dynamics.} Proposition~\ref{prop:base} is a Zeno-type stabilisation
+(the eigensubspace of the generator is stabilised by the repeated gating).
+\textbf{Trotter.} The gated formalism is formally a Trotter evolution with an
+« idle » step; the specificity of HDEQ is the \emph{ontological interpretation}
+(intermittent active existence) and the dispersion $\delta\tau_0$, not the time
+slicing itself \statut{heuristic}.
+
+% ---------------------------------------------------------------------
+\section{Discussion, limits and scope}
+\subsection{Scope regarding the unification question}
+HDEQ establishes the mechanism of the \emph{quantum sector} --- intermittent
+existence, intrinsic dephasing, preferred-basis selection --- and provides the
+existence factor $\varepsilon$ and the gating structure. It does \emph{not}, by
+itself, bear on the question « is gravitation quantum? ». In the framework where
+the metric $g_{\mu\nu}$ remains a \emph{classical} field (scalar--tensor action in
+$\tfrac12 fR$, $\Omega=\sqrt f$ relating the Jordan and Einstein frames), the
+gravity$\,\leftrightarrow\,$quantum coupling enters through the modulation
+$\tau_0(R)=2\pi\sqrt{\omega/(\alpha+\tfrac12\beta M_{\mathrm{Pl}}^2 R)}$, whose
+dynamical effect $\delta\tau_0/\tau_0=-(\beta/4)M_{\mathrm{Pl}}^2 R/\alpha$ is
+unobservable in matter ($\sim10^{-81}$) and becomes decisive only at the critical
+curvature $R_c=2\alpha/|\beta|$. The treatment of this question belongs to a later
+\emph{synthesis} level, where all sectors are in scope; the metric remaining
+classical there, the framework takes a \emph{falsifiable} position (absence of
+gravitationally induced entanglement). The present work is a \emph{quantum
+prerequisite} for it, not an answer. \statut{open}
+
+\subsection{Honest limitations}
+\begin{itemize}
+\item $\tau_0$ and $\varepsilon$ are phenomenological, not derived from first principles (a geometric origin is conjectured, cf.\ \S\ref{sec:origine}).
+\item The dispersion $\xi_i$ and the Gaussian hypothesis are explicit layers; the « irreducible » character requires the \emph{dynamic} regime (\S\ref{sec:deco}b).
+\item Theorem~\ref{thm:unit} is structural: it does not produce decoherence.
+\item The preferred-basis criterion is regime-dependent (\S\ref{sec:base}).
+\item The selection of a single branch is not resolved; the Born rule is heuristic (cf.\ scope, \S\ref{sec:portee-q}).
+\item The spectroscopic sector is non-discriminating under the consistent prescription (B).
+\end{itemize}
+
+\subsection{Origin of $\varepsilon$ and $\tau_0$: a geometric direction}\label{sec:origine}
+\statut{conjecture} HDEQ leaves $\varepsilon,\tau_0$ free. A geometric origin is
+conjectured: the oscillation of a compactified scale field $\chi$, read as a
+Page--Wootters relational clock, would generate the gating and fix
+\[
+\varepsilon=\langle\cos^2(\chi/2)\rangle=\frac{E(k)}{K(k)},\quad
+k=\sin(\chi_{\max}/2),\qquad
+\tau_0=2\pi\sqrt{\omega/\alpha}\approx3.5\times10^{-37}\ \mathrm{s}.
+\]
+\statut{proof} If this origin is retained, the identity derives exactly. Homogeneous reduction ($\chi=\chi(t)$): $\mathcal L_\chi=\tfrac12\omega\dot\chi^2-\alpha(1-\cos\chi)$; Euler--Lagrange gives $\omega\ddot\chi+\alpha\sin\chi=0$, and the first integral (with $\dot\chi=0$ at $\chi_{\max}$) $\dot\chi=\sqrt{2\alpha/\omega}\,\sqrt{\cos\chi-\cos\chi_{\max}}$. With $k=\sin(\chi_{\max}/2)$ and the substitution $\sin(\chi/2)=k\sin\varphi$,
+\[
+dt=\sqrt{\tfrac{\omega}{\alpha}}\,\frac{d\varphi}{\sqrt{1-k^2\sin^2\varphi}},\qquad
+\tau_0=4\sqrt{\tfrac{\omega}{\alpha}}\,K(k),\qquad
+\varepsilon=\frac{\int_0^{\pi/2}\!\sqrt{1-k^2\sin^2\varphi}\,d\varphi}{\int_0^{\pi/2}\!d\varphi/\sqrt{1-k^2\sin^2\varphi}}=\frac{E(k)}{K(k)},
+\]
+the last equality since $\cos^2(\chi/2)=1-k^2\sin^2\varphi$ (the $\sqrt{\omega/\alpha}$ cancel). The pendulum/elliptic-integral machinery is classical~\cite{Landau}. At small amplitude ($k\to0$): $\tau_0\to2\pi\sqrt{\omega/\alpha}$ and $\varepsilon\to1-\chi_{\max}^2/8$; at the separatrix ($\chi_{\max}\to\pi\equiv\infty^*$, $k\to1$): $K\to\infty$, $\varepsilon\to0$ (suspension).
+At the vacuum $\varepsilon\to1$, rendering intermittent effects unobservable.
+
+\subsection{Scope of the quantum sector: a geometric mechanism of time built on QM}\label{sec:portee-q}
+\statut{proof} HDEQ level-I \emph{inherits} the Born rule from its standard canonical quantization; it neither derives it nor departs from it. Once the quantum sector is a complex Hilbert space endowed with unitary dynamics (Theorem~\ref{thm:unit}), the usual structural derivations (Gleason~\cite{Gleason}; Masanes--Galley--M\"uller~\cite{MGM}) apply. The scale sector, by contrast, is entirely \emph{real}: the field $\chi$ is a real angle on $S^1_\chi$ governed by a pendulum Lagrangian, $\mathcal{L}_\chi=-\tfrac12\omega(\partial\chi)^2-\alpha(1-\cos\chi)$, and the existence factor $\varepsilon=\langle\cos^2(\chi/2)\rangle=E(k)/K(k)$ is a real time-average there \statut{proof}. The imaginary unit enters only \emph{after} the geometry, at two points: at the quantization of $\chi$ (Mathieu/Schr\"odinger equation) and at the Page--Wootters relational passage, $\Heff=\varepsilon\Hsysop$, which presupposes an already-quantum clock.
+
+That this boundary is one of principle, not a gap, rests on two independent arguments. (i) \emph{Internal}: the inter-sector symmetry $\mathbb{Z}_2\times\mathbb{Z}_2$ is discrete; Noether's theorem does not apply, so no bilinear current $j^0\sim\psi^*\psi$ follows (the current associated with the periodicity of the real angle is linear in $\partial\chi$, a scale momentum). (ii) \emph{External}: under the standard composition rule, a real formulation of quantum theory makes predictions distinct from the complex one, which experiment settles in favour of the complex~\cite{Renou,Chen}; the imaginary unit is therefore empirically required, not extractable from a real Lagrangian alone.
+
+\emph{Scope statement.} Scale closure explains the clock, relational time, and the existence factor $\varepsilon$ --- all real and derived. It does \emph{not} explain the origin of the complex structure. \textbf{HDEQ is thus a geometric mechanism of time built on quantum mechanics, and not a derivation of quantum mechanics from scale closure.}
+
+\subsection{Conclusion}
+HDEQ proposes a mechanistic framework for the structural selection of the
+preferred basis and for an intrinsic dephasing, preserving global unitarity by
+construction and compatible with current phenomenological constraints. Its claims
+are calibrated: unitarity is structural; « irreducible » decoherence requires a
+dynamic dispersion; atomic spectroscopy is non-discriminating under the consistent
+prescription. The primary testable signature is the intrinsic dephasing in mass
+interferometry. The origin of $\varepsilon,\tau_0$ could be carried by a
+compactified-scale geometry --- a direction left to later development, under the scope made precise in \S\ref{sec:portee-q}.
+
+% ---------------------------------------------------------------------
+\paragraph{Symbol index.}
+$\varepsilon$ existence factor; $\tau_0$ cycle duration; $\hat P,\hat Q$
+active/inactive projectors; $\Heff=\varepsilon\Hsysop$ effective Hamiltonian;
+$\delta\tau_0$ intrinsic dispersion; $N$ number of constituents; $\chi(t)$ gating;
+$\Gamma$ transition rate.
+
+\paragraph{Status labels.} The results labelled \statut{proof}
+(Theorem~\ref{thm:unit}, Corollary~\ref{cor:floquet}, Proposition~\ref{prop:base})
+are proved in the body. The estimates of \S\ref{sec:deco} are
+\statut{numerical}/\statut{open}. The external references marked \statut{to check}
+(LHAASO bounds, recent $g-2$ values) must undergo a final bibliographic
+verification before deposit.
+
+% ---------------------------------------------------------------------
+\section*{Reproducibility}
+The \statut{numerical} statements and the symbolic verification of the
+\statut{proof} results are reproduced by a standalone script (NumPy/SciPy), with
+sections coded so as to be specific to this document:
+\begin{itemize}
+\item[{\texttt{[H1]}}] Theorem~\ref{thm:unit}: verification of global unitarity $\hat U^\dagger\hat U=\Iext$ and of the composition $\hat U(N\tau_0)=e^{-i\varepsilon\Hsysop N\tau_0}$ on the active branch ($\Heff=\varepsilon\Hsysop$).
+\item[{\texttt{[H2]}}] Proposition~\ref{prop:base}: survival amplitude $|A_\psi(t)|=1$ for an eigenstate, $<1$ otherwise, and agreement of the $t^2$ coefficient with $(\Delta H_{\mathrm{eff}})^2$.
+\item[{\texttt{[H3]}}] Dephasing: Monte-Carlo of the two regimes --- $T$-exponent equal to $2$ (quasi-static, Gaussian, refocusable) and $1$ (dynamic, exponential, irreducible), variance $\propto N$ in both cases.
+\item[{\texttt{[H4]}}] Constants: $\eta_{\mathrm{sp}}$, $\varepsilon=E(k)/K(k)$ (with $\varepsilon\to1$ as $k\to0$), scales $\hbar/\tau_0$ and $2\pi\hbar/\tau_0$.
+\end{itemize}
+File: \texttt{U1\_HDEQ\_reproductible.py}. \emph{Convention}: $\hbar=\tau_0=1$ unless
+otherwise stated. The prefix \texttt{U1\_HDEQ\_} and the \texttt{[H$\cdot$]} codes are
+specific to this document, to avoid any collision with other script sets.
+
+\begin{thebibliography}{99}
+\bibitem{vN} J. von Neumann, \textit{Mathematische Grundlagen der Quantenmechanik} (Springer, 1932).
+\bibitem{GRW} G. C. Ghirardi, A. Rimini \& T. Weber, \textit{Phys. Rev. D} \textbf{34}, 470 (1986).
+\bibitem{Bassi} A. Bassi \textit{et al.}, \textit{Rev. Mod. Phys.} \textbf{85}, 471 (2013).
+\bibitem{Zurek} W. H. Zurek, \textit{Rev. Mod. Phys.} \textbf{75}, 715 (2003).
+\bibitem{Gleason} A. M. Gleason, \textit{J. Math. Mech.} \textbf{6}, 885 (1957).
+\bibitem{CL} A. O. Caldeira \& A. J. Leggett, \textit{Physica A} \textbf{121}, 587 (1983).
+\bibitem{JZ} E. Joos \& H. D. Zeh, \textit{Z. Phys. B} \textbf{59}, 223 (1985).
+\bibitem{Fein} Y. A. Fein \textit{et al.}, \textit{Nature Phys.} \textbf{15}, 1242 (2019).
+\bibitem{Fan} X. Fan \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{130}, 071801 (2023). \statut{to check}
+\bibitem{CR} A. Connes \& C. Rovelli, \textit{Class. Quantum Grav.} \textbf{11}, 2899 (1994).
+\bibitem{PW} D. N. Page \& W. K. Wootters, \textit{Phys. Rev. D} \textbf{27}, 2885 (1983).
+\bibitem{Huntemann} N. Huntemann \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{116}, 063001 (2016).
+\bibitem{LHAASO} LHAASO Collaboration, Lorentz-violation constraint on GRB~221009A. \statut{to check}
+\bibitem{MGM} L. Masanes, T. D. Galley \& M. P. M\"uller, \textit{Nat. Commun.} \textbf{10}, 1361 (2019).
+\bibitem{Renou} M.-O. Renou \textit{et al.}, \textit{Nature} \textbf{600}, 625 (2021).
+\bibitem{Chen} M.-C. Chen \textit{et al.}, \textit{Phys. Rev. Lett.} \textbf{128}, 040403 (2022).
+\bibitem{Landau} L. D. Landau \& E. M. Lifshitz, \textit{Mechanics} (Pergamon, 1976).
+\end{thebibliography}
+
+\end{document}
