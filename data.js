@@ -169,6 +169,6 @@ const PROJETS = [
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    lien: null
+    lien: { url: "https://hbakkaoui-hash.github.io/taxiloc/", label: "Ouvrir l'application" }
   }
 ];
