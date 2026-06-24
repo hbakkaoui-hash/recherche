@@ -7,7 +7,7 @@
 const PHYSIQUE = [
   {
     titre: "Unité 1 — Discontinuité d'existence des particules quantiques",
-    tags: ["quant-ph"],
+    tags: ["quant-ph", "HDEQ", "intermittent quantum existence", "existence qubit", "gating function"],
     resume: `Introduit l'<strong>Hypothèse de Discontinuité de l'Existence Quantique</strong>
       (HDEQ) : l'existence active d'un système quantique serait intermittente, alternant
       par cycles de durée caractéristique $\\tau_0$ entre une phase de dynamique
@@ -23,7 +23,7 @@ const PHYSIQUE = [
   },
   {
     titre: "Unité 2 — Un champ de dualité d'échelle compactifié : régularisation et inflation",
-    tags: ["gr-qc", "astro-ph.CO"],
+    tags: ["gr-qc", "astro-ph.CO", "compactified scale duality", "dualité d'échelle compactifiée", "regular black hole", "de Sitter core", "natural inflation"],
     resume: `Étudie si un unique champ de dualité d'échelle $\\psi$ — issu de la
       compactification de l'axe d'échelle en un cercle, couplé non minimalement à la
       courbure via $f\\propto 1+\\beta\\cos\\psi$ et portant un potentiel borné
@@ -38,7 +38,7 @@ const PHYSIQUE = [
   },
   {
     titre: "Unité 3 — Dualité d'échelle compactifiée : synthèse",
-    tags: ["gr-qc", "astro-ph.CO", "quant-ph"],
+    tags: ["gr-qc", "astro-ph.CO", "quant-ph", "compactified scale duality", "dualité d'échelle compactifiée", "scale compactification", "natural inflation", "regular black holes", "HDEQ"],
     resume: `Synthèse du programme. Mécanique quantique et relativité générale
       émergeraient d'une même structure : la compactification des axes d'échelle, spatial
       et temporel, en cercles — $\\mathcal{M}=M_{3+1}\\times S^1_\\psi\\times S^1_\\chi$
@@ -53,7 +53,7 @@ const PHYSIQUE = [
   },
   {
     titre: "Unité 4 — Effondrement gravitationnel, faux vide métastable, isocourbure et spectre Mukhanov–Sasaki exact",
-    tags: ["gr-qc", "astro-ph.CO"],
+    tags: ["gr-qc", "astro-ph.CO", "compactified scale duality", "dualité d'échelle compactifiée", "false vacuum decay", "Mukhanov–Sasaki spectrum", "GUT-scale inflation"],
     resume: `Un unique champ d'échelle sur
       $\\mathcal{M}=M_{3+1}\\times S^1_\\psi\\times S^1_\\chi$ gouverne gravité, cosmologie
       et secteur quantique. L'action de décroissance du faux vide de Sitter est obtenue
@@ -68,7 +68,7 @@ const PHYSIQUE = [
   },
   {
     titre: "Unité 5 — Compactification sphérique de l'espace d'échelle",
-    tags: ["hep-th", "gr-qc", "quant-ph"],
+    tags: ["hep-th", "gr-qc", "quant-ph", "compactified scale duality", "dualité d'échelle compactifiée", "spherical compactification", "scale arrow", "Planck pole"],
     resume: `Fait de l'échelle une dimension interne compacte et en déduit la seule action
       qu'elle autorise. Là où le programme antérieur enroulait l'échelle en un tore —
       collant le plus petit et le plus grand en un point unique — cette unité sépare ce
