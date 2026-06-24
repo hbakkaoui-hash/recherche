@@ -1,0 +1,13 @@
+# robots.txt — autorise l'indexation complète.
+#
+# NOTE IMPORTANTE : ce site est un dépôt de PROJET (URL .../recherche/).
+# Les moteurs ne lisent robots.txt QUE depuis la racine de l'hôte, soit
+#   https://hbakkaoui-hash.github.io/robots.txt
+# Ce fichier-ci, servi depuis /recherche/robots.txt, sera donc IGNORÉ par Google.
+# Il est gardé par cohérence, mais ce qui compte réellement c'est de SOUMETTRE
+# le sitemap directement dans Google Search Console.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://hbakkaoui-hash.github.io/recherche/sitemap.xml

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap du site de recherche de Hassane Bakkaoui.
+     Publié à : https://hbakkaoui-hash.github.io/recherche/sitemap.xml
+     À SOUMETTRE dans Google Search Console (menu « Sitemaps »).
+     Le site est mono-page : tout le contenu est sur l'accueil.
+     Mets à jour <lastmod> (AAAA-MM-JJ) à chaque modification du site. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://hbakkaoui-hash.github.io/recherche/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
