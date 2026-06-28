@@ -160,15 +160,15 @@ const MATHS = [
 
 const PROJETS = [
   {
-    titre: "TaxiLoc",
+    titre: "BakTaxi",
     tags: ["Application web", "PWA", "Supabase"],
     resume: `Plateforme web de mise en relation entre <strong>chauffeurs de taxi</strong>
-      et clients (anciennement TAXI-LINK). Application installable (PWA), base de données
-      Supabase, fonctionnement hors-ligne.`,
+      et clients (anciennement TAXI-LINK, puis TaxiLoc). Application installable (PWA),
+      base de données Supabase, fonctionnement hors-ligne.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    lien: { url: "https://hbakkaoui-hash.github.io/taxiloc/", label: "Ouvrir l'application" }
+    lien: { url: "https://hbakkaoui-hash.github.io/baktaxi/", label: "Ouvrir l'application" }
   }
 ];
