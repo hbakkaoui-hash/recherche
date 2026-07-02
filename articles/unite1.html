@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unité 1 — Discontinuité d'existence des particules quantiques · H. Bakkaoui</title>
+<meta name="description" content="Article : Hypothèse de Discontinuité de l'Existence Quantique (HDEQ). Hassane Bakkaoui.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">← Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">quant-ph</span></div>
+    <h1 class="paper-title">Unité 1 — Discontinuité d'existence des particules quantiques</h1>
+    <p class="paper-author">Hassane Bakkaoui · Chercheur indépendant</p>
+    <div class="paper-links">
+      <a href="../papers/u1_FR.pdf">PDF (FR)</a>
+      <a href="../papers/u1_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://doi.org/10.5281/zenodo.20671269" target="_blank" rel="noopener">Zenodo</a>
+    </div>
+  </div>
+<h1 id="note-méthodologique">Note méthodologique</h1>
+<p>Ce manuscrit résulte d’une méthodologie particulière. L’intuition
+originale a été formulée par l’auteur autour de 1990 ; sa mise en cadre
+mathématique a été menée dans un dialogue itératif avec des systèmes
+d’assistance analytique, sous la direction et la supervision de
+l’auteur. Chaque énoncé porte une balise de statut épistémique ; les
+résultats balisés <span><span class="sans-serif">[preuve]</span></span>
+(Théorème 1, Proposition 1) sont démontrés explicitement dans le corps
+(§<a href="#sec:cadre" data-reference-type="ref"
+data-reference="sec:cadre">3</a>, §<a href="#sec:base"
+data-reference-type="ref" data-reference="sec:base">5</a>). La
+validation scientifique finale appartient à la communauté expérimentale
+; l’entière responsabilité du contenu revient à l’auteur.</p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="intuition-dorigine">Intuition d’origine</h2>
+<p>Dans un atome d’hydrogène, le noyau (<span
+class="math inline">\(R_{\mathrm{nuc}}\approx1{,}2\times10^{-15}\)</span> m)
+occupe, dans le volume atomique (<span
+class="math inline">\(R_{\mathrm{at}}\approx0{,}5\times10^{-10}\)</span> m),
+une fraction infime de l’espace : <span
+class="math inline">\(\eta_{\mathrm{sp}}\equiv(R_{\mathrm{nuc}}/R_{\mathrm{at}})^3
+\approx1{,}4\times10^{-14}\)</span>. <span><span
+class="sans-serif">[heuristique]</span></span> Par cohérence
+dimensionnelle : si l’existence de la matière est clairsemée dans la
+dimension spatiale, examinons une intermittence analogue de son
+existence <em>active</em> dans la dimension temporelle — non une
+granularité du temps, mais une activité dynamique qui s’allume et
+s’éteint au sein d’un temps continu. Le rôle de <span
+class="math inline">\(\eta_{\mathrm{sp}}\)</span> est strictement
+heuristique, non une contribution mathématique de HDEQ.</p>
+<h2 id="formulation-du-postulat">Formulation du postulat</h2>
+<p>On introduit le facteur d’existence <span
+class="math inline">\(\varepsilon\equiv\tau_{\mathrm{actif}}/\tau_0\in(0,1]\)</span>,
+où <span class="math inline">\(\tau_0\)</span> est la durée d’un cycle
+et <span
+class="math inline">\(\tau_{\mathrm{actif}}=\varepsilon\tau_0\)</span>
+la fraction active. La fraction complémentaire <span
+class="math inline">\((1-\varepsilon)\tau_0\)</span> est une suspension
+dynamique. <span class="math inline">\(\varepsilon\to1\)</span> récupère
+l’évolution continue ; <span
+class="math inline">\(\varepsilon\ll1\)</span> correspond à une
+existence maximalement intermittente.</p>
+<h2 id="ce-que-hdeq-adresse-et-nadresse-pas">Ce que HDEQ adresse et
+n’adresse pas</h2>
+<p>HDEQ propose un mécanisme structurel pour (a) la sélection de la base
+privilégiée et (b) un déphasage intrinsèque ne requérant aucun <em>bain
+spatial</em>. Il ne prétend pas dériver la règle de Born, ni résoudre la
+sélection d’une branche unique. <em>Avertissement de cadrage</em> : la
+décohérence de §<a href="#sec:deco" data-reference-type="ref"
+data-reference="sec:deco">4</a> provient d’une dispersion stochastique
+de <span class="math inline">\(\tau_0\)</span>, qui constitue
+mathématiquement un canal de bruit classique ; « sans environnement »
+signifie ici « sans bain spatial », non « sans aucune source de bruit
+».</p>
+<h1 id="sec:cadre">Cadre formel et unitarité</h1>
+<h2 id="postulat-et-espace-de-hilbert-élargi">Postulat et espace de
+Hilbert élargi</h2>
+<p>L’évolution se déroule par cycles de durée <span
+class="math inline">\(\tau_0\)</span> : pendant <span
+class="math inline">\(\varepsilon\tau_0\)</span> le système évolue
+unitairement sous <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> ; pendant <span
+class="math inline">\((1-\varepsilon)\tau_0\)</span> son évolution est
+suspendue. Le paramètre temps reste continu ; c’est l’<em>action</em> de
+<span class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> qui est
+intermittente. On introduit <span
+class="math display">\[\mathcal{H}_{\mathrm{temp}}=\mathrm{span}\{\lvert
+a\rangle,\lvert i\rangle\},\quad
+\mathcal{H}_{\mathrm{ext}}=\mathcal{H}_{\mathrm{sys}}\otimes\mathcal{H}_{\mathrm{temp}},\quad
+\hat{P}=\hat{I}_{\mathrm{sys}}\otimes\lvert a\rangle\langle a\rvert,\;\;
+\hat{Q}=\hat{I}_{\mathrm{sys}}\otimes\lvert i\rangle\langle
+i\rvert,\]</span> avec <span
+class="math inline">\(\hat{P}^2=\hat{P}\)</span>, <span
+class="math inline">\(\hat{Q}^2=\hat{Q}\)</span>, <span
+class="math inline">\(\hat{P}\hat{Q}=\hat{Q}\hat{P}=0\)</span>, <span
+class="math inline">\(\hat{P}+\hat{Q}=\hat{I}_{\mathrm{ext}}\)</span>.
+On pose <span
+class="math inline">\(\hat{U}_{\mathrm{sys}}=\exp(-i\hat{H}_{\mathrm{sys}}\varepsilon\tau_0/\hbar)\)</span>
+et le relèvement <span
+class="math inline">\(\tilde{U}_{\mathrm{sys}}=\hat{U}_{\mathrm{sys}}\otimes\hat{I}_{\mathrm{temp}}\)</span>.</p>
+<h2 id="théorème-1-unitarité-globale">Théorème 1 (unitarité
+globale)</h2>
+<div class="definition">
+<p><strong>Définition 1</strong> (propagateur de cycle). <span
+class="math inline">\(\hat{U}(\tau_0)=\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}
+=\hat{U}_{\mathrm{sys}}\otimes\lvert a\rangle\langle
+a\rvert+\hat{I}_{\mathrm{sys}}\otimes\lvert i\rangle\langle
+i\rvert\)</span> : évolution système sur la branche active, identité sur
+la branche inactive (dilatation contrôlée).</p>
+</div>
+<div id="lem:comm" class="lemma">
+<p><strong>Lemme 1</strong> (commutation tensorielle). <em><span
+class="math inline">\([\hat{P},\tilde{A}]=[\hat{Q},\tilde{A}]=0\)</span>
+pour <span
+class="math inline">\(\tilde{A}=\hat{A}\otimes\hat{I}_{\mathrm{temp}}\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">\(\hat{P}\)</span> et <span
+class="math inline">\(\tilde A\)</span> agissent sur des facteurs
+disjoints : <span class="math inline">\((\hat A\otimes\hat I)(\hat
+I\otimes\lvert a\rangle\langle a\rvert)=\hat A\otimes\lvert
+a\rangle\langle a\rvert
+=(\hat I\otimes\lvert a\rangle\langle a\rvert)(\hat A\otimes\hat
+I)\)</span>. ◻</p>
+</div>
+<div id="thm:unit" class="theorem">
+<p><strong>Théorème 1</strong>. <em><span><span
+class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\hat{U}(\tau_0)\in\mathrm{U}(\mathcal{H}_{\mathrm{ext}})\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span
+class="math inline">\(\hat{U}^\dagger=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger+\hat{Q}\)</span>.
+Alors <span class="math inline">\(\hat{U}^\dagger\hat{U}
+=\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\tilde{U}_{\mathrm{sys}}\hat{P}
++\hat{P}\tilde{U}_{\mathrm{sys}}^\dagger\hat{Q}
++\hat{Q}\tilde{U}_{\mathrm{sys}}\hat{P}+\hat{Q}^2\)</span>. Le terme 1
+vaut <span class="math inline">\(\hat P^2=\hat P\)</span> (<span
+class="math inline">\(\tilde U_{\mathrm{sys}}\)</span> unitaire) ; les
+termes 2 et 3 s’annulent par le Lemme <a href="#lem:comm"
+data-reference-type="ref" data-reference="lem:comm">1</a> et <span
+class="math inline">\(\hat P\hat Q=0\)</span> ; le terme 4 vaut <span
+class="math inline">\(\hat Q\)</span>. D’où <span
+class="math inline">\(\hat U^\dagger\hat U=\hat P+\hat
+Q=\hat{I}_{\mathrm{ext}}\)</span>, et symétriquement <span
+class="math inline">\(\hat U\hat
+U^\dagger=\hat{I}_{\mathrm{ext}}\)</span>. ◻</p>
+</div>
+<div id="cor:floquet" class="corollary">
+<p><strong>Corollaire 1</strong> (créneau et hamiltonien effectif).
+<em><span><span class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\hat U(\tau_0)\)</span> coïncide, sur la branche
+active, avec le propagateur du hamiltonien créneau <span
+class="math inline">\(\hat H(t)=\chi(t)\hat{H}_{\mathrm{sys}}\)</span>
+(<span class="math inline">\(\chi\in\{0,1\}\)</span>, période <span
+class="math inline">\(\tau_0\)</span>). Pour <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> indépendant du
+temps, <span class="math display">\[\hat
+U(N\tau_0)=\exp\!\big(-\tfrac{i}{\hbar}\,\varepsilon\hat{H}_{\mathrm{sys}}\,T\big),
+\quad T=N\tau_0,
+\qquad\Longrightarrow\qquad
+\boxed{\;\hat{H}_{\mathrm{eff}}=\varepsilon\,\hat{H}_{\mathrm{sys}}\;}\]</span>
+(hamiltonien de Floquet), la limite continue étant immédiate. Pour <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}(t)\)</span>, <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\bar{H}+O(\tau_0)\)</span>
+(développement de Magnus).</em></p>
+</div>
+<div class="scope">
+<p><em>Portée 1</em>. Le Théorème <a href="#thm:unit"
+data-reference-type="ref" data-reference="thm:unit">1</a> est une
+<em>garantie structurelle de cohérence</em> : toute évolution engendrée
+par un générateur hermitien est unitaire. Deux conséquences cadrent le
+reste du document. <strong>(U1)</strong> L’unitarité globale implique
+qu’<em>aucune décohérence ne découle de l’intermittence seule</em> ; la
+décohérence de §<a href="#sec:deco" data-reference-type="ref"
+data-reference="sec:deco">4</a> provient d’un ingrédient ajouté (§<a
+href="#sec:disp" data-reference-type="ref"
+data-reference="sec:disp">4.1</a>). <strong>(U2)</strong> La dérivation
+fixe <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+(prescription B) ; ce choix structurel conditionne la phénoménologie
+(§<a href="#sec:exp" data-reference-type="ref"
+data-reference="sec:exp">7</a>).</p>
+</div>
+<h1 id="sec:deco">Déphasage intrinsèque</h1>
+<h2 id="sec:disp">Origine du déphasage : une extension explicite</h2>
+<p><span><span class="sans-serif">[conjecture]</span></span> Le calcul
+ci-dessous repose sur une <em>extension phénoménologique</em> :
+l’hypothèse que les durées élémentaires varient légèrement, <span
+class="math inline">\(\tau_0^{(i)}=\tau_0+\xi_i\)</span>, <span
+class="math inline">\(\langle\xi_i\rangle=0\)</span>, <span
+class="math inline">\(\langle\xi_i\xi_j\rangle=(\delta\tau_0)^2\delta_{ij}\)</span>.
+Cette dispersion n’est <em>pas</em> une conséquence du postulat
+fondamental ; moyenner sur <span
+class="math inline">\(\{\xi_i\}\)</span> est mathématiquement un canal
+de déphasage classique. La nature physique de <span
+class="math inline">\(\xi_i\)</span> détermine le régime de décohérence
+— point décisif, traité ci-dessous.</p>
+<h2 id="deux-régimes-deux-conclusions">Deux régimes, deux
+conclusions</h2>
+<p>Soit <span
+class="math inline">\(\Delta\Phi(T)=\sum_{i=1}^{N}\delta\phi_i(T)\)</span>
+la phase relative accumulée entre deux branches macroscopiquement
+distinctes. La décohérence est définie par <span
+class="math inline">\(\mathrm{Var}(\Delta\Phi(T_{\mathrm{dec}}))=1\)</span>.</p>
+<h4 id="a-dispersion-quasi-statique-t_2ast-refocalisable.">(a)
+Dispersion quasi-statique (<span
+class="math inline">\(T_2^\ast\)</span>, refocalisable).</h4>
+<p>Si <span class="math inline">\(\xi_i\)</span> est <em>figé</em> par
+constituant, le déphasage par constituant croît linéairement en <span
+class="math inline">\(T\)</span>, d’où une variance <em>quadratique</em>
+<span class="math display">\[\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar
+E/\hbar)^2\,(\delta\tau_0/\tau_0)^2\,T^2,
+\qquad
+T_{\mathrm{dec}}^{-1}\propto
+\sqrt{N}\,\frac{\delta\tau_0}{\tau_0^2},\]</span> décroissance
+<em>gaussienne</em>. <span><span
+class="sans-serif">[numérique]</span></span> Ce régime est un déphasage
+<em>inhomogène</em>, en principe <em>refocalisable par écho</em> (de
+type Hahn) : il ne constitue donc <em>pas</em> un plancher
+irréductible.</p>
+<h4 id="b-dispersion-dynamique-t_2-irréductible.">(b) Dispersion
+dynamique (<span class="math inline">\(T_2\)</span>, irréductible).</h4>
+<p>Si <span class="math inline">\(\xi_i\)</span> <em>refluctue</em> de
+cycle en cycle (processus stochastique), la variance devient
+<em>linéaire</em> en <span class="math inline">\(T\)</span>, <span
+class="math display">\[\mathrm{Var}(\Delta\Phi)\;\sim\; N\,(\bar
+E/\hbar)^2\,(\delta\tau_0)^2\,\frac{T}{\tau_0},
+\qquad
+T_{\mathrm{dec}}^{-1}\propto
+N\,\frac{(\delta\tau_0)^2}{\tau_0^3},\]</span> décroissance
+<em>exponentielle</em>, <em>non</em> refocalisable. <span><span
+class="sans-serif">[numérique]</span></span> <em>Seul ce régime</em>
+mérite le qualificatif d’« irréductible ». Le préfacteur dépend de
+l’énergie caractéristique <span class="math inline">\(\bar E\)</span>
+(prise <span class="math inline">\(\sim\hbar/\tau_0\)</span> pour
+l’estimation) ; la valeur précise reste <span><span
+class="sans-serif">[ouvert]</span></span>.</p>
+<h4 id="distinction-avec-la-décohérence-environnementale.">Distinction
+avec la décohérence environnementale.</h4>
+<p>Dans les deux cas, le préfacteur ne dépend que de paramètres
+<em>intrinsèques</em> (<span
+class="math inline">\(\delta\tau_0,\tau_0,N\)</span>), non d’un bain
+externe ; un système idéalement isolé du milieu se déphaserait encore.
+Mais HDEQ <em>est</em> un modèle de bruit (intrinsèque),
+conceptuellement voisin des modèles d’effondrement spontané (§<a
+href="#sec:pos" data-reference-type="ref"
+data-reference="sec:pos">9</a>). Noter l’<em>exposant en <span
+class="math inline">\(N\)</span></em> : <span
+class="math inline">\(\sqrt N\)</span> (statique) ou <span
+class="math inline">\(N\)</span> (dynamique), à comparer au scaling
+souvent linéaire ou super-linéaire des modèles collisionnels — point à
+exploiter pour la discrimination expérimentale (§<a href="#sec:exp"
+data-reference-type="ref" data-reference="sec:exp">7</a>).</p>
+<h1 id="sec:base">Sélection de la base privilégiée</h1>
+<div class="definition">
+<p><strong>Définition 2</strong> (amplitude de survie). Pour <span
+class="math inline">\(\lvert
+\psi\rangle\in\mathrm{Dom}(\hat{H}_{\mathrm{eff}})\)</span>, <span
+class="math inline">\(\lVert\psi\rVert=1\)</span> : <span
+class="math inline">\(A_\psi(t)=\langle \psi\rvert
+e^{-i\hat{H}_{\mathrm{eff}}t/\hbar}\lvert \psi\rangle\)</span>. L’état
+<span class="math inline">\(\lvert \psi\rangle\)</span> est <em>état
+pointeur</em> (phase stable) ssi <span class="math inline">\(\lvert
+A_\psi(t)\rvert=1\)</span> pour tout <span
+class="math inline">\(t\)</span>.</p>
+</div>
+<div id="prop:base" class="proposition">
+<p><strong>Proposition 1</strong>. <em><span><span
+class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\lvert A_\psi(t)\rvert=1\ \forall t\iff\lvert
+\psi\rangle\)</span> est état propre de <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">\((\Leftarrow)\)</span>
+immédiat. <span class="math inline">\((\Rightarrow)\)</span> par
+Cauchy–Schwarz, <span class="math inline">\(\lvert
+A_\psi(t)\rvert\le\lVert\psi\rVert\,\lVert
+e^{-i\hat{H}_{\mathrm{eff}}t/\hbar}\psi\rVert=1\)</span>, avec égalité
+ssi <span
+class="math inline">\(e^{-i\hat{H}_{\mathrm{eff}}t/\hbar}\lvert
+\psi\rangle=\lambda(t)\lvert \psi\rangle\)</span>, <span
+class="math inline">\(\lvert\lambda(t)\rvert=1\)</span>. Comme <span
+class="math inline">\(\lvert
+\psi\rangle\in\mathrm{Dom}(\hat{H}_{\mathrm{eff}})\)</span>, le théorème
+de Stone donne la dérivabilité en <span
+class="math inline">\(t=0\)</span> : <span
+class="math inline">\(-\tfrac{i}{\hbar}\hat{H}_{\mathrm{eff}}\lvert
+\psi\rangle=\lambda&#39;(0)\lvert \psi\rangle\)</span>, soit <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}\lvert
+\psi\rangle=(i\hbar\lambda&#39;(0))\lvert \psi\rangle\)</span> (valeur
+propre réelle). ◻</p>
+</div>
+<div class="corollary">
+<p><strong>Corollaire 2</strong> (défaut de module à l’ordre <span
+class="math inline">\(\tau_0^2\)</span>). <em><span><span
+class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\lvert A_\psi(t)\rvert^2=1-(\Delta
+H_{\mathrm{eff}}/\hbar)^2 t^2+O(t^4)\)</span>, avec <span
+class="math inline">\((\Delta
+H_{\mathrm{eff}})^2=\langle\hat{H}_{\mathrm{eff}}^2\rangle-\langle\hat{H}_{\mathrm{eff}}\rangle^2\)</span>.
+Le défaut s’annule ssi <span class="math inline">\(\lvert
+\psi\rangle\)</span> est état propre, coïncidant avec la borne de Zénon
+à temps court.</em></p>
+</div>
+<div class="scope">
+<p><em>Portée 2</em>. Le critère sélectionne <span
+class="math inline">\(\mathrm{Spec}(\hat{H}_{\mathrm{eff}})\)</span>.
+<strong>(1)</strong> Avec <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>,
+c’est la base d’<em>énergie</em> de <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span>. Si <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\hat H_S+\hat H_A+\hat
+H_{SA}\)</span> inclut un couplage de mesure <em>fort</em>, ses états
+propres approchent la base d’interaction, donc les pointeurs
+d’einselection ; en régime <em>libre/faible</em>, la base d’énergie en
+<em>diffère</em> (base quasi-localisée). La sélection est donc
+<em>dépendante du régime</em> <span><span
+class="sans-serif">[conjecture]</span></span>. <strong>(2)</strong>
+Mécanisme de type Zénon : le gating stabilise la base propre du
+générateur. <strong>(3)</strong> La Proposition identifie une
+<em>base</em>, non la sélection d’un résultat unique ni la règle de
+Born.</p>
+</div>
+<h1 id="la-règle-de-born-comme-postulat-heuristique">La règle de Born
+comme postulat heuristique</h1>
+<p><span><span class="sans-serif">[ouvert]</span></span> Une dérivation
+rigoureuse de la règle de Born à partir d’un cadre dynamique reste un
+problème ouvert pour tous les cadres connus (Gleason suppose la
+structure mesure-théorique ; Deutsch–Wallace des axiomes de rationalité
+; Zurek une structure d’intrication). HDEQ ne rompt pas cette impasse :
+la fréquence des résultats est prise comme postulat heuristique.</p>
+<h1 id="sec:exp">Directions expérimentales</h1>
+<h2 id="direction-i-déphasage-intrinsèque-par-interférométrie">Direction
+I : déphasage intrinsèque par interférométrie</h2>
+<p><span><span class="sans-serif">[numérique]</span></span> La signature
+<em>primaire</em> du cadre. Sa nature dépend du régime de §<a
+href="#sec:deco" data-reference-type="ref"
+data-reference="sec:deco">4</a> : un plancher <em>irréductible</em>
+suppose une dispersion <em>dynamique</em> (cas b, décroissance
+exponentielle, <span class="math inline">\(T_{\mathrm{dec}}^{-1}\propto
+N(\delta\tau_0)^2/\tau_0^3\)</span>) ; le cas statique (a) est en
+principe annulable par écho et ne constitue pas un test fondamental.
+L’interférométrie moléculaire (<span
+class="math inline">\(\sim\)</span>25 000 amu aujourd’hui ; extension
+visée <span class="math inline">\(10^6\)</span>–<span
+class="math inline">\(10^8\)</span> amu en ultra-vide cryogénique) doit
+<em>séparer le scaling en <span class="math inline">\(N\)</span></em> de
+HDEQ (<span class="math inline">\(\sqrt N\)</span> ou <span
+class="math inline">\(N\)</span> selon le régime) de celui du bruit
+résiduel, à <span class="math inline">\(N\)</span> fixé et avec
+calibration indépendante de <span
+class="math inline">\(\Gamma_{\mathrm{env}}\)</span>.</p>
+<h2
+id="direction-ii-transitions-atomiques-non-discriminante-sous-le-cadre-consistant">Direction
+II : transitions atomiques — non discriminante sous le cadre
+consistant</h2>
+<p><span><span class="sans-serif">[ouvert]</span></span> <em>Deux
+prescriptions de gating.</em> <strong>(A)</strong> gater la seule
+interaction <span class="math inline">\(\hat H_{\mathrm{int}}\)</span>
+(évolution libre maintenue) : la règle d’or donne <span
+class="math inline">\(\Gamma=|\langle f|\varepsilon\hat
+H_{\mathrm{int}}|i\rangle|^2\rho
+=\varepsilon^2\Gamma_{\mathrm{QED}}\)</span>, fréquences inchangées.
+<strong>(B)</strong> gater tout <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> : <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+rééchelonne <em>toutes</em> les énergies.</p>
+<ul>
+<li><p>Le postulat fondamental, dérivé proprement (Cor. <a
+href="#cor:floquet" data-reference-type="ref"
+data-reference="cor:floquet">1</a>), <em>est</em> la prescription B. La
+prescription A requiert un <em>ingrédient supplémentaire</em> (gating
+sélectif de l’interaction) non contenu dans le postulat unique.</p></li>
+<li><p>Sous B, tout rapport de fréquences ou de taux vaut <span
+class="math inline">\(\nu_1/\nu_2=\omega_1/\omega_2\)</span> : <span
+class="math inline">\(\varepsilon\)</span> <em>s’annule</em>. Un <span
+class="math inline">\(\varepsilon\)</span> universel est donc
+<em>inobservable</em> en spectroscopie comparative, y compris par les
+meilleures horloges (incertitude <span
+class="math inline">\(3\times10^{-18}\)</span>). Le secteur
+spectroscopique est non discriminant.</p></li>
+<li><p>La relation <span
+class="math inline">\(\Gamma=\varepsilon^2\Gamma_{\mathrm{QED}}\)</span>
+et la relation centrale <span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+<em>ne sont pas simultanément cohérentes</em> : elles appartiennent à
+des prescriptions différentes. Adopter B (cohérence structurelle) rend
+la Direction II <em>nulle</em> ; adopter A en fait une prédiction
+<em>conditionnelle</em> à un postulat additionnel.</p></li>
+</ul>
+<p><em>Conclusion :</em> sauf à motiver indépendamment la
+prescription A, la spectroscopie atomique ne contraint pas HDEQ. C’est
+cohérent avec la non-observabilité des horloges. La transition d’horloge
+E3 de <span class="math inline">\(^{171}\)</span>Yb<span
+class="math inline">\(^+\)</span> (sub-Hz) serait de toute façon
+inutilisable.</p>
+<h2 id="direction-iii-exploratoire-résonances-stroboscopiques">Direction
+III (exploratoire) : résonances stroboscopiques</h2>
+<p><span><span class="sans-serif">[spéculation]</span></span> Par
+analogie avec Floquet (<span
+class="math inline">\(\Omega_F=\varepsilon\Omega_R\)</span>), des
+structures périodiques pourraient apparaître à <span
+class="math inline">\(\Delta E=2\pi\hbar/\tau_0\)</span>. Amplitude,
+transcription boost-invariante et confrontation aux données restent
+ouvertes.</p>
+<h1 id="extension-à-la-théorie-quantique-des-champs">Extension à la
+théorie quantique des champs</h1>
+<p><span><span class="sans-serif">[preuve]</span></span> Soit <span
+class="math inline">\(\mathcal{F}_{\mathrm{ext}}=\mathcal{F}_{\mathrm{sys}}\otimes\mathcal{H}_{\mathrm{temp}}\)</span>.
+Les opérateurs de création/annihilation commutent avec les projecteurs
+(<span class="math inline">\([\hat P,\hat a(p)]=0\)</span>, <span
+class="math inline">\(\hat P\)</span> agissant comme l’identité sur la
+partie système) ; les relations canoniques à temps égaux sont
+préservées. <em>Identification ontologique</em> <span><span
+class="sans-serif">[conjecture]</span></span> : les phases inactives
+<em>pourraient</em> s’identifier aux fluctuations du vide ; cette
+lecture est distincte du formalisme de niveau I, qui reste valable
+indépendamment. <em>Portée UV</em> <span><span
+class="sans-serif">[preuve]</span></span> : HDEQ ne porte pas de coupure
+UV dynamique à <span
+class="math inline">\(\Lambda_{\mathrm{UV}}=\hbar/\tau_0\)</span> — une
+telle coupure serait intenable (LHAASO/GRB 221009A <span
+class="math inline">\(E_{\mathrm{QG},1}\gtrsim10\,E_{\mathrm{Planck}}\)</span> <span><span
+class="sans-serif">[à vérifier]</span></span> ; <span
+class="math inline">\(g-2\)</span> électron et muon). Le niveau I
+(unitarité, base privilégiée, déphasage) est indépendant de cette
+question.</p>
+<h1 id="sec:pos">Positionnement : NCG, CSL, Zénon, Trotter</h1>
+<p><strong>Géométrie non commutative.</strong> Le programme de Connes et
+le flot modulaire de Connes–Rovelli partagent avec HDEQ le rejet du
+temps continu comme donnée première et la décohérence sans bain spatial
+; <span class="math inline">\(\hat P(\tau_0)\)</span> pourrait
+s’interpréter comme un échantillonnage discret de l’automorphisme
+modulaire de Tomita–Takesaki <span><span
+class="sans-serif">[conjecture]</span></span>. <strong>Modèles
+d’effondrement (CSL/GRW).</strong> La décohérence-par-dispersion de §<a
+href="#sec:deco" data-reference-type="ref"
+data-reference="sec:deco">4</a> est mathématiquement un canal de
+déphasage stochastique, proche de CSL <em>sans saut</em> : HDEQ préserve
+l’unitarité globale (sur <span
+class="math inline">\(\mathcal{H}_{\mathrm{ext}}\)</span>) là où CSL
+ajoute un bruit non unitaire sur <span
+class="math inline">\(\mathcal{H}_{\mathrm{sys}}\)</span>. Distinction à
+expliciter <span><span class="sans-serif">[conjecture]</span></span>.
+<strong>Dynamique de Zénon.</strong> La Proposition <a href="#prop:base"
+data-reference-type="ref" data-reference="prop:base">1</a> est une
+stabilisation de type Zénon (le sous-espace propre du générateur est
+stabilisé par le gating répété). <strong>Trotter.</strong> Le formalisme
+gaté est formellement une évolution de Trotter avec pas « idle » ; la
+spécificité de HDEQ est l’<em>interprétation ontologique</em> (existence
+active intermittente) et la dispersion <span
+class="math inline">\(\delta\tau_0\)</span>, non le découpage temporel
+lui-même <span><span class="sans-serif">[heuristique]</span></span>.</p>
+<h1 id="discussion-limites-et-portée">Discussion, limites et portée</h1>
+<h2 id="portée-vis-à-vis-de-la-question-dunification">Portée vis-à-vis
+de la question d’unification</h2>
+<p>HDEQ établit le mécanisme du <em>secteur quantique</em> — existence
+intermittente, déphasage intrinsèque, sélection de la base privilégiée —
+et fournit le facteur d’existence <span
+class="math inline">\(\varepsilon\)</span> et la structure de gating. Il
+ne porte <em>pas</em>, à lui seul, sur la question « la gravitation
+est-elle quantique ? ». Dans le cadre où la métrique <span
+class="math inline">\(g_{\mu\nu}\)</span> demeure un champ
+<em>classique</em> (action tenseur-scalaire en <span
+class="math inline">\(\tfrac12 fR\)</span>, <span
+class="math inline">\(\Omega=\sqrt f\)</span> reliant les cadres de
+Jordan et d’Einstein), le couplage gravité<span
+class="math inline">\(\,\leftrightarrow\,\)</span>quantique entre par la
+modulation <span
+class="math inline">\(\tau_0(R)=2\pi\sqrt{\omega/(\alpha+\tfrac12\beta
+M_{\mathrm{Pl}}^2 R)}\)</span>, dont l’effet dynamique <span
+class="math inline">\(\delta\tau_0/\tau_0=-(\beta/4)M_{\mathrm{Pl}}^2
+R/\alpha\)</span> est inobservable dans la matière (<span
+class="math inline">\(\sim10^{-81}\)</span>) et ne devient déterminant
+qu’à la courbure critique <span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span>. Le traitement de
+cette question relève d’un niveau de <em>synthèse</em> ultérieur, où
+tous les secteurs sont dans le périmètre ; la métrique y restant
+classique, le cadre prend une position <em>falsifiable</em> (absence
+d’intrication induite gravitationnellement). Le présent travail en est
+un <em>prérequis quantique</em>, non une réponse. <span><span
+class="sans-serif">[ouvert]</span></span></p>
+<h2 id="limitations-honnêtes">Limitations honnêtes</h2>
+<ul>
+<li><p><span class="math inline">\(\tau_0\)</span> et <span
+class="math inline">\(\varepsilon\)</span> sont phénoménologiques, non
+dérivés de premiers principes (une origine géométrique est conjecturée,
+cf. conclusion).</p></li>
+<li><p>La dispersion <span class="math inline">\(\xi_i\)</span> et
+l’hypothèse gaussienne sont des couches explicites ; le caractère «
+irréductible » exige le régime <em>dynamique</em> (§<a href="#sec:deco"
+data-reference-type="ref" data-reference="sec:deco">4</a>b).</p></li>
+<li><p>Le Théorème <a href="#thm:unit" data-reference-type="ref"
+data-reference="thm:unit">1</a> est structurel : il ne produit pas la
+décohérence.</p></li>
+<li><p>Le critère de base privilégiée dépend du régime (§<a
+href="#sec:base" data-reference-type="ref"
+data-reference="sec:base">5</a>).</p></li>
+<li><p>La sélection d’une branche unique n’est pas résolue ; la règle de
+Born est heuristique.</p></li>
+<li><p>Le secteur spectroscopique est non discriminant sous la
+prescription consistante (B).</p></li>
+</ul>
+<h2
+id="origine-de-varepsilon-et-tau_0-une-direction-géométrique">Origine de
+<span class="math inline">\(\varepsilon\)</span> et <span
+class="math inline">\(\tau_0\)</span> : une direction géométrique</h2>
+<p><span><span class="sans-serif">[conjecture]</span></span> HDEQ laisse
+<span class="math inline">\(\varepsilon,\tau_0\)</span> libres. Une
+origine géométrique est conjecturée : l’oscillation d’un champ d’échelle
+compactifié <span class="math inline">\(\chi\)</span>, lu comme horloge
+relationnelle de Page–Wootters, engendrerait le créneau et fixerait
+<span
+class="math display">\[\varepsilon=\langle\cos^2(\chi/2)\rangle=\frac{E(k)}{K(k)},\quad
+k=\sin(\chi_{\max}/2),\qquad
+\tau_0=2\pi\sqrt{\omega/\alpha}\approx3{,}5\times10^{-37}\
+\mathrm{s}.\]</span> Au vide <span
+class="math inline">\(\varepsilon\to1\)</span>, rendant les effets
+intermittents inobservables.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>HDEQ propose un cadre mécaniste pour la sélection structurelle de la
+base privilégiée et pour un déphasage intrinsèque, préservant
+l’unitarité globale par construction et compatible avec les contraintes
+phénoménologiques actuelles. Ses revendications sont calibrées :
+l’unitarité est structurelle ; la décohérence « irréductible » suppose
+une dispersion dynamique ; la spectroscopie atomique est non
+discriminante sous la prescription consistante. La signature primaire
+testable est le déphasage intrinsèque en interférométrie de masse.
+L’origine de <span class="math inline">\(\varepsilon,\tau_0\)</span>
+pourrait être portée par une géométrie d’échelle compactifiée —
+direction laissée à un développement ultérieur.</p>
+<h4 id="index-des-symboles.">Index des symboles.</h4>
+<p><span class="math inline">\(\varepsilon\)</span> facteur d’existence
+; <span class="math inline">\(\tau_0\)</span> durée de cycle ; <span
+class="math inline">\(\hat P,\hat Q\)</span> projecteurs actif/inactif ;
+<span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+hamiltonien effectif ; <span class="math inline">\(\delta\tau_0\)</span>
+dispersion intrinsèque ; <span class="math inline">\(N\)</span> nombre
+de constituants ; <span class="math inline">\(\chi(t)\)</span> créneau ;
+<span class="math inline">\(\Gamma\)</span> taux de transition.</p>
+<h4 id="balises.">Balises.</h4>
+<p>Les résultats <span><span class="sans-serif">[preuve]</span></span>
+(Théorème <a href="#thm:unit" data-reference-type="ref"
+data-reference="thm:unit">1</a>, Corollaire <a href="#cor:floquet"
+data-reference-type="ref" data-reference="cor:floquet">1</a>,
+Proposition <a href="#prop:base" data-reference-type="ref"
+data-reference="prop:base">1</a>) sont démontrés dans le corps. Les
+estimations de §<a href="#sec:deco" data-reference-type="ref"
+data-reference="sec:deco">4</a> sont <span><span
+class="sans-serif">[numérique]</span></span>/<span><span
+class="sans-serif">[ouvert]</span></span>. Les références externes
+marquées <span><span class="sans-serif">[à vérifier]</span></span>
+(bornes LHAASO, valeurs <span class="math inline">\(g-2\)</span>
+récentes) doivent faire l’objet d’une vérification bibliographique
+finale avant dépôt.</p>
+<h1 class="unnumbered" id="reproductibilité">Reproductibilité</h1>
+<p>Les énoncés <span><span class="sans-serif">[numérique]</span></span>
+et la vérification symbolique des résultats <span><span
+class="sans-serif">[preuve]</span></span> sont reproduits par un script
+autonome (NumPy/SciPy), aux sections codées pour être propres à ce
+document :</p>
+<ul>
+<li><p>Théorème <a href="#thm:unit" data-reference-type="ref"
+data-reference="thm:unit">1</a> : vérification de l’unitarité globale
+<span class="math inline">\(\hat U^\dagger\hat
+U=\hat{I}_{\mathrm{ext}}\)</span> et de la composition <span
+class="math inline">\(\hat
+U(N\tau_0)=e^{-i\varepsilon\hat{H}_{\mathrm{sys}}N\tau_0}\)</span> sur
+la branche active (<span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>).</p></li>
+<li><p>Proposition <a href="#prop:base" data-reference-type="ref"
+data-reference="prop:base">1</a> : amplitude de survie <span
+class="math inline">\(|A_\psi(t)|=1\)</span> pour un état propre, <span
+class="math inline">\(&lt;1\)</span> sinon, et accord du coefficient en
+<span class="math inline">\(t^2\)</span> avec <span
+class="math inline">\((\Delta H_{\mathrm{eff}})^2\)</span>.</p></li>
+<li><p>Déphasage : Monte-Carlo des deux régimes — exposant en <span
+class="math inline">\(T\)</span> valant <span
+class="math inline">\(2\)</span> (quasi-statique, gaussien,
+refocalisable) et <span class="math inline">\(1\)</span> (dynamique,
+exponentiel, irréductible), variance <span class="math inline">\(\propto
+N\)</span> dans les deux cas.</p></li>
+<li><p>Constantes : <span
+class="math inline">\(\eta_{\mathrm{sp}}\)</span>, <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span> (avec <span
+class="math inline">\(\varepsilon\to1\)</span> quand <span
+class="math inline">\(k\to0\)</span>), échelles <span
+class="math inline">\(\hbar/\tau_0\)</span> et <span
+class="math inline">\(2\pi\hbar/\tau_0\)</span>.</p></li>
+</ul>
+<p>Fichier : <code>U1_HDEQ_reproductible.py</code>. <em>Convention</em>
+: <span class="math inline">\(\hbar=\tau_0=1\)</span> sauf mention
+contraire. Le préfixe <code>U1_HDEQ_</code> et les codes
+<code>[H</code><span class="math inline">\(\cdot\)</span><code>]</code>
+sont spécifiques à ce document, pour éviter toute collision avec
+d’autres jeux de scripts.</p>
+<div class="thebibliography">
+<p><span>99</span> J. von Neumann, <em>Mathematische Grundlagen der
+Quantenmechanik</em> (Springer, 1932). G. C. Ghirardi, A. Rimini &amp;
+T. Weber, <em>Phys. Rev. D</em> <strong>34</strong>, 470 (1986). A.
+Bassi <em>et al.</em>, <em>Rev. Mod. Phys.</em> <strong>85</strong>, 471
+(2013). W. H. Zurek, <em>Rev. Mod. Phys.</em> <strong>75</strong>, 715
+(2003). A. M. Gleason, <em>J. Math. Mech.</em> <strong>6</strong>, 885
+(1957). A. O. Caldeira &amp; A. J. Leggett, <em>Physica A</em>
+<strong>121</strong>, 587 (1983). E. Joos &amp; H. D. Zeh, <em>Z. Phys.
+B</em> <strong>59</strong>, 223 (1985). Y. A. Fein <em>et al.</em>,
+<em>Nature Phys.</em> <strong>15</strong>, 1242 (2019). X. Fan <em>et
+al.</em>, <em>Phys. Rev. Lett.</em> <strong>130</strong>, 071801 (2023).
+<span><span class="sans-serif">[à vérifier]</span></span> A. Connes
+&amp; C. Rovelli, <em>Class. Quantum Grav.</em> <strong>11</strong>,
+2899 (1994). D. N. Page &amp; W. K. Wootters, <em>Phys. Rev. D</em>
+<strong>27</strong>, 2885 (1983). N. Huntemann <em>et al.</em>,
+<em>Phys. Rev. Lett.</em> <strong>116</strong>, 063001 (2016).
+Collaboration LHAASO, contrainte de violation de Lorentz sur
+GRB 221009A. <span><span class="sans-serif">[à
+vérifier]</span></span></p>
+</div>
+</article>
+<footer class="footer"><p>© Hassane Bakkaoui · <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>
