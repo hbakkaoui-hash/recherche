@@ -9,6 +9,7 @@ function carte(item) {
     .map(t => `<span class="tag">${t}</span>`).join('');
 
   const liens = [];
+  if (item.html)   liens.push(lien(item.html,   'Article (HTML)', 'link-html'));
   if (item.arxiv)  liens.push(lien(item.arxiv,  'arXiv',         'link-arxiv'));
   if (item.zenodo) liens.push(lien(item.zenodo, 'Zenodo',        'link-zenodo'));
   if (item.pdfFR)  liens.push(lien(item.pdfFR,  'PDF (FR)',      'link-pdf'));

@@ -153,6 +153,8 @@ a { color: inherit; text-decoration: none; }
 }
 .card-link:hover { border-color: var(--accent); color: var(--accent); }
 .link-pdf:hover { background: var(--accent-soft); }
+.link-html   { border-color: #2e7d5b; color: #7ee0b0; background: rgba(108,255,176,0.08); }
+.link-html:hover { border-color: #6cffb0; color: #6cffb0; }
 .link-arxiv  { border-color: #b03a3a; color: #ff9b9b; }
 .link-zenodo { border-color: #2b6cb0; color: #8fc1ff; }
 .link-ext { border-color: var(--accent); color: var(--accent); }
