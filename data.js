@@ -84,6 +84,23 @@ const PHYSIQUE = [
     zenodo: "https://doi.org/10.5281/zenodo.20671840",
     arxiv: null,
     html: "articles/unite5.html"
+  },
+  {
+    titre: "Unité 6 — Une origine 5D de la dualité d'échelle : une cinquième dimension d'espace-temps compactifiée",
+    tags: ["hep-th", "gr-qc"],
+    resume: `Les Unités 1–3 traitaient les axes d'échelle comme cibles internes d'un
+      modèle sigma — <em>pas</em> des dimensions d'espace-temps — pour éviter fantômes et
+      courbes de genre temps fermées. Cette unité teste le choix opposé : promouvoir l'axe
+      d'échelle logarithmique en une véritable <strong>cinquième dimension d'espace-temps
+      compactifiée</strong>. Par réduction de Kaluza–Klein d'une métrique 5D déformée le
+      long d'un cercle d'échelle compact (algèbre tensorielle vérifiée symboliquement, tour
+      KK calculée), on demande si ce plongement régénère l'action du corpus et si le
+      couplage non minimal $\\beta$ peut être <em>prédit</em> plutôt qu'ajusté.`,
+    pdfFR: "papers/u6_FR.pdf",
+    pdfEN: "papers/u6_EN.pdf",
+    zenodo: "https://doi.org/10.5281/zenodo.21142465",
+    arxiv: null,
+    html: "articles/unite6.html"
   }
 ];
 
