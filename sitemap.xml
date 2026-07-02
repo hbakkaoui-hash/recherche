@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sitemap du site de recherche de Hassane Bakkaoui.
-     Publié à : https://hbakkaoui-hash.github.io/recherche/sitemap.xml
-     À SOUMETTRE dans Google Search Console (menu « Sitemaps »).
-     Le site est mono-page : tout le contenu est sur l'accueil.
-     Mets à jour <lastmod> (AAAA-MM-JJ) à chaque modification du site. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://hbakkaoui-hash.github.io/recherche/</loc>
-    <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/erdos458.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/primes-hexagonaux.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/primes-parametriques.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite1.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite2.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite3.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite4.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite5.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hbakkaoui-hash.github.io/recherche/articles/unite6.html</loc><lastmod>2026-07-03</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
 </urlset>
