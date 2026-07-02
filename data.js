@@ -137,7 +137,8 @@ const MATHS = [
     pdfFR: null,
     pdfEN: "papers/erdos458_EN.pdf",
     zenodo: null,
-    arxiv: null
+    arxiv: null,
+    html: "articles/erdos458.html"
   },
   {
     titre: "Suite $\\tau^{+}(n)$ — Problème d'Erdős #448",

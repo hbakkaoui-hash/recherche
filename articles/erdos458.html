@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erdős problem #458 — a reduction and verification · H. Bakkaoui</title>
+<meta name="description" content="A reduction, classification and verification up to 10^12 for Erdős problem #458. Hassane Bakkaoui.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">math.NT</span></div>
+    <h1 class="paper-title">Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur indépendant</p>
+    <div class="paper-links">
+      <a href="../papers/erdos458_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://www.erdosproblems.com/458" target="_blank" rel="noopener">Problème #458</a>
+    </div>
+  </div>
+<h1 id="the-problem">The problem</h1>
+<p>Throughout, <span class="math inline">\([1,\ldots,n]\)</span> denotes
+<span class="math inline">\(\operatorname{lcm}(1,2,\ldots,n)\)</span>
+and <span class="math inline">\(p_k\)</span> the <span
+class="math inline">\(k\)</span>-th prime. Erdős and Graham <span
+class="citation" data-cites="ErGr80"></span> asked:</p>
+<blockquote>
+<p>Is it true that, for all <span class="math inline">\(k\ge 1\)</span>,
+<span class="math display">\[\begin{equation}
+\label{eq:458}
+[1,\ldots,p_{k+1}-1] \;&lt;\; p_k\,[1,\ldots,p_k]\,?
+\end{equation}\]</span></p>
+</blockquote>
+<p>This is problem #458 in Bloom’s catalogue <span class="citation"
+data-cites="Bl458"></span>, where it is recorded as open and
+falsifiable; the related OEIS sequence is A056604 <span class="citation"
+data-cites="OEIS"></span>. Erdős and Graham write that <a href="#eq:458"
+data-reference-type="eqref" data-reference="eq:458">[eq:458]</a> is
+“almost certainly” true but that a proof is beyond reach, the first
+obstruction being the possibility of several primes <span
+class="math inline">\(q\)</span> with <span
+class="math inline">\(p_k&lt;q^2&lt;p_{k+1}\)</span>, whose exclusion is
+essentially Legendre’s conjecture; they add that “the small primes also
+cause trouble.” The purpose of this note is to make both obstructions
+precise and exhaustive: we classify <em>all</em> configurations that
+could violate <a href="#eq:458" data-reference-type="eqref"
+data-reference="eq:458">[eq:458]</a> (Theorem <a href="#thm:class"
+data-reference-type="ref" data-reference="thm:class">4</a>), we
+determine <em>exactly</em> which small primes cause trouble below <span
+class="math inline">\(10^{12}\)</span> (Section <a href="#sec:verif"
+data-reference-type="ref" data-reference="sec:verif">3</a>), and we
+record the resulting conditional statement (Theorem <a href="#thm:cond"
+data-reference-type="ref" data-reference="thm:cond">11</a>).</p>
+<h1 id="sec:red">Reduction and classification</h1>
+<p><strong>[Rigorous.]</strong> The following facts are elementary; we
+include the short proofs for completeness.</p>
+<div id="lem:jump" class="lemma">
+<p><strong>Lemma 1</strong>. <em>For <span class="math inline">\(n\ge
+2\)</span>, <span
+class="math inline">\([1,\ldots,n]/[1,\ldots,n-1]=q\)</span> if <span
+class="math inline">\(n=q^a\)</span> is a prime power (<span
+class="math inline">\(a\ge1\)</span>), and <span
+class="math inline">\(=1\)</span> otherwise.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Standard: <span
+class="math inline">\([1,\ldots,n]=\exp(\psi(n))\)</span> with <span
+class="math inline">\(\psi\)</span> the second Chebyshev function, which
+jumps by <span class="math inline">\(\log q\)</span> exactly at prime
+powers <span class="math inline">\(q^a\)</span>. ◻</p>
+</div>
+<p>Fix <span class="math inline">\(k\ge1\)</span> and write <span
+class="math inline">\(p=p_k\)</span>, <span
+class="math inline">\(P=p_{k+1}\)</span>. Since the open interval <span
+class="math inline">\((p,P)\)</span> contains no prime, Lemma <a
+href="#lem:jump" data-reference-type="ref"
+data-reference="lem:jump">1</a> gives <span
+class="math display">\[\begin{equation}
+\label{eq:ratio}
+\frac{[1,\ldots,P-1]}{[1,\ldots,p]} \;=\; \prod_{\substack{q^a\in(p,P)\\
+a\ge 2}} q \;=:\; R_k ,
+\end{equation}\]</span> the product running over the proper prime powers
+lying strictly between <span class="math inline">\(p\)</span> and <span
+class="math inline">\(P\)</span> (equivalently, in <span
+class="math inline">\((p, P-1]\)</span>). Hence:</p>
+<div id="lem:red" class="lemma">
+<p><strong>Lemma 2</strong>. <em>Inequality <a href="#eq:458"
+data-reference-type="eqref" data-reference="eq:458">[eq:458]</a> holds
+at <span class="math inline">\(k\)</span> if and only if <span
+class="math inline">\(R_k&lt;p_k\)</span>.</em></p>
+</div>
+<div id="lem:basic" class="lemma">
+<p><strong>Lemma 3</strong>. <em>Let <span class="math inline">\(p\ge
+2\)</span> and let <span class="math inline">\(q^a, r^b\)</span> (<span
+class="math inline">\(a,b\ge2\)</span>) be proper prime powers in <span
+class="math inline">\((p,P)\)</span>. Then:</em></p>
+<ol>
+<li><p><em>distinct prime powers in <span
+class="math inline">\((p,P)\)</span> have distinct bases;</em></p></li>
+<li><p><em>if <span class="math inline">\((p,P)\)</span> contains
+exactly one proper prime power <span class="math inline">\(q^a\)</span>,
+then <span class="math inline">\(R_k=q&lt;p\)</span>;</em></p></li>
+<li><p><em>if <span class="math inline">\((p,P)\)</span> contains
+exactly two proper prime powers with exponent multiset <span
+class="math inline">\(\{2,a\}\)</span>, <span
+class="math inline">\(a\ge3\)</span>, then <span
+class="math inline">\(R_k&lt;p\)</span> provided <span
+class="math inline">\(p&gt;32\)</span>;</em></p></li>
+<li><p><em>if <span class="math inline">\((p,P)\)</span> contains
+exactly two proper prime powers with both exponents <span
+class="math inline">\(\ge3\)</span>, then <span
+class="math inline">\(R_k&lt;p\)</span> provided <span
+class="math inline">\(p&gt;4\)</span>.</em></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> By Bertrand’s postulate, <span
+class="math inline">\(P&lt;2p\)</span>, so every prime power in <span
+class="math inline">\((p,P)\)</span> lies in <span
+class="math inline">\((p,2p)\)</span>. (i) If <span
+class="math inline">\(q^a&lt;q^b\)</span> lie in <span
+class="math inline">\((p,2p)\)</span> then <span
+class="math inline">\(q^b\ge q\cdot q^a\ge 2q^a&gt;2p\)</span>, a
+contradiction. (ii) <span class="math inline">\(q\le
+(q^a)^{1/2}&lt;(2p)^{1/2}&lt;p\)</span> for all <span
+class="math inline">\(p\ge2\)</span>. (iii) <span
+class="math inline">\(R_k=qr&lt;(2p)^{1/2}(2p)^{1/3}=(2p)^{5/6}\)</span>,
+and <span class="math inline">\((2p)^{5/6}&lt;p \iff
+p&gt;2^5=32\)</span>. (iv) <span
+class="math inline">\(R_k=qr&lt;(2p)^{2/3}\)</span>, and <span
+class="math inline">\((2p)^{2/3}&lt;p\iff p&gt;4\)</span>. ◻</p>
+</div>
+<div id="thm:class" class="theorem">
+<p><strong>Theorem 4</strong> (Classification of potential violations).
+<em>Let <span class="math inline">\(p_k\ge 37\)</span>. If <a
+href="#eq:458" data-reference-type="eqref"
+data-reference="eq:458">[eq:458]</a> fails at <span
+class="math inline">\(k\)</span>, then the gap <span
+class="math inline">\((p_k,p_{k+1})\)</span> contains</em></p>
+<ol>
+<li><p><em>two squares of distinct primes, <span
+class="math inline">\(q^2&lt;r^2\)</span>; or</em></p></li>
+<li><p><em>two proper prime powers <span
+class="math inline">\(q^a&lt;r^b\)</span> with <span
+class="math inline">\(a,b\ge 3\)</span>.</em></p></li>
+</ol>
+<p><em>Moreover, in case <span class="upright">(I)</span> the failure is
+automatic: two distinct prime squares in one gap always force <span
+class="math inline">\(R_k&gt;p_k\)</span>. In case <span
+class="upright">(II)</span> with <span
+class="math inline">\(a=b\)</span>, the gap satisfies <span
+class="math inline">\(p_{k+1}-p_k&gt;\tfrac{3}{2^{1/3}}\,p_k^{2/3}\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Suppose <span class="math inline">\(R_k\ge
+p_k\)</span> and let <span class="math inline">\(m\)</span> be the
+number of proper prime powers in the gap. By Lemma <a href="#lem:basic"
+data-reference-type="ref" data-reference="lem:basic">3</a>(ii)–(iv),
+<span class="math inline">\(m\le2\)</span> forces either <span
+class="math inline">\(m=2\)</span> with both exponents equal to <span
+class="math inline">\(2\)</span> — case (I) — or no failure. If <span
+class="math inline">\(m\ge3\)</span> and the gap does not contain two
+prime squares, then at most one exponent equals <span
+class="math inline">\(2\)</span>, so at least two exponents are <span
+class="math inline">\(\ge3\)</span> — case (II).</p>
+<p>Automatic failure in (I): <span
+class="math inline">\(q^2&gt;p_k\)</span> gives <span
+class="math inline">\(q&gt;\sqrt{p_k}\)</span>, and <span
+class="math inline">\(r&gt;q\)</span> gives <span
+class="math inline">\(R_k\ge qr&gt;q^2&gt;p_k\)</span>.</p>
+<p>Gap bound in (II) with <span class="math inline">\(a=b\ge3\)</span>:
+the bases are distinct primes by Lemma <a href="#lem:basic"
+data-reference-type="ref" data-reference="lem:basic">3</a>(i), so <span
+class="math inline">\(r\ge q+1\)</span> and <span
+class="math inline">\(r^a-q^a\ge a\,q^{a-1} = a\,q^a/q &gt;
+3\,p_k/(2p_k)^{1/3} = \tfrac{3}{2^{1/3}}\,p_k^{2/3}\)</span>, using
+<span
+class="math inline">\(q\le(2p_k)^{1/a}\le(2p_k)^{1/3}\)</span>. ◻</p>
+</div>
+<div id="rem:I" class="remark">
+<p><em>Remark 5</em>. <strong>[Rigorous.]</strong> Case (I) forces a
+prime gap longer than <span class="math inline">\(2\sqrt{p_k}\)</span>:
+indeed <span class="math inline">\(r\ge q+1\)</span> gives <span
+class="math inline">\(p_{k+1}-p_k &gt; r^2-q^2 \ge 2q+1 &gt;
+2\sqrt{p_k}\)</span>. Note that even the Riemann Hypothesis only yields
+gaps <span class="math inline">\(O(\sqrt{p}\,\log p)\)</span>, which
+does not exclude case (I); its exclusion is of the strength of
+Legendre’s conjecture, as already observed in <span class="citation"
+data-cites="Bl458"></span>. Two distinct prime squares <span
+class="math inline">\(q^2&lt;r^2\)</span> in one gap would in particular
+leave the interval <span class="math inline">\((q^2,(q+1)^2)\)</span>
+free of primes, i.e. exhibit a counterexample to Legendre’s
+conjecture.</p>
+</div>
+<div id="rem:II" class="remark">
+<p><em>Remark 6</em>. <strong>[Rigorous / conditional.]</strong> In case
+(II) with equal exponents, the gap exceeds <span
+class="math inline">\(\tfrac{3}{2^{1/3}}p_k^{2/3}\)</span>, which
+contradicts <span class="math inline">\(p_{k+1}-p_k\ll
+p_k^{0.525}\)</span> <span class="citation" data-cites="BHP"></span> for
+all sufficiently large <span class="math inline">\(k\)</span>; below any
+fixed bound the configuration is checked directly (Section <a
+href="#sec:verif" data-reference-type="ref"
+data-reference="sec:verif">3</a>). In case (II) with distinct exponents
+<span class="math inline">\(a\ne b\)</span>, the two powers satisfy
+<span class="math inline">\(|q^a-r^b|&lt;p_{k+1}-p_k\)</span> with <span
+class="math inline">\(q^a,r^b\approx p_k\)</span>: a Pillai-type
+near-coincidence of perfect powers. Such configurations are expected to
+be extremely rare, but their unconditional exclusion is open; this is a
+second, less visible obstruction to <a href="#eq:458"
+data-reference-type="eqref" data-reference="eq:458">[eq:458]</a>,
+distinct from the Legendre-type one.</p>
+</div>
+<h1 id="sec:verif">Exhaustive verification up to <span
+class="math inline">\(10^{12}\)</span></h1>
+<p><strong>[Rigorous computation.]</strong> By Lemma <a
+href="#lem:basic" data-reference-type="ref"
+data-reference="lem:basic">3</a>(ii), a violation requires at least two
+proper prime powers in one gap. We therefore enumerated <em>all</em>
+proper prime powers <span class="math inline">\(q^a\le 10^{12}\)</span>
+(<span class="math inline">\(a\ge2\)</span>) — there are <span
+class="math inline">\(80\,070\)</span> of them — sorted them, and for
+each consecutive pair tested whether a prime lies strictly between them;
+if not, the pair cohabits in a single prime gap, which we then
+reconstructed in full and tested via Lemma <a href="#lem:red"
+data-reference-type="ref" data-reference="lem:red">2</a>. All primality
+tests concern integers below <span
+class="math inline">\(2^{64}\)</span>, where the Baillie–PSW test as
+implemented in SymPy is deterministic (no BPSW pseudoprime exists below
+<span class="math inline">\(2^{64}\)</span> <span class="citation"
+data-cites="Gil"></span>). The script is reproduced verbatim in
+Appendix <a href="#app:script" data-reference-type="ref"
+data-reference="app:script">5</a>.</p>
+<p>The results were cross-checked by three fully independent
+computations: (a) a brute-force evaluation of the exact integers <span
+class="math inline">\([1,\ldots,n]\)</span> by iterated <span
+class="math inline">\(\gcd\)</span>, with no recourse to the reduction
+of Section <a href="#sec:red" data-reference-type="ref"
+data-reference="sec:red">2</a>, confirming <a href="#eq:458"
+data-reference-type="eqref" data-reference="eq:458">[eq:458]</a>
+directly for all <span class="math inline">\(p_{k+1}\le 10^{5}\)</span>;
+(b) a segmented Eratosthenes sieve up to <span
+class="math inline">\(10^{9}\)</span>, using no probabilistic primality
+test whatsoever, which recovers exactly the same five cohabitations; (c)
+a re-run of the full enumeration up to <span
+class="math inline">\(10^{12}\)</span> using a self-contained
+deterministic Miller–Rabin test with the witness set <span
+class="math inline">\(\{2,3,\ldots,37\}\)</span> (exact for <span
+class="math inline">\(n&lt;3.317\cdot10^{24}\)</span> <span
+class="citation" data-cites="SW"></span>), independent of SymPy, with
+identical output.</p>
+<div id="thm:verif" class="theorem">
+<p><strong>Theorem 7</strong>. <em>Inequality <a href="#eq:458"
+data-reference-type="eqref" data-reference="eq:458">[eq:458]</a> holds
+for every <span class="math inline">\(k\)</span> with <span
+class="math inline">\(p_{k+1}\le 10^{12}\)</span>. Exactly five prime
+gaps below <span class="math inline">\(10^{12}\)</span> contain more
+than one proper prime power, namely:</em></p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><em>Gap <span
+class="math inline">\((p_k,p_{k+1})\)</span></em></th>
+<th style="text-align: left;"><em>Prime powers</em></th>
+<th style="text-align: left;"><em><span
+class="math inline">\(R_k\)</span></em></th>
+<th style="text-align: left;"><em><span
+class="math inline">\(R_k/p_k\)</span></em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><em><span
+class="math inline">\((7,\,11)\)</span></em></td>
+<td style="text-align: left;"><em><span class="math inline">\(2^3,\
+3^2\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(6\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(0.8571\)</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span
+class="math inline">\((23,\,29)\)</span></em></td>
+<td style="text-align: left;"><em><span class="math inline">\(5^2,\
+3^3\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(15\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(0.6522\)</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span
+class="math inline">\((113,\,127)\)</span></em></td>
+<td style="text-align: left;"><em><span class="math inline">\(11^2,\
+5^3\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(55\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(0.4867\)</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span
+class="math inline">\((2179,\,2203)\)</span></em></td>
+<td style="text-align: left;"><em><span class="math inline">\(3^7,\
+13^3\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(39\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(0.0179\)</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span
+class="math inline">\((32749,\,32771)\)</span></em></td>
+<td style="text-align: left;"><em><span class="math inline">\(181^2,\
+2^{15}\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(362\)</span></em></td>
+<td style="text-align: left;"><em><span
+class="math inline">\(0.0111\)</span></em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>In particular, the maximum of <span
+class="math inline">\(R_k/p_k\)</span> over the whole range is <span
+class="math inline">\(6/7\)</span>, attained at <span
+class="math inline">\(k=4\)</span>, and every prime gap with <span
+class="math inline">\(32771&lt;p_{k+1}\le 10^{12}\)</span> contains at
+most one proper prime power.</em></p>
+</div>
+<div class="remark">
+<p><em>Remark 8</em>. <strong>[Rigorous.]</strong> No prime gap below
+<span class="math inline">\(10^{12}\)</span> contains two distinct prime
+squares; all five cohabitations above are of mixed type (one square and
+one higher power, or two higher powers of distinct exponents), and none
+comes close to a violation. The two configurations of Theorem <a
+href="#thm:class" data-reference-type="ref"
+data-reference="thm:class">4</a> are thus both empirically absent in a
+wide range, in line with the heuristic of Remark <a href="#rem:heur"
+data-reference-type="ref" data-reference="rem:heur">12</a>.</p>
+</div>
+<h1 id="a-conditional-statement">A conditional statement</h1>
+<div id="hyp:L" class="hypothesis">
+<p><strong>Hypothesis 9</strong> (L). There is <span
+class="math inline">\(k_0\)</span> such that <span
+class="math inline">\(p_{k+1}-p_k\le 2\sqrt{p_k}\)</span> for all <span
+class="math inline">\(k\ge k_0\)</span>.</p>
+</div>
+<div id="hyp:P" class="hypothesis">
+<p><strong>Hypothesis 10</strong> (P). Only finitely many pairs of
+proper prime powers <span class="math inline">\(q^a\ne r^b\)</span> with
+<span class="math inline">\(a,b\ge3\)</span> satisfy <span
+class="math inline">\(|q^a-r^b|\le 2\sqrt{\max(q^a,r^b)}\)</span>.</p>
+</div>
+<p>Hypothesis (L) follows from Legendre-type conjectures (and from
+Cramér’s model); Hypothesis (P) is a very weak form of Pillai’s
+conjecture. Neither is known.</p>
+<div id="thm:cond" class="theorem">
+<p><strong>Theorem 11</strong> (Conditional). <em>Assume Hypotheses
+<span class="upright">(L)</span> and <span class="upright">(P)</span>.
+Then <a href="#eq:458" data-reference-type="eqref"
+data-reference="eq:458">[eq:458]</a> holds for all sufficiently large
+<span class="math inline">\(k\)</span>.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\(k\)</span> be large
+and suppose <a href="#eq:458" data-reference-type="eqref"
+data-reference="eq:458">[eq:458]</a> fails. By Theorem <a
+href="#thm:class" data-reference-type="ref"
+data-reference="thm:class">4</a>, the gap contains configuration (I) or
+(II). Configuration (I) forces <span
+class="math inline">\(p_{k+1}-p_k&gt;2\sqrt{p_k}\)</span> (Remark <a
+href="#rem:I" data-reference-type="ref" data-reference="rem:I">5</a>),
+contradicting (L). In configuration (II), under (L) the two powers
+satisfy <span class="math inline">\(|q^a-r^b|&lt;2\sqrt{p_k}\le
+2\sqrt{\max(q^a,r^b)}\)</span>; for <span
+class="math inline">\(a=b\)</span> this contradicts the gap bound of
+Theorem <a href="#thm:class" data-reference-type="ref"
+data-reference="thm:class">4</a> (which exceeds <span
+class="math inline">\(2\sqrt{p_k}\)</span> for <span
+class="math inline">\(p_k\)</span> large), and for <span
+class="math inline">\(a\ne b\)</span> hypothesis (P) leaves only
+finitely many possibilities. ◻</p>
+</div>
+<div id="rem:heur" class="remark">
+<p><em>Remark 12</em>. <strong>[Heuristic.]</strong> In Cramér’s model
+the expected number of prime gaps ever containing two prime squares is
+essentially zero (<span class="math inline">\(\sum_q
+\exp(-c\sqrt{q^2}/\log q^2)&lt;\infty\)</span>-type estimates), and
+Pillai near-coincidences of size <span
+class="math inline">\(\sqrt{x}\)</span> near <span
+class="math inline">\(x\)</span> are likewise expected to be finite in
+number. The data of Theorem <a href="#thm:verif"
+data-reference-type="ref" data-reference="thm:verif">7</a> — five
+cohabitations, all below <span class="math inline">\(33\,000\)</span>,
+with <span class="math inline">\(R_k/p_k\)</span> decaying rapidly — is
+consistent with this. We emphasise, however, that a proof of <a
+href="#eq:458" data-reference-type="eqref"
+data-reference="eq:458">[eq:458]</a> appears out of reach: excluding (I)
+requires gap bounds of strength <span
+class="math inline">\(\sqrt{p}\)</span>, beyond even the Riemann
+Hypothesis, and excluding (II) for <span class="math inline">\(a\ne
+b\)</span> requires Pillai-type results that are equally
+unavailable.</p>
+</div>
+<h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
+<p>This note benefited from computational assistance and verification by
+the Claude language model (Anthropic). All mathematical claims were
+derived and checked independently as described above; any error is the
+author’s.</p>
+<div class="thebibliography">
+<p><span>9</span> R. C. Baker, G. Harman, J. Pintz, <em>The difference
+between consecutive primes, II</em>, Proc. London Math. Soc. (3)
+<strong>83</strong> (2001), 532–562. T. F. Bloom, <em>Erdős Problem
+#458</em>, <a href="https://www.erdosproblems.com/458"
+class="uri">https://www.erdosproblems.com/458</a>, accessed June 2026.
+P. Erdős, R. L. Graham, <em>Old and new problems and results in
+combinatorial number theory</em>, Monographies de L’Enseignement
+Mathématique <strong>28</strong>, Genève, 1980, p. 91. J. Gilchrist,
+<em>Pseudoprime enumeration with probabilistic primality tests</em>
+(verification that no Baillie–PSW pseudoprime exists below <span
+class="math inline">\(2^{64}\)</span>, building on J. Feitsma’s tables),
+2013. [Reference to be finalised before posting.] J. Sorenson,
+J. Webster, <em>Strong pseudoprimes to twelve prime bases</em>, Math.
+Comp. <strong>86</strong> (2017), 985–1003. [Bound <span
+class="math inline">\(3.317\cdot10^{24}\)</span> for witnesses <span
+class="math inline">\(\{2,\ldots,37\}\)</span>; reference to be
+double-checked before posting.] OEIS Foundation Inc., <em>The On-Line
+Encyclopedia of Integer Sequences</em>, sequence A056604, <a
+href="https://oeis.org/A056604"
+class="uri">https://oeis.org/A056604</a>.</p>
+</div>
+<h1 id="app:script">Verification script (Python 3.12, exact
+arithmetic)</h1>
+<pre><code>from sympy import primerange, isprime, nextprime
+from math import isqrt
+import bisect
+
+LIMIT = 10**12
+powers = []                      # (value, base, exponent), exponent &gt;= 2
+for q in primerange(2, isqrt(LIMIT) + 1):
+    v, a = q*q, 2
+    while v &lt;= LIMIT:
+        powers.append((v, q, a)); v *= q; a += 1
+powers.sort()                    # 80,070 proper prime powers
+
+cohab = []                       # adjacent pairs with no prime in between
+for i in range(len(powers) - 1):
+    v1 = powers[i][0]; v2 = powers[i+1][0]
+    if nextprime(v1) &gt; v2:       # v1, v2 composite =&gt; same prime gap
+        cohab.append((powers[i], powers[i+1]))
+
+violations = 0
+for (v1, q1, a1), (v2, q2, a2) in cohab:
+    lo = v1
+    while not isprime(lo): lo -= 1          # p_k
+    hi = nextprime(v2)                       # p_{k+1}
+    iL = bisect.bisect_right(powers, (lo, 10**18, 0))
+    iR = bisect.bisect_left(powers, (hi, 0, 0))
+    grp = powers[iL:iR]
+    R = 1
+    for v, q, a in grp: R *= q
+    print(lo, hi, grp, R, R/lo)
+    if R &gt;= lo: violations += 1
+print(&quot;violations:&quot;, violations)             # output: 0</code></pre>
+</article>
+<footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>
