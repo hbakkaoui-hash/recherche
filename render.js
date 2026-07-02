@@ -9,7 +9,6 @@ function carte(item) {
     .map(t => `<span class="tag">${t}</span>`).join('');
 
   const liens = [];
-  if (item.html)   liens.push(lien(item.html,   'Article (HTML)', 'link-html'));
   if (item.arxiv)  liens.push(lien(item.arxiv,  'arXiv',         'link-arxiv'));
   if (item.zenodo) liens.push(lien(item.zenodo, 'Zenodo',        'link-zenodo'));
   if (item.pdfFR)  liens.push(lien(item.pdfFR,  'PDF (FR)',      'link-pdf'));
@@ -20,10 +19,14 @@ function carte(item) {
     ? `<div class="card-links">${liens.join('')}</div>`
     : '';
 
+  const titre = item.html
+    ? `<a class="card-title-link" href="${item.html}">${item.titre}<span class="arrow"> →</span></a>`
+    : item.titre;
+
   return `
     <article class="card">
       <div class="card-tags">${tags}</div>
-      <h3>${item.titre}</h3>
+      <h3>${titre}</h3>
       <p class="card-resume">${item.resume}</p>
       ${liensHTML}
     </article>`;
