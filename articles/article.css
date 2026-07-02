@@ -44,6 +44,7 @@
 }
 .paper-links a:hover { border-color: var(--accent); color: var(--accent); }
 .paper-links .l-zenodo { border-color: #2b6cb0; color: #8fc1ff; }
+.paper-links .l-arxiv { border-color: #b03a3a; color: #ff9b9b; }
 
 /* Corps : titres générés par Pandoc */
 .paper h1 { font-size: 1.55rem; letter-spacing: -0.3px; margin: 2.4rem 0 0.9rem; padding-top: 0.6rem; }

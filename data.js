@@ -103,7 +103,7 @@ const MATHS = [
     pdfEN: null,
     zenodo: null,
     arxiv: "https://arxiv.org/abs/2606.16189",
-    html: "https://arxiv.org/html/2606.16189"
+    html: "articles/primes-parametriques.html"
   },
   {
     titre: "Certificats de primalité inconditionnels pour la famille hexagonale 3-lisse $p=3m(m+1)+1$",
@@ -122,7 +122,7 @@ const MATHS = [
     pdfEN: null,
     zenodo: null,
     arxiv: "https://arxiv.org/abs/2606.18859",
-    html: "https://arxiv.org/html/2606.18859"
+    html: "articles/primes-hexagonaux.html"
   },
   {
     titre: "Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$",
