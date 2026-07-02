@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unité 2 — Un champ de dualité d'échelle compactifié : régularisation et inflation · H. Bakkaoui</title>
+<meta name="description" content="Unité 2 — Un champ de dualité d'échelle compactifié : régularisation et inflation — Hassane Bakkaoui, chercheur indépendant.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">gr-qc</span><span class="tag">astro-ph.CO</span></div>
+    <h1 class="paper-title">Unité 2 — Un champ de dualité d'échelle compactifié : régularisation et inflation</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur ind&eacute;pendant</p>
+    <div class="paper-links">
+      <a href="../papers/u2_FR.pdf">PDF (FR)</a>
+      <a href="../papers/u2_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://doi.org/10.5281/zenodo.20671328" target="_blank" rel="noopener">Zenodo</a>
+    </div>
+  </div>
+<h4 id="note-liminaire.">Note liminaire.</h4>
+<p>Le présent travail procède d’une intuition de départ — la
+compactification de l’axe d’échelle en un cercle — élaborée de manière
+autonome, sans connaissance de la littérature cosmologique afférente. Le
+recensement bibliographique n’a été entrepris qu’une fois le cadre
+établi ; il en ressort que certains secteurs recoupent des résultats
+publiés, notamment l’inflation naturelle à couplage non minimal
+périodique proportionnel au potentiel [14], son extension
+scalaire-tenseur [16] et les analyses <span
+class="math inline">\((n_s,r,\text{running})\)</span> face à BICEP/Keck
+[17]. Ces recoupements, non anticipés, illustrent une convergence
+indépendante ; nous les citons explicitement afin de positionner
+honnêtement l’apport propre de ce travail, qui réside dans le cadrage
+unifié d’un même champ d’échelle (régimes trou noir et cosmologique) et
+la lecture topologique du secteur statique.</p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="contexte-et-motivation-physique">Contexte et motivation
+physique</h2>
+<p>Deux exigences pèsent sur toute physique du régime de Planck : faire
+disparaître les singularités de la relativité générale, et rendre compte
+de la phase d’expansion accélérée primordiale. Les métriques de trou
+noir régulier [1, 2, 3] montrent qu’une singularité centrale peut être
+remplacée par un cœur de Sitter de courbure finie (<span
+class="math inline">\(w=-1\)</span>), au prix d’une violation de la
+condition d’énergie forte autorisée par les théorèmes de singularité [4,
+5]. Symétriquement, l’inflation [6, 7] requiert un champ scalaire
+roulant lentement dans un potentiel plat. La question structurante est
+de savoir si un même ingrédient fondamental engendre ces deux
+phénomènes, plutôt que de les postuler séparément.</p>
+<p>Le cadre de dualité d’échelle compactifiée [15] propose un tel
+ingrédient. Son hypothèse centrale est que l’axe d’échelle logarithmique
+<span class="math inline">\(u=\ln(\lambda/\ell_P)\)</span>,
+habituellement non compact, est en réalité un cercle : par projection
+stéréographique <span class="math inline">\(\psi=2\arctan
+u\in(-\pi,\pi]\)</span>, l’échelle de Planck (<span
+class="math inline">\(\psi=0\)</span>, pôle <span
+class="math inline">\(P\)</span>) et une échelle « unifiée » (<span
+class="math inline">\(\psi=\pm\pi\)</span> identifiés, pôle <span
+class="math inline">\(\infty^*\)</span>) deviennent deux pôles d’une
+même variété. Le champ d’échelle <span
+class="math inline">\(\psi\)</span> se couple non minimalement à la
+courbure.</p>
+<h2 id="état-de-lart-et-lacune">État de l’art et lacune</h2>
+<p>Les cœurs de Sitter réguliers sont, dans la littérature, des ansätze
+géométriques : la source <span class="math inline">\(w=-1\)</span> est
+introduite à la main [1, 2, 3]. Les théorèmes de non-chevelure [8]
+contraignent fortement les champs scalaires statiques autour des
+horizons. Côté cosmologie, l’inflation naturelle [7] est sous tension :
+Planck<span class="math inline">\(+\)</span>BICEP/Keck [10, 11]
+repoussent son rapport tenseur/scalaire <span
+class="math inline">\(r\)</span> au-delà des bornes pour des constantes
+de désintégration accessibles, tandis que les couplages non minimaux à
+la Higgs [9] abaissent <span class="math inline">\(r\)</span>. La lacune
+comblée est l’étude d’un champ fondamental dont le couplage non minimal
+n’est pas libre mais verrouillé par la même structure trigonométrique
+que le potentiel, examiné simultanément dans les régimes trou noir et
+cosmologique.</p>
+<h2 id="contributions">Contributions</h2>
+<p>Nous établissons quatre résultats : (1) un cœur de Sitter exact et un
+seuil de stabilité exact <span
+class="math inline">\(\beta_c=-1/3\)</span> (Théorème <a
+href="#thm:core" data-reference-type="ref"
+data-reference="thm:core">1</a>) ; (2) la clôture du secteur statique —
+<span class="math inline">\(\psi\equiv-\pi\)</span> est exactement
+Schwarzschild–de Sitter et la branche roulante est singulière, d’où
+aucun trou noir régulier (Résultat <a href="#res:closure"
+data-reference-type="ref" data-reference="res:closure">1</a>) ; (3)
+l’identification du secteur cosmologique à une inflation naturelle à
+couplage verrouillé, avec prédictions <span
+class="math inline">\((n_s,r)\)</span>, <span
+class="math inline">\(\alpha\)</span> fixé et running, et première
+contrainte sur <span class="math inline">\(\beta\)</span> (Résultat <a
+href="#res:infl" data-reference-type="ref"
+data-reference="res:infl">2</a>) ; (4) une charge d’échelle topologique
+(<span class="math inline">\(\pi_1(S^1)=\mathbb{Z}\)</span>) dont le
+secteur statique est un demi-soliton non protégé (Résultat <a
+href="#res:topo" data-reference-type="ref"
+data-reference="res:topo">3</a>).</p>
+<h1 id="cadre-formel">Cadre formel</h1>
+<h2 id="postulats-et-définitions">Postulats et définitions</h2>
+<div class="postulat">
+<p><strong>Postulat 1</strong> (compactification). <em>La variété
+fondamentale est <span class="math inline">\(\mathcal{M}=M_{3+1}\times
+S^1_\psi\times S^1_\chi\)</span>, les axes d’échelle étant des cercles
+via <span
+class="math inline">\(\psi=2\arctan[\ln(\lambda/\ell_P)]\)</span>. Les
+pôles <span class="math inline">\(\psi=\pm\pi\)</span> sont identifiés
+(<span class="math inline">\(\infty^*\)</span>) ; <span
+class="math inline">\(\psi=0\)</span> est le point de Planck <span
+class="math inline">\(P\)</span>.</em></p>
+</div>
+<div class="postulat">
+<p><strong>Postulat 2</strong> (symétrie et régularité). <em>L’action
+est invariante sous le groupe de Klein <span
+class="math inline">\(G=\mathbb{Z}_2\times\mathbb{Z}_2\)</span> agissant
+par <span
+class="math inline">\((\psi,\chi)\mapsto(-\psi,-\chi)\)</span>, et
+toutes ses fonctions sont bornées sur le cercle (d’où <span
+class="math inline">\(\cos\psi\)</span> plutôt que <span
+class="math inline">\(\cosh u\)</span>).</em></p>
+</div>
+<p>En unités de Planck réduites (<span
+class="math inline">\(M_{\mathrm{Pl}}=1\)</span>, <span
+class="math inline">\(\hbar=c=1\)</span>, signature <span
+class="math inline">\(-+++\)</span>) et en gelant l’axe temporel <span
+class="math inline">\(\chi\equiv0\)</span> : <span
+class="math display">\[\begin{equation}
+S=\int d^4x\,\sqrt{-g}\Big[\tfrac12
+f(\psi)R-\tfrac12\omega(\partial\psi)^2-V(\psi)\Big],
+\quad f=1+\beta\cos\psi,\quad V=\alpha(1-\cos\psi),
+\end{equation}\]</span> avec <span
+class="math inline">\(\omega=f_s^2&gt;0\)</span>, <span
+class="math inline">\(|\beta|&lt;1\)</span>, <span
+class="math inline">\(\alpha&gt;0\)</span>. On a <span
+class="math inline">\(V(0)=0\)</span> (minimum, <span
+class="math inline">\(P\)</span>) et <span
+class="math inline">\(V(-\pi)=2\alpha\)</span> (maximum, <span
+class="math inline">\(\infty^*\)</span>).</p>
+<h2 id="construction-mathématique">Construction mathématique</h2>
+<p><span><span class="sans-serif">[preuve]</span></span> (vérifié par
+calcul formel) La variation donne le système scalaire-tenseur <span
+class="math display">\[\begin{equation}
+f\,G_{\mu\nu}=\omega\,\partial_\mu\psi\,\partial_\nu\psi
+-g_{\mu\nu}\big[\tfrac12\omega(\partial\psi)^2+V\big]+\nabla_\mu\nabla_\nu
+f-g_{\mu\nu}\Box f,
+\qquad \omega\,\Box\psi=V&#39;(\psi)-\tfrac12 f&#39;(\psi)R.
+\end{equation}\]</span> Dans le repère de Jordan, on emploie la métrique
+statique <span
+class="math inline">\(ds^2=-e^{2\Phi}dt^2+e^{2\Lambda}dr^2+r^2d\Omega^2\)</span>
+et la métrique FLRW <span
+class="math inline">\(ds^2=-dt^2+a^2d\mathbf{x}^2\)</span>. Au repère
+d’Einstein (<span class="math inline">\(\tilde g=f g\)</span>), l’action
+devient celle d’un champ canonique, avec <span
+class="math display">\[\begin{equation}
+U(\psi)=\frac{V}{f^2},\qquad
+K(\psi)=\frac{\omega}{f}+\frac32\Big(\frac{f&#39;}{f}\Big)^2,
+\qquad d\varphi=\sqrt{K}\,d\psi.
+\end{equation}\]</span></p>
+<h2 id="propriétés-structurelles">Propriétés structurelles</h2>
+<p><span><span class="sans-serif">[preuve]</span></span> (établies dans
+[15]) (i) L’action est finie partout, <span
+class="math inline">\(\infty^*\)</span> inclus. (ii) La symétrie <span
+class="math inline">\(\mathbb{Z}_2\times\mathbb{Z}_2\)</span> interdit
+le mélange <span class="math inline">\(\psi\chi\)</span> : matrice de
+masse diagonale, aucun mode de Goldstone (impossible pour une symétrie
+discrète). (iii) Au vide symétrique <span
+class="math inline">\(P\)</span>, <span
+class="math inline">\(V=0\)</span> donc <span
+class="math inline">\(\Lambda=0\)</span>. (iv) Aux champs gelés, la
+gravité d’Einstein émerge avec <span
+class="math inline">\(G_{\mathrm{eff}}=1/(8\pi f)\)</span>, bornée entre
+<span class="math inline">\(G/(1+\beta)\)</span> (<span
+class="math inline">\(P\)</span>) et <span
+class="math inline">\(G/(1-\beta)\)</span> (<span
+class="math inline">\(\infty^*\)</span>) : le signe naturel du couplage
+est <span class="math inline">\(\beta\ge0\)</span>.</p>
+<p>(v) <span><span class="sans-serif">[preuve]</span></span> (B1) La
+métrique d’espace de champ <span class="math inline">\(K(\psi)\)</span>
+du repère d’Einstein est définie positive <span
+class="math inline">\(\Leftrightarrow
+f&gt;0\Leftrightarrow\beta\in(-1/2,+1/2)\)</span> : elle est la somme
+d’une partie cinétique (<span class="math inline">\(\omega/f\)</span>)
+définie positive et d’une partie non minimale <span
+class="math inline">\(\tfrac32(f&#39;/f)^2\)</span> semi-définie
+positive (rang 1). Le couplage non minimal ne peut donc qu’ajouter de la
+positivité — il ne crée jamais de fantôme. À <span
+class="math inline">\(\beta=-1/2\)</span>, <span
+class="math inline">\(f\to0\)</span> au vide <span
+class="math inline">\(P\)</span> (le repère d’Einstein dégénère) : la
+bande est ouverte.</p>
+<h1 id="résultats-principaux">Résultats principaux</h1>
+<h2 id="cœur-de-sitter-exact-et-seuil-de-stabilité-beta_c-13">Cœur de
+Sitter exact et seuil de stabilité <span
+class="math inline">\(\beta_c=-1/3\)</span></h2>
+<p>Sur la métrique statique, <span class="math inline">\(R\)</span> est
+éliminé par la trace de l’équation tensorielle ; <span><span
+class="sans-serif">[preuve]</span></span> les trois résidus (<span
+class="math inline">\(tt\)</span>, <span
+class="math inline">\(rr\)</span>, scalaire) sont alors exactement
+linéaires en <span
+class="math inline">\((\Lambda&#39;,\Phi&#39;,\psi&#39;&#39;)\)</span>
+(Annexe A).</p>
+<div id="thm:core" class="theoreme">
+<p><strong>Théorème 1</strong> (cœur de Sitter et seuil de couplage).
+<em>Au pôle <span class="math inline">\(\infty^*\)</span> (<span
+class="math inline">\(\psi=-\pi\)</span>, <span
+class="math inline">\(\psi&#39;=0\)</span>), la source se réduit à une
+énergie de vide pure et l’espace-temps est localement de Sitter : <span
+class="math display">\[\begin{equation}
+H^2=\frac{2\alpha}{3(1-\beta)},\qquad
+K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=24H^4\ (\text{fini}),
+\qquad \rho=2\alpha,\ \ p_r=-2\alpha,\ \ w=-1.
+\end{equation}\]</span> La fluctuation radiale <span
+class="math inline">\(\psi=-\pi+\delta\)</span> obéit à <span
+class="math inline">\(\omega\Box\delta=\kappa^2\omega\delta\)</span>
+avec <span
+class="math inline">\(\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]\)</span>.
+Comme <span class="math inline">\(|\beta|&lt;1\)</span>, <span
+class="math inline">\(\infty^*\)</span> est radialement stable (piégé)
+pour <span class="math inline">\(\beta&gt;-1/3\)</span> et instable
+(échappement) pour <span class="math inline">\(\beta&lt;-1/3\)</span>,
+avec le seuil exact <span
+class="math inline">\(\boxed{\beta_c=-1/3}\)</span>.</em></p>
+</div>
+<h4 id="note-réduction.">Note (réduction).</h4>
+<p>Ce seuil <span class="math inline">\(\beta_c=-1/3\)</span> est propre
+à la <em>réduction mono-axe statique</em> (<span
+class="math inline">\(\chi\)</span> gelé). Un traitement cosmologique à
+deux champs le long de la diagonale <span
+class="math inline">\(\psi=\chi\)</span> déplace le seuil à <span
+class="math inline">\(-1/6\)</span> ; la conclusion de clôture (aucun
+trou noir régulier statique) est robuste indépendamment de la
+réduction.</p>
+<div class="consequence">
+<p><em>Conséquence 1</em> (obstruction de Derrick). Pour le signe
+naturel <span class="math inline">\(\beta\ge-1/3\)</span>, le champ ne
+peut connecter <span class="math inline">\(\infty^*\)</span> au vide :
+l’énergie de gradient étant positive, le maximum de <span
+class="math inline">\(V\)</span> devient un minimum du potentiel
+mécanique effectif <span class="math inline">\(-V\)</span>, et le champ
+y reste piégé. La fenêtre d’échappement <span
+class="math inline">\(\beta&lt;-1/3\)</span> n’existe que par le terme
+non minimal <span class="math inline">\(\tfrac12 f&#39;R\)</span>.</p>
+</div>
+<h2
+id="clôture-du-secteur-statique-en-coordonnées-deddingtonfinkelstein">Clôture
+du secteur statique en coordonnées d’Eddington–Finkelstein</h2>
+<p>La carte statique se termine à un horizon (<span
+class="math inline">\(e^{-2\Lambda}\to0\)</span>) ; <span><span
+class="sans-serif">[numérique]</span></span> l’intégration sortante
+depuis le cœur montre, dans les deux régimes, qu’un horizon se forme
+exactement au rayon de Sitter <span
+class="math inline">\(r_H=1/H=\sqrt{3(1-\beta)/(2\alpha)}\)</span>
+(rapport numérique/théorie <span
+class="math inline">\(=1{,}0000\)</span>). Pour traverser, on passe à la
+carte entrante <span
+class="math inline">\(ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2\)</span>,
+régulière tant que <span class="math inline">\(B\)</span> reste fini
+(Annexe A).</p>
+<div id="res:closure" class="resultat">
+<p><strong>Résultat 1</strong> (aucun trou noir régulier).
+<em><span><span class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\psi\equiv-\pi\)</span> est solution exacte :
+<span class="math inline">\(A(r)=1-2M/r-H^2r^2\)</span>, <span
+class="math inline">\(B\equiv1\)</span> (Schwarzschild–de Sitter). Le
+régime piégé <span class="math inline">\(\beta&gt;-1/3\)</span> est donc
+asymptotiquement de Sitter, non un trou noir asymptotiquement plat.
+<span><span class="sans-serif">[numérique]</span></span> Dans le régime
+d’échappement <span class="math inline">\(\beta&lt;-1/3\)</span>, le
+champ roule de <span class="math inline">\(-\pi\)</span> vers <span
+class="math inline">\(0\)</span>, mais <span
+class="math inline">\(B=e^{\Phi+\Lambda}\)</span> s’effondre vers <span
+class="math inline">\(0\)</span> au rayon de Sitter putatif : la masse
+de Misner–Sharp <span class="math inline">\(m=(r/2)(1-A/B^2)\)</span>
+devient négative et le scalaire de Ricci diverge à rayon fini. Aucune
+solution statique sphérique n’interpole un cœur de Sitter régulier et un
+extérieur asymptotiquement plat.</em></p>
+</div>
+<table id="tab:escape">
+<caption>Régime d’échappement (<span
+class="math inline">\(\beta=-0{,}7\)</span>, <span
+class="math inline">\(\alpha=10^{-4}\)</span>) : la branche roulante est
+singulière.</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(r\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\psi\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(m\)</span>
+(Misner–Sharp)</th>
+<th style="text-align: center;"><span
+class="math inline">\(g_{rr}=A/B^2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(|R|\)</span>
+(Ricci)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}01\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-3{,}132\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+5\times10^{-10}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}00\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{-2}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(47{,}1\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-1{,}4\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-3\times10^{7}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}3\times10^{6}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(6\times10^{11}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(75{,}5\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}002\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-10^{56}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(3\times10^{54}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{73}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2
+id="le-secteur-cosmologique-inflation-naturelle-à-couplage-verrouillé">Le
+secteur cosmologique : inflation naturelle à couplage verrouillé</h2>
+<p>En cosmologie homogène, le gradient devient temporel : <span
+class="math inline">\((\partial\psi)^2=-\dot\psi^2\)</span>. <span><span
+class="sans-serif">[preuve]</span></span> La courbure du potentiel en
+<span class="math inline">\(\infty^*\)</span> est <span
+class="math inline">\(V&#39;&#39;(-\pi)=-\alpha&lt;0\)</span> : <span
+class="math inline">\(\infty^*\)</span> est un sommet instable, d’où le
+champ dévale vers <span class="math inline">\(P\)</span> (Fig. <a
+href="#fig:paysage" data-reference-type="ref"
+data-reference="fig:paysage">1</a>).</p>
+<figure id="fig:paysage" data-latex-placement="h">
+<img src="figs/fig_paysage.png" style="width:72.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span>
+Paysage du potentiel en repère d’Einstein, <span
+class="math inline">\(U(\psi)/\alpha=(1-\cos\psi)/(1+\beta\cos\psi)^2\)</span>
+(forme close exacte). Le vrai vide <span
+class="math inline">\(P\)</span> est en <span
+class="math inline">\(\psi=0\)</span> (<span
+class="math inline">\(U=0\)</span>), le pôle unifié <span
+class="math inline">\(\infty^*\)</span> en <span
+class="math inline">\(\psi=\pm\pi\)</span>. Pour la valeur favorisée par
+le CMB (<span class="math inline">\(\beta=-0{,}3\)</span>), l’inflaton
+dévale de <span class="math inline">\(\infty^*\)</span> vers <span
+class="math inline">\(P\)</span> le long d’une colline régulière ; le
+couplage verrouillé <span
+class="math inline">\(f=1+\beta\cos\psi\)</span> en façonne la
+forme.</figcaption>
+</figure>
+<div id="res:infl" class="resultat">
+<p><strong>Résultat 2</strong> (inflation naturelle, prédictions, <span
+class="math inline">\(\alpha\)</span> fixé et contrainte sur <span
+class="math inline">\(\beta\)</span>). <em>Avec le champ canonique <span
+class="math inline">\(\varphi=f_s\psi\)</span>, le potentiel s’écrit
+<span class="math inline">\(V=\alpha[1-\cos(\varphi/f_s)]\)</span> :
+c’est l’inflation naturelle [7] de constante <span
+class="math inline">\(f_s\)</span>, dotée d’un couplage non minimal
+verrouillé <span class="math inline">\(f=1+\beta\cos\psi\)</span> (même
+<span class="math inline">\(\beta\)</span> que la gravité) ; cette
+structure périodique a été étudiée indépendamment par [14, 16].
+<span><span class="sans-serif">[numérique]</span></span> L’intégration
+FLRW part de <span class="math inline">\(\infty^*\)</span> (phase de
+Sitter, <span class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span>,
+identique à l’échelle du cœur de la Résultat <a href="#res:closure"
+data-reference-type="ref" data-reference="res:closure">1</a>) et roule
+jusqu’à <span class="math inline">\(P\)</span> (<span
+class="math inline">\(\Lambda=0\)</span>), avec sortie gracieuse. Les
+prédictions de roulement lent au repère d’Einstein (Table <a
+href="#tab:nsr" data-reference-type="ref"
+data-reference="tab:nsr">2</a>) donnent : pour <span
+class="math inline">\(\beta\ge0\)</span>, <span
+class="math inline">\(r\gtrsim0{,}08\)</span> (exclu) ; pour <span
+class="math inline">\(\beta\approx-0{,}3\)</span>, <span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}05\)</span> et <span
+class="math inline">\(n_s\approx0{,}96\)</span> (au bord). Les données
+CMB constituent la première contrainte sur <span
+class="math inline">\(\beta\)</span> dans ce cadre.</em></p>
+</div>
+<table id="tab:nsr">
+<caption>Prédictions <span class="math inline">\((n_s,r)\)</span> à
+<span class="math inline">\(N=55\)</span> e-folds (cible Planck<span
+class="math inline">\(+\)</span>BK : <span
+class="math inline">\(n_s=0{,}9649\pm0{,}004\)</span>, <span
+class="math inline">\(r&lt;0{,}036\)</span>).</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f_s\)</span>
+(<span class="math inline">\(M_{\mathrm{Pl}}\)</span>)</th>
+<th style="text-align: center;"><span
+class="math inline">\(n_s\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(r\)</span></th>
+<th style="text-align: left;">statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(0\)</span>
+(naturel)</td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}960\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}078\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(r\)</span>
+trop grand</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}949\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}128\)</span></td>
+<td style="text-align: left;">exclu</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}6\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}930\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}193\)</span></td>
+<td style="text-align: left;">exclu</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}958\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}017\)</span></td>
+<td style="text-align: left;">compatible</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}960\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}036\)</span></td>
+<td style="text-align: left;">au bord</td>
+</tr>
+</tbody>
+</table>
+<figure id="fig:nsr" data-latex-placement="h">
+<img src="figs/fig_nsr.png" style="width:78.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span>
+Prédictions <span class="math inline">\((n_s,r)\)</span> à <span
+class="math inline">\(N=55\)</span> (points de la Table <a
+href="#tab:nsr" data-reference-type="ref"
+data-reference="tab:nsr">2</a>) face à Planck (<span
+class="math inline">\(n_s=0{,}9649\pm0{,}004\)</span>) et BK18 (<span
+class="math inline">\(r&lt;0{,}036\)</span>, exclu au-dessus). Le signe
+de <span class="math inline">\(\beta\)</span> déplace <span
+class="math inline">\(r\)</span> : <span
+class="math inline">\(\beta\ge0\)</span> est exclu ; la fenêtre viable
+est <span class="math inline">\(\beta\approx-0{,}3\)</span> (<span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}04\)</span>, <span
+class="math inline">\(n_s\approx0{,}96\)</span>).</figcaption>
+</figure>
+<p><span><span class="sans-serif">[numérique]</span></span> <strong>(A1)
+<span class="math inline">\(\alpha\)</span> fixé et running.</strong> Le
+roulement lent au second ordre avec la métrique d’espace de champ <span
+class="math inline">\(K(\psi)\)</span> reproduit la Table <a
+href="#tab:nsr" data-reference-type="ref" data-reference="tab:nsr">2</a>
+à mieux que <span class="math inline">\(0{,}5\%\)</span>, et fixe <span
+class="math inline">\(\alpha\)</span> par l’amplitude scalaire <span
+class="math inline">\(A_s=2{,}1\times10^{-9}\)</span> : <span
+class="math inline">\(\alpha\approx0{,}5\)</span>–<span
+class="math inline">\(1{,}2\times10^{-9}\,M_{\mathrm{Pl}}^4\)</span>
+(cas central <span class="math inline">\(\beta=-0{,}3\)</span>, <span
+class="math inline">\(f_s=7\)</span> : <span
+class="math inline">\(\alpha=1{,}18\times10^{-9}\)</span>), soit une
+échelle d’inflation <span
+class="math inline">\(V^{1/4}\sim1\)</span>–<span
+class="math inline">\(2\times10^{16}\)</span> GeV (GUT). Prédiction
+stable sur la bande : le running <span class="math inline">\(dn_s/d\ln
+k\approx-6{,}5\times10^{-4}\)</span> — compatible avec Planck (<span
+class="math inline">\(-0{,}004\pm0{,}007\)</span>), sous le seuil
+actuel, possiblement accessible à la prochaine génération, mais non
+distinctif : il appartient à la classe [14, 16, 17]. Reliquat
+<span><span class="sans-serif">[ouvert]</span></span> : résolution
+mode-par-mode de Mukhanov–Sasaki, attendue au sous-pourcent.</p>
+<h4 id="statut-de-la-signature-deltasim0044.">Statut de la signature
+<span class="math inline">\(\Delta\sim0{,}044\)</span>.</h4>
+<p><span><span class="sans-serif">[numérique]</span></span> La
+trajectoire de fond est monotone (demi-période du cosinus) : le spectre
+primordial est lisse, sans caractéristique log-périodique. La signature
+<span class="math inline">\(\Delta\sim0{,}044\)</span> évoquée dans [15]
+n’est pas reproduite par la dynamique minimale ; elle exigerait un
+mécanisme supplémentaire (trajectoire enroulée <span
+class="math inline">\(N\ge1\)</span>, ou axe <span
+class="math inline">\(\chi\)</span> non gelé). <span><span
+class="sans-serif">[ouvert]</span></span></p>
+<h2 id="charge-déchelle-topologique-et-demi-soliton">Charge d’échelle
+topologique et demi-soliton</h2>
+<p>Le champ <span class="math inline">\(\psi\)</span> étant à valeurs
+dans <span class="math inline">\(S^1\)</span>, ses configurations sont
+classées par <span class="math inline">\(\pi_1(S^1)=\mathbb{Z}\)</span>.
+<span><span class="sans-serif">[preuve]</span></span> Dans la réduction
+effective à <span class="math inline">\(1{+}1\)</span> D, le courant
+<span
+class="math inline">\(j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi\)</span>,
+de charge <span
+class="math inline">\(N=(1/2\pi)(\psi_f-\psi_i)\)</span>, est conservé
+identiquement (<span class="math inline">\(\partial_\mu
+j^\mu\equiv0\)</span>), indépendamment des équations du mouvement, de la
+métrique, de <span class="math inline">\(f\)</span> et de <span
+class="math inline">\(V\)</span>. Sur le cercle, <span
+class="math inline">\(V=2\alpha\sin^2(\psi/2)\)</span> est un
+sine-Gordon à vide unique. La charge est entière ssi les deux extrémités
+reposent sur le vide <span class="math inline">\(P\)</span>.</p>
+<div id="res:topo" class="resultat">
+<p><strong>Résultat 3</strong> (demi-soliton non protégé).
+<em><span><span class="sans-serif">[preuve]</span></span> Le profil de
+la Résultat <a href="#res:closure" data-reference-type="ref"
+data-reference="res:closure">1</a>, reliant le cœur <span
+class="math inline">\(\psi(0)=-\pi\)</span> (<span
+class="math inline">\(\infty^*\)</span>) à l’asymptotique <span
+class="math inline">\(\psi(\infty)=0\)</span> (<span
+class="math inline">\(P\)</span>), porte la charge <span
+class="math inline">\(N=\tfrac12\)</span>. Une extrémité gisant sur le
+maximum de <span class="math inline">\(V\)</span>, il n’est pas protégé
+: l’arc <span class="math inline">\(\infty^*\!\to P\)</span> est
+contractible, et sa contraction coïncide avec le « roulement ». La
+clôture du secteur statique s’en déduit sans intégration. L’unique
+charge entière non triviale (<span
+class="math inline">\(\psi:0\to2\pi\)</span>) est le soliton <span
+class="math inline">\(N=1\)</span>, de masse de Bogomol’nyi <span
+class="math inline">\(M_{N=1}=8\sqrt{\omega\alpha}\)</span>
+(Annexe D).</em></p>
+</div>
+<h4 id="lien-observationnel.">Lien observationnel.</h4>
+<p><span><span class="sans-serif">[conjecture]</span></span> En
+cosmologie, <span class="math inline">\(N\)</span> compte les périodes
+parcourues par l’inflaton. La trajectoire monotone (<span
+class="math inline">\(N=\tfrac12\)</span>) donne un spectre lisse ; une
+trajectoire enroulée (<span class="math inline">\(N\ge1\)</span>,
+traversant <span class="math inline">\(\infty^*\)</span>) serait la
+seule source d’oscillations log-périodiques. Le test est une résolution
+de Mukhanov–Sasaki sur un fond <span
+class="math inline">\(N\ge1\)</span>.</p>
+<h1 id="implications-physiques">Implications physiques</h1>
+<h2 id="interprétation">Interprétation</h2>
+<p>Le même champ d’échelle est bénin dans le temps et obstrué dans
+l’espace. En cosmologie, <span class="math inline">\(\infty^*\)</span>
+est une colline d’où le champ roule : il engendre l’inflation et une
+sortie naturelle vers <span class="math inline">\(\Lambda=0\)</span>. En
+statique, <span class="math inline">\(\infty^*\)</span> est un puits :
+le champ y reste piégé et l’espace-temps n’est qu’un Schwarzschild–de
+Sitter. Le fait remarquable est que la même échelle de Sitter <span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span> apparaît comme
+horizon cosmologique du cœur statique et comme taux de Hubble
+inflationnaire : signature de l’origine commune des deux phénomènes.</p>
+<h2 id="limitations-et-honnêteté-épistémique">Limitations et honnêteté
+épistémique</h2>
+<p>(i) La clôture (Résultat <a href="#res:closure"
+data-reference-type="ref" data-reference="res:closure">1</a>) ne
+concerne que les configurations statiques sphériques ; un effondrement
+dynamique pourrait produire un cœur régulier transitoire (traité en
+travail compagnon). (ii) Les prédictions (Résultat <a href="#res:infl"
+data-reference-type="ref" data-reference="res:infl">2</a>) reposent sur
+le roulement lent ; <span class="math inline">\(\alpha\)</span> est fixé
+par <span class="math inline">\(A_s\)</span> sur cette base validée
+(running <span class="math inline">\(-6{,}5\times10^{-4}\)</span>), un
+traitement Mukhanov–Sasaki mode-par-mode restant un raffinement
+sous-pourcent (non un préalable). (iii) La signature <span
+class="math inline">\(\Delta\sim0{,}044\)</span> n’est pas établie. (iv)
+Les constantes <span class="math inline">\(\alpha,\beta,f_s\)</span> ne
+sont pas dérivées de premiers principes ; <span
+class="math inline">\(\beta\)</span> est seulement contraint par les
+données. Aucun de ces points n’est présenté comme résolu. <span><span
+class="sans-serif">[ouvert]</span></span></p>
+<h1 id="protocoles-expérimentaux">Protocoles expérimentaux</h1>
+<h2 id="test-discriminant-principal-le-rapport-tenseurscalaire">Test
+discriminant principal : le rapport tenseur/scalaire</h2>
+<p>Le modèle prédit, dans sa fenêtre viable (<span
+class="math inline">\(\beta\approx-0{,}3\)</span>, <span
+class="math inline">\(f_s\approx5\)</span>–<span
+class="math inline">\(7\,M_{\mathrm{Pl}}\)</span>, <span
+class="math inline">\(N=50\)</span>–<span
+class="math inline">\(60\)</span>), un rapport <span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}05\)</span> corrélé à <span
+class="math inline">\(n_s\approx0{,}96\)</span>. La mesure de <span
+class="math inline">\(r\)</span> par LiteBIRD [12] et Simons Observatory
+[18], de sensibilité <span
+class="math inline">\(\sigma(r)\sim10^{-3}\)</span>, est le test
+discriminant<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> : une non-détection à <span
+class="math inline">\(r&lt;0{,}01\)</span> exclurait le modèle ; une
+détection à <span class="math inline">\(r\sim0{,}03\)</span> avec <span
+class="math inline">\(n_s\approx0{,}96\)</span> le corroborerait.</p>
+<h2 id="la-signature-propre-cohérence-inter-secteurs">La signature
+propre : cohérence inter-secteurs</h2>
+<p>[le test qui distingue ce cadre] Aucun observable cosmologique isolé
+(<span class="math inline">\(n_s\)</span>, <span
+class="math inline">\(r\)</span>, running) ne distingue ce modèle de
+l’inflation naturelle non minimale [14, 16, 17]. Sa signature propre est
+une corrélation : le signe et la valeur de <span
+class="math inline">\(\beta\)</span> préférés par le CMB (<span
+class="math inline">\(\beta\approx-0{,}3\)</span>) doivent être
+confrontés au secteur trou noir, où le seuil <span
+class="math inline">\(\beta_c=-1/3\)</span> gouverne la stabilité du
+cœur de Sitter. Une même valeur de <span
+class="math inline">\(\beta\)</span> doit ajuster <span
+class="math inline">\((n_s,r)\)</span> et se situer du bon côté du seuil
+de clôture. Une tension persistante entre les deux secteurs serait un
+échec structurel ; leur accord serait la véritable corroboration du
+cadre unifié.</p>
+<figure id="fig:seuil" data-latex-placement="h">
+<img src="figs/fig_seuil.png" style="width:74.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span>
+Diagnostic de stabilité radiale au pôle <span
+class="math inline">\(\infty^*\)</span> (<span
+class="math inline">\(\propto-\kappa^2\)</span>, forme close <span
+class="math inline">\((1+3\beta)/(1-\beta)\)</span>), changeant de signe
+au seuil exact <span class="math inline">\(\beta_c=-1/3\)</span> : <span
+class="math inline">\(\beta&gt;-1/3\)</span> piégé (cœur de Sitter
+stable, Schwarzschild–de Sitter), <span
+class="math inline">\(\beta&lt;-1/3\)</span> échappement (branche
+roulante singulière). La valeur favorisée par le CMB (<span
+class="math inline">\(\beta\approx-0{,}3\)</span>, bande <span
+class="math inline">\(-0{,}5\)</span> à <span
+class="math inline">\(-0{,}15\)</span>) tombe <em>juste</em> du côté
+piégé : c’est la visualisation de la signature <span
+class="math inline">\(\beta(\mathrm{CMB})=\beta(\text{cl\^oture})\)</span>.</figcaption>
+</figure>
+<h2 id="falsifiabilité-et-bornes">Falsifiabilité et bornes</h2>
+<p>Le modèle vit dans une bande étroite du plan <span
+class="math inline">\((n_s,r)\)</span>. Bornes actuelles : <span
+class="math inline">\(\beta\ge0\)</span> déjà exclu (<span
+class="math inline">\(r\gtrsim0{,}08&gt;0{,}036\)</span>) ; <span
+class="math inline">\(\beta\lesssim-0{,}6\)</span> exclu (inflation
+insuffisante). Seule survit la bande <span
+class="math inline">\(-0{,}5\lesssim\beta\lesssim-0{,}15\)</span>,
+entièrement testable à l’horizon 2030.</p>
+<h1 id="discussion-et-comparaison">Discussion et comparaison</h1>
+<h2 id="rapport-avec-les-approches-concurrentes">Rapport avec les
+approches concurrentes</h2>
+<p>Contrairement aux trous noirs réguliers phénoménologiques [1, 2, 3],
+où la source <span class="math inline">\(w=-1\)</span> est postulée,
+nous dérivons le cœur de Sitter d’une action et montrons qu’il ne se
+raccorde pas à un extérieur plat en statique — en accord avec l’esprit
+des théorèmes de non-chevelure [8]. Pour l’inflation, le couplage non
+minimal verrouillé distingue le modèle de l’inflation naturelle nue [7]
+et de l’inflation à la Higgs [9] : le couplage n’est pas libre mais fixé
+par la même structure que le potentiel, ce qui transforme un paramètre
+d’ajustement en une grandeur contrainte par la gravité. La structure
+périodique elle-même rejoint [14, 16], dont nous nous distinguons par le
+cadrage inter-secteurs.</p>
+<h2 id="questions-ouvertes">Questions ouvertes</h2>
+<p>Quatre directions, hors du champ du présent travail <span><span
+class="sans-serif">[ouvert]</span></span> : (i) la corrélation <span
+class="math inline">\(\beta(\mathrm{CMB})=\beta(\text{cl\^oture})\)</span>
+— posée en signature au § V.B — mérite une étude conjointe quantitative
+; (ii) la résolution mode-par-mode de Mukhanov–Sasaki pour confirmer
+<span class="math inline">\((n_s,r,\text{running})\)</span> au
+sous-pourcent ; (iii) l’origine éventuelle d’oscillations
+log-périodiques via une trajectoire multi-périodes (<span
+class="math inline">\(N\ge1\)</span>) ou l’axe temporel <span
+class="math inline">\(\chi\)</span> non gelé ; (iv) le secteur dynamique
+d’effondrement gravitationnel, seule avenue restante pour une
+régularisation de trou noir (travail compagnon).</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Un unique champ de dualité d’échelle, traité dans deux régimes,
+produit deux verdicts opposés et tous deux instructifs. En statique, il
+échoue à régulariser la singularité : le pôle unifié engendre un cœur de
+Sitter exact mais inévitablement gelé (Schwarzschild–de Sitter) ou
+singulier, et aucun trou noir régulier n’existe — avec un seuil exact
+<span class="math inline">\(\beta_c=-1/3\)</span> comme sous-produit. En
+cosmologie, le même champ engendre une inflation naturelle à couplage
+verrouillé, prédictive et falsifiable, dont <span
+class="math inline">\(\alpha\)</span> est fixé (échelle GUT) et qui
+prédit un running <span class="math inline">\(dn_s/d\ln
+k\approx-6{,}5\times10^{-4}\)</span>. La signature propre du cadre n’est
+pas un observable cosmologique isolé, mais la corrélation <span
+class="math inline">\(\beta(\mathrm{CMB})=\beta(\text{cl\^oture})\)</span>.
+Le programme se réoriente d’une théorie de trous noirs vers une théorie
+de l’histoire cosmologique, pour la première fois testable par
+l’observation.</p>
+<h4 id="remerciements.">Remerciements.</h4>
+<p>L’auteur remercie les outils de calcul formel et numérique (SymPy,
+SciPy) qui ont permis la vérification systématique de chaque étape, et
+la communauté gr-qc/hep-th pour les standards de rigueur et de
+falsifiabilité qui ont guidé ce travail. La formalisation a été conduite
+en dialogue avec des systèmes d’assistance analytique, sous la direction
+de l’auteur, à qui revient l’entière responsabilité du contenu
+scientifique.</p>
+<h1 id="détails-techniques">Détails techniques</h1>
+<p><strong>Système statique.</strong> Avec l’élimination de <span
+class="math inline">\(R\)</span> par la trace, les résidus (<span
+class="math inline">\(tt\)</span>), (<span
+class="math inline">\(rr\)</span>) et scalaire sont linéaires en <span
+class="math inline">\((\Lambda&#39;,\Phi&#39;,\psi&#39;&#39;)\)</span>
+et résolus ponctuellement par inversion <span
+class="math inline">\(3\times3\)</span> ; le tenseur d’Einstein mixte
+est validé contre le vide de Schwarzschild. <strong>Carte
+d’Eddington–Finkelstein.</strong> Pour <span
+class="math inline">\(ds^2=-A\,dv^2+2B\,dv\,dr+r^2d\Omega^2\)</span>, on
+a <span class="math inline">\(g_{vv}=0\)</span>, <span
+class="math inline">\(g_{vr}=1/B\)</span>, <span
+class="math inline">\(g_{rr}=A/B^2\)</span>, <span
+class="math inline">\(\sqrt{-g}=Br^2\)</span>, et <span
+class="math inline">\(G_{rr}=2B&#39;/(rB)\)</span>. Le système <span
+class="math inline">\(3\times3\)</span> pour <span
+class="math inline">\((A&#39;,B&#39;,\psi&#39;&#39;)\)</span> est
+linéaire (résidu de linéarité exactement nul). L’horizon est une surface
+caractéristique (<span class="math inline">\(g_{rr}=A/B^2\to0\)</span>)
+; la régularité impose <span class="math inline">\(\Pi(r_H)=0\)</span>
+avec <span class="math inline">\(\Pi=(Ar^2/B)\psi&#39;\)</span>.
+<strong>Cosmologie.</strong> Le fond FLRW résout la contrainte de
+Friedmann <span
+class="math inline">\(3fH^2=\tfrac12\omega\dot\psi^2+V-3H\dot f\)</span>
+et l’équation d’accélération.</p>
+<h1 id="vérifications-dimensionnelles">Vérifications
+dimensionnelles</h1>
+<p>En unités <span class="math inline">\(\hbar=c=1\)</span>, <span
+class="math inline">\(M_{\mathrm{Pl}}=1\)</span> : <span
+class="math inline">\([\alpha]=[V]=\ell_P^{-4}\)</span>, <span
+class="math inline">\([H^2]=\ell_P^{-2}\)</span>, cohérent avec <span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span> car <span
+class="math inline">\(f\)</span> porte la dimension <span
+class="math inline">\(M_{\mathrm{Pl}}^2\)</span> (<span
+class="math inline">\(f(-\pi)=(1-\beta)M_{\mathrm{Pl}}^2\)</span>), d’où
+<span
+class="math inline">\([H^2]=[\alpha]/M_{\mathrm{Pl}}^2=\ell_P^{-2}\)</span>.
+<span class="math inline">\(\beta\)</span> et <span
+class="math inline">\(\psi\)</span> sont sans dimension ; <span
+class="math inline">\(f_s\)</span> a la dimension de <span
+class="math inline">\(M_{\mathrm{Pl}}\)</span>. <span
+class="math inline">\(K=24H^4\)</span> a la dimension <span
+class="math inline">\(\ell_P^{-4}\)</span>, attendue pour <span
+class="math inline">\(R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}\)</span>.</p>
+<h1 id="comparaison-quantitative-à-la-littérature">Comparaison
+quantitative à la littérature</h1>
+<p>Pour l’inflation naturelle nue (<span
+class="math inline">\(\beta=0\)</span>), nos valeurs (<span
+class="math inline">\(n_s=0{,}960\)</span>, <span
+class="math inline">\(r=0{,}078\)</span> à <span
+class="math inline">\(f_s=7\,M_{\mathrm{Pl}}\)</span>, <span
+class="math inline">\(N=55\)</span>) reproduisent les résultats standard
+[7, 10] et confirment la tension connue avec [11]. L’effet du couplage
+verrouillé (<span class="math inline">\(\beta&lt;0\)</span> abaisse
+<span class="math inline">\(r\)</span> ; <span
+class="math inline">\(\beta&gt;0\)</span> l’augmente) est analogue en
+sens à l’effet d’un couplage non minimal à la Higgs [9], mais de
+magnitude contrôlée par l’unique paramètre gravitationnel <span
+class="math inline">\(\beta\)</span>. Le running prédit (<span
+class="math inline">\(\approx-6{,}5\times10^{-4}\)</span>) est cohérent
+avec les analyses <span
+class="math inline">\((n_s,r,\text{running})\)</span> de cette classe
+[17]. Le cœur de Sitter (<span class="math inline">\(w=-1\)</span>,
+<span class="math inline">\(K=24H^4\)</span>) coïncide avec la structure
+interne des trous noirs réguliers [2, 3], mais sans le raccordement
+asymptotiquement plat que ces modèles postulent.</p>
+<h1 id="courant-topologique-et-borne-de-bogomolnyi">Courant topologique
+et borne de Bogomol’nyi</h1>
+<p>Pour <span class="math inline">\(\psi\in S^1\)</span>, <span
+class="math inline">\(j^\mu=(1/2\pi)\varepsilon^{\mu\nu}\partial_\nu\psi\)</span>
+vérifie <span class="math inline">\(\partial_\mu j^\mu\equiv0\)</span>
+par antisymétrie, sans usage des équations du mouvement ; <span
+class="math inline">\(N=(1/2\pi)\oint d\psi\)</span> est un invariant
+d’homotopie. L’énergie statique plate <span
+class="math inline">\(E=\int[\tfrac12\omega\psi&#39;^2+V]dr\)</span>
+admet la borne <span class="math inline">\(E\ge\int\sqrt{2\omega
+V}\,|d\psi|\)</span>, saturée pour <span
+class="math inline">\(\sqrt\omega\,\psi&#39;=\sqrt{2V}\)</span>, soit le
+kink <span class="math inline">\(\psi(r)=4\arctan
+e^{\sqrt{\alpha/\omega}(r-r_0)}\)</span>, de largeur <span
+class="math inline">\(\sim\sqrt{\omega/\alpha}\)</span>, et <span
+class="math inline">\(M_{N=1}=2\sqrt{\omega\alpha}\int_0^{2\pi}|\sin(\psi/2)|\,d\psi=8\sqrt{\omega\alpha}\)</span>.
+Le demi-soliton (<span class="math inline">\(\psi:-\pi\to0\)</span>) a
+une énergie <span class="math inline">\(4\sqrt{\omega\alpha}\)</span>
+mais relie le maximum au vide : il n’est pas BPS et se contracte
+(§ III.D).</p>
+<h1 class="unnumbered" id="reproductibilité">Reproductibilité</h1>
+<p>Les résultats numériques et la vérification symbolique sont
+reproduits par deux scripts autonomes (NumPy/SymPy/SciPy/Matplotlib),
+aux sections codées pour être propres à ce document :</p>
+<ul>
+<li><p>géométrie en repère d’Einstein (<span
+class="math inline">\(U=V/f^2\)</span>, <span
+class="math inline">\(K=\omega/f+\tfrac32(f&#39;/f)^2\)</span>) et
+positivité <span class="math inline">\(K&gt;0\Leftrightarrow
+f&gt;0\Leftrightarrow|\beta|&lt;1\)</span> (mono-axe).</p></li>
+<li><p>seuil de clôture : signe de <span
+class="math inline">\(\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]\)</span>,
+racine exacte <span
+class="math inline">\(\beta_c=-1/3\)</span>.</p></li>
+<li><p>cœur de Sitter : <span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span>, <span
+class="math inline">\(r_H=1/H\)</span>, Kretschmann <span
+class="math inline">\(=24H^4\)</span>.</p></li>
+<li><p>inflation : <span class="math inline">\((n_s,r)\)</span> à <span
+class="math inline">\(N=55\)</span> (roulement lent, métrique <span
+class="math inline">\(K\)</span>) — reproduit la Table <a
+href="#tab:nsr" data-reference-type="ref" data-reference="tab:nsr">2</a>
+; <span class="math inline">\(\alpha\)</span> fixé par <span
+class="math inline">\(A_s\)</span> (<span
+class="math inline">\(V^{1/4}\approx1{,}4\times10^{16}\)</span> GeV),
+running.</p></li>
+<li><p>topologie : charge <span class="math inline">\(N\)</span>,
+soliton <span
+class="math inline">\(M_{N=1}=8\sqrt{\omega\alpha}\)</span>,
+demi-soliton <span
+class="math inline">\(4\sqrt{\omega\alpha}\)</span>.</p></li>
+</ul>
+<p>Fichiers : <code>U2_GRAV_reproductible.py</code> (calculs) et
+<code>Gravite_figures.py</code> (Fig. <a href="#fig:paysage"
+data-reference-type="ref" data-reference="fig:paysage">1</a>–<a
+href="#fig:seuil" data-reference-type="ref"
+data-reference="fig:seuil">3</a>). <em>Convention</em> : <span
+class="math inline">\(\alpha\)</span> s’annule dans les rapports <span
+class="math inline">\((n_s,r)\)</span> et ne fixe que l’échelle absolue
+; <span class="math inline">\(M_{\mathrm{Pl}}=1\)</span> sauf mention
+contraire. Le préfixe <code>U2_GRAV_</code> et les codes
+<code>[G</code><span class="math inline">\(\cdot\)</span><code>]</code>
+sont spécifiques à ce document.</p>
+<div class="thebibliography">
+<p><span>99</span> J. M. Bardeen, <em>Non-singular general-relativistic
+gravitational collapse</em>, Proc. GR5 (Tbilisi, 1968), p. 174.
+S. A. Hayward, <em>Phys. Rev. Lett.</em> <strong>96</strong>, 031103
+(2006). I. Dymnikova, <em>Gen. Relativ. Gravit.</em>
+<strong>24</strong>, 235 (1992). R. Penrose, <em>Phys. Rev. Lett.</em>
+<strong>14</strong>, 57 (1965). S. W. Hawking &amp; G. F. R. Ellis,
+<em>The Large Scale Structure of Space-Time</em> (Cambridge Univ. Press,
+1973). A. H. Guth, <em>Phys. Rev. D</em> <strong>23</strong>, 347
+(1981). K. Freese, J. A. Frieman &amp; A. V. Olinto,
+<em>Phys. Rev. Lett.</em> <strong>65</strong>, 3233 (1990).
+J. D. Bekenstein, <em>Phys. Rev. D</em> <strong>51</strong>, R6608
+(1995). F. L. Bezrukov &amp; M. Shaposhnikov, <em>Phys. Lett. B</em>
+<strong>659</strong>, 703 (2008). Planck Collaboration (Y. Akrami <em>et
+al.</em>), <em>Astron. Astrophys.</em> <strong>641</strong>, A10 (2020).
+BICEP/Keck Collaboration (P. A. R. Ade <em>et al.</em>),
+<em>Phys. Rev. Lett.</em> <strong>127</strong>, 151301 (2021). LiteBIRD
+Collaboration (E. Allys <em>et al.</em>),
+<em>Prog. Theor. Exp. Phys.</em> <strong>2023</strong>, 042F01 (2023).
+K. N. Abazajian <em>et al.</em> (CMB-S4), <em>CMB-S4 Science Book</em>,
+arXiv:1610.02743 (2016) — <em>projet arrêté en juillet 2025</em>.
+R. Z. Ferreira, A. Notari &amp; G. Simeon,
+<em>J. Cosmol. Astropart. Phys.</em> <strong>11</strong> (2018) 021,
+arXiv:1806.05511. H. Bakkaoui, <em>Compactification de dualité d’échelle
+: cadre, corrections et résultats</em>, recueil v1.1 (2026). G. Simeon,
+<em>Scalar-tensor extension of Natural Inflation</em>, arXiv:2002.07625
+(2020). I. D. Bostan, <em>Non-minimally coupled Natural Inflation and
+BICEP/Keck constraints</em>, arXiv:2209.02434 (2022). Simons Observatory
+Collaboration (P. Ade <em>et al.</em>),
+<em>J. Cosmol. Astropart. Phys.</em> <strong>02</strong> (2019) 056,
+arXiv:1808.07445.</p>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Le projet CMB-S4 (DOE–NSF), longtemps considéré comme
+l’instrument de référence pour ce test, a été arrêté : le 9 juillet
+2025, le DOE et la NSF ont déclaré ne plus pouvoir soutenir le projet
+(arrêt ordonné), qui n’est donc plus financé [13]. La falsifiabilité de
+la prédiction demeure, portée par Simons Observatory (Chili, en
+service), LiteBIRD (lancement visé <span
+class="math inline">\(\sim\)</span>2032, conçu pour <span
+class="math inline">\(\sigma(r)&lt;10^{-3}\)</span>) et BICEP/Keck (en
+cours). <span><span class="sans-serif">[à vérifier]</span></span><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</article>
+<footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>

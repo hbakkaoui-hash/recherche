@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unité 4 — Effondrement gravitationnel, faux vide métastable, isocourbure et spectre Mukhanov–Sasaki exact · H. Bakkaoui</title>
+<meta name="description" content="Unité 4 — Effondrement gravitationnel, faux vide métastable, isocourbure et spectre Mukhanov–Sasaki exact — Hassane Bakkaoui, chercheur indépendant.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">gr-qc</span><span class="tag">astro-ph.CO</span></div>
+    <h1 class="paper-title">Unité 4 — Effondrement gravitationnel, faux vide métastable, isocourbure et spectre Mukhanov–Sasaki exact</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur ind&eacute;pendant</p>
+    <div class="paper-links">
+      <a href="../papers/u4_FR.pdf">PDF (FR)</a>
+      <a href="../papers/u4_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://doi.org/10.5281/zenodo.20671560" target="_blank" rel="noopener">Zenodo</a>
+    </div>
+  </div>
+<h1 id="introduction">Introduction</h1>
+<p>Le programme explore une hypothèse géométrique unique : les axes
+d’échelle, habituellement non compacts, sont des cercles. L’échelle de
+Planck (pôle <span class="math inline">\(P\)</span>) et une échelle «
+unifiée » (pôle <span class="math inline">\(\infty^*\)</span>)
+deviennent deux pôles d’une même variété, l’un spatial (<span
+class="math inline">\(\psi\)</span>, face gravitationnelle), l’autre
+temporel (<span class="math inline">\(\chi\)</span>, face quantique).
+<em>Portée</em> : non pas résoudre l’unification, mais proposer une
+direction cohérente et falsifiable, honnêtement étiquetée.</p>
+<h1 id="le-cadre-en-une-page">Le cadre en une page</h1>
+<p>Action (cadre de Jordan) : <span
+class="math display">\[\begin{equation}
+S=\int\!\sqrt{-g}\Big[\tfrac12 f
+R-\tfrac12\omega\big((\partial\psi)^2+(\partial\chi)^2\big)-V\Big],\quad
+f=1+\beta(\cos\psi+\cos\chi),\ \ V=\alpha(2-\cos\psi-\cos\chi),\ \
+\omega=f_s^2. \tag{1}
+\end{equation}\]</span> La carte conforme <span
+class="math inline">\(\tilde g_{\mu\nu}=f g_{\mu\nu}\)</span> (<span
+class="math inline">\(\Omega^2=f\)</span>) ramène au cadre d’Einstein,
+avec potentiel et métrique de l’espace des champs <span
+class="math display">\[\begin{equation}
+U=\frac{V}{f^2},\qquad
+\mathcal{G}_{ab}=\frac1f\Big[\omega\,\delta_{ab}+\tfrac32\frac{f_{,a}f_{,b}}{f}\Big].
+\tag{2}
+\end{equation}\]</span> Deux faits exacts <strong><span
+style="color: blue!45!black">[preuve]</span></strong> : (a) santé (pas
+de fantôme) <span
+class="math inline">\(f&gt;0\Leftrightarrow\beta\in(-\tfrac12,+\tfrac12)\)</span>
+; (b) le seuil de clôture, fixé par le Hessien diagonal exact (SymPy) au
+pôle <span class="math inline">\(\infty^*=(\pi,\pi)\)</span> (<span
+class="math inline">\(f=1-2\beta\)</span>), point fixe de l’isométrie
+d’échange <span class="math inline">\(\psi\leftrightarrow\chi\)</span> :
+<span class="math display">\[\begin{equation}
+m^2_{\rm
+eff}(\infty^*)=-\frac{\alpha(1+6\beta)}{\omega(1-2\beta)^2},\qquad
+U(\infty^*)=\frac{4\alpha}{(1-2\beta)^2},\qquad \boxed{\beta_c=-1/6}.
+\tag{0}
+\end{equation}\]</span> Le long de la diagonale <span
+class="math inline">\(\psi=\chi=\theta\)</span> (<span
+class="math inline">\(f=1+2\beta\cos\theta\)</span>), <span
+class="math display">\[\begin{equation}
+U_{\rm
+diag}(\theta)=\frac{2\alpha(1-\cos\theta)}{(1+2\beta\cos\theta)^2},\qquad
+K_\parallel=\frac{2\omega}{f}+\frac{6\beta^2\sin^2\theta}{f^2},\qquad(\beta_{\rm
+eff}=2\beta). \tag{3}
+\end{equation}\]</span></p>
+<h4 id="récapitulatif-unités-13.">Récapitulatif (Unités 1–3).</h4>
+<p><strong><span style="color: blue!45!black">[preuve]</span><span
+style="color: blue!45!black">[numérique]</span></strong> À champ gelé,
+la gravité d’Einstein émerge (<span class="math inline">\(G_{\rm
+eff}=1/8\pi f\)</span>) ; la branche <span
+class="math inline">\(\psi\equiv-\pi\)</span> est exactement
+Schwarzschild–de Sitter ; aucun trou noir régulier statique (clôture).
+L’existence quantique intermittente est unitaire, <span
+class="math inline">\(\hat H_{\rm eff}=\varepsilon\hat H_{\rm
+sys}\)</span>, <span
+class="math inline">\(\varepsilon=\langle\cos^2(\chi/2)\rangle=E(k)/K(k)\)</span>,
+période <span
+class="math inline">\(\tau_0=2\pi\sqrt{\omega/\alpha}\approx3{,}5\times10^{-37}\)</span> s.
+La bande inflationnaire <span class="math inline">\((n_s,r)\)</span> est
+précisée ci-dessous (spectre Mukhanov–Sasaki). Signature propre : <span
+class="math inline">\(\beta(\text{CMB})=\beta(\text{clôture})\)</span>.</p>
+<h1 id="sec:bif">Effondrement et bifurcation au seuil <span
+class="math inline">\(\beta_c\)</span></h1>
+<h2 id="effondrement-homogène-la-bifurcation-11a">Effondrement homogène
+: la bifurcation (11a)</h2>
+<p><strong><span style="color: blue!45!black">[numérique]</span><span
+style="color: blue!45!black">[preuve]</span></strong> Dans un domaine
+homogène en contraction (<span class="math inline">\(H&lt;0\)</span>),
+le diagnostic <span
+class="math inline">\(\ddot\psi(0)\propto-(1+6\beta)\)</span> et la
+masse effective au pôle basculent <em>exactement</em> à <span
+class="math inline">\(\beta_c=-1/6\)</span> : <span
+class="math inline">\(\beta&lt;\beta_c\Rightarrow\infty^*\)</span>
+minimum (piégé) ; <span
+class="math inline">\(\beta&gt;\beta_c\Rightarrow\)</span> maximum
+(échappe) (Fig. <a href="#fig:11a" data-reference-type="ref"
+data-reference="fig:11a">1</a>, gauche). <em>Limite honnête</em>
+<strong><span style="color: blue!45!black">[preuve]</span></strong> :
+l’anti-friction (<span class="math inline">\(H&lt;0\)</span>) finit par
+déloger le champ même du côté stable (Fig. <a href="#fig:11a"
+data-reference-type="ref" data-reference="fig:11a">1</a>, droite) — le
+vrai piégeage est inhomogène (§<a href="#sec:11b"
+data-reference-type="ref" data-reference="sec:11b">3.2</a>).</p>
+<figure id="fig:11a" data-latex-placement="h">
+<img src="figs_u4/fig_bifurcation.png" style="width:99.0%" />
+<figcaption><strong>11a — bifurcation.</strong> <em>Gauche</em> : <span
+class="math inline">\(m^2_{\rm
+eff}(\infty^*)=-\alpha(1+6\beta)/[\omega(1-2\beta)^2]\)</span> change de
+signe à <span class="math inline">\(\beta_c=-1/6\)</span> (<span
+class="math inline">\(m^2&gt;0\)</span> piégé pour <span
+class="math inline">\(\beta&lt;\beta_c\)</span>, <span
+class="math inline">\(m^2&lt;0\)</span> échappe pour <span
+class="math inline">\(\beta&gt;\beta_c\)</span>) ; la fenêtre CMB
+enjambe le seuil. <em>Droite</em> : deux trajectoires en effondrement
+homogène, rappel vers <span class="math inline">\(\infty^*\)</span>
+(<span class="math inline">\(\beta&lt;\beta_c\)</span>) vs répulsion
+(<span class="math inline">\(\beta&gt;\beta_c\)</span>).
+<em>Interprétation</em> : le signe de <span
+class="math inline">\(m^2_{\rm eff}\)</span> au pôle fixe le côté piégé
+; c’est le diagnostic local de la métastabilité.</figcaption>
+</figure>
+<h2 id="sec:11b">Perturbations inhomogènes : le gradient stabilise
+(11b)</h2>
+<p><strong><span style="color: blue!45!black">[preuve]</span></strong>
+On linéarise <span class="math inline">\(\delta\varphi_k\)</span> sur un
+fond de Sitter contractant gelé à <span
+class="math inline">\(\infty^*\)</span> : le gradient <span
+class="math inline">\(k^2/a^2\)</span> est strictement stabilisant ;
+l’instabilité tachyonique exige <span class="math inline">\(m^2_{\rm
+eff}&lt;0\)</span> (<span
+class="math inline">\(\beta&gt;\beta_c\)</span>). D’où une longueur de
+Jeans <span class="math inline">\(\lambda_c\)</span> finie
+<em>seulement</em> pour <span
+class="math inline">\(\beta&gt;\beta_c\)</span> (Fig. <a href="#fig:11b"
+data-reference-type="ref" data-reference="fig:11b">2</a>, gauche). Pour
+<span class="math inline">\(\beta&lt;\beta_c\)</span>, aucun mode
+tachyonique <span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(\infty^*\)</span> linéairement stable, rémanent
+admissible. Les modes diagonal et entropique basculent ensemble (Hessien
+isotrope, <span class="math inline">\(U_{\psi\chi}=0\)</span>). Vérifié
+SymPy.</p>
+<figure id="fig:11b" data-latex-placement="h">
+<img src="figs_u4/fig_jeans.png" style="width:99.0%" />
+<figcaption><strong>11b — gradient stabilisant.</strong> <em>Gauche</em>
+: longueur de Jeans <span
+class="math inline">\(\lambda_c(\beta)\)</span>, infinie pour <span
+class="math inline">\(\beta&lt;\beta_c=-1/6\)</span> (aucun mode
+tachyonique), finie pour <span
+class="math inline">\(\beta&gt;\beta_c\)</span>. <em>Droite</em> :
+amplitudes nettoyées <span
+class="math inline">\(|v_k|=a^{3/2}|\delta\varphi_k|\)</span> sur fond
+effondrant (<span
+class="math inline">\(\beta=-0{,}10&gt;\beta_c\)</span>) ; les petits
+<span class="math inline">\(k\)</span> croissent puis se stabilisent
+quand <span class="math inline">\(k^2/a^2\)</span> domine en fin
+d’effondrement. <em>Interprétation</em> : c’est le gradient, et non le
+signe homogène seul, qui assure la stabilité linéaire du faux vide pour
+<span class="math inline">\(\beta&lt;\beta_c\)</span>.</figcaption>
+</figure>
+<h1 id="sec:A2">Le rémanent comme faux vide de Sitter, et sa durée de
+vie</h1>
+<h2 id="le-paysage-de-potentiel">Le paysage de potentiel</h2>
+<p><strong><span style="color: blue!45!black">[preuve]</span></strong>
+Sur la diagonale, les extrema de <span class="math inline">\(U\)</span>
+sont : le vrai vide <span class="math inline">\(P\)</span> (<span
+class="math inline">\(\theta=0\)</span>, <span
+class="math inline">\(U=0\)</span>), le faux vide <span
+class="math inline">\(\infty^*\)</span> (<span
+class="math inline">\(\theta=\pi\)</span>, <span
+class="math inline">\(U(\infty^*)=4\alpha/(1-2\beta)^2\)</span>), et une
+barrière interne en <span
+class="math inline">\(\cos\theta^*=(1+4\beta)/(2\beta)\)</span>, qui
+n’existe que pour <span
+class="math inline">\(\beta\in(-\tfrac12,-\tfrac16)\)</span>. À <span
+class="math inline">\(\beta_c\)</span>, la barrière fusionne avec <span
+class="math inline">\(\infty^*\)</span> (bifurcation). Pour <span
+class="math inline">\(\beta&lt;\beta_c\)</span>, <span
+class="math inline">\(U\)</span> est un double-puits (Fig. <a
+href="#fig:land" data-reference-type="ref"
+data-reference="fig:land">3</a>). La substitution de <span
+class="math inline">\(\cos\theta^*\)</span> dans (3) se simplifie
+exactement : <span class="math display">\[\begin{equation}
+U(\theta^*)=-\frac{\alpha}{4\beta(1+2\beta)}\ (&gt;0\ \text{pour}\
+\beta\in(-\tfrac12,-\tfrac16)). \tag{4}
+\end{equation}\]</span></p>
+<figure id="fig:land" data-latex-placement="h">
+<img src="figs_u4/fig_landscape.png" style="width:78.0%" />
+<figcaption><strong>Paysage <span class="math inline">\(U_{\rm
+diag}(\theta)/\alpha\)</span>.</strong> Pour <span
+class="math inline">\(\beta&lt;\beta_c=-1/6\)</span> (vert, violet) un
+faux vide apparaît à <span class="math inline">\(\infty^*\)</span>
+derrière une barrière ; pour <span
+class="math inline">\(\beta&gt;\beta_c\)</span> (rouge) <span
+class="math inline">\(\infty^*\)</span> est un simple maximum. Les
+points marquent le sommet de barrière <span
+class="math inline">\(\theta^*\)</span>. <em>Interprétation</em> : le
+double-puits est la condition géométrique de métastabilité ; sa
+disparition à <span class="math inline">\(\beta_c\)</span> est
+exactement le seuil de clôture (0).</figcaption>
+</figure>
+<h2 id="régime-dinstanton-hawkingmoss-pas-colemande-luccia">Régime
+d’instanton : Hawking–Moss, pas Coleman–De Luccia</h2>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> La décroissance
+d’un faux vide de Sitter procède soit par bulle de Coleman–De Luccia
+(CDL), soit par saut homogène de Hawking–Moss (HM). Le critère de
+Batra–Kleban stipule que l’instanton CDL n’existe que si la courbure
+tachyonique canonique au sommet vérifie <span
+class="math inline">\(|m^2_{\rm top}|/H^2_{\rm top}&gt;4\)</span>. Le
+calcul donne, sur toute la fenêtre <span
+class="math inline">\(\beta\in[-0{,}30;-0{,}17]\)</span> et <span
+class="math inline">\(f_s\in\{4,5,7\}\)</span>, <span
+class="math display">\[\begin{equation}
+\frac{|m^2_{\rm top}|}{H^2_{\rm top}}\ \approx\ \frac{3}{4f_s^2}\ \sim\
+6\times10^{-4}\text{ à }7\times10^{-2}\ \ll\ 4. \tag{5}
+\end{equation}\]</span> La barrière, étalée sur une excursion
+sur-planckienne (<span class="math inline">\(\Delta\varphi_c\sim
+f_sM_{\rm Pl}\)</span>), est trop plate devant la courbure de Sitter :
+<strong>seul Hawking–Moss opère, CDL n’existe pas</strong>.</p>
+<h2 id="action-exacte-et-durée-de-vie">Action exacte et durée de
+vie</h2>
+<p><strong><span style="color: blue!45!black">[preuve]</span></strong>
+(SymPy). L’action HM, <span class="math inline">\(B_{\rm
+HM}=24\pi^2M_{\rm Pl}^4\big[1/U(\infty^*)-1/U(\theta^*)\big]\)</span>,
+se réduit exactement à <span class="math display">\[\begin{equation}
+\boxed{\,B_{\rm
+HM}(\beta)=\frac{24\pi^2}{\alpha}\Big(3\beta+\tfrac12\Big)^2=\frac{6\pi^2}{\alpha}(6\beta+1)^2\,}\qquad(M_{\rm
+Pl}=1). \tag{6}
+\end{equation}\]</span> Le facteur <span
+class="math inline">\((3\beta+\tfrac12)^2\)</span> <em>s’annule
+exactement à</em> <span
+class="math inline">\(\beta=-1/6=\beta_c\)</span> : barrière et faux
+vide fusionnent, l’exposant tombe à zéro. C’est une vérification de
+cohérence interne forte avec le seuil (0), obtenue par un calcul
+indépendant.</p>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> Avec <span
+class="math inline">\(\alpha\sim10^{-9}M_{\rm Pl}^4\)</span> (échelle
+GUT, fixée par <span class="math inline">\(A_s\)</span>, cf. §<a
+href="#sec:A4" data-reference-type="ref" data-reference="sec:A4">6</a>),
+<span class="math inline">\(B_{\rm HM}\)</span> varie fortement avec
+<span class="math inline">\(\beta\)</span> (Fig. <a href="#fig:bhm"
+data-reference-type="ref" data-reference="fig:bhm">4</a>, Tab. <a
+href="#tab:bhm" data-reference-type="ref"
+data-reference="tab:bhm">1</a>). La durée de vie en temps de Hubble est
+<span class="math inline">\(\sim e^{B}\)</span> : <strong>pratiquement
+éternelle</strong> sur toute la fenêtre.</p>
+<table id="tab:bhm">
+<caption><strong>Action de Hawking–Moss et durée de vie.</strong> <span
+class="math inline">\(B_{\rm HM}\)</span> ne dépend que de <span
+class="math inline">\((\alpha,\beta)\)</span>, pas de <span
+class="math inline">\(f_s\)</span>. Même au bord <span
+class="math inline">\(\beta\to\beta_c\)</span> (faible <span
+class="math inline">\(B\)</span>), la durée de vie reste
+astronomiquement supérieure à l’âge de l’Univers.</caption>
+<thead>
+<tr>
+<th style="text-align: left;"><span
+class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(B_{\rm
+HM}\)</span> (<span class="math inline">\(\alpha=10^{-9}\)</span>)</th>
+<th style="text-align: center;">survie <span class="math inline">\(\sim
+e^B\)</span> (temps de Hubble)</th>
+<th style="text-align: center;">régime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(-0{,}30\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(3{,}8\times10^{10}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{1{,}6\times10^{10}}\)</span></td>
+<td style="text-align: center;">faux vide robuste</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(-0{,}25\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}5\times10^{10}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{6{,}4\times10^{9}}\)</span></td>
+<td style="text-align: center;">robuste</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(-0{,}21\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(4{,}0\times10^{9}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{1{,}7\times10^{9}}\)</span></td>
+<td style="text-align: center;">robuste</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(-0{,}17\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(2{,}4\times10^{7}\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(10^{1{,}0\times10^{7}}\)</span></td>
+<td style="text-align: center;">faible mais éternel</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(-1/6\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0\)</span></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">bifurcation : faux vide disparaît</td>
+</tr>
+</tbody>
+</table>
+<figure id="fig:bhm" data-latex-placement="h">
+<img src="figs_u4/fig_BHM.png" style="width:72.0%" />
+<figcaption><strong><span class="math inline">\(B_{\rm
+HM}(\beta)\)</span> (échelle log, <span
+class="math inline">\(\alpha=10^{-9}\)</span>).</strong> L’action
+décroît continûment jusqu’à <span class="math inline">\(0\)</span> à
+<span class="math inline">\(\beta_c=-1/6\)</span>.
+<em>Interprétation</em> : plus on s’enfonce dans la zone double-puits
+(<span class="math inline">\(\beta\)</span> très négatif), plus le faux
+vide est blindé ; près du seuil il s’amincit mais reste
+éternel.</figcaption>
+</figure>
+<h4 id="conclusion-métastabilité.">Conclusion (métastabilité).</h4>
+<p>La métastabilité passe de <strong><span
+style="color: blue!45!black">[conjecture]</span></strong> à
+<strong><span style="color: blue!45!black">[preuve]</span></strong>
+(forme close de <span class="math inline">\(B\)</span>) <span
+class="math inline">\(+\)</span> <strong><span
+style="color: blue!45!black">[numérique]</span></strong> (régime HM,
+durées de vie). <em>Reste</em> <strong><span
+style="color: blue!45!black">[ouvert]</span></strong> : le préfacteur
+fluctuationnel du taux, et le raccordement à l’interprétation « trou
+noir régulier métastable » (dépend de la sélection dynamique).</p>
+<h1 id="sec:A3">Trajectoire à deux champs et isocourbure</h1>
+<h2
+id="la-diagonale-est-géodésique-pas-de-transfert-pendant-linflation">La
+diagonale est géodésique : pas de transfert pendant l’inflation</h2>
+<p><strong><span style="color: blue!45!black">[preuve]</span></strong>
+La bande <span class="math inline">\((n_s,r)\)</span> avait d’abord été
+obtenue par une <em>réduction mono-champ</em> (axe <span
+class="math inline">\(\chi\)</span> gelé, <span
+class="math inline">\(U(\psi)=\alpha(1-\cos\psi)/(1+\beta\cos\psi)^2\)</span>)
+— le principal caveat de la prédiction. On lève ici cette hypothèse en
+traitant les deux champs. Posant <span
+class="math inline">\(\psi=\theta+\delta\)</span>, <span
+class="math inline">\(\chi=\theta-\delta\)</span>, la symétrie d’échange
+<span class="math inline">\(\psi\leftrightarrow\chi\)</span> impose
+<span class="math inline">\(\partial
+U/\partial\delta|_{\delta=0}=0\)</span> : la diagonale <span
+class="math inline">\(\psi=\chi\)</span> est une <em>trajectoire
+protégée</em>, et, comme ensemble des points fixes de l’isométrie
+d’échange, totalement géodésique. (SymPy.) <span
+class="math inline">\(f,V,\mathcal{G}\)</span> étant symétriques sous
+<span class="math inline">\(\psi\leftrightarrow\chi\)</span>, la
+composante entropique du gradient s’annule identiquement sur la
+diagonale : <span class="math display">\[\begin{equation}
+V_{,\psi}-V_{,\chi}=\alpha(\sin\psi-\sin\chi)\ \xrightarrow{\psi=\chi}\
+0. \tag{7}
+\end{equation}\]</span> La trajectoire est donc une géodésique de
+l’espace des champs : <strong>le taux de virage <span
+class="math inline">\(\dot\theta_\perp=0\)</span></strong>, donc le
+transfert entropie<span class="math inline">\(\to\)</span>adiabatique
+<em>pendant l’inflation</em> est nul, <span
+class="math inline">\(T_{RS}=0\)</span>. La courbure <span
+class="math inline">\(\mathcal{R}\)</span> est conservée super-horizon
+et n’est pas contaminée par le secteur entropique. La normalisation
+cinétique entropique vaut exactement <span
+class="math inline">\(K_\perp=2\omega/f\)</span>.</p>
+<h2
+id="le-spectre-adiabatique-se-décale-levée-de-la-réduction-mono-champ">Le
+spectre adiabatique se décale : levée de la réduction mono-champ</h2>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> Le long de la
+diagonale, le champ adiabatique voit <span class="math inline">\(U_{\rm
+diag}\)</span> avec un couplage effectif <span
+class="math inline">\(\beta_{\rm eff}=2\beta\)</span> (éq. 3), ce qui
+rend <span class="math inline">\(n_s\)</span> <em>plus rouge</em>
+d’environ <span class="math inline">\(0{,}003\)</span>–<span
+class="math inline">\(0{,}007\)</span> par rapport à la réduction
+mono-champ :</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;">mono-champ <span
+class="math inline">\((n_s,r)\)</span></th>
+<th style="text-align: center;">diagonale <span
+class="math inline">\((n_s,r)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}45\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}955;\,0{,}022)\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}948;\,0{,}019)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-1/3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}959;\,0{,}033)\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}955;\,0{,}031)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}30\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}960;\,0{,}036)\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}957;\,0{,}036)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}15\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}962;\,0{,}055)\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\((0{,}962;\,0{,}063)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(roulement lent, comparaison de réduction ; le spectre exact
+Mukhanov–Sasaki de la diagonale est donné au §<a href="#sec:A4"
+data-reference-type="ref" data-reference="sec:A4">6</a>, Tab. <a
+href="#tab:ms" data-reference-type="ref" data-reference="tab:ms">2</a>.)
+La fenêtre survivante se déplace vers les <span
+class="math inline">\(\beta\)</span> moins négatifs : l’extrémité <span
+class="math inline">\(\beta=-0{,}45\)</span> sort (<span
+class="math inline">\(n_s=0{,}948\)</span> trop bas). Le décalage (<span
+class="math inline">\(\sim0{,}005\)</span> en <span
+class="math inline">\(n_s\)</span>) est de l’ordre de la barre d’erreur
+de Planck — non négligeable. C’est la trajectoire diagonale, non la
+réduction mono-champ, qui fournit la prédiction de référence (§<a
+href="#sec:A4" data-reference-type="ref"
+data-reference="sec:A4">6</a>).</p>
+<h2 id="masse-entropique-covariante-et-isocourbure-produite">Masse
+entropique covariante et isocourbure produite</h2>
+<p><strong><span style="color: blue!45!black">[preuve]</span><span
+style="color: blue!45!black">[numérique]</span></strong> Avec le Hessien
+covariant <span class="math inline">\(V_{;ss}=\hat e_s^a\hat
+e_s^b(\nabla_a\nabla_b V)\)</span> et la courbure scalaire de l’espace
+des champs <span class="math inline">\(R_{\rm fs}\)</span> (toutes deux
+calculées exactement, cf. scripts), la masse entropique est <span
+class="math inline">\(m^2_s=V_{;ss}+\varepsilon\,R_{\rm fs}H^2\)</span>
+(le terme de virage <span
+class="math inline">\(\propto\dot\theta_\perp\)</span> étant nul). Sur
+la fenêtre de convergence, <span
+class="math inline">\(m^2_s&gt;0\)</span> (la diagonale est une
+<em>vallée</em>, donc un attracteur : le champ ne s’en échappe pas) mais
+<span class="math inline">\(|m^2_s|\lesssim0{,}02\,H^2\)</span> : le
+mode entropique est <em>léger</em>, quasi invariant d’échelle (<span
+class="math inline">\(n_{\rm iso}-1\approx\pm0{,}01\)</span>). La cause
+est physique : le grand <span class="math inline">\(f_s\)</span> qui
+rend l’inflation viable alourdit le terme cinétique et allège d’autant
+le mode entropique. Étant léger et découplé, il est amplifié comme un
+spectateur jusqu’à <span class="math display">\[\begin{equation}
+\beta_{\rm iso}\ \approx\ 0{,}3\text{–}0{,}8\quad\text{en fin
+d&#39;inflation},\qquad\text{soit }10\text{–}20\times\text{ la borne de
+Planck }(\beta_{\rm iso}&lt;0{,}038). \tag{8}
+\end{equation}\]</span> La valeur est chiffrée sur la Fig. <a
+href="#fig:iso" data-reference-type="ref"
+data-reference="fig:iso">5</a>a. Fait crucial : <span
+class="math inline">\(P_S\approx P_R\)</span> à la production —
+l’entropie n’est pas un spectateur négligeable.</p>
+<h2 id="conversion-au-réchauffement-le-point-ouvert-chiffré">Conversion
+au réchauffement : le point ouvert, chiffré</h2>
+<p><strong><span
+style="color: blue!45!black">[conjecture]</span></strong> À la fin de
+l’inflation, <span
+class="math inline">\(\mathcal{R}=\mathcal{R}_*\)</span>, <span
+class="math inline">\(S=T_{SS}S_*\)</span>. La transition au
+réchauffement agit via une matrice de transfert <span
+class="math inline">\(\delta N\)</span> : <span
+class="math inline">\(\mathcal{R}_f=\mathcal{R}+\mathcal{T}_{RS}S\)</span>,
+<span class="math inline">\(S_f=\mathcal{T}_{SS}S\)</span>. Deux limites
+(Fig. <a href="#fig:iso" data-reference-type="ref"
+data-reference="fig:iso">5</a>b) :</p>
+<ul>
+<li><p><strong>Réchauffement symétrique</strong> (couplage universel).
+Le couplage matière <em>universel</em> déjà adopté dans le cadre
+(branche <span class="math inline">\(U\)</span>-conforme, <span
+class="math inline">\(\eta=0\)</span>, qui assure le passage des bornes
+d’horloges atomiques et de quasars) fait que <span
+class="math inline">\(\psi\)</span> et <span
+class="math inline">\(\chi\)</span> se thermalisent à l’identique :
+aucune espèce séparée ne porte l’isocourbure <span
+class="math inline">\(\psi\)</span>–<span
+class="math inline">\(\chi\)</span>, qui se convertit en adiabatique
+(type curvaton). Alors <span
+class="math inline">\(\mathcal{T}_{SS}\to0\Rightarrow\beta_{\rm
+iso}\to0\)</span> et <span
+class="math inline">\(\mathcal{T}_{RS}\to0\Rightarrow(n_s,r)\)</span>
+<em>inchangé</em>. Cohérence structurelle non recherchée : le
+<em>même</em> choix qui passe les tests de laboratoire évite aussi
+l’isocourbure observable. Limite physiquement motivée, mais conditionnée
+à une symétrie <span
+class="math inline">\(\psi\leftrightarrow\chi\)</span> exacte au
+réchauffement.</p></li>
+<li><p><strong>Réchauffement asymétrique</strong> (<span
+class="math inline">\(\Gamma_\psi\neq\Gamma_\chi\)</span>) : conversion
+de type curvaton, <span
+class="math inline">\(\mathcal{T}_{RS}\neq0\)</span>. Comme <span
+class="math inline">\(P_S\approx P_R\)</span>, l’effet est <span
+class="math inline">\(O(1)\)</span> : pour <span
+class="math inline">\((\beta{=}{-}0{,}20,f_s{=}5)\)</span>, <span
+class="math inline">\((n_s,r)\)</span> dérive de <span
+class="math inline">\((0{,}957;0{,}027)\)</span> à <span
+class="math inline">\((0{,}998;\!\to\!0)\)</span> selon le degré de
+conversion, passant par le centre de Planck à conversion modérée (<span
+class="math inline">\(\sin^2\Theta\approx0{,}19\)</span>).</p></li>
+</ul>
+<figure id="fig:iso" data-latex-placement="h">
+<img src="figs_u4/fig_isocurvature.png" style="width:98.0%" />
+<figcaption><strong>(a)</strong> <span class="math inline">\(\beta_{\rm
+iso}\)</span> produit en fin d’inflation <span
+class="math inline">\(\gg\)</span> borne Planck (zone verte) sur toute
+la fenêtre <span class="math inline">\(\Rightarrow\)</span> une
+conversion au réchauffement est <em>requise</em>. <strong>(b)</strong>
+Dérive de <span class="math inline">\((n_s,r)\)</span> sous conversion
+curvaton (cas <span class="math inline">\(\beta{=}{-}0{,}20\)</span>,
+<span class="math inline">\(f_s{=}5\)</span>) : le point « sym. » (<span
+class="math inline">\(\mathcal{T}_{RS}=0\)</span>) est la prédiction
+inflationnaire ; une conversion croissante (carrés) déplace <span
+class="math inline">\((n_s,r)\)</span> — modérée, elle améliore l’accord
+; forte, elle l’exclut. <em>Interprétation</em> : la prédiction <span
+class="math inline">\((n_s,r)\)</span> n’est ferme que dans la limite
+symétrique ; tout déséquilibre de réchauffement la déplace d’un montant
+<span class="math inline">\(O(0{,}04)\)</span>.</figcaption>
+</figure>
+<h4 id="conclusion-isocourbure.">Conclusion (isocourbure).</h4>
+<p>Acquis <strong><span
+style="color: blue!45!black">[preuve]</span></strong> : <span
+class="math inline">\(\dot\theta_\perp=0\)</span>, <span
+class="math inline">\(T_{RS}=0\)</span> (pas de contamination
+inflationnaire). Acquis <strong><span
+style="color: blue!45!black">[numérique]</span></strong> : masse
+entropique légère, <span class="math inline">\(\beta_{\rm
+iso}\sim0{,}3\)</span>–<span class="math inline">\(0{,}8\gg\)</span>
+Planck à la production. Le couplage universel rend la limite symétrique
+— isocourbure convertie en adiabatique, donc évitée — la plus naturelle
+<strong><span style="color: blue!45!black">[conjecture]</span></strong>.
+Reste <strong><span
+style="color: blue!45!black">[ouvert]</span></strong> : le modèle de
+réchauffement (taux <span
+class="math inline">\(\Gamma_\psi,\Gamma_\chi\)</span>, transport <span
+class="math inline">\(\delta N\)</span>) qui chiffre la conversion et
+son éventuel décalage de <span class="math inline">\((n_s,r)\)</span> ;
+tant qu’il n’est pas fait, la prédiction diagonale reste une
+<em>première approximation</em>.</p>
+<h4 id="clarifications.">Clarifications.</h4>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> La masse
+canonique du champ près de <span class="math inline">\(P\)</span> vaut
+<span
+class="math inline">\(m_\varphi\approx1{,}9\times10^{13}\)</span> GeV
+(<span class="math inline">\(\sim10^{55}H_0\)</span>) : <span
+class="math inline">\(\sim55\)</span> ordres trop lourd pour la
+quintessence. Il relaxe au vide (<span
+class="math inline">\(\varepsilon=1\)</span>, <span
+class="math inline">\(\Lambda_{\rm champ}\to0\)</span>) ; l’énergie
+noire est un <em>secteur séparé</em> (le problème de la constante
+cosmologique n’est pas résolu). Le pont de Page–Wootters tient au cas
+non commutant à <span class="math inline">\(\sim10^{-22}\)</span> près
+(<span class="math inline">\(\hat H_{\rm eff}(t)=\varepsilon\hat H_{\rm
+sys}(t)\)</span>, correction <span
+class="math inline">\(\sim\tau_0\omega_{\rm sys}\)</span>).</p>
+<h1 id="sec:A4">Spectre Mukhanov–Sasaki exact et fixation de <span
+class="math inline">\(\alpha\)</span></h1>
+<h2 id="méthode">Méthode</h2>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> Puisque <span
+class="math inline">\(T_{RS}=0\)</span> (§<a href="#sec:A3"
+data-reference-type="ref" data-reference="sec:A3">5</a>), le spectre
+adiabatique est effectivement à un champ le long de la diagonale. On
+résout l’équation de Mukhanov–Sasaki pour la courbure comobile <span
+class="math inline">\(\mathcal{R}_k\)</span> en e-folds, <span
+class="math display">\[\begin{equation}
+\mathcal{R}_k&#39;&#39;+\big(3-\varepsilon_H+\tfrac{d\ln\varepsilon_H}{dN}\big)\mathcal{R}_k&#39;+\Big(\frac{k}{aH}\Big)^2\mathcal{R}_k=0,
+\tag{9}
+\end{equation}\]</span> avec conditions de Bunch–Davies sous-horizon et
+lecture du plateau super-horizon, sur un fond intégré
+<em>exactement</em> (sans approximation slow-roll). Le pivot est pris à
+<span class="math inline">\(N_*=55\)</span>. Le tenseur suit la relation
+de cohérence <span class="math inline">\(r=16\varepsilon_H\)</span>
+(exacte à <span class="math inline">\(&lt;1\%\)</span> ici), <span
+class="math inline">\(n_t=-r/8\)</span>.</p>
+<h2 id="résultats">Résultats</h2>
+<p><strong><span
+style="color: blue!45!black">[numérique]</span></strong> La
+normalisation scalaire est vérifiée (<span
+class="math inline">\(P_R/P_R^{\rm SR}\approx1{,}03\)</span>, l’écart
+étant la correction MS). La correction au <span
+class="math inline">\(n_s\)</span> est <strong>sous-pourcent</strong> et
+systématique (vers le bleu, <span
+class="math inline">\(+0{,}0006\)</span> à <span
+class="math inline">\(+0{,}0009\)</span>). En fixant <span
+class="math inline">\(\alpha\)</span> par <span
+class="math inline">\(A_s=2{,}1\times10^{-9}\)</span> : <span
+class="math display">\[\begin{equation}
+\alpha\approx(2\text{–}8)\times10^{-10}M_{\rm Pl}^4,\qquad
+V^{1/4}\approx1{,}1\text{–}1{,}5\times10^{16}\
+\text{GeV}\quad(\textbf{échelle GUT}),\qquad
+\alpha_s\approx-6\times10^{-4}. \tag{10}
+\end{equation}\]</span></p>
+<table id="tab:ms">
+<caption><strong>Spectre Mukhanov–Sasaki exact</strong> vs slow-roll. La
+correction <span class="math inline">\(\Delta n_s\)</span> est
+sous-pourcent et déplace <span class="math inline">\(n_s\)</span> vers
+le bleu. <span class="math inline">\(\alpha\)</span> (donc <span
+class="math inline">\(V^{1/4}\)</span>) est fixé par <span
+class="math inline">\(A_s\)</span>.</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(f_s\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(n_s\)</span>
+(MS)</th>
+<th style="text-align: center;"><span class="math inline">\(n_s\)</span>
+(SR)</th>
+<th style="text-align: center;"><span class="math inline">\(\Delta
+n_s\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(r\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(n_t\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(V^{1/4}\)</span> (GeV)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}30\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9470\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9461\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}0009\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}014\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}002\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}11\times10^{16}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}24\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9537\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9529\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}0008\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}022\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}003\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}24\times10^{16}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}20\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9571\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9564\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}0008\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}028\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}004\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}32\times10^{16}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}30\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9567\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9561\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}0006\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}037\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}005\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}42\times10^{16}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}26\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9585\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}9579\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}0006\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}043\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}005\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1{,}47\times10^{16}\)</span></td>
+</tr>
+</tbody>
+</table>
+<figure id="fig:nsr" data-latex-placement="h">
+<img src="figs_u4/fig_nsr.png" style="width:82.0%" />
+<figcaption><strong><span class="math inline">\((n_s,r)\)</span> —
+prédiction MS exacte</strong> contre Planck 2018 + BK18 (valeurs
+publiées marginalisées, non rejouées par MCMC). <em>Interprétation</em>
+: la fenêtre survit à <span
+class="math inline">\(\sim1{,}5\)</span>–<span
+class="math inline">\(2\sigma\)</span> mais est <em>légèrement trop
+rouge</em> par rapport au centre de Planck (<span
+class="math inline">\(0{,}9649\)</span>) ; le meilleur point (<span
+class="math inline">\(f_s{=}7,\beta\!\approx\!-0{,}26\)</span>) atteint
+<span class="math inline">\(n_s=0{,}959\)</span>. Le coin <span
+class="math inline">\(f_s{=}7,\beta\gtrsim-0{,}28\)</span> est exclu par
+<span class="math inline">\(r\)</span>. Tout le domaine prédit <span
+class="math inline">\(r\gtrsim0{,}014\gg\)</span> plancher de détection
+<span class="math inline">\(\Rightarrow\)</span> test décisif par
+LiteBIRD/Simons Observatory.</figcaption>
+</figure>
+<h4 id="articulation-isocourbure-leftrightarrow-spectre.">Articulation
+isocourbure <span class="math inline">\(\leftrightarrow\)</span>
+spectre.</h4>
+<p>La correction MS (<span class="math inline">\(+0{,}001\)</span>) est
+trop faible pour recentrer la prédiction sur Planck ; en revanche, une
+conversion curvaton <em>modérée</em> (A3) décale <span
+class="math inline">\(n_s\)</span> vers le bleu de <span
+class="math inline">\(\sim+0{,}007\)</span>, ce qui amènerait au centre
+de Planck. Le spectre MS fixe donc la prédiction « avant réchauffement »
+à <span class="math inline">\(&lt;0{,}001\)</span> près ; son recentrage
+final dépend du secteur entropique. Les deux étapes sont couplées.</p>
+<h4 id="cohérence-rgmq.">Cohérence RG/MQ.</h4>
+<p><strong><span style="color: blue!45!black">[preuve]</span><span
+style="color: blue!45!black">[numérique]</span></strong> La branche à
+champ gelé reproduit Schwarzschild–de Sitter ; pour <span
+class="math inline">\(M=3M_\odot\)</span>, observateurs à 12 et 100 km,
+les valeurs de la RG sont redonnées à l’identique (écart résiduel <span
+class="math inline">\(\sim10^{-43}\)</span>, terme de Sitter) :</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Grandeur</th>
+<th style="text-align: center;">RG standard</th>
+<th style="text-align: center;">Cadre (champ d’échelle)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Rayon de Schwarzschild <span
+class="math inline">\(R_S\)</span></td>
+<td style="text-align: center;">8,86 km</td>
+<td style="text-align: center;">8,86 km</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rapport <span
+class="math inline">\(\nu_B/\nu_A\)</span></td>
+<td style="text-align: center;">0,536</td>
+<td style="text-align: center;">0,536</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dilatation <span
+class="math inline">\(d\tau_B/d\tau_A\)</span></td>
+<td style="text-align: center;">1,87</td>
+<td style="text-align: center;">1,87</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Côté MQ — oscillateur dans un champ, via <span
+class="math inline">\(\hat H_{\rm eff}=\varepsilon\hat H_{\rm
+sys}\)</span> (<span class="math inline">\(\varepsilon\to1\)</span>) :
+les grandeurs structurelles sont identiques à la MQ (<span
+class="math inline">\(x_0=-0{,}176\)</span> pm, <span
+class="math inline">\(\langle n\rangle=1{,}34\times10^{-7}\)</span>,
+<span class="math inline">\(\chi=2{,}82\times10^{-38}\)</span> F<span
+class="math inline">\(\cdot\)</span>m<span
+class="math inline">\(^2\)</span>), les énergies étant <span
+class="math inline">\(\times\varepsilon\)</span> ; écart <span
+class="math inline">\(\sim10^{-22}\)</span>. Les deux limites sont
+récupérées exactement ; la physique propre vit en courbure forte et aux
+échelles cosmologiques.</p>
+<h1 id="synthèse-et-statut-épistémique-densemble">Synthèse et statut
+épistémique d’ensemble</h1>
+<p>Le tableau <a href="#tab:statut" data-reference-type="ref"
+data-reference="tab:statut">3</a> récapitule, énoncé par énoncé, ce qui
+est établi et à quel titre.</p>
+<table id="tab:statut">
+<caption>Statut épistémique de l.ensemble du cadre.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Énoncé</th>
+<th style="text-align: left;">Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">RG récupérée (<span
+class="math inline">\(\sim10^{-43}\)</span>) ; MQ récupérée (<span
+class="math inline">\(\varepsilon\to1\)</span>, <span
+class="math inline">\(\sim10^{-22}\)</span>)</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong>+<strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Aucun trou noir régulier statique ; <span
+class="math inline">\(\beta_c=-1/6\)</span> ; cœur de Sitter fini</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong>+<strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Bifurcation 11a ; gradient stabilisant 11b
+; piégé <span class="math inline">\(=\beta&lt;-1/6\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong>+<strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Faux vide à <span
+class="math inline">\(\infty^*\)</span> ; <span
+class="math inline">\(U(\infty^*)=4\alpha/(1-2\beta)^2\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Action de décroissance</strong>
+<span class="math inline">\(B_{\rm
+HM}=24\pi^2(3\beta+\tfrac12)^2/\alpha\)</span> ; régime HM, <span
+class="math inline">\(\to0\)</span> à <span
+class="math inline">\(\beta_c\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong>+<strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Diagonale géodésique, <span
+class="math inline">\(T_{RS}=0\)</span> ; pas de contamination
+inflationnaire de <span class="math inline">\((n_s,r)\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[preuve]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Masse entropique légère ; <span
+class="math inline">\(\beta_{\rm iso}\sim0{,}3\)</span>–<span
+class="math inline">\(0{,}8\gg\)</span> Planck à la production</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Conversion symétrique <span
+class="math inline">\(\Rightarrow\beta_{\rm iso}\to0\)</span> sans
+dérive ; asym. <span class="math inline">\(\Rightarrow\)</span> dérive
+<span class="math inline">\(O(0{,}04)\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[conjecture]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Spectre MS exact</strong> ;
+correction <span class="math inline">\(n_s\)</span> sous-pourcent ;
+<span class="math inline">\(\alpha\)</span> par <span
+class="math inline">\(A_s\)</span>, <span
+class="math inline">\(V^{1/4}\!\sim\)</span> GUT</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\varepsilon=1\)</span> (champ au vide) ; <span
+class="math inline">\(\Lambda_{\rm champ}\to0\)</span> ; énergie noire
+séparée</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[numérique]</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Pont Page–Wootters non commutant à <span
+class="math inline">\(\sim10^{-22}\)</span></td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[conjecture]</span></strong>
+(1<sup>er</sup> ordre)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sélection dynamique ; modèle de
+réchauffement ; origine de <span class="math inline">\(\Lambda_{\rm
+obs}\)</span> ; PW non-pert. GUT</td>
+<td style="text-align: left;"><strong><span
+style="color: blue!45!black">[ouvert]</span></strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="étapes-ouvertes-par-ordre">Étapes ouvertes (par ordre)</h1>
+<ol>
+<li><p><strong>Sélection dynamique</strong> <strong><span
+style="color: blue!45!black">[ouvert]</span></strong> : effondrement
+inhomogène non linéaire (relativité numérique testée en convergence,
+double-null à la Christodoulou, scalaire min. couplé avec <span
+class="math inline">\(U(\phi)\)</span>). L’implémentation réduite a
+échoué (instabilité haute fréquence) ; probablement hors de portée d’un
+script seul.</p></li>
+<li><p><strong>Modèle de réchauffement</strong> <strong><span
+style="color: blue!45!black">[ouvert]</span></strong> : taux <span
+class="math inline">\(\Gamma_\psi,\Gamma_\chi\)</span>, transport
+multi-champ <span class="math inline">\(\delta N\)</span>, pour fixer
+l’angle <span class="math inline">\(\Theta\)</span> et trancher la
+conversion entropique (§<a href="#sec:A3" data-reference-type="ref"
+data-reference="sec:A3">5</a>) — détermine le décalage final de <span
+class="math inline">\((n_s,r)\)</span>.</p></li>
+<li><p><strong>Décroissance du faux vide — préfacteur</strong>
+<strong><span style="color: blue!45!black">[ouvert]</span></strong> :
+déterminant fluctuationnel au-delà de l’exponentielle (6) ; raccordement
+à l’interprétation trou noir régulier.</p></li>
+<li><p><strong>Contours officiels</strong> <strong><span
+style="color: blue!45!black">[à faire]</span></strong> : chaînes MCMC
+Planck/BK réelles (la présente figure utilise les valeurs marginalisées
+publiées).</p></li>
+<li><p><strong>Origine de <span class="math inline">\(\Lambda_{\rm
+obs}\)</span></strong> <strong><span
+style="color: blue!45!black">[ouvert]</span></strong> : clarifier «
+secteur séparé » vs mécanisme (ne pas prétendre résoudre).</p></li>
+</ol>
+<h1 class="unnumbered"
+id="note-ast-statut-observationnel-de-la-prochaine-génération-cmb-juin-2026">Note
+(<span class="math inline">\(\ast\)</span>) — Statut observationnel de
+la prochaine génération CMB (juin 2026)</h1>
+<p>Le projet phare CMB-S4 (DOE–NSF) a été arrêté : après le retrait des
+installations au pôle Sud et une refonte « Chili seul » proposée en juin
+2025, le DOE et la NSF ont déclaré le <strong>9 juillet 2025</strong> ne
+plus pouvoir soutenir le projet. Il n’existe donc plus de CMB-S4
+financé. La falsifiabilité de la prédiction <span
+class="math inline">\((n_s,r)\)</span> demeure, portée par les
+expériences réelles de prochaine génération : <em>Simons
+Observatory</em> (Chili, en service), <em>LiteBIRD</em> (JAXA, lancement
+visé <span class="math inline">\(\sim\)</span>2032, conçu pour <span
+class="math inline">\(\delta r&lt;10^{-3}\)</span>) et
+<em>BICEP/Keck</em> (en cours). Seuls l’instrument et le calendrier
+changent ; le seuil de détection <span
+class="math inline">\(r\sim10^{-3}\)</span> reste celui visé.
+<strong><span style="color: blue!45!black">[à
+vérifier]</span></strong></p>
+<h1 class="unnumbered" id="reproductibilité">Reproductibilité</h1>
+<p>Tous les résultats numériques et symboliques sont reproduits par deux
+scripts autonomes (SymPy, SciPy, NumPy, Matplotlib), aux sections codées
+<code>[V1]…[V6]</code> propres à ce document :</p>
+<ul>
+<li><p>seuil <span class="math inline">\(\beta_c=-1/6\)</span> : Hessien
+diagonal exact, <span class="math inline">\(m^2_{\rm
+eff}(\infty^*)\)</span>, bifurcation (Fig. <a href="#fig:11a"
+data-reference-type="ref" data-reference="fig:11a">1</a>).</p></li>
+<li><p>paysage <span class="math inline">\(U_{\rm diag}\)</span> :
+barrière <span
+class="math inline">\(\cos\theta^*=(1+4\beta)/(2\beta)\)</span>, <span
+class="math inline">\(U(\theta^*)\)</span>, <span
+class="math inline">\(U(\infty^*)\)</span> (Fig. <a href="#fig:land"
+data-reference-type="ref" data-reference="fig:land">3</a>).</p></li>
+<li><p>action de Hawking–Moss exacte <span class="math inline">\(B_{\rm
+HM}=24\pi^2(3\beta+\tfrac12)^2/\alpha\to0\)</span> à <span
+class="math inline">\(\beta_c\)</span> ; critère Batra–Kleban (HM, pas
+CDL) ; durées de vie (Tab. <a href="#tab:bhm" data-reference-type="ref"
+data-reference="tab:bhm">1</a>, Fig. <a href="#fig:bhm"
+data-reference-type="ref" data-reference="fig:bhm">4</a>).</p></li>
+<li><p>diagonale géodésique <span
+class="math inline">\(V_{,\psi}-V_{,\chi}=0\)</span> ; masse entropique
+<span class="math inline">\(m^2_s\)</span>, <span
+class="math inline">\(\beta_{\rm iso}\)</span> (Fig. <a href="#fig:iso"
+data-reference-type="ref" data-reference="fig:iso">5</a>).</p></li>
+<li><p>gradient stabilisant / longueur de Jeans (Fig. <a href="#fig:11b"
+data-reference-type="ref" data-reference="fig:11b">2</a>).</p></li>
+<li><p>spectre Mukhanov–Sasaki exact <span
+class="math inline">\((n_s,r)\)</span>, fixation de <span
+class="math inline">\(\alpha\)</span> par <span
+class="math inline">\(A_s\)</span>, <span
+class="math inline">\(V^{1/4}\)</span> (Tab. <a href="#tab:ms"
+data-reference-type="ref" data-reference="tab:ms">2</a>, Fig. <a
+href="#fig:nsr" data-reference-type="ref"
+data-reference="fig:nsr">6</a>).</p></li>
+</ul>
+<p>Fichiers : <code>U4_VIDE_reproductible.py</code> (calculs) et
+<code>Unite4_figures.py</code> (figures FR + EN). Le préfixe
+<code>U4_VIDE_</code> et les codes <code>[V</code><span
+class="math inline">\(\cdot\)</span><code>]</code> sont spécifiques à ce
+document. <em>Convention</em> : <span class="math inline">\(M_{\rm
+Pl}=1\)</span> (réduit) sauf mention contraire ; statut épistémique sur
+chaque énoncé.</p>
+<h1 class="unnumbered"
+id="annexe-vérifications-chiffrées-rg-schwarzschild-et-mq-oscillateur-déplacé">Annexe
+— Vérifications chiffrées : RG (Schwarzschild) et MQ (oscillateur
+déplacé)</h1>
+<p>Les deux calculs ci-dessous chiffrent les <em>deux limites</em> de la
+§ « Cohérence RG/MQ » : la relativité générale récupérée à champ gelé
+(<span class="math inline">\(\sim10^{-43}\)</span>), la mécanique
+quantique récupérée à <span
+class="math inline">\(\varepsilon\to1\)</span> (<span
+class="math inline">\(\sim10^{-22}\)</span>). Données : <span
+class="math inline">\(G=6{,}674\times10^{-11}\)</span>, <span
+class="math inline">\(c=2{,}998\times10^{8}\)</span>, <span
+class="math inline">\(M_\odot=1{,}989\times10^{30}\)</span> (SI) ;
+électron <span class="math inline">\(m=9{,}11\times10^{-31}\)</span> kg,
+<span class="math inline">\(q=-e=-1{,}602\times10^{-19}\)</span> C,
+<span class="math inline">\(\hbar=1{,}055\times10^{-34}\)</span> J<span
+class="math inline">\(\cdot\)</span>s.</p>
+<h4 id="a.1-décalage-spectral-de-schwarzschild-limite-rg.">A.1 Décalage
+spectral de Schwarzschild (limite RG).</h4>
+<p>Trou noir <span
+class="math inline">\(M=3M_\odot=5{,}967\times10^{30}\)</span> kg ; deux
+observateurs statiques en <span class="math inline">\(R_A=12\)</span> km
+et <span class="math inline">\(R_B=100\)</span> km ; <span
+class="math inline">\(\nu_A=10^{15}\)</span> Hz. <em>(1) Rayon de
+Schwarzschild.</em> <span
+class="math inline">\(R_S=2GM/c^2=8{,}86\)</span> km. <em>(2)
+Position.</em> <span class="math inline">\(R_A,R_B&gt;R_S\)</span> : les
+deux observateurs sont hors horizon (<span
+class="math inline">\(R_S/2R_A\approx0{,}37\)</span>, <span
+class="math inline">\(A\)</span> très compact). <em>(3) Décalage.</em>
+Le temps propre statique vaut <span
+class="math inline">\(d\tau=\sqrt{1-R_S/r}\,dt\)</span>, et <span
+class="math inline">\(dt\)</span> est le même le long de la géodésique
+radiale du photon (métrique stationnaire), d’où <span
+class="math display">\[\begin{equation}
+\frac{\nu_B}{\nu_A}=\frac{d\tau_A}{d\tau_B}=\sqrt{\frac{1-R_S/R_A}{1-R_S/R_B}}.
+\tag{A.1}
+\end{equation}\]</span> <em>(4) Numérique.</em> <span
+class="math inline">\(R_S/R_A=0{,}738\)</span>, <span
+class="math inline">\(R_S/R_B=0{,}0886\)</span> ; <span
+class="math inline">\(\nu_B/\nu_A=\sqrt{0{,}262/0{,}911}=\sqrt{0{,}287}\approx\boxed{0{,}536}\)</span>,
+soit <span
+class="math inline">\(\nu_B\approx5{,}36\times10^{14}\)</span> Hz (le
+vert <span class="math inline">\(\lambda\!\approx\!500\)</span> nm est
+perçu orangé <span
+class="math inline">\(\lambda\!\approx\!560\)</span> nm : décalage vers
+le rouge). <em>(5–6) Dilatation.</em> <span
+class="math inline">\(d\tau_B/d\tau_A=1/0{,}536\approx\boxed{1{,}87}\)</span>
+: le temps s’écoule <span class="math inline">\(1{,}87\times\)</span>
+plus vite pour <span class="math inline">\(B\)</span>. Un signal par
+seconde propre de <span class="math inline">\(A\)</span> est reçu toutes
+les <span class="math inline">\(\Delta\tau_B\approx1{,}87\)</span> s ;
+après 100 émis, <span class="math inline">\(B\)</span> n’en a reçu que
+<span class="math inline">\(\approx53\)</span>. <em>(7) Limite <span
+class="math inline">\(R_A\to R_S\)</span>.</em> <span
+class="math inline">\(\sqrt{1-R_S/R_A}\to0\Rightarrow\nu_B/\nu_A\to0\)</span>
+: décalage vers le rouge infini à l’horizon ; le temps propre de <span
+class="math inline">\(A\)</span> « gèle » vu de l’extérieur, alors que
+<span class="math inline">\(A\)</span> traverse l’horizon en temps
+propre fini. <em>Lien au cadre.</em> La branche à champ gelé <span
+class="math inline">\(\psi\equiv-\pi\)</span> est exactement
+Schwarzschild–de Sitter : ces trois valeurs (<span
+class="math inline">\(R_S\)</span>, <span
+class="math inline">\(\nu_B/\nu_A\)</span>, <span
+class="math inline">\(d\tau_B/d\tau_A\)</span>) sont redonnées à
+l’identique, l’écart résiduel (<span
+class="math inline">\(\sim10^{-43}\)</span>) provenant du seul terme de
+Sitter. <strong><span style="color: blue!45!black">[preuve]</span><span
+style="color: blue!45!black">[numérique]</span></strong></p>
+<h4
+id="a.2-oscillateur-harmonique-déplacé-dans-un-champ-uniforme-limite-mq.">A.2
+Oscillateur harmonique déplacé dans un champ uniforme (limite MQ).</h4>
+<p><span class="math inline">\(\hat H=\hat p^2/2m+\tfrac12 m\omega^2\hat
+x^2-q\mathcal{E}\hat x\)</span>, avec <span
+class="math inline">\(\omega=10^{15}\)</span> rad/s, <span
+class="math inline">\(\mathcal{E}=10^{6}\)</span> V/m. <em>(1) Forme
+normale.</em> Avec <span class="math inline">\(\hat
+x=\sqrt{\hbar/2m\omega}\,(\hat a+\hat a^\dagger)\)</span>, <span
+class="math inline">\(\hat H=\hbar\omega(\hat a^\dagger\hat
+a+\tfrac12)-q\mathcal{E}\sqrt{\hbar/2m\omega}\,(\hat a+\hat
+a^\dagger)\)</span>. Le déplacement <span class="math inline">\(\hat
+a&#39;=\hat a-\alpha\)</span>, <span
+class="math inline">\(\alpha=q\mathcal{E}/\sqrt{2m\hbar\omega^3}\)</span>
+(opérateur de translation de Weyl — la <em>même</em> charnière conforme
+que <span class="math inline">\(\Omega=\sqrt f\)</span> côté gravité),
+donne <span class="math display">\[\begin{equation}
+\hat H=\hbar\omega\Big(\hat a&#39;^\dagger\hat
+a&#39;+\tfrac12\Big)-\frac{q^2\mathcal{E}^2}{2m\omega^2},\qquad
+E_n=\hbar\omega\Big(n+\tfrac12\Big)-\frac{q^2\mathcal{E}^2}{2m\omega^2}.
+\tag{A.2}
+\end{equation}\]</span> Le spectre est rigidement décalé, les niveaux
+restant équidistants de <span
+class="math inline">\(\hbar\omega\)</span>. <em>(2) Décalage
+d’énergie.</em> <span class="math inline">\(\Delta
+E=-q^2\mathcal{E}^2/(2m\omega^2)\approx-1{,}41\times10^{-26}\)</span> J
+<span class="math inline">\(\approx-8{,}8\times10^{-8}\)</span> eV ;
+comme <span class="math inline">\(\hbar\omega\approx0{,}66\)</span> eV,
+<span class="math inline">\(|\Delta
+E|/\hbar\omega\approx1{,}3\times10^{-7}\)</span> (régime perturbatif).
+<em>(3) Centre déplacé.</em> <span class="math inline">\(V_{\rm
+eff}&#39;=m\omega^2x-q\mathcal{E}=0\Rightarrow
+x_0=q\mathcal{E}/(m\omega^2)=\boxed{-0{,}176~\text{pm}}\)</span>
+(l’électron, charge négative, se décale à l’opposé du champ) ; la
+fréquence reste <span class="math inline">\(\omega\)</span>. <em>(4)
+Fondamental cohérent.</em> <span class="math inline">\(\hat
+a&#39;|0&#39;\rangle=0\Rightarrow\hat
+a|0&#39;\rangle=\alpha|0&#39;\rangle\)</span> : <span
+class="math inline">\(|0&#39;\rangle=|\alpha\rangle=e^{-|\alpha|^2/2}\sum_n(\alpha^n/\sqrt{n!})|n\rangle\)</span>,
+avec <span class="math inline">\(\langle\hat a^\dagger\hat
+a\rangle=|\alpha|^2=q^2\mathcal{E}^2/(2m\hbar\omega^3)\approx\boxed{1{,}34\times10^{-7}}\ll1\)</span>.
+<em>(5) Position moyenne.</em> <span
+class="math inline">\(\langle0&#39;|\hat
+x|0&#39;\rangle=\sqrt{\hbar/2m\omega}\,(2\alpha)=q\mathcal{E}/(m\omega^2)=x_0\)</span>.
+<em>(6) Susceptibilité.</em> <span class="math inline">\(P=q\langle\hat
+x\rangle=q^2\mathcal{E}/(m\omega^2)\)</span>, d’où <span
+class="math inline">\(\chi=\partial
+P/\partial\mathcal{E}=q^2/(m\omega^2)\approx\boxed{2{,}82\times10^{-38}~\text{F}\cdot\text{m}^2}\)</span>
+(cohérent avec une polarisabilité atomique, <span
+class="math inline">\(\sim2{,}5\times10^{-3}\,a_0^3\)</span>). <em>Lien
+au cadre.</em> Via <span class="math inline">\(\hat H_{\rm
+eff}=\varepsilon\hat H_{\rm sys}\)</span>, seules les énergies sont
+multipliées par <span class="math inline">\(\varepsilon\)</span> ; les
+grandeurs <em>structurelles</em> (<span
+class="math inline">\(x_0\)</span>, <span class="math inline">\(\langle
+n\rangle\)</span>, <span class="math inline">\(\chi\)</span>) sont
+inchangées. À <span class="math inline">\(\varepsilon\to1\)</span> la
+mécanique quantique standard est récupérée exactement (écart <span
+class="math inline">\(\sim10^{-22}\)</span>, cf. § Cohérence RG/MQ).
+<strong><span style="color: blue!45!black">[preuve]</span><span
+style="color: blue!45!black">[numérique]</span></strong></p>
+<h1 class="unnumbered" id="note-de-collaboration">Note de
+collaboration</h1>
+<p>Le cadre conceptuel — l’intuition d’origine, les hypothèses physiques
+et les choix de modélisation — est entièrement de l’auteur, qui en
+assume l’entière responsabilité scientifique. La mise en forme
+mathématique, les vérifications symboliques et numériques et la
+rédaction des manuscrits ont été menées en dialogue itératif avec un
+assistant d’intelligence artificielle, sous la direction et la
+supervision de l’auteur. La validation finale appartient à l’auteur et à
+la communauté expérimentale.</p>
+<h1 class="unnumbered" id="remerciements">Remerciements</h1>
+<p>Les vérifications symboliques et numériques et les figures de ce
+travail reposent sur des logiciels libres, développés et maintenus par
+la communauté scientifique : l’écosystème Python — NumPy, SciPy, SymPy,
+Matplotlib — et le système de composition TeX/LaTeX. L’auteur remercie
+les communautés qui maintiennent ces outils ouverts.</p>
+<div class="thebibliography">
+<p><span>9</span> Planck Collaboration (Y. Akrami <em>et al.</em>),
+<em>Astron. Astrophys.</em> <strong>641</strong>, A10 (2020). BICEP/Keck
+Collaboration (P. A. R. Ade <em>et al.</em>), <em>Phys. Rev. Lett.</em>
+<strong>127</strong>, 151301 (2021). S. W. Hawking &amp; I. G. Moss,
+<em>Phys. Lett. B</em> <strong>110</strong>, 35 (1982). S. Coleman &amp;
+F. De Luccia, <em>Phys. Rev. D</em> <strong>21</strong>, 3305 (1980).
+N. Batra &amp; M. Kleban, <em>Phys. Rev. D</em> <strong>76</strong>,
+103510 (2007). [à vérifier] C. Gordon, D. Wands, B. A. Bassett &amp;
+R. Maartens, <em>Phys. Rev. D</em> <strong>63</strong>, 023506 (2001).
+D. N. Page &amp; W. K. Wootters, <em>Phys. Rev. D</em>
+<strong>27</strong>, 2885 (1983). V. F. Mukhanov, H. A. Feldman &amp;
+R. H. Brandenberger, <em>Phys. Rep.</em> <strong>215</strong>, 203
+(1992). M. W. Choptuik, <em>Phys. Rev. Lett.</em> <strong>70</strong>, 9
+(1993). H. Bakkaoui, Unités 1–4, Zenodo, 2026.</p>
+</div>
+</article>
+<footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unité 3 — Dualité d'échelle compactifiée : synthèse · H. Bakkaoui</title>
+<meta name="description" content="Unité 3 — Dualité d'échelle compactifiée : synthèse — Hassane Bakkaoui, chercheur indépendant.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">gr-qc</span><span class="tag">astro-ph.CO</span><span class="tag">quant-ph</span></div>
+    <h1 class="paper-title">Unité 3 — Dualité d'échelle compactifiée : synthèse</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur ind&eacute;pendant</p>
+    <div class="paper-links">
+      <a href="../papers/u3_FR.pdf">PDF (FR)</a>
+      <a href="../papers/u3_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://doi.org/10.5281/zenodo.20671446" target="_blank" rel="noopener">Zenodo</a>
+    </div>
+  </div>
+<h1 id="introduction">Introduction</h1>
+<p>Réconcilier mécanique quantique et relativité générale est un
+problème ouvert depuis un siècle. Côté gravitation, deux exigences
+pèsent sur toute physique du régime de Planck : faire disparaître les
+singularités [3–7] et rendre compte de l’expansion accélérée primordiale
+[8, 9]. Côté quantique, la décohérence et la sélection d’une base
+privilégiée doivent être expliquées sans environnement externe ad hoc
+[2, 20]. Les programmes établis (cordes, gravité à boucles, géométrie
+non commutative, gravité semi-classique hybride) abordent ces fronts par
+des voies distinctes.</p>
+<p>Nous explorons une unique hypothèse géométrique. L’axe d’échelle
+logarithmique, habituellement non compact, est pris pour un cercle : par
+projection stéréographique, l’échelle de Planck (pôle <span
+class="math inline">\(P\)</span>) et une échelle « unifiée » (pôle <span
+class="math inline">\(\infty^*\)</span>) deviennent deux pôles d’une
+même variété [1]. Il y a deux tels axes — spatial (<span
+class="math inline">\(\psi\)</span>) et temporel (<span
+class="math inline">\(\chi\)</span>) — d’où l’arène <span
+class="math inline">\(\mathcal{M}=M_{3+1}\times S^1_\psi\times
+S^1_\chi\)</span>. L’axe spatial gouverne la face
+gravitationnelle/cosmologique [1] ; l’axe temporel, la face quantique —
+le temps de l’hypothèse de discontinuité d’existence quantique (HDEQ)
+[2].</p>
+<h4 id="une-clarification-ontologique-demblée.">Une clarification
+ontologique, d’emblée.</h4>
+<p>L’HDEQ ne postule pas un temps discret. Le temps reste un paramètre
+continu ; ce qui est intermittent, c’est l’existence active des systèmes
+quantiques, en cycles de durée <span
+class="math inline">\(\tau_0\)</span> (fraction active <span
+class="math inline">\(\varepsilon\)</span>). Le qualificatif « temporel
+» pour l’axe <span class="math inline">\(\chi\)</span> désigne le rôle
+d’horloge qu’il joue (§<a href="#sec:quantique"
+data-reference-type="ref" data-reference="sec:quantique">6</a>), non une
+signature métrique de genre temps.</p>
+<h4 id="périmètre-et-honnêteté-épistémique.">Périmètre et honnêteté
+épistémique.</h4>
+<p>Ce travail ne prétend pas résoudre l’unification à lui seul. Il
+propose une direction cohérente et falsifiable : les choix de
+modélisation sont assumés, les résultats étiquetés selon leur statut, et
+c’est à la communauté de tester, étendre ou réfuter.</p>
+<h1 id="cadre-formel-larène-et-laction">Cadre formel : l’arène et
+l’action</h1>
+<div class="postulat">
+<p><strong>Postulat 1</strong> (compactification). La variété
+fondamentale est <span class="math inline">\(\mathcal{M}=M_{3+1}\times
+S^1_\psi\times S^1_\chi\)</span>, les axes d’échelle étant des cercles
+via <span
+class="math inline">\(\psi=2\arctan[\ln(\lambda/\ell_P)]\)</span> et
+<span class="math inline">\(\chi=2\arctan[\ln(\tau/\tau_P)]\)</span>.
+Les pôles <span class="math inline">\(\pm\pi\)</span> sont identifiés
+(<span class="math inline">\(\infty^*\)</span>) ; <span
+class="math inline">\(0\)</span> est le point de Planck <span
+class="math inline">\(P\)</span>.</p>
+</div>
+<h2 id="action-métrique-despace-de-champ-b1-et-bande-viable">Action,
+métrique d’espace de champ (B1) et bande viable</h2>
+<p><span class="math display">\[\begin{equation}
+S=\int d^4x\,\sqrt{-g}\Big[\tfrac12
+fR-\tfrac12\omega\big((\partial\psi)^2+(\partial\chi)^2\big)-V\Big],
+\quad f=1+\beta(\cos\psi+\cos\chi),\quad V=\alpha(2-\cos\psi-\cos\chi).
+\end{equation}\]</span> <span><span
+class="sans-serif">[preuve]</span></span> (B1) Au repère d’Einstein, la
+métrique d’espace de champ <span
+class="math inline">\(\mathcal{G}_{ab}\)</span> est définie positive
+<span class="math inline">\(\Leftrightarrow f&gt;0\)</span> : une partie
+cinétique <span class="math inline">\(\omega/f\)</span> (définie
+positive) plus une partie non minimale de rang 1 semi-définie positive.
+La bande viable est l’intervalle ouvert <span
+class="math inline">\(\beta\in(-0{,}5;-0{,}15)\)</span> (à <span
+class="math inline">\(\beta=-1/2\)</span>, <span
+class="math inline">\(f\to0\)</span> en <span
+class="math inline">\(P\)</span>). <span><span
+class="sans-serif">[preuve]</span></span> (F2) <span
+class="math inline">\(S^1_\psi,S^1_\chi\)</span> sont des cercles
+internes (cible <span class="math inline">\(\sigma\)</span>-modèle
+euclidienne), non des dimensions d’espace-temps ; <span
+class="math inline">\(\chi\)</span> n’est pas une coordonnée de genre
+temps <span class="math inline">\(\to\)</span> pas de fantôme, pas de
+courbe temporelle fermée. L’enroulement <span
+class="math inline">\(=\)</span> la charge d’échelle topologique.</p>
+<h1 id="sec:cosmo">Le secteur gravitationnel et cosmologique («
+l’infiniment grand »)</h1>
+<p><span><span class="sans-serif">[preuve]</span></span> Aux champs
+gelés, la gravité d’Einstein émerge ; au vide symétrique <span
+class="math inline">\(P\)</span> (<span
+class="math inline">\(V=0\)</span>), la constante cosmologique s’annule.
+Au pôle <span class="math inline">\(\infty^*\)</span>, la source se
+réduit à une énergie de vide pure, donnant un espace localement de
+Sitter de taux <span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span> (un axe) ou
+<span class="math inline">\(4\alpha/[3(1-2\beta)]\)</span> (deux axes),
+avec scalaire de Kretschmann fini <span
+class="math inline">\(K=24H^4\)</span>.</p>
+<p>En cosmologie homogène, le champ canonique <span
+class="math inline">\(\varphi=f_s\psi\)</span> voit le potentiel <span
+class="math inline">\(V=\alpha[1-\cos(\varphi/f_s)]\)</span> : une
+inflation naturelle à couplage non minimal verrouillé — <span
+class="math inline">\(f=1+\beta\cos\psi\)</span> a la même structure que
+le potentiel (étudié indépendamment dans [16]). <span><span
+class="sans-serif">[numérique]</span></span> L’intégration part de <span
+class="math inline">\(\infty^*\)</span> (phase de Sitter) et roule
+jusqu’à <span class="math inline">\(P\)</span> (<span
+class="math inline">\(\Lambda=0\)</span>), avec sortie gracieuse.
+Prédictions de roulement lent (repère d’Einstein) :</p>
+<table id="tab:nsr">
+<caption>Roulement lent <span class="math inline">\((n_s,r)\)</span> à
+<span class="math inline">\(N=55\)</span>. Cible Planck<span
+class="math inline">\(+\)</span>BK : <span
+class="math inline">\(n_s=0{,}9649\pm0{,}004\)</span>, <span
+class="math inline">\(r&lt;0{,}036\)</span>.</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f_s\)</span>
+(<span class="math inline">\(M_{\mathrm{Pl}}\)</span>)</th>
+<th style="text-align: center;"><span
+class="math inline">\(n_s\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(r\)</span></th>
+<th style="text-align: left;">statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}960\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}078\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(r\)</span>
+trop grand</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(+0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}949\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}128\)</span></td>
+<td style="text-align: left;">exclu</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}958\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}017\)</span></td>
+<td style="text-align: left;">compatible (bord)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}959\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}027\)</span></td>
+<td style="text-align: left;">compatible (bord)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(-0{,}3\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}960\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0{,}036\)</span></td>
+<td style="text-align: left;">au bord BK18</td>
+</tr>
+</tbody>
+</table>
+<p>Pour le signe naturel <span class="math inline">\(\beta\ge0\)</span>,
+<span class="math inline">\(r\gtrsim0{,}08\)</span> est exclu [12, 13].
+La fenêtre viable est une bande étroite <span
+class="math inline">\(\beta\in(-0{,}5;-0{,}15)\)</span> avec
+<strong><span class="math inline">\(f_s\approx5\)</span>–<span
+class="math inline">\(6\,M_{\mathrm{Pl}}\)</span></strong> (intervalle
+ouvert, cf. II.A), donnant <span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}04\)</span> corrélé à <span
+class="math inline">\(n_s\approx0{,}96\)</span>. <span><span
+class="sans-serif">[numérique]</span></span> <em>Bemol honnête
+(P1).</em> Sur cette bande <span
+class="math inline">\(n_s\approx0{,}958\)</span>–<span
+class="math inline">\(0{,}961\)</span>, soit <span
+class="math inline">\(\sim1\)</span>–<span
+class="math inline">\(2\sigma\)</span> sous la valeur centrale de Planck
+: le cadre vit <em>au bord</em> du contour. Les données CMB fournissent
+une contrainte sur le couplage de dualité d’échelle <span
+class="math inline">\(\beta\)</span> dans ce cadre (la phénoménologie
+<span class="math inline">\((n_s,r)\)</span> étant partagée avec [16,
+24, 25]), testable par Simons Observatory [27] et LiteBIRD [14] (<span
+class="math inline">\(\sigma(r)\sim10^{-3}\)</span>) d’ici 2030.<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></p>
+<p><span><span class="sans-serif">[numérique]</span></span> (A1) Le
+roulement lent au second ordre avec la métrique d’espace de champ exacte
+reproduit la Table <a href="#tab:nsr" data-reference-type="ref"
+data-reference="tab:nsr">1</a> à mieux que <span
+class="math inline">\(0{,}5\%\)</span>, et fixe <span
+class="math inline">\(\alpha\)</span> par <span
+class="math inline">\(A_s=2{,}1\times10^{-9}\)</span> : <span
+class="math inline">\(\alpha\approx0{,}5\)</span>–<span
+class="math inline">\(1{,}2\times10^{-9}\,M_{\mathrm{Pl}}^4\)</span>,
+soit une échelle d’inflation <span
+class="math inline">\(V^{1/4}\sim1{,}1\)</span>–<span
+class="math inline">\(1{,}4\times10^{16}\)</span> GeV (GUT). Au <span
+class="math inline">\(f_s\approx5\)</span>–<span
+class="math inline">\(6\)</span> de l’inflation, cela donne <span
+class="math inline">\(\tau_0=2\pi\sqrt{\omega/\alpha}\approx3{,}4\)</span>–<span
+class="math inline">\(3{,}8\times10^{-37}\)</span> s (cohérent :
+l’horloge utilise désormais le <em>même</em> <span
+class="math inline">\(f_s\)</span> que l’inflation, ce qui résout le
+décalage antérieur <span class="math inline">\(f_s=57\)</span> donnant
+<span class="math inline">\(r\approx0{,}14\)</span>, exclu). Prédiction
+stable sur la bande : le running <span class="math inline">\(dn_s/d\ln
+k\approx-6{,}5\times10^{-4}\)</span> — compatible avec Planck (<span
+class="math inline">\(-0{,}004\pm0{,}007\)</span>). (Reliquat :
+Mukhanov–Sasaki mode-par-mode, sous-pourcent ; <span
+class="math inline">\((n_s,r,\alpha)\)</span> calculés sur la
+trajectoire représentative à un champ, le traitement complet à deux
+champs — offset de <span class="math inline">\(f\)</span> en <span
+class="math inline">\(\chi=0\)</span>, effets de virage — restant une
+hypothèse non testée, piste A2.)</p>
+<h4 id="honnêteté-sur-la-nouveauté.">Honnêteté sur la nouveauté.</h4>
+<p>Ce secteur reproduit, sans l’améliorer, l’inflation naturelle non
+minimale périodique de Ferreira–Notari–Simeon [16], son extension
+scalaire-tenseur [24], et les analyses <span
+class="math inline">\((n_s,r,\text{running})\)</span> face à BICEP/Keck
+[25]. La nouveauté du présent travail n’est donc pas la phénoménologie
+inflationnaire, mais la tentative d’unification inter-secteurs (§<a
+href="#sec:pole" data-reference-type="ref"
+data-reference="sec:pole">5</a>).</p>
+<h1 id="sec:static">Le secteur statique : aucun trou noir régulier
+(clôture)</h1>
+<p><span><span class="sans-serif">[preuve]</span></span><span><span
+class="sans-serif">[numérique]</span></span> À un champ [1], le profil
+radial statique est clos : la branche gelée <span
+class="math inline">\(\psi\equiv-\pi\)</span> est exactement
+Schwarzschild–de Sitter ; la branche roulante développe un horizon
+singulier (effondrement de <span
+class="math inline">\(B=e^{\Phi+\Lambda}\)</span>, masse de Misner–Sharp
+négative, <span class="math inline">\(R\)</span> divergent). Nous
+appuyons la clôture sur l’argument <em>robuste</em> plutôt que sur un
+tableau hors-bande : par Derrick <span class="math inline">\(+\)</span>
+topologie, le profil statique (reliant <span
+class="math inline">\(\infty^*\)</span> à <span
+class="math inline">\(P\)</span>) est un <em>demi-soliton non
+protégé</em> <span class="math inline">\(N=\tfrac12\)</span>, donc
+contractible — aucune solution régulière interpolante n’existe, pour
+tout <span class="math inline">\(\beta\)</span> de la bande. Le soliton
+entier <span class="math inline">\(N=1\)</span> a une masse <span
+class="math inline">\(8\sqrt{\omega\alpha}\approx2\)</span>–<span
+class="math inline">\(5\times10^{15}\)</span> GeV (échelle GUT ; <span
+class="math inline">\(\approx3\times10^{15}\)</span> au centre <span
+class="math inline">\(f_s\approx6\)</span>, avec <span
+class="math inline">\(\alpha\)</span> fixé en A1) — valeur harmonisée
+avec le <span class="math inline">\(f_s\)</span> corrigé (P1).</p>
+<h4 id="dégel-de-laxe-temporel.">Dégel de l’axe temporel.</h4>
+<p><span><span class="sans-serif">[preuve]</span></span> En rendant
+<span class="math inline">\(\chi\)</span> dynamique, <span
+class="math inline">\(\chi\equiv0\)</span> reste une solution exacte et
+reproduit la clôture, mais le couplage de <span
+class="math inline">\(\chi\)</span> à <span
+class="math inline">\(R\)</span> renormalise la gravité : sur la tranche
+<span class="math inline">\(\chi=0\)</span>, <span
+class="math inline">\(f_{\mathrm{eff}}=(1+\beta)+\beta\cos\psi\)</span>,
+et le seuil de stabilité se déplace (<span
+class="math inline">\(\beta_c=-1/4\)</span> pour deux axes). La
+conclusion de clôture est robuste ; la valeur précise du seuil est
+dépendante de la réduction (<span class="math inline">\(-1/3\)</span>
+mono-axe, <span class="math inline">\(-1/4\)</span> sur la tranche <span
+class="math inline">\(\chi=0\)</span>, <span
+class="math inline">\(-1/6\)</span> sur la diagonale — voir §<a
+href="#sec:pole" data-reference-type="ref"
+data-reference="sec:pole">5</a>).</p>
+<h1 id="sec:pole">Le pôle <span class="math inline">\(\infty^*\)</span>
+: une tension structurelle entre clôture et déroulement</h1>
+<p><span><span class="sans-serif">[numérique]</span></span>
+L’effondrement <em>dynamique</em> (non statique) plafonne-t-il la
+courbure ? La réponse tient à la nature du pôle <span
+class="math inline">\(\infty^*\)</span> — qui n’est <em>pas</em>
+indépendante de la réduction. C’est le point central, que nous
+consignons comme le résultat structurel de cette synthèse : une tension
+ouverte, non un verdict tranché.</p>
+<h4 id="lecture-mono-axe-jordan.">Lecture mono-axe / Jordan.</h4>
+<p>Sur l’unique axe actif (<span class="math inline">\(\chi\)</span>
+gelé), pour le potentiel de Jordan <span
+class="math inline">\(V\)</span>, <span
+class="math inline">\(\infty^*\)</span> est un maximum (<span
+class="math inline">\(V&#39;&#39;(-\pi)=-\alpha&lt;0\)</span>).
+L’effondrement sphérique homogène avec champ roulant pousse alors <span
+class="math inline">\(\psi\)</span> <em>à travers</em> <span
+class="math inline">\(\infty^*\)</span> : la courbure n’est pas
+plafonnée, aucun cœur régulier ne se forme. Dans cette lecture, les deux
+verdicts — sortie gracieuse en cosmologie, pas de cœur régulier en
+effondrement — partagent la cause « <span
+class="math inline">\(\infty^*\)</span> est un sommet ».</p>
+<h4 id="lecture-à-deux-champs-repère-deinstein.">Lecture à deux champs /
+repère d’Einstein.</h4>
+<p>Mais la cosmologie qui fixe <span
+class="math inline">\((n_s,r)\)</span> est, stricto sensu, un système à
+deux champs sur la diagonale <span
+class="math inline">\(\psi=\chi\)</span>. <span><span
+class="sans-serif">[numérique]</span></span> Dans le paysage diagonal en
+repère d’Einstein <span class="math inline">\(U=V/f^2\)</span>, la
+nature de <span class="math inline">\(\infty^*\)</span> change de signe
+à <span class="math inline">\(\beta=-1/6\)</span> : pour <span
+class="math inline">\(\beta&gt;-1/6\)</span> c’est un maximum (roule),
+mais pour <span class="math inline">\(\beta&lt;-1/6\)</span> — soit
+<em>toute la bande viable</em> <span
+class="math inline">\(\beta\in(-0{,}5;-0{,}15)\)</span> — <span
+class="math inline">\(\infty^*\)</span> est un <em>minimum local piégé
+(un faux vide)</em> derrière une barrière interne <span
+class="math inline">\(\theta_b\)</span>. Dans cette lecture, un
+effondrement poussant le champ vers <span
+class="math inline">\(\infty^*\)</span> pourrait l’y <em>retenir</em>
+(cœur de Sitter) plutôt que de le traverser — ce qui pointerait au
+contraire vers une courbure plafonnée, soit un cœur régulier
+<em>possible</em>.</p>
+<figure id="fig:pole" data-latex-placement="h">
+<img src="figs_u3/fig_pole.png" style="width:74.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span>
+Paysage diagonal en repère d’Einstein <span
+class="math inline">\(U(\theta)/\alpha=2(1-\cos\theta)/(1+2\beta\cos\theta)^2\)</span>
+(<span class="math inline">\(\psi=\chi=\theta\)</span>, forme close
+exacte). Pour <span class="math inline">\(\beta&lt;-1/6\)</span> (vert,
+bleu — toute la bande viable) <span
+class="math inline">\(\infty^*\)</span> (<span
+class="math inline">\(\theta=\pi\)</span>) est un <em>minimum piégé</em>
+derrière une barrière (faux vide) ; pour <span
+class="math inline">\(\beta\ge-1/6\)</span> (gris, rouge) c’est un
+maximum (le champ traverse). La clôture veut <span
+class="math inline">\(\infty^*\)</span> piégé, le déroulement le veut
+traversable : le même pôle ne peut être les deux.</figcaption>
+</figure>
+<h4 id="la-tension.">La tension.</h4>
+<p>Les deux lectures divergent sur la nature même de <span
+class="math inline">\(\infty^*\)</span>, donc sur la régularisation de
+l’effondrement. Elles ne sont pas cosmétiques. La clôture
+<em>statique</em> repose sur <span
+class="math inline">\(\infty^*\)</span> piégé (Derrick : le champ ne
+peut connecter <span class="math inline">\(\infty^*\)</span> à <span
+class="math inline">\(P\)</span>, la seule solution statique est le
+Schwarzschild–de Sitter gelé), tandis que l’image littérale du «
+déroulement » (le parchemin, le champ s’enroulant <em>à travers</em>
+<span class="math inline">\(\infty^*\)</span>) exige <span
+class="math inline">\(\infty^*\)</span> traversable. Le même pôle ne
+peut être les deux, et la bande <span
+class="math inline">\(\beta&lt;-1/6\)</span> qui donne la clôture est
+exactement celle qui obstrue le déroulement dynamique. Nous consignons
+donc :</p>
+<ul>
+<li><p>la clôture <strong>statique</strong> (aucun trou noir régulier)
+est robuste — elle découle de Derrick <span
+class="math inline">\(+\)</span> topologie (demi-soliton contractible
+<span class="math inline">\(N=\tfrac12\)</span>) et tient à travers les
+réductions. <span><span
+class="sans-serif">[preuve]</span></span></p></li>
+<li><p>le verdict de l’effondrement <strong>dynamique</strong> est
+dépendant de la réduction et <em>ouvert</em> : traverse-et-non-plafonné
+dans la lecture mono-axe/<span class="math inline">\(V\)</span>, mais
+faux vide piégé (donc candidat à une courbure plafonnée, un cœur
+régulier) dans la lecture à deux champs en repère d’Einstein, sur toute
+la bande viable. <span><span
+class="sans-serif">[conjecture]</span></span><span><span
+class="sans-serif">[ouvert]</span></span></p></li>
+</ul>
+<h4 id="un-raccourci-qui-échoue.">Un raccourci qui échoue.</h4>
+<p>On pourrait espérer qu’une vraie dynamique multichamp (une « spirale
+» : le champ s’écartant de la diagonale en tournant) supprime <span
+class="math inline">\(r\)</span> ou soutienne le déroulement.
+<span><span class="sans-serif">[numérique]</span></span> Une intégration
+complète à deux champs avec élan latéral injecté montre qu’il n’en est
+rien : le virage est transitoire (<span
+class="math inline">\(\omega/H\approx1{,}6\)</span> au départ) puis
+amorti par le frottement de Hubble bien avant la fenêtre CMB ; <span
+class="math inline">\(r\)</span> reste <span
+class="math inline">\(\approx0{,}046\)</span>, jamais supprimé. La
+raison est structurelle — <span class="math inline">\(P\)</span> est un
+creux ponctuel, pas une vallée annulaire, rien ne soutient une orbite.
+Le « déroulement » se lit donc au mieux comme un énoncé
+<em>topologique/spatial</em> (la charge entière de soliton <span
+class="math inline">\(N\)</span>), et le déroulement <em>temporel</em>
+littéral (une trajectoire enroulée <span
+class="math inline">\(N\ge1\)</span> à travers <span
+class="math inline">\(\infty^*\)</span>) comme une signature
+<em>conditionnelle</em> (oscillations log-périodiques) disponible
+seulement <em>hors</em> de la bande viable — non comme un mécanisme
+dynamique établi.</p>
+<h4 id="la-seule-ouverture-côté-quantique.">La seule ouverture, côté
+quantique.</h4>
+<p>S’il existe une régularisation dans la bande viable, le candidat
+n’est pas le roulement classique mais l’horloge quantique : à la
+courbure d’effondrement <span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span>, la masse effective
+de <span class="math inline">\(\chi\)</span> s’annule et <span
+class="math inline">\(\tau_0\to\infty\)</span> (D4, §<a
+href="#sec:quantique" data-reference-type="ref"
+data-reference="sec:quantique">6</a>) — le cycle ne se referme plus, ce
+qui pourrait interdire la traversée classique et retenir le champ en
+<span class="math inline">\(\infty^*\)</span>. C’est la seule voie par
+laquelle la boucle d’unification pourrait se fermer. <span><span
+class="sans-serif">[spéculation]</span></span></p>
+<h1 id="sec:quantique">Le secteur quantique et le pont (« l’infiniment
+petit »)</h1>
+<h2 id="le-facteur-dexistence-dérivé-exactement-d1">Le facteur
+d’existence dérivé exactement (D1)</h2>
+<p><span><span class="sans-serif">[preuve]</span></span> L’oscillation
+de <span class="math inline">\(\chi\)</span> dans <span
+class="math inline">\(V\)</span> est un pendule (sine-Gordon). Pour une
+amplitude <span class="math inline">\(\chi_{\max}\)</span> (module
+elliptique <span class="math inline">\(k=\sin(\chi_{\max}/2)\)</span>),
+l’identité sur <span
+class="math inline">\(\langle\mathrm{sn}^2\rangle\)</span> donne la
+forme exacte (vérifiée en intégrant <span
+class="math inline">\(\chi&#39;&#39;=-\sin\chi\)</span> à <span
+class="math inline">\(10^{-16}\)</span>) : <span
+class="math display">\[\varepsilon=\langle\cos^2(\chi/2)\rangle=\frac{E(k)}{K(k)},\qquad
+\tau_0(k)=4\sqrt{\omega/\alpha}\,K(k).\]</span> À petite amplitude <span
+class="math inline">\(\varepsilon\to1-\chi_{\max}^2/8\)</span> et <span
+class="math inline">\(\tau_0\to2\pi\sqrt{\omega/\alpha}\)</span>. En
+s’approchant de la séparatrice (<span
+class="math inline">\(\infty^*\)</span>), <span
+class="math inline">\(\varepsilon\to0\)</span> (suspension). <span
+class="math inline">\(\varepsilon\)</span> n’est donc plus un paramètre
+libre : c’est <span class="math inline">\(E(k)/K(k)\)</span>, fixé par
+l’amplitude.</p>
+<figure id="fig:eps" data-latex-placement="h">
+<img src="figs_u3/fig_epsilon.png" style="width:66.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span> Le
+facteur d’existence <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span>, <span
+class="math inline">\(k=\sin(\chi_{\max}/2)\)</span> (vérifié contre le
+pendule <span
+class="math inline">\(\langle\cos^2(\chi/2)\rangle\)</span> à <span
+class="math inline">\(10^{-6}\)</span>). À petite amplitude <span
+class="math inline">\(\varepsilon\to1-\chi_{\max}^2/8\)</span> (MQ
+continue) ; à la séparatrice <span
+class="math inline">\(\varepsilon\to0\)</span> (suspension). <span
+class="math inline">\(\varepsilon\)</span> est dérivé, pas
+libre.</figcaption>
+</figure>
+<h2
+id="réalisation-opératorielle-d1-et-modulation-gravitationnelle-d4">Réalisation
+opératorielle (D1) et modulation gravitationnelle (D4)</h2>
+<p><span><span class="sans-serif">[conjecture]</span></span> (réalisée,
+D1) <span class="math inline">\(\chi\)</span> est une horloge
+relationnelle de Page–Wootters [22] : sur <span
+class="math inline">\(\mathcal{H}_{\mathrm{horloge}}\otimes\mathcal{H}_{\mathrm{sys}}\)</span>
+avec une contrainte intemporelle, le système évolue par rapport à <span
+class="math inline">\(\chi\)</span> — définissant « temporel » comme un
+rôle d’horloge, sans signature de genre temps (réponse à F2). Pour <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> <em>constant</em>,
+l’évolution moduldee par <span
+class="math inline">\(g(\chi)=\cos^2(\chi/2)\)</span> donne sur une
+période <span class="math inline">\(\hat
+U(\tau_0)=\exp(-i\hat{H}_{\mathrm{sys}}\varepsilon\tau_0)\)</span>, soit
+<span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+— le résultat de Floquet <span
+class="math inline">\(\Omega_F=\varepsilon\Omega_R\)</span> de [2], ici
+vérifié pour <span class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span>
+constant (qubit modulé, erreur <span
+class="math inline">\(\sim10^{-11}\)</span>) ; le cas non commutant
+(Floquet complet) est estimé négligeable mais <em>non</em> prouvé.
+<span><span class="sans-serif">[ouvert]</span></span> dériver la
+contrainte intemporelle de l’action de <span
+class="math inline">\(\chi\)</span> ; exactitude de la réduction à deux
+états.</p>
+<p><span><span class="sans-serif">[preuve]</span></span> (D4) Le
+couplage de <span class="math inline">\(\chi\)</span> à <span
+class="math inline">\(R\)</span> déplace sa masse effective : <span
+class="math inline">\(\tau_0(R)=2\pi\sqrt{\omega/(\alpha+\tfrac12\beta
+M_{\mathrm{Pl}}^2 R)}\)</span>. Deux effets, à ne pas confondre. (A)
+<span class="math inline">\(\sqrt{-g_{00}}\approx1+\phi/c^2\)</span> :
+dilatation gravitationnelle standard (<span
+class="math inline">\(\tau_0\)</span> est un scalaire de temps propre),
+observable mais non nouvelle — c’est la RG. (B) le décalage dynamique
+<span
+class="math inline">\(\delta\tau_0/\tau_0\approx-(\beta/4)(M_{\mathrm{Pl}}^2
+R/\alpha)\propto R\)</span> local : il s’annule dans le vide et vaut
+<span class="math inline">\(\sim10^{-81}\)</span> dans la matière —
+inobservable. Mais à <span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span> (le seuil
+d’effondrement de §<a href="#sec:pole" data-reference-type="ref"
+data-reference="sec:pole">5</a>), la masse effective de <span
+class="math inline">\(\chi\)</span> s’annule : <span
+class="math inline">\(\tau_0\to\infty\)</span>, l’horloge quantique
+gèle. Le même <span class="math inline">\(R_c\)</span> qui déclenche la
+descente fait diverger le cycle — une réalisation concrète du piégeage
+en <span class="math inline">\(\infty^*\)</span> <span><span
+class="sans-serif">[conjecture]</span></span>. (<span
+class="math inline">\(\tau_0(R)\)</span> est en petite amplitude ; le
+comportement exact près de <span class="math inline">\(R_c\)</span>
+requiert le potentiel anharmonique complet.)</p>
+<figure id="fig:tau0R" data-latex-placement="h">
+<img src="figs_u3/fig_tau0R.png" style="width:66.0%" />
+<figcaption><span><span class="sans-serif">[numérique]</span></span>
+Modulation gravitationnelle <span
+class="math inline">\(\tau_0(R)/\tau_0(0)=1/\sqrt{1-R/R_c}\)</span>,
+<span class="math inline">\(R_c=2\alpha/|\beta|\)</span>. La période de
+l’horloge diverge quand la courbure approche le seuil d’effondrement
+<span class="math inline">\(R_c\)</span> : l’horloge quantique gèle — la
+seule voie candidate pour que le secteur quantique régularise
+l’effondrement.</figcaption>
+</figure>
+<h2 id="sécurité-lorentz-du-temps-quantique">Sécurité Lorentz du temps
+quantique</h2>
+<p><span><span class="sans-serif">[preuve]</span></span> <span
+class="math inline">\(\tau_0\sim10^{-37}\)</span> s correspond à <span
+class="math inline">\(\hbar/\tau_0\approx10^{13}\)</span> GeV ; il faut
+vérifier qu’aucune violation de Lorentz n’en résulte (temps de vol des
+photons, LHAASO). Une existence intermittente ne viole Lorentz que par
+une modification de la relation de dispersion dépendant de l’impulsion.
+Or (i) l’évolution propre de <span class="math inline">\(\hat H\)</span>
+est exactement linéaire en phase à tous ordres en <span
+class="math inline">\(\tau_0\)</span> (Proposition 1 de l’HDEQ) ; (ii)
+l’action de Maxwell est invariante de Weyl en <span
+class="math inline">\(D=4\)</span>, donc le photon est aveugle au
+facteur conforme <span class="math inline">\(f(\chi)\)</span>. La
+dispersion du photon libre reste exactement <span
+class="math inline">\(\omega=|p|c\)</span> : aucun signal LHAASO. La
+seule correction (anomalie de trace QED) est logarithmique, non en
+puissance de <span class="math inline">\(E/E_{\mathrm{QG}}\)</span> —
+aucun terme LIV linéaire. <span><span class="sans-serif">[à
+vérifier]</span></span></p>
+<h2 id="test-inter-secteurs-e1-le-cmb-est-le-seul-juge">Test
+inter-secteurs (E1) : le CMB est le seul juge</h2>
+<p><span><span class="sans-serif">[numérique]</span></span> Sur l’<span
+class="math inline">\(\alpha\)</span> fixé en A1, <span
+class="math inline">\(\tau_0\in[2{,}5;5{,}3]\times10^{-37}\)</span> s.
+Point décisif : l’unification retire la liberté sur <span
+class="math inline">\(\varepsilon\)</span>. Le pont lie <span
+class="math inline">\(\varepsilon\)</span> au déplacement actuel du
+champ, lequel égale l’énergie noire ; numériquement <span
+class="math inline">\(\psi_{\mathrm{aujourd&#39;hui}}\sim10^{-56}\)</span> rad,
+donc <span
+class="math inline">\(\varepsilon=1-3\times10^{-112}\)</span>.
+Conséquences : l’effet Yb<span class="math inline">\(^+\)</span> <span
+class="math inline">\(\Delta\Gamma/\Gamma=1-\varepsilon^2\approx10^{-112}\)</span>,
+la décohérence intrinsèque sous le plancher, la résonance à <span
+class="math inline">\(\Delta E\approx1{,}2\times10^{13}\)</span> GeV —
+tout le secteur horloge de l’HDEQ est inobservable. <em>Bemol
+(ouvert).</em> Le cadre pose <span
+class="math inline">\(\Lambda=0\)</span> au vide <span
+class="math inline">\(P\)</span>, alors que l’énergie noire observée est
+non nulle ; l’identité « résidu actuel <span
+class="math inline">\(=\)</span> énergie noire » qui fixe <span
+class="math inline">\(\varepsilon=1-10^{-112}\)</span> n’est pas
+dérivée, et la réconciliation avec le <span
+class="math inline">\(\Lambda\)</span> observé reste ouverte (une
+lecture en quintessence résiduelle, <span
+class="math inline">\(\varepsilon\)</span> légèrement sous <span
+class="math inline">\(1\)</span>, porterait <span
+class="math inline">\(\Lambda&gt;0\)</span> au prix d’un ajustement
+fin). La conclusion « horloges non discriminantes » tient dans les deux
+lectures. <span><span class="sans-serif">[ouvert]</span></span></p>
+<h4 id="verdict-e1-rigoureux.">Verdict E1 (rigoureux).</h4>
+<p>Le cadre passe le test de cohérence, mais la confrontation n’est pas
+symétrique : le côté horloge est satisfait trivialement (<span
+class="math inline">\(\varepsilon\approx1\)</span>). Toute la charge de
+falsifiabilité repose donc sur le CMB (<span
+class="math inline">\(n_s\approx0{,}96\)</span>, <span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}04\)</span>, running <span
+class="math inline">\(\approx-6{,}5\times10^{-4}\)</span>). Le « même
+<span class="math inline">\((\alpha,\omega)\)</span> pour le CMB et les
+horloges » est rempli automatiquement côté horloge — à ne <em>pas</em>
+présenter comme un test discriminant.</p>
+<h1 id="vue-densemble-et-critère-de-falsifiabilité">Vue d’ensemble et
+critère de falsifiabilité</h1>
+<p>La vision est un ansatz, non un résultat : une arène unique dont les
+lois connues sont ses deux régimes limites. (<em>Infiniment grand
+:</em>) champs lents <span class="math inline">\(\to\)</span> relativité
+générale, <span class="math inline">\(\Lambda=0\)</span> au vide,
+inflation. (<em>Infiniment petit :</em>) dynamique du cercle <span
+class="math inline">\(\chi\to\)</span> existence intermittente,
+décohérence (HDEQ). La charnière est l’axe <span
+class="math inline">\(\chi\)</span>, qui se couple à la courbure et
+module le temps quantique via la gravité. Les deux faces sont jointes
+par un pont désormais partiellement prouvé (<span
+class="math inline">\(\varepsilon\)</span> dérivé, modulation incluse ;
+la construction opératorielle complète reste ouverte).</p>
+<p>Le critère de vérité est numérique, mais asymétrique : le CMB <span
+class="math inline">\((n_s,r,\text{running})\)</span> est le juge ; les
+horloges atomiques fournissent une contrainte de cohérence
+automatiquement satisfaite (<span
+class="math inline">\(\varepsilon\approx1\)</span>), non un test
+discriminant. La signature <em>proposée</em> pour ce cadre — qu’aucun
+observable cosmologique isolé ne possède, <span
+class="math inline">\((n_s,r,\text{running})\)</span> étant partagés
+avec [16, 24, 25] — est la corrélation inter-secteurs <span
+class="math inline">\(\beta(\mathrm{CMB})=\beta(\text{cl\^oture})\)</span>
+: le même couplage devrait ajuster l’inflation et satisfaire les seuils
+de clôture des trous noirs. <em>Cette corrélation est une conjecture
+conditionnelle à la réduction</em> (§<a href="#sec:pole"
+data-reference-type="ref" data-reference="sec:pole">5</a>), non un
+théorème : avec trois seuils candidats (<span
+class="math inline">\(-1/3,-1/4,-1/6\)</span>), « <span
+class="math inline">\(\beta(\text{cl\^oture})\)</span> » n’est pas
+encore un nombre unique, de sorte que trancher la réduction (piste A2)
+est le préalable pour en faire un véritable discriminant. C’est là que
+vivrait la falsifiabilité, testable via LiteBIRD / Simons
+Observatory.</p>
+<h1 id="statut-épistémique-et-limitations">Statut épistémique et
+limitations</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contenu</th>
+<th style="text-align: left;">Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Action finie ; limite RG ; inflation
+naturelle à couplage verrouillé, <span
+class="math inline">\((n_s,r)\)</span> et une contrainte sur <span
+class="math inline">\(\beta\)</span> ; clôture <em>statique</em> robuste
+(Derrick <span class="math inline">\(+\)</span> topologie) ; <span
+class="math inline">\(\mathcal{G}_{ab}\)</span> définie positive (B1) ;
+santé <span class="math inline">\(\sigma\)</span>-modèle, pas de
+fantôme/CTC (F2) ; sécurité Lorentz du photon ; <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span> dérivé ; <span
+class="math inline">\(\alpha\)</span> fixé par <span
+class="math inline">\(A_s\)</span>, running <span
+class="math inline">\(\approx-6{,}5\times10^{-4}\)</span> (A1) ; <span
+class="math inline">\(f_s\approx5\)</span>–<span
+class="math inline">\(6\)</span> et <span
+class="math inline">\(\tau_0\)</span> cohérents.</td>
+<td style="text-align: left;"><span><span
+class="sans-serif">[preuve]</span></span><span><span
+class="sans-serif">[numérique]</span></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\hat{H}_{\mathrm{eff}}=\varepsilon\hat{H}_{\mathrm{sys}}\)</span>
+via horloge de Page–Wootters, restreint à <span
+class="math inline">\(\hat{H}_{\mathrm{sys}}\)</span> constant (D1) ;
+<span class="math inline">\(\tau_0(R)\)</span> dérivé, <span
+class="math inline">\(\tau_0\to\infty\)</span> à <span
+class="math inline">\(R_c\)</span> (D4) ; E1 : secteur horloge non
+discriminant, CMB seul juge.</td>
+<td style="text-align: left;"><span><span
+class="sans-serif">[conjecture]</span></span> (réalisée)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tension ouverte centrale
+:</strong> la nature de <span class="math inline">\(\infty^*\)</span>
+(traversable vs piégé) gouverne le verdict <em>dynamique</em>
+d’effondrement et la signature inter-secteurs ; réduction non tranchée
+(piste A2). Dériver la contrainte de Page–Wootters de l’action de <span
+class="math inline">\(\chi\)</span> ; réconcilier <span
+class="math inline">\(\Lambda=0\)</span> vs énergie noire observée ;
+effondrement inhomogène ; piégeage quantique en <span
+class="math inline">\(\infty^*\)</span> (régularisation) ; règle de Born
+; sélection d’une branche ; Mukhanov–Sasaki mode-par-mode.</td>
+<td style="text-align: left;"><span><span
+class="sans-serif">[ouvert]</span></span><span><span
+class="sans-serif">[spéculation]</span></span></td>
+</tr>
+</tbody>
+</table>
+<p>La distinction des statuts n’est pas un ornement mais une part
+constitutive de la méthode : elle garantit que ce travail peut être
+réutilisé sans qu’aucun énoncé dépasse ce qui est réellement établi.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Un unique champ de dualité d’échelle, sur une arène à axes
+compactifiés (cercles internes, non des dimensions d’espace-temps),
+engendre une cosmologie inflationnaire prédictive et falsifiable, règle
+la question du trou noir régulier <em>statique</em> par une cause
+structurelle (Derrick <span class="math inline">\(+\)</span> topologie),
+et offre un pont vers le temps quantique de l’HDEQ désormais
+partiellement prouvé : le facteur d’existence <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span> est dérivé, le
+mécanisme actif/inactif et la propagation libre sûre pour Lorentz
+établis. La régularisation <em>dynamique</em>, en revanche, n’est pas
+tranchée : elle tient à la nature du pôle <span
+class="math inline">\(\infty^*\)</span>, traversable dans une réduction
+et faux vide piégé dans une autre — une tension que nous consignons
+comme le problème ouvert central, le gel de l’horloge à <span
+class="math inline">\(R_c\)</span> étant la seule voie candidate pour
+fermer la boucle. Ce n’est pas une clôture de l’unification ; c’est une
+direction dont la nature même est d’être réfutable. C’est le prix —
+l’étiquetage honnête de chaque énoncé — auquel une intuition
+individuelle peut devenir une direction collective.</p>
+<h4 id="remerciements.">Remerciements.</h4>
+<p>L’auteur remercie les outils de calcul formel et numérique (SymPy,
+SciPy), qui ont permis la vérification systématique à chaque étape, et
+la communauté gr-qc/hep-th/quant-ph pour les standards de rigueur et de
+falsifiabilité qui ont guidé ce travail. La formalisation a été conduite
+en dialogue avec des systèmes d’assistance analytique, sous la direction
+de l’auteur, à qui revient l’entière responsabilité du contenu
+scientifique.</p>
+<h1 class="unnumbered" id="reproductibilité">Reproductibilité</h1>
+<p>Les résultats numériques et les vérifications symboliques sont
+reproduits par deux scripts autonomes (NumPy/SymPy/SciPy/Matplotlib),
+aux sections codées pour être propres à ce document (aucune collision
+avec d’autres jeux de scripts) :</p>
+<ul>
+<li><p>facteur d’existence <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span> vérifié contre le
+pendule <span
+class="math inline">\(\langle\cos^2(\chi/2)\rangle\)</span> ; petite
+amplitude <span
+class="math inline">\(\varepsilon\to1-\chi_{\max}^2/8\)</span> ; <span
+class="math inline">\(\tau_0(k)=4\sqrt{\omega/\alpha}\,K(k)\)</span>.</p></li>
+<li><p>nature de <span class="math inline">\(\infty^*\)</span> : seuil
+diagonal <span class="math inline">\(\beta=-1/6\)</span> (piégé/roule)
+et masse transverse isocourbure (changement de signe à <span
+class="math inline">\(\beta=-1/4\)</span>).</p></li>
+<li><p>inflation bande viable <span
+class="math inline">\(f_s=5\)</span>–<span
+class="math inline">\(6\)</span> : <span
+class="math inline">\((n_s,r)\)</span> diagonale vs mono (accord) ;
+<span class="math inline">\(\alpha\)</span>, <span
+class="math inline">\(V^{1/4}\)</span>, <span
+class="math inline">\(\tau_0\approx3{,}5\times10^{-37}\)</span> s, masse
+du soliton (P1).</p></li>
+<li><p>modulation gravitationnelle <span
+class="math inline">\(\tau_0(R)\)</span> ; <span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span> ; <span
+class="math inline">\(\delta\tau_0/\tau_0=-(\beta/4)M_{\mathrm{Pl}}^2R/\alpha\)</span>.</p></li>
+<li><p>test de la spirale (intégration à deux champs) : le virage est
+amorti, <span class="math inline">\(r\)</span> jamais supprimé.</p></li>
+</ul>
+<p>Fichiers : <code>U3_SYNTH_reproductible.py</code> (calculs) et
+<code>Synthese_figures.py</code> (Fig. <a href="#fig:eps"
+data-reference-type="ref" data-reference="fig:eps">2</a>, <a
+href="#fig:pole" data-reference-type="ref"
+data-reference="fig:pole">1</a>, <a href="#fig:tau0R"
+data-reference-type="ref" data-reference="fig:tau0R">3</a>).
+<em>Convention</em> : <span
+class="math inline">\(M_{\mathrm{Pl}}=1\)</span> ; <span
+class="math inline">\(\alpha\)</span> s’annule dans les rapports <span
+class="math inline">\((n_s,r)\)</span>. Le préfixe
+<code>U3_SYNTH_</code> et les codes <code>[S</code><span
+class="math inline">\(\cdot\)</span><code>]</code> sont spécifiques à ce
+document.</p>
+<div class="thebibliography">
+<p><span>99</span> H. Bakkaoui, <em>Champ de dualité d’échelle en
+gravité</em> (cadre, corrections et résultats), Zenodo (2026).
+H. Bakkaoui, <em>Discontinuité d’existence quantique (HDEQ)</em>, Zenodo
+(2026). J. M. Bardeen, Proc. GR5 (Tbilisi, 1968), p. 174. S. A. Hayward,
+<em>Phys. Rev. Lett.</em> <strong>96</strong>, 031103 (2006).
+I. Dymnikova, <em>Gen. Relativ. Gravit.</em> <strong>24</strong>, 235
+(1992). R. Penrose, <em>Phys. Rev. Lett.</em> <strong>14</strong>, 57
+(1965). S. W. Hawking &amp; G. F. R. Ellis, <em>The Large Scale
+Structure of Space-Time</em> (CUP, 1973). A. H. Guth,
+<em>Phys. Rev. D</em> <strong>23</strong>, 347 (1981). K. Freese,
+J. A. Frieman &amp; A. V. Olinto, <em>Phys. Rev. Lett.</em>
+<strong>65</strong>, 3233 (1990). J. D. Bekenstein,
+<em>Phys. Rev. D</em> <strong>51</strong>, R6608 (1995). F. L. Bezrukov
+&amp; M. Shaposhnikov, <em>Phys. Lett. B</em> <strong>659</strong>, 703
+(2008). Planck Collaboration, <em>Astron. Astrophys.</em>
+<strong>641</strong>, A10 (2020). BICEP/Keck Collaboration,
+<em>Phys. Rev. Lett.</em> <strong>127</strong>, 151301 (2021). LiteBIRD
+Collaboration, <em>Prog. Theor. Exp. Phys.</em> <strong>2023</strong>,
+042F01 (2023). K. N. Abazajian <em>et al.</em> (CMB-S4),
+arXiv:1610.02743 (2016) — <em>projet arrêté, juillet 2025</em>.
+R. Z. Ferreira, A. Notari &amp; G. Simeon, <em>JCAP</em>
+<strong>11</strong> (2018) 021. V. P. Frolov, M. A. Markov &amp;
+V. F. Mukhanov, <em>Phys. Rev. D</em> <strong>41</strong>, 383 (1990).
+C. Rovelli &amp; F. Vidotto, <em>Int. J. Mod. Phys. D</em>
+<strong>23</strong>, 1442026 (2014). A. Connes &amp; C. Rovelli,
+<em>Class. Quantum Grav.</em> <strong>11</strong>, 2899 (1994).
+W. H. Zurek, <em>Rev. Mod. Phys.</em> <strong>75</strong>, 715 (2003).
+D. I. Kaiser, <em>Phys. Rev. D</em> <strong>81</strong>, 084044 (2010).
+D. N. Page &amp; W. K. Wootters, <em>Phys. Rev. D</em>
+<strong>27</strong>, 2885 (1983). I. Bars, <em>Class. Quantum Grav.</em>
+<strong>18</strong>, 3113 (2001). <span><span class="sans-serif">[à
+vérifier]</span></span> G. Simeon, arXiv:2002.07625 (2020).
+I. D. Bostan, arXiv:2209.02434 (2022). C. Marletto &amp; V. Vedral,
+<em>Phys. Rev. D</em> <strong>95</strong>, 043510 (2017). Simons
+Observatory Collaboration (P. Ade <em>et al.</em>), <em>JCAP</em>
+<strong>02</strong> (2019) 056, arXiv:1808.07445.</p>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Le projet CMB-S4 (DOE–NSF), longtemps l’instrument de
+référence pour ce test, a été arrêté : le 9 juillet 2025, le DOE et la
+NSF ont déclaré ne plus pouvoir le soutenir (arrêt ordonné), il n’est
+donc plus financé [15]. La falsifiabilité demeure, portée par Simons
+Observatory (Chili, en service), LiteBIRD (<span
+class="math inline">\(\sim\)</span>2032) et BICEP/Keck (en cours).
+<span><span class="sans-serif">[à vérifier]</span></span><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</article>
+<footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>

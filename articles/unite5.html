@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unité 5 — Compactification sphérique de l'espace d'échelle · H. Bakkaoui</title>
+<meta name="description" content="Unité 5 — Compactification sphérique de l'espace d'échelle — Hassane Bakkaoui, chercheur indépendant.">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css">
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">hep-th</span><span class="tag">gr-qc</span><span class="tag">quant-ph</span></div>
+    <h1 class="paper-title">Unité 5 — Compactification sphérique de l'espace d'échelle</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur ind&eacute;pendant</p>
+    <div class="paper-links">
+      <a href="../papers/u5_FR.pdf">PDF (FR)</a>
+      <a href="../papers/u5_EN.pdf">PDF (EN)</a>
+      <a class="l-zenodo" href="https://doi.org/10.5281/zenodo.20671840" target="_blank" rel="noopener">Zenodo</a>
+    </div>
+  </div>
+<h1 id="reformulation-synthétique-de-lintuition">Reformulation
+synthétique de l’intuition</h1>
+<p>Le programme antérieur (Unités 1–4) repose sur une hypothèse
+géométrique unique : les axes log-échelle sont des cercles internes.
+Projection stéréographique <span
+class="math inline">\(\psi=2\arctan[\ln(\lambda/\ell_P)]\)</span> (axe
+spatial, face gravitationnelle) et <span
+class="math inline">\(\chi=2\arctan[\ln(\tau/\tau_P)]\)</span> (axe
+temporel, face quantique/horloge HDEQ), pôles <span
+class="math inline">\(\pm\pi\)</span> identifiés en <span
+class="math inline">\(\infty^\ast\)</span>, origine <span
+class="math inline">\(\psi=\chi=0\)</span> le point de Planck <span
+class="math inline">\(P\)</span>. Deux cercles <span
+class="math inline">\(\to\)</span> tore <span
+class="math inline">\(T^2=S^1_\psi\times S^1_\chi\)</span>.</p>
+<p>Le verrou <span class="math inline">\(\infty^\ast\)</span> : sur un
+cercle, aucune fonction continue, univaluée, strictement monotone
+n’existe. L’identification UV<span
+class="math inline">\(\equiv\)</span>IR est ainsi <em>en même temps</em>
+source de l’enroulement et obstruction à un flot d’échelle dirigé. Le
+tore possède la dualité et l’enroulement <em>ou</em> un flot RG dirigé,
+jamais les deux.</p>
+<p><strong>La modification.</strong> On dénoue l’identification en
+<em>deux pôles distincts</em> : Pôle Sud <span
+class="math inline">\(\mathrm{S}=\)</span> Planck (<span
+class="math inline">\(\ell_P\)</span>), Pôle Nord <span
+class="math inline">\(\mathrm{N}=\)</span> infiniment grand. L’objet
+compact devient <span
+class="math inline">\(S^2_{\text{\&#39;ech}}\)</span> :</p>
+<ul>
+<li><p><em>latitude</em> (<span class="math inline">\(\theta\)</span>,
+ou <span class="math inline">\(\cos\theta\)</span>) : coordonnée
+d’échelle <em>dirigée</em>, Planck <span
+class="math inline">\(\to\)</span> infini, Morse à deux points critiques
+(les pôles) ; face gravitationnelle/cosmologique ;</p></li>
+<li><p><em>azimut</em> (<span class="math inline">\(\varphi\)</span>,
+périodique) : phase / horloge interne, héritier du cercle temporel <span
+class="math inline">\(\chi\)</span> ; face quantique.</p></li>
+</ul>
+<p>En séparant la boucle (azimut) de la direction (latitude), la sphère
+échappe au verrou. Prix topologique : <span
+class="math inline">\(\pi_1(S^2_{\text{\&#39;ech}})=0\)</span> détruit
+l’enroulement, <span
+class="math inline">\(\pi_2(S^2_{\text{\&#39;ech}})=\mathbb{Z}\)</span>
+fait migrer la charge.</p>
+<h1 id="définitions-et-notations-unifiées">Définitions et notations
+unifiées</h1>
+<div id="P1" class="post">
+<p><strong>Postulat 1</strong> (arène). <span
+class="math inline">\(\mathcal{M}=\mathcal{M}^{3+1}\times
+S^2_{\text{\&#39;ech}}\)</span>, <span
+class="math inline">\(S^2_{\text{\&#39;ech}}\)</span> cible interne
+(<span class="math inline">\(\sigma\)</span>-modèle). Champ <span
+class="math inline">\(n:\mathcal{M}^{3+1}\to
+S^2_{\text{\&#39;ech}}\)</span>, <span
+class="math inline">\(n=(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)\)</span>,
+<span class="math inline">\(|n|=1\)</span>, <span
+class="math inline">\(\theta\in[0,\pi]\)</span>, <span
+class="math inline">\(\varphi\in[0,2\pi)\)</span>.</p>
+</div>
+<div id="P2" class="post">
+<p><strong>Postulat 2</strong> (assignation des échelles). Latitude
+<span class="math inline">\(=\)</span> échelle spatiale dirigée, <span
+class="math inline">\(\theta=2\arctan[\ln(\lambda/\ell_P)]\)</span>,
+<span class="math inline">\(\lambda\ge\ell_P\)</span> : <span
+class="math inline">\(\mathrm{S}:\theta{=}0\Leftrightarrow\lambda{=}\ell_P\)</span>,
+<span
+class="math inline">\(\mathrm{N}:\theta{=}\pi\Leftrightarrow\lambda{\to}\infty\)</span>.
+Azimut <span class="math inline">\(=\)</span> phase de l’échelle
+temporelle (rôle d’horloge HDEQ), périodique. Lecture alternative
+stéréographique (latitude <span class="math inline">\(=\)</span> module
+conjoint, azimut <span class="math inline">\(=\)</span> rapport) citée
+au §<a href="#sec:pertes" data-reference-type="ref"
+data-reference="sec:pertes">5.3</a>.</p>
+</div>
+<div id="P3" class="post">
+<p><strong>Postulat 3</strong> (métrique-cible, couplage, potentiel).
+<span
+class="math inline">\(G_{\text{cible}}=\omega(d\theta^2+\sin^2\!\theta\,d\varphi^2)\)</span>,
+<span class="math inline">\(\omega=f_s^2&gt;0\)</span>. Dépendance en
+latitude seule (pour préserver l’isométrie azimutale <span
+class="math inline">\(U(1)\)</span>) : <span
+class="math display">\[\begin{equation}
+\label{eq:fV}
+f(\theta)=1+\beta\cos\theta,\qquad V(\theta)=\alpha(1-\cos\theta),\qquad
+|\beta|&lt;\tfrac12,\ \alpha&gt;0.
+\end{equation}\]</span></p>
+</div>
+<div class="defi">
+<p><strong>Définition 1</strong> (action, repère de Jordan). <span
+class="math display">\[\begin{equation}
+\label{eq:action}
+S=\int d^4x\sqrt{-g}\Big[\tfrac12 fR-\tfrac12\omega(\partial\theta)^2
+-\tfrac12\omega\sin^2\!\theta\,(\partial\varphi)^2-V\Big],\quad
+M_{\mathrm{Pl}}=\hbar=c=1.
+\end{equation}\]</span></p>
+</div>
+<p>Pôles : <span class="math inline">\(f(\mathrm{S})=1+\beta\)</span>,
+<span class="math inline">\(V(\mathrm{S})=0\)</span> (<span
+class="math inline">\(\Lambda=0\)</span>, vrai vide) ; <span
+class="math inline">\(f(\mathrm{N})=1-\beta\)</span>, <span
+class="math inline">\(V(\mathrm{N})=2\alpha\)</span> (faux vide dS). Le
+terme azimutal s’annule aux pôles.</p>
+<div class="defi">
+<p><strong>Définition 2</strong> (charge <span
+class="math inline">\(\pi_2\)</span>). <span
+class="math inline">\(Q_2=\frac{1}{4\pi}\int_\Sigma n\cdot(\partial_a
+n\times\partial_b n)\,dS^{ab}\in\mathbb{Z}\)</span> (degré de <span
+class="math inline">\(n|_\Sigma:\Sigma\cong S^2\to
+S^2_{\text{\&#39;ech}}\)</span>). Remplace l’enroulement.</p>
+</div>
+<div id="def:merid" class="defi">
+<p><strong>Définition 3</strong> (réduction méridienne). Sur <span
+class="math inline">\(\varphi=\mathrm{const}\)</span>, l’action <a
+href="#eq:action" data-reference-type="eqref"
+data-reference="eq:action">[eq:action]</a> devient l’action mono-axe de
+l’Unité 2 (<span class="math inline">\(\psi\mapsto\theta\)</span>) :
+mêmes EOM, même repère d’Einstein (<span class="math inline">\(\tilde
+g=fg\)</span>, <span class="math inline">\(U=V/f^2\)</span>, <span
+class="math inline">\(K=\omega/f+\tfrac32(f&#39;/f)^2\)</span>).
+<span><strong>[preuve]</strong></span> <em>La différence sphère/cercle
+est globale, non locale.</em></p>
+</div>
+<h1 id="structure-mathématique-centrale">Structure mathématique
+centrale</h1>
+<p><span><strong>[preuve]</strong></span> <span
+class="math inline">\(\pi_1(S^2_{\text{\&#39;ech}})=0\)</span>, <span
+class="math inline">\(\pi_2(S^2_{\text{\&#39;ech}})=\mathbb{Z}\)</span> :
+les kinks et l’enroulement <span
+class="math inline">\(N=\tfrac12,1\)</span> disparaissent ; une charge
+entière Skyrmion/monopôle apparaît. La charge migre <span
+class="math inline">\(\pi_1\to\pi_2\)</span>.</p>
+<p><span><strong>[preuve]</strong></span> <span
+class="math inline">\(\cos\theta\)</span> est Morse, univaluée, <span
+class="math inline">\(d(\cos\theta)=-\sin\theta\,d\theta\)</span>
+s’annulant aux seuls pôles : strictement monotone le long de tout
+méridien — l’antithèse de l’obstruction du verrou.</p>
+<p><span><strong>[preuve]</strong></span> Isométrie azimutale <span
+class="math inline">\(U(1)\)</span> (<span
+class="math inline">\(\varphi\to\varphi+c\)</span>), courant <span
+class="math inline">\(J^\mu=\omega\sin^2\!\theta\,\partial^\mu\varphi\)</span>.
+Aux pôles <span class="math inline">\(\sin^2\!\theta\to0\)</span> :
+<span class="math inline">\(U(1)\)</span> trivial, <em>aucun
+Goldstone</em> si le vide est polaire.</p>
+<h1 id="résultats-des-deux-kill-tests-sans-complaisance">Résultats des
+deux KILL-TESTS (sans complaisance)</h1>
+<h2 id="kill-test-1-la-c-fonction-dynamique">KILL-TEST 1 — la c-fonction
+dynamique</h2>
+<p><strong>(a) Permission.</strong>
+<span><strong>[preuve]</strong></span> <span
+class="math inline">\(\cos\theta\)</span> fournit la coordonnée monotone
+globale interdite sur le cercle. Mais une coordonnée n’est pas une
+c-fonction.</p>
+<p><strong>(b) Candidat dynamique.</strong>
+<span><strong>[preuve]</strong></span> En repère d’Einstein, scalaire
+canonique sans fantôme (<span class="math inline">\(f&gt;0\Rightarrow
+K&gt;0\)</span>). FLRW plat : <span
+class="math inline">\(3H^2=\rho\)</span>, <span
+class="math inline">\(\dot H=-\tfrac12(\rho+p)\)</span>. NEC <span
+class="math inline">\(\rho+p=\dot\phi^2\ge0\)</span> automatique <span
+class="math inline">\(\Rightarrow\dot H\le0\)</span>. La c-fonction
+cosmologique <span class="citation" data-cites="FGPW1999"></span> <span
+class="math display">\[\begin{equation}
+\label{eq:Cdef}
+C\propto H^{-(d-1)},\qquad \dot C\propto-(d-1)H^{-d}\dot H\ge0,
+\end{equation}\]</span> croît vers l’IR, stationnaire aux pôles.
+Monotonie <em>réelle</em> (NEC), non géométrique.</p>
+<p><strong>(c) Lien <span class="math inline">\(\leftrightarrow\)</span>
+latitude.</strong> <span><strong>[numérique]</strong></span> Intégration
+du roulement lent (script <code>U5_ctest.py</code>, <span
+class="math inline">\(\beta=-0{,}30\)</span>, <span
+class="math inline">\(f_s=7\)</span>) : <span
+class="math inline">\(\theta\)</span> décroît, <span
+class="math inline">\(\cos\theta\)</span> croît <span
+class="math inline">\(-0{,}80\to+0{,}81\)</span>, <span
+class="math inline">\(H/H_0\)</span> : <span
+class="math inline">\(1\to0{,}54\)</span>, <span
+class="math inline">\(C/C_0\)</span> : <span
+class="math inline">\(1\to6{,}4\)</span>. Trié par <span
+class="math inline">\(\cos\theta\)</span>, <span
+class="math inline">\(C\)</span> est univaluée et croissante.</p>
+<p><strong>(d) Pourquoi le cercle échouait.</strong>
+<span><strong>[preuve]</strong></span> La monotonie <em>locale</em> le
+long d’un arc existait déjà sur le tore ; le verrou interdisait son
+extension en fonction <em>globale univaluée</em> sur l’espace d’échelle
+compact (<span class="math inline">\(S^1\)</span> : roulement <span
+class="math inline">\(=\)</span> demi-tour <span
+class="math inline">\(N=\tfrac12\)</span>, <span
+class="math inline">\(C(\psi)\)</span> non prolongeable). Sur <span
+class="math inline">\(S^2_{\text{\&#39;ech}}\)</span>, <span
+class="math inline">\(C(\cos\theta)\)</span> <em>se prolonge</em>
+globalement. <strong>Le gain est là, et seulement là.</strong></p>
+<p><strong>Verdict KILL-TEST 1.</strong> Porte rouverte : obstruction
+levée <span><strong>[preuve]</strong></span>, c-fonction réellement
+monotone et univaluée <span><strong>[numérique]</strong></span>.
+<em>Mais</em> (i) c-fonction cosmologique/NEC, pas un c-théorème de
+CFT <span class="citation"
+data-cites="Zamolodchikov1986 Cardy1988 KomargodskiSchwimmer2011"></span>
+<span><strong>[conjecture]</strong></span><span><strong>[heuristique]</strong></span> ;
+(ii) monotonie perdue hors flot méridien (oscillation, <span
+class="math inline">\(\dot\varphi\ne0\)</span>). Le verrou est levé, non
+remplacé par une garantie.</p>
+<h2 id="sec:kt2">KILL-TEST 2 — survie de la clôture statique</h2>
+<p><strong>(a) Secteur à symétrie sphérique.</strong>
+<span><strong>[preuve]</strong></span> Profil statique <span
+class="math inline">\(\theta(r)\)</span> sur un méridien : équations
+identiques à l’Unité 2. Branche gelée <span
+class="math inline">\(\theta\equiv\pi\)</span> (<span
+class="math inline">\(\mathrm{N}\)</span>) <span
+class="math inline">\(=\)</span> Schwarzschild–de Sitter (<span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\)</span>) ; branche
+roulante singulière. <em>Aucune</em> solution statique régulière
+interpolante. Conclusion <em>indépendante de <span
+class="math inline">\(\pi_1\)</span></em>, lue directement sur les
+équations (calculs explicites en <strong>Annexe A</strong>).</p>
+<p><strong>(b) Derrick <span class="citation"
+data-cites="Derrick1964"></span>.</strong>
+<span><strong>[preuve]</strong></span> Profil avec extrémité Nord sur le
+<em>maximum</em> de <span class="math inline">\(V\)</span> (<span
+class="math inline">\(V&#39;&#39;(\pi)=-\alpha&lt;0\)</span>) : non
+protégé, instable au roulement. La lecture topologique <span
+class="math inline">\(N=\tfrac12\)</span> disparaît ; l’argument
+survit.</p>
+<p><strong>(c) Le canal <span class="math inline">\(\pi_2\)</span> :
+fermé dans l’action minimale.</strong>
+<span><strong>[preuve]</strong></span> <em>(Révision du verdict ouvert
+antérieur, par calcul — Annexe A.)</em> La charge <span
+class="math inline">\(\pi_2\)</span> autorise une texture, mais aucun
+représentant statique à énergie finie n’existe : <em>(i)</em> le
+hérisson de degré 1 <span class="citation"
+data-cites="BelavinPolyakov1975 BarriolaVilenkin1989"></span> a <span
+class="math inline">\(E_{\rm grad}\!\sim\!L\)</span> (linéaire)
+<em>et</em> <span class="math inline">\(E_{\rm pot}\!\sim\!L^3\)</span>
+(cubique, <span class="math inline">\(L\)</span> taille du hérisson)
+<span class="math inline">\(\Rightarrow\)</span> énergie infinie ;
+<em>(ii)</em> Derrick en 3D : <span
+class="math inline">\(E(\mu)=T_2/\mu+T_0/\mu^3\)</span>, <span
+class="math inline">\(dE/d\mu&lt;0\)</span>, effondrement, sans
+stabilisateur dans <a href="#eq:action" data-reference-type="eqref"
+data-reference="eq:action">[eq:action]</a> ; <em>(iii)</em> une carte de
+degré 1 est surjective, donc <span
+class="math inline">\(\int_{S^2}V\,d\Omega\ge c&gt;0\)</span> par
+coquille <span class="math inline">\(\Rightarrow\)</span> asymptotique
+de Sitter, non un objet localisé. Donc <em>pas</em> de trou noir
+régulier <span class="citation"
+data-cites="Bardeen1968 Hayward2006"></span> issu de <span
+class="math inline">\(\pi_2\)</span>.</p>
+<p><strong>Verdict KILL-TEST 2 (révisé).</strong>
+<span><strong>[preuve]</strong></span> La clôture survit dans <em>les
+deux</em> secteurs de l’action minimale (<span
+class="math inline">\(Q_2=0\)</span> et <span
+class="math inline">\(Q_2\ne0\)</span>). La migration <span
+class="math inline">\(\pi_1\to\pi_2\)</span> <em>ne rouvre pas</em> les
+trous noirs réguliers. <strong>Verrou inter-secteurs</strong> : le
+potentiel à vide <em>unique</em> <span
+class="math inline">\(V=\alpha(1-\cos\theta)\)</span>, requis pour le
+roulement inflationnaire, est exactement ce qui affame le monopôle <span
+class="math inline">\(\pi_2\)</span> (lequel exigerait un vide
+dégénéré). La structure qui produit la cosmologie ferme le canal <span
+class="math inline">\(\pi_2\)</span>. <em>Caveat</em> : vrai pour
+l’action minimale ; un terme de Skyrme <span class="citation"
+data-cites="Skyrme1961"></span>, une jauge, ou un vide dégénéré
+rouvriraient la question — mais c’est une <em>autre</em> théorie.
+<span><strong>[ouvert]</strong></span> (extensions).</p>
+<h1
+id="dérivations-et-correspondances-qm-leftrightarrow-gr-pertes-vs-gains">Dérivations
+et correspondances : QM <span
+class="math inline">\(\leftrightarrow\)</span> GR, pertes vs gains</h1>
+<h2 id="face-gravitationnelle-linfiniment-grand-latitude">Face
+gravitationnelle (l’infiniment grand, latitude)</h2>
+<p><span><strong>[preuve]</strong></span> Pôles gelés <span
+class="math inline">\(\Rightarrow\)</span> Einstein, <span
+class="math inline">\(G_{\rm eff}=1/(8\pi f)\)</span>, borné <span
+class="math inline">\([1/(1+\beta),1/(1-\beta)]\)</span>. Vide <span
+class="math inline">\(\mathrm{S}\)</span> : <span
+class="math inline">\(\Lambda=0\)</span> ; <span
+class="math inline">\(\mathrm{N}\)</span> : cœur dS <span
+class="math inline">\(H^2=2\alpha/[3(1-\beta)]\equiv\infty^\ast\)</span>.
+<span><strong>[numérique]</strong></span> Inflaton <span
+class="math inline">\(=\)</span> latitude dévalant <span
+class="math inline">\(\mathrm{N}\!\to\!\mathrm{S}\)</span> ; <span
+class="math inline">\((n_s,r)\)</span> inchangés (<span
+class="math inline">\(\beta\approx-0{,}3\)</span>, <span
+class="math inline">\(r\approx0{,}02\)</span>–<span
+class="math inline">\(0{,}05\)</span>, <span
+class="math inline">\(n_s\approx0{,}96\)</span>).
+<strong>Gain</strong> : le roulement <em>est</em> la c-fonction qui
+décroît, sans ambiguïté d’enroulement.</p>
+<h2 id="sec:QM">Face quantique (l’infiniment petit, azimut) — pont
+QM<span class="math inline">\(\leftrightarrow\)</span>GR</h2>
+<p><span><strong>[preuve]</strong></span>(transféré). L’horloge HDEQ
+(<span class="math inline">\(\varepsilon=E(k)/K(k)\)</span>, <span
+class="math inline">\(\tau_0\)</span>, existence intermittente) passe
+sur l’azimut. <strong>Pont QM<span
+class="math inline">\(\leftrightarrow\)</span>GR dérivé (Annexe B),
+<span><strong>[conjecture]</strong></span><span
+class="math inline">\(\to\)</span><span><strong>[preuve]</strong></span>.</strong>
+La masse effective de l’horloge en courbure de fond <span
+class="math inline">\(R\)</span> vaut <span
+class="math display">\[\begin{equation}
+\label{eq:mass}
+m_\chi^2(R)=\frac{\alpha+\tfrac12\beta
+R}{\omega}=\frac{\alpha}{\omega}\Big(1-\frac{R}{R_c}\Big),
+\qquad R_c=\frac{2\alpha}{|\beta|},
+\end{equation}\]</span> et s’annule <em>exactement</em> à <span
+class="math inline">\(R_c\)</span>, forçant <span
+class="math inline">\(\tau_0(R)=\tau_0(0)(1-R/R_c)^{-1/2}\to\infty\)</span>
+(la loi <span><strong>[numérique]</strong></span> antérieure est
+<em>dérivée</em>). <strong>Identification forcée</strong> : la courbure
+du cœur <span class="math inline">\(R_{\rm core}=4\Lambda_{\rm
+eff}=8\alpha/(1-\beta)\)</span> égale <span
+class="math inline">\(R_c\)</span> <em>ssi</em> <span
+class="math display">\[\begin{equation}
+\label{eq:lock}
+R_{\rm core}=R_c=6\alpha\iff\beta=-\tfrac13=\beta_c,
+\end{equation}\]</span> le seuil même de stabilité du cœur. Pour <span
+class="math inline">\(\beta&gt;-\tfrac13\)</span> (fenêtre viable),
+<span class="math inline">\(R_{\rm core}&lt;R_c\)</span> : le cœur est
+stable <em>et</em> l’horloge y tourne encore. La condition
+gravitationnelle « cœur stable» <em>est</em> la condition quantique «
+l’horloge tourne au cœur».</p>
+<p><strong>Couture sphérique tranchée (Annexe B.5),
+<span><strong>[conjecture]</strong></span><span
+class="math inline">\(\to\)</span><span><strong>[preuve]</strong></span>.</strong>
+Sur la sphère, <span class="math inline">\(f,V\)</span> ne dépendent que
+de la latitude et l’azimut (l’horloge) n’a <em>pas</em> de potentiel
+propre. Néanmoins, près du vide de Planck, la cible ronde plus le
+potentiel de latitude forment un oscillateur harmonique
+<em>isotrope</em> à 2D, dont les deux modes normaux — radial (échelle,
+GR) et azimutal (horloge, QM) — sont <em>dégénérés</em> à <span
+class="math inline">\(\Omega_0=\sqrt{(\alpha+\tfrac12\beta
+R)/\omega}\)</span> et gèlent ensemble à <span
+class="math inline">\(R_c\)</span>. L’horloge transporte donc <em>sans
+briser <span class="math inline">\(U(1)\)</span></em> : la symétrie
+azimutale <em>garantit</em> la dégénérescence QM<span
+class="math inline">\(=\)</span>GR (identification forcée
+supplémentaire). L’identité <a href="#eq:lock"
+data-reference-type="eqref" data-reference="eq:lock">[eq:lock]</a> vaut
+alors sur la sphère aussi, pas seulement sur le tore.</p>
+<p><strong>Levée de dégénérescence (Annexe B.6).</strong> À amplitude
+finie <span class="math inline">\(a\)</span>, le puits est un pendule
+sphérique : l’horloge devance le mode d’échelle de <span
+class="math inline">\(\Delta\Omega/\Omega_0\simeq\tfrac{5}{16}a^2\)</span>
+(et l’orbite interne précesse). Le pont est donc une
+<em>quasi-dégénérescence</em> : égale au vide, distincte à l’excitation
+— structure nécessaire pour être, en principe, observable.</p>
+<h2 id="sec:pertes">Pertes vs gains face au cadre torique</h2>
+<ul>
+<li><p>Coordonnée RG dirigée globale, deux points fixes (Sud, Nord).
+<span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></p></li>
+<li><p>Charge neuve <span
+class="math inline">\(\pi_2=\mathbb{Z}\)</span>.
+<span><strong>[preuve]</strong></span></p></li>
+<li><p>Pont QM<span class="math inline">\(\leftrightarrow\)</span>GR :
+<span class="math inline">\(R_c\)</span> dérivé, <span
+class="math inline">\(R_{\rm
+core}=R_c\Leftrightarrow\beta_c=-\tfrac13\)</span> ; horloge <span
+class="math inline">\(=\)</span> échelle (modes dégénérés, <span
+class="math inline">\(U(1)\)</span> les force), levée <span
+class="math inline">\(\tfrac{5}{16}a^2\)</span>.
+<span><strong>[preuve]</strong></span> (B.5–B.6)</p></li>
+<li><p>Enroulement <span class="math inline">\(N=\tfrac12,1\)</span>
+(<span class="math inline">\(\pi_1=0\)</span>) : demi-soliton, soliton
+<span class="math inline">\(8\sqrt{\omega\alpha}\)</span>, signature
+log-périodique — perdus. <span><strong>[preuve]</strong></span></p></li>
+<li><p>Dualité UV<span class="math inline">\(\equiv\)</span>IR : pôles
+distincts, pas de partenaire sous-planckien — perdue (au mieux <span
+class="math inline">\(\mathbb{Z}_2\)</span> azimutale en lecture
+stéréographique). <span><strong>[preuve]</strong></span></p></li>
+<li><p>Indépendance des axes et symétrie <span
+class="math inline">\(\psi\!\leftrightarrow\!\chi\)</span> : brisées
+(protections d’isocourbure Unité 4 à re-établir via <span
+class="math inline">\(U(1)\)</span>).
+<span><strong>[ouvert]</strong></span></p></li>
+</ul>
+<h1 id="charge-pi_2-interprétation-limites">Charge <span
+class="math inline">\(\pi_2\)</span> : interprétation, limites</h1>
+<p><span><strong>[conjecture]</strong></span> <span
+class="math inline">\(Q_2\)</span> est un nombre d’enroulement d’échelle
+(Skyrmion / monopôle d’échelle). La migration <span
+class="math inline">\(\pi_1\to\pi_2\)</span> (1D linéique <span
+class="math inline">\(\to\)</span> 2D surfacique) est l’énoncé central.
+<span><strong>[preuve]</strong></span> Bornes : <span
+class="math inline">\(Q_2\in\mathbb{Z}\)</span>, borne 2D <span
+class="math inline">\(E\ge4\pi\omega|Q_2|\)</span>.
+<span><strong>[preuve]</strong></span> <em>(Annexe A)</em> en 3D,
+Derrick fait effondrer le <span
+class="math inline">\(\sigma\)</span>-modèle pur ; dans l’action
+minimale, pas d’objet <span class="math inline">\(\pi_2\)</span>
+statique localisé (énergie infinie / effondrement / asymptotique dS). La
+réalisation comme particule exige un stabilisateur hors <a
+href="#eq:action" data-reference-type="eqref"
+data-reference="eq:action">[eq:action]</a> —
+<span><strong>[ouvert]</strong></span> (extensions).</p>
+<h1 id="limites-coûts-assumés-tests-empiriques">Limites, coûts assumés,
+tests empiriques</h1>
+<p><strong>Coûts.</strong> La sphère achète la coordonnée dirigée en
+vendant enroulement et dualité. La clôture statique, elle,
+<em>survit</em> aussi sur la sphère (Annexe A) : le coût est topologique
+(traits propres au tore), non gravitationnel.</p>
+<p><strong>Limites de portée.</strong> (i) c-fonction cosmologique/NEC,
+pas CFT
+<span><strong>[conjecture]</strong></span><span><strong>[heuristique]</strong></span>.
+(ii) Secteur <span class="math inline">\(\pi_2\)</span> non réalisé
+dynamiquement <span><strong>[ouvert]</strong></span>. (iii) Assignation
+<span class="math inline">\((\theta,\varphi)\)</span> <span
+class="math inline">\(=\)</span> choix de modélisation. (iv) <span
+class="math inline">\(\alpha,\beta,f_s\)</span> non dérivés. <em>Aucun
+présenté comme résolu.</em></p>
+<p><strong>Position falsifiable.</strong> Mêmes <span
+class="math inline">\((n_s,r,\text{running})\)</span> que le tore <span
+class="citation" data-cites="Planck2018X BICEPKeck2021"></span> (fenêtre
+<span class="math inline">\(\beta\in(-0{,}5;-0{,}15)\)</span>, testable
+par Simons Observatory <span class="citation"
+data-cites="SimonsObs2019"></span>, LiteBIRD <span class="citation"
+data-cites="LiteBIRD2023"></span> et CMB-S4 <span class="citation"
+data-cites="CMBS4Book2016"></span> d’ici 2030). Signatures propres :
+<em>(a)</em> un monopôle d’échelle gravitant (s’il est stabilisé par une
+extension) laisserait une empreinte ; <em>(b)</em> l’<em>absence</em>
+d’oscillation log-périodique (perte de <span
+class="math inline">\(\pi_1\)</span>) distingue sphère et tore ;
+<em>(c)</em> le verrou <a href="#eq:lock" data-reference-type="eqref"
+data-reference="eq:lock">[eq:lock]</a> : <span
+class="math inline">\(\beta_c=-\tfrac13\)</span> pivote stabilité du
+cœur et gel d’horloge — avec <span
+class="math inline">\(\beta(\text{CMB})\approx-0{,}3\)</span> <em>juste
+au-dessus</em>, le cadre prédit que le cœur d’un objet effondré tourne
+encore son horloge de justesse
+<span><strong>[conjecture]</strong></span><span><strong>[ouvert]</strong></span> ;
+<em>(d)</em> la <em>levée de dégénérescence</em> QM/GR (Annexe B.6) : un
+détuning horloge–échelle <span
+class="math inline">\(\Delta\Omega/\Omega_0\simeq\tfrac{5}{16}a^2\)</span>
+(horloge plus rapide) avec orbites internes précessantes, absent du tore
+(deux pendules indépendants, rien à lever) — signature qualitative
+au-delà de <span class="math inline">\((n_s,r)\)</span>, l’amplitude
+<span class="math inline">\(a\)</span> restant non prédite.
+<span><strong>[conjecture]</strong></span><span><strong>[ouvert]</strong></span></p>
+<p><strong>Test cosmologique (Annexe D).</strong> Le couplage
+horloge–matière est <em>nul</em> pour l’isocourbure (<span
+class="math inline">\(c_{\rm iso}\simeq0\)</span>, trois canaux
+indépendants) : (d) ne produit donc <em>pas</em> d’isocourbure
+observable, et le cadre est de facto mono-champ en cosmologie linéaire.
+La distinctivité se reporte sur (c), en gravité forte — la voie
+restante.</p>
+<p><strong>Conclusion honnête.</strong> Au mieux, la sphère <em>rouvre
+une porte</em> (flot RG dirigé) <em>au prix</em> de l’enroulement et de
+la dualité, <em>sans</em> rouvrir la clôture (Annexe A) et <em>en
+dérivant</em> le pont QM<span
+class="math inline">\(\leftrightarrow\)</span>GR (Annexe B). Ni
+unification, ni garantie : une bifurcation cohérente et falsifiable, à
+tester. Le test cosmologique de la seconde dimension (Annexe D) la rend
+<em>de facto mono-champ</em> dans le spectre primordial ; sa seule
+signature propre possible vit en gravité forte (verrou <span
+class="math inline">\(\beta_c=-\tfrac13\)</span>), où se trouve
+désormais la voie d’investigation.</p>
+<h1 class="unnumbered"
+id="tableau-des-statuts-épistémiques-mis-à-jour">Tableau des statuts
+épistémiques (mis à jour)</h1>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Énoncé</strong></th>
+<th style="text-align: left;"><strong>Statut</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\pi_1(S^2_{\text{\&#39;ech}})=0\)</span>, <span
+class="math inline">\(\pi_2(S^2_{\text{\&#39;ech}})=\mathbb{Z}\)</span> ;
+migration <span class="math inline">\(\pi_1\to\pi_2\)</span></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\cos\theta\)</span> Morse univaluée strictement
+monotone, 2 points critiques</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Action méridienne <span
+class="math inline">\(\equiv\)</span> mono-axe (Unité 2) ; mêmes EOM
+locales</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">NEC <span
+class="math inline">\(\Rightarrow\dot H\le0\Rightarrow C\propto
+H^{-(d-1)}\)</span> monotone</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(C\)</span>
+univaluée &amp; monotone en <span
+class="math inline">\(\cos\theta\)</span> (script
+<code>U5_ctest.py</code>)</td>
+<td
+style="text-align: left;"><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(C\)</span> est
+un vrai c-théorème de CFT (dual conforme)</td>
+<td
+style="text-align: left;"><span><strong>[conjecture]</strong></span> <span><strong>[heuristique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Clôture survit, secteur à symétrie
+sphérique (re-dérivation, Annexe A)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Derrick : profil interpolant non protégé
+(Nord sur max de <span class="math inline">\(V\)</span>)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Canal <span
+class="math inline">\(\pi_2\)</span> fermé dans l’action minimale
+(Annexe A) ; ne rouvre pas les TN réguliers</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Hérisson <span
+class="math inline">\(\pi_2\)</span> : <span
+class="math inline">\(E_{\rm grad}\!\sim\!L\)</span>, <span
+class="math inline">\(E_{\rm pot}\!\sim\!L^3\)</span> (<span
+class="math inline">\(L\)</span> rayon) <span
+class="math inline">\(\Rightarrow\)</span> énergie infinie</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Réouverture <span
+class="math inline">\(\pi_2\)</span> seulement par extension
+(Skyrme/jauge/vide dégénéré)</td>
+<td
+style="text-align: left;"><span><strong>[ouvert]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Face GR : pôles gelés <span
+class="math inline">\(\Rightarrow\)</span> Einstein ; <span
+class="math inline">\(\mathrm{N}\)</span> dS <span
+class="math inline">\(\equiv\infty^\ast\)</span></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\((n_s,r,\text{running})\)</span> inchangés vs
+tore</td>
+<td
+style="text-align: left;"><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Face QM : HDEQ (<span
+class="math inline">\(\varepsilon=E/K\)</span>) transférée à
+l’azimut</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span>(transf.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span> gèle l’horloge (<span
+class="math inline">\(\tau_0\!\to\!\infty\)</span>), dérivé
+(Annexe B)</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span> (HDEQ)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><span class="math inline">\(R_{\rm
+core}=R_c\Leftrightarrow\beta_c=-\tfrac13\)</span> (cœur dS <span
+class="math inline">\(\leftrightarrow\)</span> gel)</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Transport de l’horloge sur la sphère :
+<span class="math inline">\(U(1)\)</span> <em>force</em> la
+dégénérescence QM<span class="math inline">\(=\)</span>GR
+(Annexe B.5)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span> (harm.)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Levée de dégénérescence : <span
+class="math inline">\(\Delta\Omega/\Omega_0\simeq\tfrac{5}{16}a^2\)</span>
+(horloge plus rapide), précession (Annexe B.6)</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Signature sphère vs tore (détuning QM/GR
+<span class="math inline">\(\propto a^2\)</span>) ; amplitude <span
+class="math inline">\(a\)</span> non prédite</td>
+<td
+style="text-align: left;"><span><strong>[conjecture]</strong></span>/<span><strong>[ouvert]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Levée <em>quantique</em> des niveaux
+(oscillateur isotrope 2D anharmonique)</td>
+<td
+style="text-align: left;"><span><strong>[conjecture]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Perte de l’enroulement et de la signature
+log-périodique</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Perte/affaiblissement de la dualité
+UV<span class="math inline">\(\equiv\)</span>IR</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Perte de la symétrie <span
+class="math inline">\(\psi\!\leftrightarrow\!\chi\)</span> (isocourbure
+Unité 4)</td>
+<td
+style="text-align: left;"><span><strong>[ouvert]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Assignation <span
+class="math inline">\((\theta,\varphi)\)</span> : choix de
+modélisation</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Interprétation physique de <span
+class="math inline">\(Q_2\)</span> (Skyrmion/monopôle)</td>
+<td
+style="text-align: left;"><span><strong>[conjecture]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\alpha,\beta,f_s\)</span> non dérivés</td>
+<td
+style="text-align: left;"><span><strong>[ouvert]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Inflation à deux champs : mode entropique
+léger, masse géométrique, <span
+class="math inline">\(M_s^2/H^2|_*\!\simeq\!-0{,}002\)</span>
+(Annexe D)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Méridien géodésique <span
+class="math inline">\(\Rightarrow\)</span> pas de virage ; isocourbure
+non corrélée, <span class="math inline">\(n_{\rm iso}\)</span> fixé</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Couplage horloge–matière <span
+class="math inline">\(c_{\rm iso}\simeq0\)</span> (3 canaux) : pas de
+signature primordiale</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cadre de facto mono-champ en
+cosmologie linéaire (<span class="math inline">\((n_s,r)\)</span>
+dégénérés)</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Seuil de cœur <span
+class="math inline">\(=\)</span> stabilité du plateau (<span
+class="math inline">\(\infty^\ast\)</span> commun) ; <span
+class="math inline">\(\beta(\text{CMB}){=}\beta(\text{cl\^oture})\)</span>
+identité, non test indépendant (Annexe E)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Cœur écranté (GUT, <span
+class="math inline">\(\sim10^{-31}\)</span> m) ; contrainte interne
+<span class="math inline">\(\beta&gt;-\tfrac13\)</span>
+(satisfaite)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contenu testable <span
+class="math inline">\(=(n_s,r)\)</span>, dégénéré avec l’inflation
+naturelle ; distinctivité architecturale</strong></td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Frontière restante : reliques à courbure
+quasi-GUT (PBH, transition Hawking–Moss)</td>
+<td
+style="text-align: left;"><span><strong>[ouvert]</strong></span> <span><strong>[spéculation]</strong></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="ann:A">Calculs de singularité et clôture du canal <span
+class="math inline">\(\pi_2\)</span></h1>
+<p><em>(Détail du KILL-TEST 2, §<a href="#sec:kt2"
+data-reference-type="ref" data-reference="sec:kt2">4.2</a>. Trois
+secteurs ; tous conservent la clôture dans l’action minimale.)</em></p>
+<h4 id="a.1-branche-gelée-pôle-nord-schwarzschildde-sitter.-preuve">A.1
+Branche gelée (pôle Nord) <span class="math inline">\(=\)</span>
+Schwarzschild–de Sitter. <span><strong>[preuve]</strong></span></h4>
+<p><span class="math inline">\(\theta\equiv\pi\)</span> est solution
+exacte (<span
+class="math inline">\(V&#39;(\pi)=\alpha\sin\pi=0\)</span>, <span
+class="math inline">\(f&#39;(\pi)=-\beta\sin\pi=0\)</span>, <span
+class="math inline">\(\Box\theta=0\)</span>). <span
+class="math inline">\(f=1-\beta\)</span> constant <span
+class="math inline">\(\Rightarrow G_{\mu\nu}=-\Lambda_{\rm
+eff}g_{\mu\nu}\)</span>, <span class="math inline">\(\Lambda_{\rm
+eff}=2\alpha/(1-\beta)\)</span>. La solution statique sphérique est SdS,
+de Kretschmann (SymPy) <span
+class="math display">\[K=\frac{48M^2}{r^6}+\frac{8}{3}\Lambda_{\rm
+eff}^2.\]</span> <span class="math inline">\(r\to0\)</span> : divergence
+<span class="math inline">\(48M^2/r^6\)</span> (singularité centrale) si
+<span class="math inline">\(M\ne0\)</span>. <span
+class="math inline">\(M=0\)</span> : <span
+class="math inline">\(K=24H^4\)</span> fini (dS pur, sans trou noir).
+<em>Pas de cœur régulier.</em></p>
+<h4 id="a.2-branche-roulante.-numérique">A.2 Branche roulante.
+<span><strong>[numérique]</strong></span></h4>
+<p>Intégration statique (repère d’Einstein, <span
+class="math inline">\(\beta=-0{,}3\)</span>, <span
+class="math inline">\(f_s=7\)</span>) depuis un centre régulier : la
+géométrie atteint <span class="math inline">\(2m/r\to1\)</span> (<span
+class="math inline">\(e^{2\Lambda}\to\infty\)</span>) à <span
+class="math inline">\(r\)</span> fini, gradient non nul, sans extrérieur
+plat où <span class="math inline">\(\theta\to0\)</span>. Aucune
+interpolante régulière. Conforme à l’Unité 2.</p>
+<h4 id="a.3-canal-pi_2-fermé.-preuve">A.3 Canal <span
+class="math inline">\(\pi_2\)</span> : fermé.
+<span><strong>[preuve]</strong></span></h4>
+<p><em>(a)</em> Hérisson <span class="math inline">\(n=\hat r\)</span>
+(<span class="math inline">\(L\)</span> taille) : <span
+class="math inline">\(E_{\rm grad}=4\pi\omega L\)</span>, <span
+class="math inline">\(E_{\rm pot}=\tfrac{4\pi}{3}\alpha L^3\)</span>
+<span class="math inline">\(\Rightarrow\)</span> énergie infinie.
+<em>(b)</em> Derrick (3D) : <span
+class="math inline">\(E(\mu)=T_2/\mu+T_0/\mu^3\)</span>, <span
+class="math inline">\(dE/d\mu=-(T_2\mu^2+3T_0)/\mu^4&lt;0\)</span> :
+effondrement, pas de stabilisateur dans <a href="#eq:action"
+data-reference-type="eqref" data-reference="eq:action">[eq:action]</a>.
+<em>(c)</em> degré 1 surjectif <span
+class="math inline">\(\Rightarrow\int_{S^2}V\,d\Omega\ge c&gt;0\)</span>
+par coquille <span class="math inline">\(\Rightarrow\)</span>
+asymptotique dS, non localisée.</p>
+<h4 id="verdict-annexe-a.">Verdict (Annexe A).</h4>
+<p><span><strong>[preuve]</strong></span> Clôture dans les deux
+secteurs. <span class="math inline">\(\pi_2\)</span> ne rouvre pas les
+TN réguliers. Verrou : le vide unique (inflaton) affame le monopôle.
+Réouverture par extension seulement.
+<span><strong>[ouvert]</strong></span></p>
+<h1 id="ann:B">Gel d’horloge : dérivation du pont QM<span
+class="math inline">\(\leftrightarrow\)</span>GR</h1>
+<p><em>(Détail de la §<a href="#sec:QM" data-reference-type="ref"
+data-reference="sec:QM">5.2</a>. Promotion
+<span><strong>[conjecture]</strong></span><span
+class="math inline">\(\to\)</span><span><strong>[preuve]</strong></span>.)</em></p>
+<h4 id="b.1-champ-dhorloge-en-courbure.">B.1 Champ d’horloge en
+courbure.</h4>
+<p>Secteur HDEQ : horloge <span class="math inline">\(\chi\)</span>,
+<span class="math inline">\(V=\alpha(2-\cos\psi-\cos\chi)\)</span>,
+<span class="math inline">\(f=1+\beta(\cos\psi+\cos\chi)\)</span>. En
+fond de courbure <span class="math inline">\(R\)</span> : <span
+class="math inline">\(\omega\Box\chi=\partial_\chi U_{\rm eff}\)</span>,
+<span class="math inline">\(U_{\rm eff}=V-\tfrac12
+fR=\mathrm{const}-(\alpha+\tfrac12\beta R)\cos\chi\)</span>. Équilibre
+<span class="math inline">\(\chi=0\)</span> tant que <span
+class="math inline">\(\alpha+\tfrac12\beta R&gt;0\)</span> (pendule
+d’amplitude <span class="math inline">\(A=\alpha+\tfrac12\beta
+R\)</span>).</p>
+<h4 id="b.2-masse-effective-et-loi-de-gel.-preuve">B.2 Masse effective
+et loi de gel. <span><strong>[preuve]</strong></span></h4>
+<p><span class="math display">\[m_\chi^2(R)=\frac{U_{\rm
+eff}&#39;&#39;(0)}{\omega}=\frac{\alpha+\tfrac12\beta R}{\omega}
+=\frac{\alpha}{\omega}\Big(1-\frac{R}{R_c}\Big),\quad
+R_c=\frac{2\alpha}{|\beta|}\ \ (\beta&lt;0).\]</span> S’annule
+<em>exactement</em> à <span class="math inline">\(R_c\)</span>. Période
+du pendule <span
+class="math inline">\(\tau_0=4\Omega^{-1}K(\sin\tfrac{\chi_{\max}}2)\)</span>,
+<span class="math inline">\(\Omega=m_\chi\)</span> ; la courbure n’entre
+que par <span class="math inline">\(\Omega\)</span> : <span
+class="math display">\[\frac{\tau_0(R)}{\tau_0(0)}=\Big(1-\frac{R}{R_c}\Big)^{-1/2}\to\infty,\qquad
+\tau_0(0)=2\pi\sqrt{\omega/\alpha}=2\pi f_s/\sqrt\alpha.\]</span>
+<span><strong>[numérique]</strong></span> Ancrage : <span
+class="math inline">\(\alpha\sim10^{-9}\)</span>, <span
+class="math inline">\(f_s\sim7\)</span> <span
+class="math inline">\(\Rightarrow\tau_0(0)\approx7\times10^{-38}\)</span>
+s, <span class="math inline">\(\hbar/\tau_0\approx10^{13}\)</span> GeV —
+accord exact avec la valeur HDEQ.</p>
+<div class="center">
+<p><img src="fig_freeze.png" alt="image" /><br />
+<span><span><strong>[numérique]</strong></span> Gauche : <span
+class="math inline">\(m_\chi^2\)</span> s’annule à <span
+class="math inline">\(R_c\)</span>. Droite : <span
+class="math inline">\(\tau_0\propto(1-R/R_c)^{-1/2}\)</span>
+diverge.</span></p>
+</div>
+<h4
+id="b.3-identification-forcée-r_rm-corer_cleftrightarrowbeta_c-tfrac13.-preuve">B.3
+Identification forcée <span class="math inline">\(R_{\rm
+core}=R_c\Leftrightarrow\beta_c=-\tfrac13\)</span>.
+<span><strong>[preuve]</strong></span></h4>
+<p><span class="math inline">\(R_{\rm core}=4\Lambda_{\rm
+eff}=8\alpha/(1-\beta)\)</span>. Égaler <span
+class="math inline">\(R_c\)</span> : <span
+class="math inline">\(8\alpha/(1-\beta)=2\alpha/(-\beta)\Leftrightarrow\beta=-\tfrac13=\beta_c\)</span>,
+<span class="math inline">\(R=6\alpha\)</span>. Pour <span
+class="math inline">\(\beta&gt;-\tfrac13\)</span>, <span
+class="math inline">\(R_{\rm core}&lt;R_c\)</span> (cœur stable, horloge
+tourne) ; pour <span class="math inline">\(\beta&lt;-\tfrac13\)</span>,
+<span class="math inline">\(R_{\rm core}&gt;R_c\)</span> (horloge gelée
+au cœur). Un seul nombre pivote les deux secteurs.</p>
+<div class="center">
+<p><img src="fig_interlock.png" style="width:72.0%" alt="image" /><br />
+<span><span><strong>[numérique]</strong></span> Croisement exact à <span
+class="math inline">\(\beta_c=-\tfrac13\)</span>, <span
+class="math inline">\(R=6\alpha\)</span>.</span></p>
+</div>
+<h4 id="b.4-invariance-et-réserve.">B.4 Invariance et réserve.</h4>
+<p><span><strong>[preuve]</strong></span> L’annulation de <span
+class="math inline">\(m_\chi^2\)</span> à <span
+class="math inline">\(R_c\)</span> (stabilité marginale de <span
+class="math inline">\(\chi=0\)</span>) et la loi en racine sont
+indépendantes du repère ; seul <span
+class="math inline">\(\tau_0(0)\)</span> dépend de la normalisation. Le
+transport « horloge» sur la sphère (azimut <span
+class="math inline">\(U(1)\)</span>) est <em>établi</em> en B.5–B.6
+ci-dessous (la symétrie <span class="math inline">\(U(1)\)</span>
+<em>force</em> la dégénérescence QM<span
+class="math inline">\(=\)</span>GR) ; l’identité <a href="#eq:lock"
+data-reference-type="eqref" data-reference="eq:lock">[eq:lock]</a> y
+survit.</p>
+<h4 id="b.5-résolution-de-la-couture-sphérique.-preuve">B.5 Résolution
+de la couture sphérique. <span><strong>[preuve]</strong></span></h4>
+<p>Sur la sphère minimale, <span class="math inline">\(f,V\)</span> ne
+dépendent que de la latitude et l’azimut (l’horloge) n’a pas de
+potentiel propre. Néanmoins, près du vide de Planck la métrique-cible
+ronde devient plate, <span
+class="math inline">\(\omega(d\theta^2+\sin^2\!\theta\,d\varphi^2)\simeq\omega(dx^2+dy^2)\)</span>
+avec <span
+class="math inline">\((x,y)=(\theta\cos\varphi,\theta\sin\varphi)\)</span>,
+et <span class="math inline">\(U_{\rm
+eff}=\text{const}-A\cos\theta\simeq
+\text{const}+\tfrac12 A(x^2+y^2)\)</span>, <span
+class="math inline">\(A=\alpha+\tfrac12\beta R\)</span> : un
+<em>oscillateur harmonique isotrope</em> à 2D, masse <span
+class="math inline">\(\omega\)</span>, raideur <span
+class="math inline">\(A\)</span>, de pulsation unique <span
+class="math inline">\(\Omega(R)=\sqrt{A/\omega}=\sqrt{\alpha/\omega}\,(1-R/R_c)^{1/2}\)</span>
+pour ses <em>deux</em> modes normaux : radial (fluctuation d’échelle,
+GR) et azimutal/circulaire (horloge, QM). L’isotropie les rend
+<em>dégénérés</em> ; tous deux gèlent à <span
+class="math inline">\(R_c\)</span>.
+<span><strong>[numérique]</strong></span> Intégration (<span
+class="math inline">\(\alpha{=}1\)</span>, <span
+class="math inline">\(\beta{=}{-}0{,}3\)</span>, <span
+class="math inline">\(f_s{=}7\)</span>) : périodes radiale et azimutale
+identiques à <span class="math inline">\(2\pi/\Omega\)</span> à <span
+class="math inline">\(&lt;10^{-3}\)</span>. <strong>L’horloge transporte
+donc sans briser <span class="math inline">\(U(1)\)</span></strong> : la
+symétrie azimutale <em>garantit</em> la dégénérescence QM<span
+class="math inline">\(=\)</span>GR (identification forcée). Cela unifie
+le « pincement aux pôles» (rayon d’orbite <span
+class="math inline">\(\to0\)</span> au vide) et le « gel à <span
+class="math inline">\(R_c\)</span>» (fréquence <span
+class="math inline">\(\to0\)</span>) : un seul puits qui s’aplatit.</p>
+<div class="center">
+<p><img src="fig_couture.png" style="width:66.0%" alt="image" /><br />
+<span><span><strong>[numérique]</strong></span> Modes radial (GR) et
+azimutal (QM) sur la même courbe ; gel commun à <span
+class="math inline">\(R_c\)</span>.</span></p>
+</div>
+<h4 id="b.6-levée-de-dégénérescence.-preuvenumérique">B.6 Levée de
+dégénérescence.
+<span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></h4>
+<p>La dégénérescence n’est exacte qu’à <span
+class="math inline">\(a=0\)</span>. À amplitude angulaire finie <span
+class="math inline">\(a\)</span>, le puits est un pendule sphérique :
+<span class="math display">\[\frac{\Omega_{\rm
+horloge}}{\Omega_0}=\frac1{\sqrt{\cos a}}\simeq1+\tfrac14a^2,\qquad
+\frac{\Omega_{\rm \acute echelle}}{\Omega_0}=\frac{\pi/2}{K(\sin\frac
+a2)}\simeq1-\tfrac1{16}a^2,\qquad
+\boxed{\ \frac{\Delta\Omega}{\Omega_0}\simeq\frac{5}{16}a^2\ }\]</span>
+l’<em>horloge (QM) plus rapide</em> que le mode d’échelle (GR) (coeff.
+ajusté <span class="math inline">\(0{,}3127\)</span> vs <span
+class="math inline">\(5/16\)</span>). Le détuning fractionnaire est
+<em>indépendant de la courbure de fond</em>. Face invariante : l’orbite
+générique <em>précesse</em> (prograde, <span
+class="math inline">\(\simeq\tfrac{3\pi}{8}\theta_{\min}\theta_{\max}\)</span>
+par cycle apsidal, vérifié). <em>Signature propre à la sphère</em> : le
+tore avait deux pendules indépendants (rien à lever) ; un détuning QM/GR
+<span class="math inline">\(\propto a^2\)</span> avec orbites
+précessantes distingue sphère et tore au-delà de <span
+class="math inline">\((n_s,r)\)</span>. <em>Réserves</em> : régime de
+petites oscillations (univers tardif, pas le roulement) ; <span
+class="math inline">\(a\)</span> non prédite
+<span><strong>[ouvert]</strong></span> ; version quantique (scission des
+niveaux) <span><strong>[conjecture]</strong></span>.</p>
+<div class="center">
+<p><img src="fig_levee.png" alt="image" /><br />
+<span><span><strong>[numérique]</strong></span> Gauche : splitting et
+son ordre dominant <span
+class="math inline">\(\tfrac{5}{16}a^2\)</span>. Droite : orbite
+précessante (rosette) au vide de Planck.</span></p>
+</div>
+<h1 id="ann:C">Carte d’emboîtement (synthèse, statuts à jour)</h1>
+<p><em>Test opérationnel du « tout s’emboîte» : entrées, secteurs,
+conditions de cohérence, identifications forcées.</em></p>
+<div class="center">
+
+</div>
+<p><strong>Conditions de cohérence (un nombre, deux
+secteurs).</strong></p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Condition</strong></th>
+<th style="text-align: left;"><strong>Contenu</strong></th>
+<th style="text-align: left;"><strong>Statut</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\beta(\text{CMB})=\beta(\text{cl\^oture})\)</span></td>
+<td style="text-align: left;">même <span
+class="math inline">\(\beta\)</span> ajuste <span
+class="math inline">\((n_s,r)\)</span> <em>et</em> côté du seuil</td>
+<td
+style="text-align: left;"><span><strong>[conjecture]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\beta_c=-\tfrac13\)</span> / <span
+class="math inline">\(-\tfrac16\)</span></td>
+<td style="text-align: left;">stabilité cœur dS / bifurcation faux
+vide</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(R_c=2\alpha/|\beta|\)</span> (<span
+class="math inline">\(\to\tau_0\!\to\!\infty\)</span>)</td>
+<td style="text-align: left;">courbure d’effondrement <span
+class="math inline">\(=\)</span> gel d’horloge</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span> (Ann. B)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="math inline">\(R_{\rm
+core}=R_c\Leftrightarrow\beta_c=-\tfrac13\)</span></td>
+<td style="text-align: left;">cœur dS rencontre le gel au seuil de
+stabilité</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span> (Ann. B)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(\alpha\)</span> fixé par <span
+class="math inline">\(A_s\)</span></td>
+<td style="text-align: left;">l’amplitude CMB prédit la courbure du
+cœur</td>
+<td
+style="text-align: left;"><span><strong>[numérique]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="math inline">\(H^2=2\alpha/3(1-\beta)\)</span></td>
+<td style="text-align: left;">faux vide inflationnaire <span
+class="math inline">\(=\)</span> cœur dS</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">vide unique de <span
+class="math inline">\(V\)</span></td>
+<td style="text-align: left;">fait rouler l’inflaton <em>et</em> affame
+<span class="math inline">\(\pi_2\)</span> (Ann. A)</td>
+<td
+style="text-align: left;"><span><strong>[preuve]</strong></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Identifications forcées.</strong> latitude <span
+class="math inline">\(=\)</span> c-fonction
+<span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span> ;
+même <span class="math inline">\(f\)</span> <span
+class="math inline">\(=\)</span> <span class="math inline">\(G_{\rm
+eff}\)</span> <em>et</em> pente <span
+class="math inline">\(U=V/f^2\)</span>
+<span><strong>[preuve]</strong></span> ; Pôle Sud <span
+class="math inline">\(=\)</span> Planck <span
+class="math inline">\(=\)</span> plancher UV <span
+class="math inline">\(=\)</span> point de gel
+<span><strong>[conjecture]</strong></span> ; Pôle Nord <span
+class="math inline">\(=\)</span> IR <span
+class="math inline">\(=\)</span> faux vide dS
+<span><strong>[preuve]</strong></span> ; horloge (QM) <span
+class="math inline">\(=\)</span> échelle (GR), modes dégénérés de
+l’oscillateur isotrope au vide de Planck
+<span><strong>[preuve]</strong></span> (Annexe B.5).</p>
+<p><strong>Audit.</strong> 1 postulat <span
+class="math inline">\(+\)</span> 1 action <span
+class="math inline">\(+\)</span> 3 nombres, pincés par le CMB <span
+class="math inline">\(\Rightarrow\)</span> six secteurs liés. Cadre
+<em>sur-déterminé</em> : les mêmes <span
+class="math inline">\((\alpha,\beta)\)</span> doivent satisfaire CMB,
+clôture, métastabilité <em>et</em> horloge. <strong>Où la carte reste
+mince</strong> : HDEQ recode le problème du temps sans qu’il soit établi
+qu’il le simplifie ; <span
+class="math inline">\(\beta(\text{CMB})=\beta(\text{cl\^oture})\)</span>
+reste <span><strong>[conjecture]</strong></span> ; énergie noire absente
+(frontière assumée, <span class="math inline">\(\Lambda=0\)</span>).</p>
+<h1 id="ann:D">Test cosmologique de la seconde dimension : inflation à
+deux champs et couplage horloge–matière</h1>
+<p><em>La sphère a une seconde dimension (l’azimut/horloge). Le spectre
+primordial la voit-il ?</em></p>
+<h4 id="d.1-inflation-à-deux-champs-sur-s2_textech.-preuvenumérique">D.1
+Inflation à deux champs sur <span
+class="math inline">\(S^2_{\text{\&#39;ech}}\)</span>.
+<span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></h4>
+<p>Repère d’Einstein : <span
+class="math inline">\(\mathcal{G}_{\theta\theta}=\omega/f+\tfrac32(f&#39;/f)^2\)</span>,
+<span
+class="math inline">\(\mathcal{G}_{\varphi\varphi}=\omega\sin^2\!\theta/f\)</span>,
+<span class="math inline">\(U=V/f^2\)</span>. Comme <span
+class="math inline">\(U\)</span> ne dépend que de <span
+class="math inline">\(\theta\)</span>, l’inflaton est <span
+class="math inline">\(\theta\)</span> (adiabatique) et <span
+class="math inline">\(\varphi\)</span> est entropique à potentiel
+<em>plat</em>. Le méridien <span
+class="math inline">\(\varphi=\)</span>const est une <em>géodésique</em>
+de l’espace des champs (<span
+class="math inline">\(\Gamma^\varphi_{\theta\theta}=0\)</span>) :
+<strong>pas de virage</strong> (<span
+class="math inline">\(\eta_\perp=0\)</span>), donc aucune corrélation
+adiab.–entrop. engendrée <span class="citation"
+data-cites="GordonWandsBassettMaartens2001 RenauxPetelTurzynski2016"></span>.
+La masse entropique est <em>purement géométrique</em> : <span
+class="math inline">\(M_s^2=V_{;ss}+\epsilon\,\mathcal{R}_{\rm
+fs}H^2\)</span>, <span
+class="math inline">\(V_{;ss}=\mathcal{G}_{\varphi\varphi}&#39;U&#39;/(2\mathcal{G}_{\varphi\varphi}\mathcal{G}_{\theta\theta})\)</span>,
+fonction de <span class="math inline">\((\beta,f_s,\theta)\)</span>
+seuls. <span><strong>[numérique]</strong></span> Fond validé (<span
+class="math inline">\(\beta=-0{,}3\)</span>, <span
+class="math inline">\(f_s=7\)</span>) : à <span
+class="math inline">\(N_*=55\)</span>, <span
+class="math inline">\(\theta_*=1{,}48\)</span>, <span
+class="math inline">\(n_s=0{,}960\)</span>, <span
+class="math inline">\(r=0{,}036\)</span>, et <span
+class="math inline">\(M_s^2/H^2|_*\simeq-0{,}002\)</span> (légère, à
+peine tachyonique, sans instabilité). Conséquence : isocourbure <em>non
+corrélée</em>, quasi invariante d’échelle, <span
+class="math inline">\(\beta_{\rm iso}\simeq c\cdot2\epsilon\)</span>,
+<span class="math inline">\(n_{\rm iso}-1\simeq-0{,}0012\)</span> (fixé
+par la géométrie). Tout tient au couplage <span
+class="math inline">\(c\)</span>.</p>
+<div class="center">
+<p><img src="fig_axe1.png" alt="image" /><br />
+<span><span><strong>[numérique]</strong></span> Gauche : <span
+class="math inline">\(M_s^2/H^2\)</span> le long du roulement,
+légèrement négative à l’horizon (bande). Droite : roulement adiabatique
+standard (<span class="math inline">\(n_s=0{,}96\)</span>, <span
+class="math inline">\(r=0{,}036\)</span>).</span></p>
+</div>
+<h4
+id="d.2-le-couplage-horlogematière-c_rm-isosimeq0.-preuvenumérique">D.2
+Le couplage horloge–matière : <span class="math inline">\(c_{\rm
+iso}\simeq0\)</span>.
+<span><strong>[preuve]</strong></span><span><strong>[numérique]</strong></span></h4>
+<p>Trois canaux indépendants. <em>(1) Conforme</em> : <span
+class="math inline">\(f,V\)</span> en latitude seule <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(\varphi\)</span> absent <span
+class="math inline">\(\Rightarrow\)</span> la matière couple à <span
+class="math inline">\(\theta\)</span>, pas à <span
+class="math inline">\(\varphi\)</span> : <span
+class="math inline">\(c=0\)</span> (+ photon aveugle Weyl, <span
+class="math inline">\(\delta\tau_0/\tau_0\sim10^{-81}\)</span> dans la
+matière, Unité 3). <em>(2) Page–Wootters <span class="citation"
+data-cites="PageWootters1983"></span></em> : <span
+class="math inline">\(\hat H_{\rm eff}=\varepsilon\hat H_{\rm
+sys}\)</span> <em>universel</em> <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(\delta\varphi=\)</span> décalage de temps
+universel <span class="math inline">\(=\)</span> mode
+<strong>adiabatique</strong>, pas isocourbure. <em>Une horloge
+universelle ne peut pas engendrer d’isocourbure</em> (et <span
+class="math inline">\(\varepsilon=1-10^{-112}\)</span> au vide). <em>(3)
+Axionique</em> : vide au pôle <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(U(1)\)</span> non brisée <span
+class="math inline">\(\Rightarrow\)</span> pas de Goldstone ; même si la
+matière portait une charge (non motivé), <span
+class="math inline">\(f_\varphi=f_s\sin\theta_*\simeq7\,M_{\rm
+Pl}\)</span> super-planckienne <span
+class="math inline">\(\Rightarrow\)</span> iso <span
+class="math inline">\(\sim2\times10^{-13}\)</span>. <strong>Verdict :
+<span class="math inline">\(c_{\rm iso}\simeq0\)</span></strong>, ce qui
+<em>dérive</em> de la structure de la sphère le « secteur horloge non
+discriminant » de l’Unité 3.</p>
+<h4 id="d.3-conséquence.-preuve">D.3 Conséquence.
+<span><strong>[preuve]</strong></span></h4>
+<p>En cosmologie linéaire, le cadre est <strong>de facto
+mono-champ</strong> : ses observables se réduisent à <span
+class="math inline">\((n_s,r)\)</span>, dégénérés avec l’inflation
+naturelle non minimale <span class="citation"
+data-cites="FreeseFriemanOlinto1990 FerreiraNotariSimeon2018 Simeon2020"></span>.
+La seconde dimension existe (le détuning B.6 est réel) mais le spectre
+primordial ne la voit pas.</p>
+<h1 id="ann:E">Recherche d’une sonde indépendante du seuil de cœur</h1>
+<p><em>Le verrou <span class="math inline">\(\beta_c=-\tfrac13\)</span>
+est-il testable indépendamment du CMB ?</em></p>
+<h4 id="e.1-le-seuil-est-la-stabilité-du-plateau.-preuve">E.1 Le seuil
+<em>est</em> la stabilité du plateau.
+<span><strong>[preuve]</strong></span></h4>
+<p>La fluctuation radiale en <span
+class="math inline">\(\infty^\ast\)</span> obéit à <span
+class="math inline">\(\omega\Box\delta=\kappa^2\omega\delta\)</span>,
+<span
+class="math inline">\(\kappa^2=\alpha(1+3\beta)/[\omega(\beta-1)]\)</span> :
+<span class="math inline">\(\infty^\ast\)</span> stable pour <span
+class="math inline">\(\beta&gt;-\tfrac13\)</span>. (Seuil de la
+réduction <em>mono-axe</em> ; sur la sphère il est légitime car l’azimut
+se <em>pince</em> au pôle Nord, <span
+class="math inline">\(\sin^2\!\theta\to0\)</span>, réduisant la
+stabilité du cœur à la seule latitude. Le traitement à deux champs sur
+la diagonale du tore donnait <span
+class="math inline">\(-\tfrac16\)</span> ; la réduction était la tension
+ouverte centrale des Unités 2–3, ici tranchée par le pincement.) Or
+<span class="math inline">\(\infty^\ast\)</span> est <em>le même
+point</em> qui sert de cœur de Sitter <em>et</em> de plateau de départ
+de l’inflaton. <span class="math inline">\(\beta\)</span> étant une
+<em>constante</em> lue sur le même potentiel, <span
+class="math inline">\(\beta(\text{CMB})\)</span> et <span
+class="math inline">\(\beta(\text{cl\^oture})\)</span> ne sont
+<em>pas</em> indépendants : la « corrélation » est une <em>identité
+structurelle</em>, non deux mesures qui pourraient diverger.</p>
+<h4 id="e.2-écrantage.-numérique">E.2 Écrantage.
+<span><strong>[numérique]</strong></span></h4>
+<p><span class="math inline">\(R_{\rm core}=8\alpha/(1-\beta)\)</span>
+donne <span class="math inline">\(H_{\rm
+core}\simeq2{,}8\times10^{14}\)</span> GeV (échelle GUT, <span
+class="math inline">\(\alpha\)</span> fixé par <span
+class="math inline">\(A_s\)</span>) : rayon de courbure <span
+class="math inline">\(\sim7\times10^{-31}\)</span> m, <span
+class="math inline">\(\sim33\)</span> ordres <em>sous</em> l’horizon
+d’un trou noir solaire — totalement écranté. Horloge dans la matière :
+<span class="math inline">\(\delta\tau_0/\tau_0\sim
+10^{-71}\)</span>–<span class="math inline">\(10^{-81}\)</span>. <span
+class="math inline">\(G_{\rm eff}\)</span> épinglé au vide bien avant la
+BBN. <strong>Aucune sonde directe.</strong></p>
+<h4 id="e.3-verdict.-preuve">E.3 Verdict.
+<span><strong>[preuve]</strong></span></h4>
+<p>Le seul handle réel est <em>interne au CMB</em> : le scénario exige
+<span class="math inline">\(\beta&gt;-\tfrac13\)</span>, satisfait
+(<span class="math inline">\(\beta\approx-0{,}30\)</span>, marge <span
+class="math inline">\(0{,}03\)</span>) ; un CMB futur pinçant <span
+class="math inline">\(\beta&lt;-\tfrac13\)</span> briserait le scénario.
+Prédictions négatives associées : pas de transition du premier
+ordre <span class="citation"
+data-cites="ColemanDeLuccia1980 HawkingMoss1982"></span> (Hawking–Moss
+seul, pas de fond GW de bulles), pas d’oscillation log-périodique.
+<strong>Aucune sonde indépendante du seuil de cœur n’existe dans le
+cadre minimal</strong> ; la corrélation <span
+class="math inline">\(\beta(\text{CMB})=\beta(\text{cl\^oture})\)</span>
+est une identité satisfaite, non un test indépendant.</p>
+<h1 class="unnumbered"
+id="conclusion-ce-que-le-cadre-est-et-ce-quil-nest-pas">Conclusion : ce
+que le cadre est, et ce qu’il n’est pas</h1>
+<p>Après l’ensemble des tests, la cartographie est nette. <strong>Le
+cadre n’est pas une unification : c’est une grammaire.</strong> Il
+réorganise de la physique connue de sorte que des phénomènes disparates
+— inflation, cœur des trous noirs, horloge quantique, <span
+class="math inline">\(\Lambda=0\)</span> — deviennent des régions d’une
+seule géométrie compacte, parlées avec une seule poignée de nombres.
+<strong>Sa réussite est la sur-détermination, pas la
+prédiction</strong> : les mêmes <span
+class="math inline">\((\alpha,\beta,f_s)\)</span>, pincés par le CMB,
+font tenir six secteurs emboîtés, et <span
+class="math inline">\(\beta\approx-0{,}3\)</span> passe <em>toutes</em>
+les vérifications de cohérence internes (clôture, métastabilité, gel
+d’horloge, stabilité du cœur en réduction mono-axe). <strong>Sa limite
+est l’écrantage</strong> : tout ce qui est distinctif vit à courbure
+GUT/Planck (cœur, horloge) ou est structurellement réel mais sombre (la
+dégénérescence QM<span class="math inline">\(=\)</span>GR, l’isocourbure
+à <span class="math inline">\(c\simeq0\)</span>), de sorte que le
+contenu testable se réduit à <span
+class="math inline">\((n_s,r)\)</span>, partagé avec l’inflation
+naturelle non minimale.</p>
+<p>Nous avons <em>tracé</em> cette frontière au lieu de l’entretenir
+dans le flou — et c’est là, en soi, le résultat de cette Unité : savoir
+précisément ce que le cadre offre (une architecture cohérente et
+compréhensible) et ce qu’il n’offre pas (un observable propre). Le cadre
+reste falsifiable <em>en principe</em> (il exige <span
+class="math inline">\(\beta&gt;-\tfrac13\)</span> ; il interdit
+oscillations log-périodiques et transition du premier ordre), mais non
+<em>distinctif</em> dans ce qui est mesurable aujourd’hui.</p>
+<p><strong>La seule frontière où l’écrantage pourrait céder</strong>
+(honnêtement spéculative) : les reliques de l’époque où la courbure
+approchait <span class="math inline">\(R_{\rm core}\)</span> — trous
+noirs primordiaux formés à courbure quasi-GUT, ou un signal de la
+transition Hawking–Moss. Long pari, calcul dédié, probablement faible ;
+mais c’est, à ce stade, le seul endroit où un observable propre pourrait
+surgir. À défaut, la valeur du cadre est celle qu’il visait dès
+l’origine : <em>une théorie où tout s’emboîte et devient
+compréhensible</em>. Le bonus observationnel n’y est pas, et nous
+l’avons établi proprement.</p>
+<hr />
+<p><br />
+<span>Version intégrée de travail (placage complet en fin de programme).
+Formalisation conduite en dialogue avec un système d’assistance
+analytique, sous la direction de l’auteur, seul responsable du contenu.
+Résultats antérieurs (verrou <span
+class="math inline">\(\infty^\ast\)</span>, clôture, dualité, HDEQ) :
+Unités 1–4. Scripts : <code>U5_ctest.py</code>,
+<code>calc1_frozen.py</code>, <code>calc2_rolling.py</code>,
+<code>calc3_pi2.py</code>, <code>clock_freeze.py</code>,
+<code>couture_sphere.py</code>, <code>levee.py</code>,
+<code>axe1b.py</code>, <code>couplage_c.py</code>,
+<code>axe2_probe.py</code>.</span></p>
+<div class="thebibliography">
+<p><span>99</span> A. B. Zamolodchikov, <em>Irreversibility of the flux
+of the renormalization group in a 2D field theory</em>, JETP
+Lett. <strong>43</strong> (1986) 730. J. L. Cardy, <em>Is there a
+c-theorem in four dimensions?</em>, Phys. Lett. B <strong>215</strong>
+(1988) 749. Z. Komargodski and A. Schwimmer, <em>On renormalization
+group flows in four dimensions</em>, JHEP <strong>12</strong> (2011)
+099, arXiv:1107.3987. D. Z. Freedman, S. S. Gubser, K. Pilch and
+N. P. Warner, <em>Renormalization group flows from
+holography—supersymmetry and a c-theorem</em>,
+Adv. Theor. Math. Phys. <strong>3</strong> (1999) 363,
+arXiv:hep-th/9904017. G. H. Derrick, <em>Comments on nonlinear wave
+equations as models for elementary particles</em>,
+J. Math. Phys. <strong>5</strong> (1964) 1252. T. H. R. Skyrme, <em>A
+non-linear field theory</em>, Proc. R. Soc. Lond. A <strong>260</strong>
+(1961) 127. A. A. Belavin and A. M. Polyakov, <em>Metastable states of
+two-dimensional isotropic ferromagnets</em>, JETP
+Lett. <strong>22</strong> (1975) 245. M. Barriola and A. Vilenkin,
+<em>Gravitational field of a global monopole</em>,
+Phys. Rev. Lett. <strong>63</strong> (1989) 341. S. Coleman and
+F. De Luccia, <em>Gravitational effects on and of vacuum decay</em>,
+Phys. Rev. D <strong>21</strong> (1980) 3305. S. W. Hawking and
+I. G. Moss, <em>Supercooled phase transitions in the very early
+universe</em>, Phys. Lett. B <strong>110</strong> (1982) 35. D. N. Page
+and W. K. Wootters, <em>Evolution without evolution: dynamics described
+by stationary observables</em>, Phys. Rev. D <strong>27</strong> (1983)
+2885. C. Gordon, D. Wands, B. A. Bassett and R. Maartens, <em>Adiabatic
+and entropy perturbations from inflation</em>,
+Phys. Rev. D <strong>63</strong> (2001) 023506, arXiv:astro-ph/0009131.
+S. Renaux-Petel and K. Turzyński, <em>Geometrical destabilization of
+inflation</em>, Phys. Rev. Lett. <strong>117</strong> (2016) 141301,
+arXiv:1510.01281. K. Freese, J. A. Frieman and A. V. Olinto, <em>Natural
+inflation with pseudo Nambu-Goldstone bosons</em>,
+Phys. Rev. Lett. <strong>65</strong> (1990) 3233. R. Z. Ferreira,
+A. Notari and G. Simeon, <em>Natural inflation with a periodic
+non-minimal coupling</em>, JCAP <strong>11</strong> (2018) 021,
+arXiv:1806.05511. G. Simeon, <em>Scalar-tensor extension of natural
+inflation</em>, JCAP <strong>07</strong> (2020) 028, arXiv:2002.07625.
+J. M. Bardeen, <em>Non-singular general-relativistic gravitational
+collapse</em>, in Proc. Int. Conf. GR5, Tbilisi, U.S.S.R. (1968) p. 174.
+S. A. Hayward, <em>Formation and evaporation of regular black
+holes</em>, Phys. Rev. Lett. <strong>96</strong> (2006) 031103,
+arXiv:gr-qc/0506126. Planck Collaboration (Y. Akrami <em>et al.</em>),
+<em>Planck 2018 results. X. Constraints on inflation</em>,
+Astron. Astrophys. <strong>641</strong> (2020) A10, arXiv:1807.06211.
+BICEP/Keck Collaboration (P. A. R. Ade <em>et al.</em>), <em>Improved
+constraints on primordial gravitational waves using Planck, WMAP, and
+BICEP/Keck observations through the 2018 observing season</em>,
+Phys. Rev. Lett. <strong>127</strong> (2021) 151301, arXiv:2110.00483.
+P. Ade <em>et al.</em> (Simons Observatory Collaboration), <em>The
+Simons Observatory: science goals and forecasts</em>,
+JCAP <strong>02</strong> (2019) 056, arXiv:1808.07445. K. N. Abazajian
+<em>et al.</em> (CMB-S4 Collaboration), <em>CMB-S4 Science Book, First
+Edition</em>, arXiv:1610.02743. LiteBIRD Collaboration (E. Allys <em>et
+al.</em>), <em>Probing cosmic inflation with the LiteBIRD cosmic
+microwave background polarization survey</em>,
+Prog. Theor. Exp. Phys. <strong>2023</strong> (2023) 042F01,
+arXiv:2202.02773.</p>
+</div>
+</article>
+<footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
+</body>
+</html>

@@ -19,7 +19,8 @@ const PHYSIQUE = [
     pdfFR: "papers/u1_FR.pdf",
     pdfEN: "papers/u1_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671269",
-    arxiv: null
+    arxiv: null,
+    html: "articles/unite1.html"
   },
   {
     titre: "Unité 2 — Un champ de dualité d'échelle compactifié : régularisation et inflation",
@@ -34,7 +35,8 @@ const PHYSIQUE = [
     pdfFR: "papers/u2_FR.pdf",
     pdfEN: "papers/u2_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671328",
-    arxiv: null
+    arxiv: null,
+    html: "articles/unite2.html"
   },
   {
     titre: "Unité 3 — Dualité d'échelle compactifiée : synthèse",
@@ -49,7 +51,8 @@ const PHYSIQUE = [
     pdfFR: "papers/u3_FR.pdf",
     pdfEN: "papers/u3_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671446",
-    arxiv: null
+    arxiv: null,
+    html: "articles/unite3.html"
   },
   {
     titre: "Unité 4 — Effondrement gravitationnel, faux vide métastable, isocourbure et spectre Mukhanov–Sasaki exact",
@@ -64,7 +67,8 @@ const PHYSIQUE = [
     pdfFR: "papers/u4_FR.pdf",
     pdfEN: "papers/u4_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671560",
-    arxiv: null
+    arxiv: null,
+    html: "articles/unite4.html"
   },
   {
     titre: "Unité 5 — Compactification sphérique de l'espace d'échelle",
@@ -78,7 +82,8 @@ const PHYSIQUE = [
     pdfFR: "papers/u5_FR.pdf",
     pdfEN: "papers/u5_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671840",
-    arxiv: null
+    arxiv: null,
+    html: "articles/unite5.html"
   }
 ];
 
