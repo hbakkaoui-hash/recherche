@@ -142,6 +142,19 @@ const MATHS = [
     html: "articles/primes-hexagonaux.html"
   },
   {
+    titre: "Spirales de premiers — visualisation interactive",
+    tags: ["Visualisation", "Interactif"],
+    resume: `Une visualisation interactive des <strong>familles paramétriques de nombres
+      premiers</strong> $p=k\\,m(m+1)+e+2kq$ (dont la famille hexagonale $p=3m(m+1)+1$).
+      Réglez les paramètres, la palette et la rotation, affichez ou non les non-premiers,
+      et observez la répartition des premiers en spirale — avec export PNG.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    html: "spirale-premiers.html"
+  },
+  {
     titre: "Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$",
     tags: ["math.NT"],
     resume: `Erdős et Graham demandent si $[1,\\ldots,p_{k+1}-1] < p_k\\,[1,\\ldots,p_k]$

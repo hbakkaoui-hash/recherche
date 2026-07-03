@@ -1,0 +1,451 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Spirales de premiers</title>
+<style>
+  :root{
+    --bg0:#0c1018; --bg1:#05060b;
+    --panel:rgba(11,13,21,.82); --panel-solid:#0b0d15;
+    --line:#1b2030; --line2:#272d40;
+    --txt:#e8eaf3; --muted:#8a90a6; --muted2:#5b6178;
+    --accent:#d65cff; --accent2:#7fe9ff; --focus:#9b6cff;
+    --mono: ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:#04050a; color:var(--txt);
+    font-family:var(--sans); overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage{
+    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(120% 120% at 50% 45%, #0a0d15 0%, #05060b 70%, #03040800 100%);
+  }
+  canvas#art{ display:block; touch-action:none; }
+
+  /* ---- top-left identity ---- */
+  .ident{
+    position:fixed; top:18px; left:20px; z-index:5; pointer-events:none;
+    max-width:min(60vw,420px);
+  }
+  .ident .kicker{
+    font-size:11px; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--muted); font-weight:600;
+  }
+  .ident h1{
+    margin:.18em 0 .35em; font-size:19px; font-weight:650; letter-spacing:.01em;
+    color:#f3f4fb;
+  }
+  .ident .sub{ font-family:var(--mono); font-size:11.5px; color:var(--accent2); opacity:.92; }
+  .ident .read{ font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-top:.3em; }
+  .ident .read b{ color:#cfd3e6; font-weight:600; }
+
+  /* ---- toolbar ---- */
+  .toolbar{
+    position:fixed; top:16px; right:18px; z-index:7; display:flex; gap:8px;
+  }
+  .btn{
+    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
+    color:#dfe2ef; background:var(--panel); border:1px solid var(--line2);
+    padding:9px 13px; border-radius:10px; cursor:pointer; backdrop-filter:blur(8px);
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .btn:hover{ border-color:var(--accent2); color:#fff; }
+  .btn.primary{ border-color:#3a2b4d; color:#f6e7ff; background:rgba(40,22,55,.7); }
+  .btn.primary:hover{ border-color:var(--accent); }
+  .btn:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+
+  /* ---- panel ---- */
+  .panel{
+    position:fixed; top:60px; right:18px; z-index:6;
+    width:320px; max-height:calc(100vh - 80px); overflow-y:auto;
+    background:var(--panel); border:1px solid var(--line2); border-radius:16px;
+    backdrop-filter:blur(12px); padding:6px 0 4px;
+    box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+    transform:translateX(0); transition:transform .28s cubic-bezier(.2,.7,.2,1), opacity .2s;
+    scrollbar-width:thin; scrollbar-color:var(--line2) transparent;
+  }
+  .panel.hidden{ transform:translateX(118%); opacity:0; pointer-events:none; }
+  .panel::-webkit-scrollbar{ width:8px } .panel::-webkit-scrollbar-thumb{ background:var(--line2); border-radius:8px }
+
+  .sec{ padding:14px 16px; border-top:1px solid var(--line); }
+  .sec:first-of-type{ border-top:0; }
+  .sec h2{
+    margin:0 0 12px; font-size:10.5px; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--muted2); font-weight:700;
+  }
+  .row{ margin:11px 0; }
+  .row:first-child{ margin-top:0 } .row:last-child{ margin-bottom:0 }
+  .lab{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .lab span{ font-size:12.5px; color:#c6cadb; }
+  .lab var{ font-family:var(--mono); font-size:11.5px; color:var(--accent2); font-style:normal; }
+  input[type=range]{ width:100%; accent-color:var(--accent2); height:18px; cursor:pointer; }
+  select{
+    width:100%; font-family:var(--mono); font-size:12.5px; color:#e6e9f4;
+    background:var(--panel-solid); border:1px solid var(--line2); border-radius:9px;
+    padding:8px 10px; cursor:pointer; appearance:none;
+    background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+    background-position:calc(100% - 16px) 16px, calc(100% - 11px) 16px; background-size:5px 5px,5px 5px; background-repeat:no-repeat;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{
+    font-family:var(--mono); font-size:11px; color:#aeb3c7;
+    background:var(--panel-solid); border:1px solid var(--line2); border-radius:999px;
+    padding:5px 10px; cursor:pointer; transition:all .14s;
+  }
+  .chip:hover{ color:#fff; border-color:var(--accent2); }
+  .chip.on{ color:#0a0c12; background:var(--accent2); border-color:var(--accent2); font-weight:600; }
+  .chip.on.mag{ background:var(--accent); border-color:var(--accent); }
+  .toggle{ display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+  .toggle input{ width:16px; height:16px; accent-color:var(--accent); cursor:pointer; }
+  .toggle span{ font-size:12.5px; color:#c6cadb; }
+  .ctl{ transition:opacity .2s; }
+  .ctl.off{ display:none; }
+  .hint{ font-size:11px; color:var(--muted2); line-height:1.5; font-family:var(--mono); }
+  .footer{ padding:12px 16px 14px; border-top:1px solid var(--line); display:flex; gap:8px; }
+  .footer .btn{ flex:1; text-align:center; }
+
+  @media (max-width:680px){
+    .ident{ max-width:calc(100vw - 130px); }
+    .panel{ top:auto; bottom:0; right:0; left:0; width:auto; border-radius:18px 18px 0 0;
+            max-height:62vh; }
+    .panel.hidden{ transform:translateY(108%); }
+  }
+  @media (prefers-reduced-motion: reduce){ .panel{ transition:none } }
+</style>
+
+<div class="stage"><canvas id="art"></canvas></div>
+
+<div class="ident">
+  <div class="kicker">Famille paramétrique</div>
+  <h1>Spirales de premiers</h1>
+  <div class="sub">p = 3·n(n+1) + 1 · k=3 · q=0 · ε=+1</div>
+  <div class="read" id="readout"></div>
+</div>
+
+<div class="toolbar">
+  <button class="btn" id="togglePanel" aria-pressed="true">Réglages</button>
+  <button class="btn primary" id="exportBtn">Exporter PNG</button>
+</div>
+
+<aside class="panel" id="panel" aria-label="Réglages du tracé">
+  <div class="sec">
+    <h2>Tracé</h2>
+    <div class="row">
+      <label class="lab" for="layout"><span>Type d'enroulement</span></label>
+      <select id="layout">
+        <option value="vortex">Vortex — anneaux (Archimède)</option>
+        <option value="rayons">Rayons — angle par pas</option>
+        <option value="sacks">Sacks — racine de n</option>
+      </select>
+    </div>
+    <div class="row ctl" id="ctl-tours">
+      <div class="lab"><span>Nombre de tours</span><var id="v-tours"></var></div>
+      <input type="range" id="tours" min="1" max="80" step="0.5">
+    </div>
+    <div class="row ctl off" id="ctl-angle">
+      <div class="lab"><span>Angle par pas</span><var id="v-angle"></var></div>
+      <input type="range" id="angle" min="0.1" max="180" step="0.001">
+      <div class="chips" style="margin-top:8px" id="anglechips">
+        <button class="chip" data-a="137.50776">φ&nbsp;137,5°</button>
+        <button class="chip" data-a="60">60°</button>
+        <button class="chip" data-a="90">90°</button>
+        <button class="chip" data-a="120">120°</button>
+        <button class="chip" data-a="144">144°</button>
+        <button class="chip" data-a="0.6">0,6°</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Forme</h2>
+    <div class="row">
+      <div class="lab"><span>Termes utilisés</span><var id="v-points"></var></div>
+      <input type="range" id="points" min="200" max="10000" step="50">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Échelle radiale</span><var id="v-scale"></var></div>
+      <input type="range" id="scale" min="0.5" max="1.15" step="0.01">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Profondeur (tunnel)</span><var id="v-depth"></var></div>
+      <input type="range" id="depth" min="0" max="1" step="0.01">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Taille des points</span><var id="v-size"></var></div>
+      <input type="range" id="size" min="0.3" max="2.4" step="0.01">
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Style</h2>
+    <div class="row">
+      <div class="lab"><span>Lueur</span><var id="v-glow"></var></div>
+      <input type="range" id="glow" min="0" max="1.3" step="0.01">
+    </div>
+    <div class="row">
+      <label class="lab"><span>Palette</span></label>
+      <div class="chips" id="palettechips">
+        <button class="chip mag" data-p="vortex">Vortex</button>
+        <button class="chip" data-p="cyan">Cyan</button>
+        <button class="chip" data-p="or">Or</button>
+        <button class="chip" data-p="spectre">Spectre</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="lab"><span>Rotation</span><var id="v-rot"></var></div>
+      <input type="range" id="rot" min="0" max="360" step="1">
+    </div>
+    <div class="row" id="spinrow">
+      <label class="toggle"><input type="checkbox" id="autospin"><span>Rotation automatique</span></label>
+    </div>
+    <div class="row">
+      <label class="toggle"><input type="checkbox" id="zeros"><span>Afficher les non‑premiers</span></label>
+    </div>
+    <div class="row ctl off" id="ctl-zop">
+      <div class="lab"><span>Opacité des non‑premiers</span><var id="v-zop"></var></div>
+      <input type="range" id="zop" min="0.02" max="0.5" step="0.01">
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn" id="resetBtn">Réinitialiser</button>
+  </div>
+</aside>
+
+<script>
+const BITS = "1111010011101100100000111011010101001100110010011001001001000110011000000100000110000101011010100000000010010000000000100010100110000001000101000010000010011100000110000111001000100001110000101011000000001010100100010011000100100000100011000100100000100000011000000100000000001010001001001000010101000010101100010110000010000000001010100001010001000101110010100001000100000010000010000001001000000110000010000000000010100000000010000000100010111001011001001000000010010010000000110100100000000100100000100110001010000001000100010010000100001010010001010011101000100000110011010000001100100000000001001000000110010000000100000110000000010000000001000000110000000001100000000001000000001001100010100000011000000000100000000010100001110100000001011000000010000100001010000000000000000001010000001000000000000010000100100100101010000101000100000101010000001001000110000001010001001000100000010001000001100010110000000000000100010000001001101001000100000000001000001010000100001001100000010010001001000000000000100010000000000001010010000010000100000000010010010000000000110100001011000100000000010110000000100000100000100000000000100100100000000000000000010000101000001000001010000000011010000001000110000001010000000000000011001001000001110010100000001000000000100000001010100100100000000010000000100000110100001000000000000100100001000001001100000011010010000100010000011000001100101100000000001010100100010000000011010101100000000111000000000001000010011001010000000000000100001001000000000110001010001001101000010101000000100000000110101000000101100010000000000010000001000010000001001101000100010001000010001000110000000010000000000000000010000010000100000000000001000001101000100000000000000000000000010000001001000000010100000001000001100010000000000000101010000011010001000001110010100001010000000000100100000010001000100000010000010000101100010101010010000100000000000000000100000000100010010001000000000000001000000101000000010100001000101101010010000000000000100000010010010000101001000000011000001000000000100000000000100000010100111010000000101010000001000000001000000000110001000000000000000010000011000000110110000010000100000000000000010000000000010000001001001000000110000001000001001000000000100000010001001100010000011000000001000100100000000000000000000100001000000000000100000000001100100000010100000000000001000110000000001000000010000110000011100101100000000010000000000100000000010010101000000100000011000000001000000000011001100001000000100010000101000000010100000000000101000010000001010000101010000010010001100100100000010010000001000000100000000000100001000110100010000000001000110001001011100000000000011000001000001100100001011010000000010000100000000000000100100110010000000100010000011010010100100100010100000000001000100000111001000001000000010010000000001000000010001010001000100000000000000001000001100000000001000000101000110000001000000100100010000011011000000110000111000000001100100000100010001000100010000001000000100000100000011000010001100100000000010010000000000010101010000001000000000001001000000100000000010011000000000000010101010001000001010000110010011100000000100100000000100000010010001010000000101110010000001000001000000000100000000100000000100000001001000100000000000000001100000000000000000000100100000100010000010000101110000000000001000001100010000001000000001110000000010001000000000000010010001001001010000001011000000001000000000001000000000010000011010000000000000000101000000000000100100001001011000100100100000000000000000000000001000000100100100000000000010000000100000000000000000001000000100000011100000000000100000010101000000010000010001100000000000000000000100000000010010010010000000000000110001000000000000010101001001000001000000100000000001000100010100000001001000100100010000001000000110000100011001001000000100000000000100101010000001000000000000010010010000001100000100000100011000000000000010010011001100001000010000010000000001010010010011000001000000000000000001100000000100110000000000001010000000000000100000000000001000000001000010000110011010000001100000100000000001000000000010001010100100000000011001000100100010000000000001000000000000100010000100000110100000000010100000010000110010000000101100010000000001101001000010110000011000001000000000001000000100000010101001000000000010100000000000001001010000000010010000100000100000000000001000100000001001000100100000000011001010000100100000000010000000001000000010010010100100010000000010010000001000100100010000000000010000100011000101000110000100000000000001000000000000000001000100100000000000001000100110000000011001100000100111001011000100010000001001010100100000100000001000000101000000000010001000001100000100000000001000000000001011000101001010110010000000001101000010001000000000100000010100000000100000100100010000000001100000000000000000000100000010000011001000000100000010001000100000100000001000000000001000010001010010101000000010101000000000101000000001001000000100010100000000000001000000010010010010000000100100000000001001001010010000000001100000000000111001010000000000010000000000000000000010100010001000100000100100000000000000100100100000010001001100000100000010000100010000100000000000000100010010001000000000010000010000000100001000010000000001000100000000011001000000001100100000000001100100000000110000000001001000010101000000100000100100010000010000000000000000011000001001100100001000000100000110000100000010100100010100000001001000000000000100001000000000000000001001000000000000000000010000000000000100110000001000000000000010000010000001000010010000000000001000000100010001000101000010000000001000000000000100001000001100000010010010001000100100000100010000100000000000101000000101001000000110011000000100100010001010010000000000010000000000000000010000000000001100001010000001000010100000000000001000000101001000000000000010100101010010000010000100100010010010001010000001000110000000000000100000110010001000000000000000001000000001000000100000000000001100000000100000000000100000000100000000101100000000010010000001001100100000000011000100000000011010000001000100000001000000100100010110000010010100100000010011000000000001010000000000000001001000010100000001001001000000001000001000001100100001000000001000110100001000000100001000000110010001000000000000000000000100000100010011000010001000110100001000000100001000010001000010001000100010000011010000000010010000001000001100000100100000000000001000000100000000100000000110010001010000000000000000001000000000000010101010001100000000010000000000001000010100000010000000000100000100000011000000000010100011000101100000000000000010000001000000001010010001101100000000000000100100000000000001010000000010000000000000000001100010000000001000000000000100000000000000010100101000001000000000100000000010000000000110000001000000000010000011001001000000110010100010010000000000000010000010101000100000001000000000000010100000010001000000000000010000000100101000010010001010000100000100000000001000000100000010000001100000010010000000000101000000000100000000000001100110101001010000000000000000000000001001000000001011001000001100100100010010000000000010100010000001001100000001000011000000010010000010000100100100010000011000000100000010000001000101000010010000000000000000100000011010001001000000000010001011001001000010000010001000100010100100001000000000000110110001000100100000000101001000000001000000100010000000000000000000000000100101010000010000000100000110100101000010001001000000010001010000001110010010010000000001000000000000000001000000000100010000001000100010000000000100001000100010000000000001010010001000010000000010010001001011100100000000110001000000001100100001000000000000100000010010010001000000100000000001000001000000100000010000001000000110000010100000100000010001000000100010000000000000000100000010000010011000001110000000000000001101000110001011000000000010010001001010000000100000000001011100001000000101000000000000100100001000000000000000010010000000100000000000001000000100101000110100010010000000000000001001000000000100000000000011101100000000001000000101000010000000000011000000010010000001000000100000000100001000000000100010000010010100000000000101000001001001010000010000001000000000100001010000100000000100100000000100100000000000000000000101010110000000011001000000010111000000100000000000000000000000000010100001000001001001000000001010000001001000000100001000100100000000100000001000000100100100000000001000100000000000010001100000000010000000000000110000001001000000000100100011011000000100000000000010000100001010100011000000000001100010001001010000100100000010011000001000000000000010001000001000000001001000000000000010100000000100100010010000000001001000010000000000001100000000000100000000001100100000001000000000000000000101010011101100000000000001010100001000000000000010100101100010000000001001000100010110010010000001100000000000000000000000000101000000000001100000000001000000001000000000000000000000010100010010000000001000000000001001000000100010110001001000000000100010000010000101000000000000010001000100000000000000000000000000001000000000001000000100000001000001000000010010010000100100100000000000101000000000010000001100100000000010001000001001010010000001010100001000000001000000000000000000000000000000000000010011000001100000010100101000000000001000000100011000000000000000101001000100001000000001001010000000010110000000000000001100000100000000000000010000000000001000100010100000010001000001100000100000001000000000110000000011000001010010000010000000001000100000011000001000000100000001000000001000000000000000000000010010001001000100000100010100000000100000000100001000000000101100010010000001100100000000000001010000100000100000010001001000000000010000001000001000000000000000001000000100000001000100100010000000000000000100010000000000001000000000010010000011000001010000010001010000000000000000000000001100000000000010000100001000000011010000000100000000000000010000000000000011000000101000000000000000010001000010010011000000101001010000000000001001000000100000000000001000010010010010001000100100000000010000001000000000101";
+const N_TOTAL = BITS.length;
+const DEG = Math.PI/180, TWO_PI = Math.PI*2;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ----- counts / readout -----
+let ONES=0; for(let i=0;i<N_TOTAL;i++) if(BITS.charCodeAt(i)===49) ONES++;
+const fmt = n => n.toLocaleString('fr-FR');
+document.getElementById('readout').innerHTML =
+  `<b>${fmt(N_TOTAL)}</b> termes — <b>${fmt(ONES)}</b> premiers — densité <b>${(ONES/N_TOTAL*100).toFixed(2).replace('.',',')} %</b>`;
+
+// ----- defaults / state -----
+const DEFAULTS = {
+  layout:'vortex', tours:26, angle:137.50776, points:N_TOTAL, scale:1,
+  depth:0.82, size:1, glow:0.72, rot:0, autospin:false,
+  zeros:false, zop:0.12, palette:'vortex'
+};
+const state = Object.assign({}, DEFAULTS);
+let spin = 0;
+
+// ----- sprites -----
+function radialSprite(S, stops){
+  const c=document.createElement('canvas'); c.width=c.height=S;
+  const g=c.getContext('2d');
+  const grd=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);
+  for(const s of stops) grd.addColorStop(s[0], s[1]);
+  g.fillStyle=grd; g.fillRect(0,0,S,S); return c;
+}
+function makePair(coreRGB, glowRGB){
+  const S=256;
+  const core=radialSprite(S,[[0,'rgba(255,255,255,1)'],[0.16,`rgba(${coreRGB},1)`],[0.5,`rgba(${coreRGB},.32)`],[1,`rgba(${coreRGB},0)`]]);
+  const glow=radialSprite(S,[[0,`rgba(${glowRGB},.55)`],[0.34,`rgba(${glowRGB},.17)`],[1,`rgba(${glowRGB},0)`]]);
+  return {core,glow};
+}
+function hsl2rgb(h,s,l){
+  let r,g,b; const k=n=>(n+h*12)%12; const a=s*Math.min(l,1-l);
+  const f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));
+  r=f(0); g=f(8); b=f(4);
+  return [Math.round(r*255),Math.round(g*255),Math.round(b*255)].join(',');
+}
+const PALETTES = {
+  vortex:['226,237,255','150,210,255'],
+  cyan:['150,236,255','86,200,255'],
+  or:['255,224,160','255,178,86'],
+};
+const SPECTRE_N = 72, spectre=[];
+for(let i=0;i<SPECTRE_N;i++){
+  const h=i/SPECTRE_N; spectre.push(makePair(hsl2rgb(h,.85,.70), hsl2rgb(h,.9,.6)));
+}
+let curPair = makePair(...PALETTES.vortex);
+const zeroSpr = radialSprite(128,[[0,'rgba(150,162,194,.95)'],[0.5,'rgba(150,162,194,.25)'],[1,'rgba(150,162,194,0)']]);
+const magCore = radialSprite(256,[[0,'rgba(255,236,252,1)'],[0.2,'rgba(255,110,235,1)'],[0.55,'rgba(214,92,255,.4)'],[1,'rgba(214,92,255,0)']]);
+const magGlow = radialSprite(256,[[0,'rgba(255,92,224,.6)'],[0.4,'rgba(214,92,255,.18)'],[1,'rgba(214,92,255,0)']]);
+
+function rebuildPalette(){
+  if(state.palette!=='spectre' && PALETTES[state.palette]) curPair=makePair(...PALETTES[state.palette]);
+  requestRender();
+}
+
+// ----- geometry -----
+function sizeFactor(nr){
+  const f = 0.16 + 0.84*nr;
+  return (1-state.depth)*0.55 + state.depth*f;
+}
+function point(i, n, size, rot){
+  const cx=size/2, cy=size/2;
+  const Rmax=size*0.455*state.scale;
+  let r, a;
+  if(state.layout==='vortex'){
+    const dth = (state.tours*TWO_PI)/Math.max(1,n-1);
+    r = Rmax*(i/Math.max(1,n-1)); a = i*dth + rot;
+  } else if(state.layout==='sacks'){
+    const ii=i+1; r=Rmax*Math.sqrt(ii/n); a=TWO_PI*Math.sqrt(ii)+rot;
+  } else {
+    const ii=i+1; r=Rmax*Math.sqrt(ii/n); a=i*state.angle*DEG + rot;
+  }
+  return [cx+r*Math.cos(a), cy+r*Math.sin(a), Rmax>0? r/Rmax : 0];
+}
+
+// ----- render -----
+const canvas=document.getElementById('art'), ctx=canvas.getContext('2d');
+let SIZE=0;
+
+function render(g, size){
+  const cx=size/2, cy=size/2;
+  // background
+  let bg=g.createRadialGradient(cx,cy,0,cx,cy,size*0.72);
+  bg.addColorStop(0,'#0c1018'); bg.addColorStop(1,'#05060b');
+  g.fillStyle=bg; g.fillRect(0,0,size,size);
+
+  const n=state.points;
+  const baseDot=size*0.0135;
+  const rot=(state.rot+spin)*DEG;
+
+  // non-primes (faint scaffold)
+  if(state.zeros){
+    g.globalCompositeOperation='source-over';
+    g.globalAlpha=state.zop;
+    for(let i=0;i<n;i++){
+      if(BITS.charCodeAt(i)===49) continue;
+      const p=point(i,n,size,rot); const ds=baseDot*sizeFactor(p[2])*0.55;
+      g.drawImage(zeroSpr, p[0]-ds/2, p[1]-ds/2, ds, ds);
+    }
+  }
+
+  // primes (additive glow)
+  g.globalCompositeOperation='lighter';
+  const spectreMode = state.palette==='spectre';
+  for(let i=0;i<n;i++){
+    if(BITS.charCodeAt(i)!==49) continue;
+    const p=point(i,n,size,rot), nr=p[2];
+    const ds=baseDot*state.size*sizeFactor(nr);
+    const pair = spectreMode ? spectre[(i*SPECTRE_N/n|0)%SPECTRE_N] : curPair;
+    const gh=ds*3.4;
+    g.globalAlpha=0.42*state.glow;
+    g.drawImage(pair.glow, p[0]-gh/2, p[1]-gh/2, gh, gh);
+    g.globalAlpha=Math.min(1,0.82+0.3*nr);
+    g.drawImage(pair.core, p[0]-ds/2, p[1]-ds/2, ds, ds);
+  }
+
+  // central singularity
+  const gh=size*0.10*(0.55+state.glow*0.7);
+  g.globalAlpha=0.95; g.drawImage(magGlow, cx-gh/2, cy-gh/2, gh, gh);
+  const cs=size*0.02; g.globalAlpha=1; g.drawImage(magCore, cx-cs/2, cy-cs/2, cs, cs);
+
+  // vignette
+  g.globalCompositeOperation='source-over'; g.globalAlpha=1;
+  let v=g.createRadialGradient(cx,cy,size*0.30,cx,cy,size*0.62);
+  v.addColorStop(0,'rgba(2,3,8,0)'); v.addColorStop(1,'rgba(2,3,8,.55)');
+  g.fillStyle=v; g.fillRect(0,0,size,size);
+}
+
+// ----- render loop -----
+let dirty=true;
+function requestRender(){ dirty=true; }
+function loop(){
+  if(state.autospin && !reduce){ spin=(spin+0.06)%360; dirty=true; }
+  if(dirty){ render(ctx, SIZE); dirty=false; }
+  requestAnimationFrame(loop);
+}
+function fit(){
+  const dpr=Math.min(2, window.devicePixelRatio||1);
+  const st=document.querySelector('.stage');
+  const s=Math.max(160, Math.min(st.clientWidth, st.clientHeight));
+  SIZE=Math.round(s*dpr);
+  canvas.width=SIZE; canvas.height=SIZE;
+  canvas.style.width=s+'px'; canvas.style.height=s+'px';
+  requestRender();
+}
+
+// ----- export -----
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+  const S=3000;
+  const off=document.createElement('canvas'); off.width=off.height=S;
+  render(off.getContext('2d'), S);
+  off.toBlob(b=>{
+    const url=URL.createObjectURL(b), a=document.createElement('a');
+    a.href=url; a.download='spirale_premiers.png'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  }, 'image/png');
+});
+
+// ----- wiring -----
+const $=id=>document.getElementById(id);
+function setVar(id,val){ const e=$(id); if(e) e.textContent=val; }
+function syncLabels(){
+  setVar('v-tours', state.tours.toFixed(1).replace('.',',')+' tours');
+  setVar('v-angle', state.angle.toFixed(2).replace('.',',')+'°');
+  setVar('v-points', fmt(state.points));
+  setVar('v-scale', state.scale.toFixed(2).replace('.',','));
+  setVar('v-depth', Math.round(state.depth*100)+' %');
+  setVar('v-size', state.size.toFixed(2).replace('.',','));
+  setVar('v-glow', Math.round(state.glow/1.3*100)+' %');
+  setVar('v-rot', state.rot+'°');
+  setVar('v-zop', Math.round(state.zop*100)+' %');
+}
+function syncLayoutCtls(){
+  $('ctl-tours').classList.toggle('off', state.layout!=='vortex');
+  $('ctl-angle').classList.toggle('off', state.layout!=='rayons');
+}
+function syncChips(){
+  document.querySelectorAll('#palettechips .chip').forEach(c=>c.classList.toggle('on', c.dataset.p===state.palette));
+  document.querySelectorAll('#anglechips .chip').forEach(c=>c.classList.toggle('on', Math.abs(parseFloat(c.dataset.a)-state.angle)<0.01));
+}
+function syncInputs(){
+  $('layout').value=state.layout;
+  $('tours').value=state.tours; $('angle').value=state.angle;
+  $('points').value=state.points; $('scale').value=state.scale;
+  $('depth').value=state.depth; $('size').value=state.size;
+  $('glow').value=state.glow; $('rot').value=state.rot;
+  $('autospin').checked=state.autospin; $('zeros').checked=state.zeros;
+  $('zop').value=state.zop;
+  $('ctl-zop').classList.toggle('off', !state.zeros);
+  syncLayoutCtls(); syncChips(); syncLabels();
+}
+
+function bindRange(id, key, after){
+  $(id).addEventListener('input', e=>{ state[key]=parseFloat(e.target.value); syncLabels(); if(after)after(); requestRender(); });
+}
+bindRange('tours','tours'); bindRange('angle','angle', syncChips);
+bindRange('points','points'); bindRange('scale','scale');
+bindRange('depth','depth'); bindRange('size','size');
+bindRange('glow','glow'); bindRange('rot','rot');
+bindRange('zop','zop');
+
+$('layout').addEventListener('change', e=>{ state.layout=e.target.value; syncLayoutCtls(); requestRender(); });
+$('autospin').addEventListener('change', e=>{ state.autospin=e.target.checked; if(!state.autospin){ spin=0; } requestRender(); });
+$('zeros').addEventListener('change', e=>{ state.zeros=e.target.checked; $('ctl-zop').classList.toggle('off', !state.zeros); requestRender(); });
+
+document.querySelectorAll('#anglechips .chip').forEach(c=>{
+  c.addEventListener('click', ()=>{ state.angle=parseFloat(c.dataset.a); $('angle').value=state.angle; syncChips(); syncLabels(); requestRender(); });
+});
+document.querySelectorAll('#palettechips .chip').forEach(c=>{
+  c.addEventListener('click', ()=>{ state.palette=c.dataset.p; syncChips(); rebuildPalette(); });
+});
+
+$('resetBtn').addEventListener('click', ()=>{ Object.assign(state, DEFAULTS); spin=0; rebuildPalette(); syncInputs(); requestRender(); });
+
+// panel toggle
+const panel=$('panel'), tgl=$('togglePanel');
+tgl.addEventListener('click', ()=>{
+  const hidden=panel.classList.toggle('hidden');
+  tgl.setAttribute('aria-pressed', String(!hidden));
+});
+
+// reduced motion: hide auto-rotation
+if(reduce){ $('spinrow').style.display='none'; }
+
+// init
+window.addEventListener('resize', fit, {passive:true});
+syncInputs(); fit(); requestAnimationFrame(loop);
+</script>
