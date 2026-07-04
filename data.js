@@ -171,16 +171,20 @@ const MATHS = [
     html: "articles/erdos458.html"
   },
   {
-    titre: "Suite $\\tau^{+}(n)$ — Problème d'Erdős #448",
+    titre: "Suite $\\tau^{+}(n)$ — OEIS A397433 (fonction d'Erdős–Ford)",
     tags: ["math.NT", "OEIS"],
-    resume: `Étude de la suite $\\tau^{+}(n)$ associée au problème d'Erdős #448. La suite
-      s'avère <strong>absente de l'OEIS</strong> ; un dossier de soumission complet a été
-      préparé et vérifié.`,
+    resume: `Contribution <strong>publiée à l'OEIS</strong> : la suite <strong>A397433</strong>,
+      qui recense la fonction $\\tau^{+}(n)$ — le nombre de blocs dyadiques $[2^k,2^{k+1})$
+      contenant au moins un diviseur de $n$ (soit le nombre de valeurs distinctes de
+      $\\lfloor\\log_2 d\\rfloor$ quand $d$ parcourt les diviseurs de $n$). Reliée au problème
+      d'Erdős #448 (conjecture $\\tau^{+}(n)<\\varepsilon\\,\\tau(n)$ réfutée par Erdős–Tenenbaum,
+      1981). Publiée après relecture éditoriale, avec b-file de 10 000 termes et programmes
+      vérifiés (PARI, Python, Mathematica).`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    lien: { url: "https://www.erdosproblems.com/448", label: "Problème #448" }
+    lien: { url: "https://oeis.org/A397433", label: "OEIS A397433" }
   },
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
