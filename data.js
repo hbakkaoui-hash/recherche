@@ -142,6 +142,22 @@ const MATHS = [
     html: "articles/primes-hexagonaux.html"
   },
   {
+    titre: "Suite $\\tau^{+}(n)$ — OEIS A397433 (fonction d'Erdős–Ford)",
+    tags: ["math.NT", "OEIS"],
+    resume: `Contribution <strong>publiée à l'OEIS</strong> : la suite <strong>A397433</strong>,
+      qui recense la fonction $\\tau^{+}(n)$ — le nombre de blocs dyadiques $[2^k,2^{k+1})$
+      contenant au moins un diviseur de $n$ (soit le nombre de valeurs distinctes de
+      $\\lfloor\\log_2 d\\rfloor$ quand $d$ parcourt les diviseurs de $n$). Reliée au problème
+      d'Erdős #448 (conjecture $\\tau^{+}(n)<\\varepsilon\\,\\tau(n)$ réfutée par Erdős–Tenenbaum,
+      1981). Publiée après relecture éditoriale, avec b-file de 10 000 termes et programmes
+      vérifiés (PARI, Python, Mathematica).`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://oeis.org/A397433", label: "OEIS A397433" }
+  },
+  {
     titre: "Spirales de premiers — visualisation interactive",
     tags: ["Visualisation", "Interactif"],
     resume: `Une visualisation interactive des <strong>familles paramétriques de nombres
@@ -169,22 +185,6 @@ const MATHS = [
     zenodo: null,
     arxiv: null,
     html: "articles/erdos458.html"
-  },
-  {
-    titre: "Suite $\\tau^{+}(n)$ — OEIS A397433 (fonction d'Erdős–Ford)",
-    tags: ["math.NT", "OEIS"],
-    resume: `Contribution <strong>publiée à l'OEIS</strong> : la suite <strong>A397433</strong>,
-      qui recense la fonction $\\tau^{+}(n)$ — le nombre de blocs dyadiques $[2^k,2^{k+1})$
-      contenant au moins un diviseur de $n$ (soit le nombre de valeurs distinctes de
-      $\\lfloor\\log_2 d\\rfloor$ quand $d$ parcourt les diviseurs de $n$). Reliée au problème
-      d'Erdős #448 (conjecture $\\tau^{+}(n)<\\varepsilon\\,\\tau(n)$ réfutée par Erdős–Tenenbaum,
-      1981). Publiée après relecture éditoriale, avec b-file de 10 000 termes et programmes
-      vérifiés (PARI, Python, Mathematica).`,
-    pdfFR: null,
-    pdfEN: null,
-    zenodo: null,
-    arxiv: null,
-    lien: { url: "https://oeis.org/A397433", label: "OEIS A397433" }
   },
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
