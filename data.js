@@ -174,20 +174,19 @@ const MATHS = [
     html: "spirale-premiers.html"
   },
   {
-    titre: "Familles hexagonales de premiers — visualisation interactive",
+    titre: "Familles polygonales de premiers — explorateur interactif",
     tags: ["Visualisation", "Interactif"],
-    resume: `Une carte interactive des premiers sur le <strong>réseau hexagonal centré</strong>
-      ($3n^2+3n+1=(n+1)^3-n^3$) : chaque premier $p$ est coloré selon sa décomposition
-      canonique $p=3n(n+1)+\\varepsilon+6q$ (à $|q|$ minimal). Les premiers se répartissent le
-      long des 6 diagonales et des couches concentriques ; isoler une famille
-      $(\\varepsilon,q)$ met en évidence sa géométrie propre et la symétrie d'ordre 6 du réseau.
-      Réglez le nombre d'étages, activez le réseau triangulé, les diagonales ou le remplissage
-      — avec export PNG.`,
+    resume: `Explorateur qui <strong>généralise à tout paramètre $k$</strong> : les entiers se
+      rangent en <strong>polygones centrés à $2k$ côtés</strong> (le cas $k=3$ redonne le
+      réseau hexagonal), et les premiers $p=k\\,n(n+1)+\\varepsilon+2kq$ sont coloriés selon
+      leur décomposition canonique $(m,\\varepsilon,q)$ à $|q|$ minimal — généralisation de
+      $p\\equiv\\pm1\\pmod{2k}$. Choisissez $k$, le nombre d'étages, isolez chaque famille
+      $(\\varepsilon,q)$ ; sous 6 étages chaque point affiche son numéro — avec export PNG.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    html: "hexagones-premiers.html"
+    html: "polygones-premiers.html"
   },
   {
     titre: "Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$",

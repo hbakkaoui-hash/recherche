@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Familles polygonales de premiers</title>
+<style>
+  :root{
+    --bg0:#0a0c12; --bg1:#05060b;
+    --panel:rgba(11,13,21,.82); --panel-solid:#0b0d15;
+    --line:#1b2030; --line2:#272d40;
+    --txt:#e8eaf3; --muted:#8a90a6; --muted2:#5b6178;
+    --accent:#d65cff; --accent2:#7fe9ff; --focus:#9b6cff; --white:#f1f4ff;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:#04050a;color:var(--txt);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 120% at 50% 45%, #0a0d15 0%, #05060b 70%, #03040800 100%);}
+  canvas#fig{display:block;touch-action:none}
+
+  .ident{position:fixed;top:18px;left:20px;z-index:9;pointer-events:none;max-width:min(60vw,460px)}
+  .ident .kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ident h1{margin:.18em 0 .3em;font-size:19px;font-weight:650;color:#f3f4fb}
+  .ident .sub{font-family:var(--mono);font-size:11.5px;color:var(--accent2);opacity:.92}
+  .ident .read{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:.3em}
+  .ident .read b{color:#cfd3e6}
+  .site-back{display:inline-block;margin-bottom:.55rem;color:var(--muted);font:600 12px/1 var(--sans);text-decoration:none;letter-spacing:.3px;transition:color .2s;pointer-events:auto}
+  .site-back:hover{color:var(--accent2)}
+
+  .toolbar{position:fixed;top:16px;right:18px;z-index:7;display:flex;gap:8px}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:#dfe2ef;background:var(--panel);
+    border:1px solid var(--line2);padding:9px 13px;border-radius:10px;cursor:pointer;backdrop-filter:blur(8px);
+    transition:border-color .15s,background .15s,color .15s}
+  .btn:hover{border-color:var(--accent2);color:#fff}
+  .btn.primary{border-color:#3a2b4d;color:#f6e7ff;background:rgba(40,22,55,.7)}
+  .btn.primary:hover{border-color:var(--accent)}
+  .btn:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+  .panel{position:fixed;top:60px;right:18px;z-index:6;width:326px;max-height:calc(100vh - 80px);overflow-y:auto;
+    background:var(--panel);border:1px solid var(--line2);border-radius:16px;backdrop-filter:blur(12px);
+    padding:6px 0 4px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+    transform:translateX(0);transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .2s;
+    scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+  .panel.hidden{transform:translateX(118%);opacity:0;pointer-events:none}
+  .panel::-webkit-scrollbar{width:8px}.panel::-webkit-scrollbar-thumb{background:var(--line2);border-radius:8px}
+
+  .sec{padding:14px 16px;border-top:1px solid var(--line)}
+  .sec:first-of-type{border-top:0}
+  .sec h2{margin:0 0 12px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted2);font-weight:700}
+  .row{margin:11px 0}.row:first-child{margin-top:0}.row:last-child{margin-bottom:0}
+  .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .lab span{font-size:12.5px;color:#c6cadb}
+  .lab var{font-family:var(--mono);font-size:11.5px;color:var(--accent2);font-style:normal}
+  input[type=range]{width:100%;accent-color:var(--accent2);height:18px;cursor:pointer}
+  .toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;margin:7px 0}
+  .toggle input{width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+  .toggle span{font-size:12.5px;color:#c6cadb}
+
+  .fhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .mini{font-family:var(--mono);font-size:10.5px;color:var(--muted);cursor:pointer;border:1px solid var(--line2);
+    border-radius:7px;padding:3px 7px;background:var(--panel-solid)}
+  .mini:hover{border-color:var(--accent2);color:#fff}
+  .fam{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .chip{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:9px;border:1px solid var(--line2);
+    background:var(--panel-solid);cursor:pointer;transition:opacity .12s,background .12s}
+  .chip .sw{width:12px;height:12px;border-radius:3px;flex:none;box-shadow:0 0 6px currentColor}
+  .chip .tx{font-family:var(--mono);font-size:11px;color:#d3d7e6;line-height:1.1}
+  .chip .ct{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:auto}
+  .chip.off{opacity:.34}.chip.off .tx{text-decoration:line-through}
+
+  .footer{padding:12px 16px 14px;border-top:1px solid var(--line);display:flex;gap:8px}
+  .footer .btn{flex:1;text-align:center}
+  .note{font-family:var(--mono);font-size:10.5px;color:var(--muted2);line-height:1.5;padding:0 16px 12px}
+
+  @media (max-width:680px){
+    .ident{max-width:calc(100vw - 130px)}
+    .panel{top:auto;bottom:0;right:0;left:0;width:auto;border-radius:18px 18px 0 0;max-height:64vh}
+    .panel.hidden{transform:translateY(108%)}
+  }
+</style>
+
+<div class="stage"><canvas id="fig"></canvas></div>
+
+<div class="ident">
+  <a class="site-back" href="index.html">← Retour au site</a>
+  <div class="kicker">Nombres polygonaux centrés</div>
+  <h1>Familles polygonales de premiers</h1>
+  <div class="sub">p = k·n(n+1) + ε + 2kq · polygone à 2k côtés · 1 au centre</div>
+  <div class="read" id="readout"></div>
+</div>
+
+<div class="toolbar">
+  <button class="btn" id="togglePanel" aria-pressed="true">Réglages</button>
+  <button class="btn primary" id="exportBtn">Exporter PNG</button>
+</div>
+
+<aside class="panel" id="panel" aria-label="Réglages">
+  <div class="sec">
+    <h2>Polygone</h2>
+    <div class="row">
+      <div class="lab"><span>Paramètre k</span><var id="v-k"></var></div>
+      <input type="range" id="k" min="2" max="50" step="1">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Nombre d'étages</span><var id="v-etages"></var></div>
+      <input type="range" id="etages" min="1" max="100" step="1">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Taille des points</span><var id="v-size"></var></div>
+      <input type="range" id="size" min="0.5" max="2.2" step="0.01">
+    </div>
+    <label class="toggle"><input type="checkbox" id="rings"><span>Anneaux polygonaux</span></label>
+    <label class="toggle"><input type="checkbox" id="spokes"><span>Rayons (2k)</span></label>
+    <label class="toggle"><input type="checkbox" id="others"><span>Points ordinaires (blancs)</span></label>
+  </div>
+
+  <div class="sec">
+    <div class="fhead"><h2 style="margin:0">Familles (ε, q)</h2><span class="mini" id="allToggle">Tout / Rien</span></div>
+    <div class="fam" id="famGrid"></div>
+  </div>
+
+  <div class="note">Sous 6 étages, chaque point affiche son numéro (si k n'est pas trop grand
+    pour qu'ils restent lisibles). Couleur = décomposition canonique (m, ε, q), |q| minimal.
+    Seuls les premiers ≡ ±1 (mod 2k) sont coloriés.</div>
+
+  <div class="footer"><button class="btn" id="resetBtn">Réinitialiser</button></div>
+</aside>
+
+<script>
+// ---------- arithmétique ----------
+function isPrime(n){ if(n<2) return false; if(n%2===0) return n===2; if(n%3===0) return n===3;
+  for(let i=5;i*i<=n;i+=6){ if(n%i===0||n%(i+2)===0) return false; } return true; }
+function canonK(p,k){
+  const s=2*k; const r=((p%s)+s)%s; let e;
+  if(r===1) e=1; else if(r===s-1) e=-1; else return null;
+  const t=p-e; const m0=Math.round((-1+Math.sqrt(1+4*t/k))/2); let b=null;
+  for(let m=Math.max(1,m0-2);m<=m0+2;m++){ const num=t-k*m*(m+1); if(num%s!==0) continue; const q=num/s;
+    if(b===null||Math.abs(q)<Math.abs(b.q)||(Math.abs(q)===Math.abs(b.q)&&q>b.q)) b={m,q}; }
+  return b?{eps:e,q:b.q,m:b.m}:null;
+}
+
+// ---------- familles (couleur par (ε,q), indépendante de k) ----------
+const FAM=[
+  {eps:+1,q:0, color:'#F87171'}, {eps:-1,q:0, color:'#4ADE80'},
+  {eps:+1,q:+1,color:'#60A5FA'}, {eps:-1,q:+1,color:'#FB923C'},
+  {eps:+1,q:-1,color:'#A78BFA'}, {eps:-1,q:-1,color:'#22D3EE'},
+  {eps:+1,q:+2,color:'#F472B6'}, {eps:-1,q:+2,color:'#A3E635'},
+  {eps:+1,q:-2,color:'#FCD34D'}, {eps:-1,q:-2,color:'#E879F9'},
+];
+const keyf=(e,q)=>e+'|'+q;
+function famLabel(e,q){ return 'ε='+(e>0?'+1':'−1')+', q='+((q>0?'+':'')+q); }
+
+// ---------- état ----------
+// N max par k : garde les points visibles (espacement ≳ 1,4 px) et le rendu fluide
+function nMax(k){ return Math.max(1, Math.min(100, Math.floor(1600/k))); }
+const DEFAULTS={k:3,N:4,size:1,rings:true,spokes:true,others:true};
+const state=Object.assign({},DEFAULTS);
+const enabled={}; FAM.forEach(f=>enabled[keyf(f.eps,f.q)]=true);
+
+// ---------- données (cache par k_N) ----------
+const cache={};
+function ensureData(k,N){
+  const ck=k+'_'+N; if(cache[ck]) return cache[ck];
+  const s=2*k, rot=Math.PI/2+Math.PI/s;
+  const pos=[[0,0]];
+  for(let m=1;m<=N;m++){
+    for(let e=0;e<s;e++){
+      const aA=2*Math.PI*e/s+rot, aB=2*Math.PI*(e+1)/s+rot;
+      const Ax=m*Math.cos(aA),Ay=m*Math.sin(aA),Bx=m*Math.cos(aB),By=m*Math.sin(aB);
+      for(let t=0;t<m;t++){ const f=t/m; pos.push([Ax+(Bx-Ax)*f, Ay+(By-Ay)*f]); }
+    }
+  }
+  const total=pos.length;
+  const lists={}, counts={}; FAM.forEach(f=>{lists[keyf(f.eps,f.q)]=[];counts[keyf(f.eps,f.q)]=0;});
+  const others=[]; const famOf=new Array(total).fill(null);
+  for(let i=1;i<total;i++){ const p=i+1; let placed=false;
+    if(isPrime(p)){ const c=canonK(p,k);
+      if(c&&Math.abs(c.q)<=2){ const kk=keyf(c.eps,c.q); lists[kk].push(i); counts[kk]++; famOf[i]={key:kk,color:famColor(kk)}; placed=true; } }
+    if(!placed) others.push(i);
+  }
+  const rings=[];
+  for(let m=1;m<=N;m++){ const vs=[]; for(let e=0;e<s;e++){ const a=2*Math.PI*e/s+rot; vs.push([m*Math.cos(a),m*Math.sin(a)]); } rings.push(vs); }
+  return cache[ck]={s,pos,total,lists,counts,others,famOf,rings,spacingWorld:2*Math.sin(Math.PI/s),maxDist:N};
+}
+function famColor(kk){ const f=FAM.find(f=>keyf(f.eps,f.q)===kk); return f?f.color:'#fff'; }
+
+// ---------- rendu ----------
+const canvas=document.getElementById('fig'), ctx=canvas.getContext('2d');
+let SIZE=0;
+function getVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+function draw(g,size){
+  const cx=size/2,cy=size/2;
+  g.globalCompositeOperation='source-over';
+  let bg=g.createRadialGradient(cx,cy,0,cx,cy,size*0.72); bg.addColorStop(0,'#0a0d15'); bg.addColorStop(1,'#05060b');
+  g.fillStyle=bg; g.fillRect(0,0,size,size);
+
+  const d=ensureData(state.k,state.N);
+  const scale=(size*0.45)/d.maxDist;
+  const X=p=>cx+p[0]*scale, Y=p=>cy-p[1]*scale;
+  const spacingPx=Math.min(d.spacingWorld,1)*scale;
+
+  // guides
+  if(state.rings){
+    g.lineWidth=Math.max(.4, scale*0.03); g.strokeStyle='rgba(255,255,255,0.10)';
+    for(const vs of d.rings){ g.beginPath(); vs.forEach((v,i)=>{const x=X(v),y=Y(v); i?g.lineTo(x,y):g.moveTo(x,y);}); g.closePath(); g.stroke(); }
+  }
+  if(state.spokes){
+    g.lineWidth=1.0; g.strokeStyle='rgba(255,255,255,0.16)'; g.setLineDash([6,5]);
+    const outer=d.rings[d.rings.length-1]||[];
+    for(const v of outer){ g.beginPath(); g.moveTo(cx,cy); g.lineTo(X([v[0]*1.08,v[1]*1.08]),Y([v[0]*1.08,v[1]*1.08])); g.stroke(); }
+    g.setLineDash([]);
+  }
+
+  const labelMode=(state.N<6)&&(spacingPx>=16)&&(d.total<=200);
+  if(labelMode) drawLabeled(g,d,X,Y,spacingPx);
+  else drawDots(g,d,X,Y,scale,spacingPx);
+
+  let v=g.createRadialGradient(cx,cy,size*0.32,cx,cy,size*0.62); v.addColorStop(0,'rgba(2,3,8,0)'); v.addColorStop(1,'rgba(2,3,8,.5)');
+  g.fillStyle=v; g.fillRect(0,0,size,size);
+}
+
+function drawDots(g,d,X,Y,scale,spacingPx){
+  const whiteR=Math.max(0.6, Math.min(spacingPx*0.28, scale*0.13)*state.size);
+  const colR  =Math.max(1.3, Math.min(spacingPx*0.45, scale*0.21)*state.size);
+  const moatR = colR*1.55;
+  const BG='#05060b';
+  // white field : very faint glow + crisp core (attenuated so it recedes)
+  if(state.others){
+    g.globalCompositeOperation='lighter'; g.fillStyle='rgba(150,180,255,0.06)'; const gR=whiteR*2.0; g.beginPath();
+    for(const i of d.others){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+gR,y); g.arc(x,y,gR,0,6.2832);} g.fill();
+    g.globalCompositeOperation='source-over'; g.fillStyle=getVar('--white'); g.beginPath();
+    for(const i of d.others){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+whiteR,y); g.arc(x,y,whiteR,0,6.2832);} g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  // pass 1 : dark "moat" under every enabled colored point (clears the surrounding white)
+  g.fillStyle=BG; g.beginPath();
+  for(const f of FAM){ const kk=keyf(f.eps,f.q); if(!enabled[kk]) continue;
+    for(const i of d.lists[kk]){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+moatR,y); g.arc(x,y,moatR,0,6.2832);} }
+  g.fill();
+  // pass 2 : colored cores on top (never clobbered by moats)
+  for(const f of FAM){ const kk=keyf(f.eps,f.q); if(!enabled[kk]) continue; const idx=d.lists[kk]; if(!idx.length) continue;
+    g.beginPath(); for(const i of idx){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+colR,y); g.arc(x,y,colR,0,6.2832);}
+    g.fillStyle=f.color; g.fill();
+  }
+  // center : moat + subtle magenta glow + core
+  const x0=X(d.pos[0]),y0=Y(d.pos[0]);
+  g.fillStyle=BG; g.beginPath(); g.arc(x0,y0,moatR*1.15,0,6.2832); g.fill();
+  g.globalCompositeOperation='lighter'; g.fillStyle='rgba(214,92,255,0.35)'; const cg=Math.max(5,colR*2.4);
+  g.beginPath(); g.moveTo(x0+cg,y0); g.arc(x0,y0,cg,0,6.2832); g.fill();
+  g.globalCompositeOperation='source-over'; g.fillStyle='#ff6ee0'; g.beginPath(); g.arc(x0,y0,Math.max(2,colR*1.15),0,6.2832); g.fill();
+}
+
+function drawLabeled(g,d,X,Y,spacingPx){
+  const tokenR=spacingPx*0.46; const font=Math.max(6,tokenR*0.95);
+  g.textAlign='center'; g.textBaseline='middle';
+  for(let i=0;i<d.total;i++){
+    let fill;
+    if(i===0) fill='#ff6ee0';
+    else if(d.famOf[i]){ if(!enabled[d.famOf[i].key]) continue; fill=d.famOf[i].color; }
+    else { if(!state.others) continue; fill=getVar('--white'); }
+    const x=X(d.pos[i]),y=Y(d.pos[i]);
+    g.beginPath(); g.arc(x,y,tokenR,0,6.2832); g.fillStyle=fill; g.fill();
+    g.fillStyle='#0b0d15'; g.font='700 '+font+'px ui-monospace, Menlo, monospace';
+    g.fillText(String(i+1), x, y+0.5);
+  }
+}
+
+// ---------- fit + readout ----------
+function fit(){ const dpr=Math.min(2,window.devicePixelRatio||1); const st=document.querySelector('.stage');
+  const s=Math.max(160,Math.min(st.clientWidth,st.clientHeight)); SIZE=Math.round(s*dpr);
+  canvas.width=SIZE; canvas.height=SIZE; canvas.style.width=s+'px'; canvas.style.height=s+'px'; draw(ctx,SIZE); }
+function updateReadout(){ const d=ensureData(state.k,state.N);
+  document.getElementById('readout').innerHTML=
+    `k=<b>${state.k}</b> · <b>${d.s}</b> côtés · <b>${state.N}</b> étages · <b>${d.total.toLocaleString('fr-FR')}</b> points`; }
+
+// ---------- UI familles ----------
+const famGrid=document.getElementById('famGrid');
+FAM.forEach(f=>{ const kk=keyf(f.eps,f.q); const el=document.createElement('div'); el.className='chip'; el.dataset.k=kk;
+  el.innerHTML=`<span class="sw" style="background:${f.color}"></span><span class="tx">${famLabel(f.eps,f.q)}</span><span class="ct" id="ct-${kk}"></span>`;
+  el.addEventListener('click',()=>{ enabled[kk]=!enabled[kk]; el.classList.toggle('off',!enabled[kk]); draw(ctx,SIZE); });
+  famGrid.appendChild(el); });
+function updateCounts(){ const d=ensureData(state.k,state.N);
+  FAM.forEach(f=>{ const kk=keyf(f.eps,f.q); const e=document.getElementById('ct-'+kk); if(e) e.textContent=d.counts[kk]; }); }
+
+// ---------- wiring ----------
+const $=id=>document.getElementById(id);
+function labels(){ $('v-k').textContent=state.k+'  ('+(2*state.k)+' côtés)'; $('v-etages').textContent=state.N;
+  $('v-size').textContent=state.size.toFixed(2).replace('.',','); }
+function clampN(){ const mx=nMax(state.k); if(state.N>mx) state.N=mx; $('etages').max=mx; $('etages').value=state.N; }
+function syncInputs(){ $('k').value=state.k; clampN(); $('size').value=state.size;
+  $('rings').checked=state.rings; $('spokes').checked=state.spokes; $('others').checked=state.others;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',!enabled[c.dataset.k])); labels(); }
+
+$('k').addEventListener('input',e=>{ state.k=+e.target.value; clampN(); labels(); updateReadout(); updateCounts(); draw(ctx,SIZE); });
+$('etages').addEventListener('input',e=>{ state.N=+e.target.value; labels(); updateReadout(); updateCounts(); draw(ctx,SIZE); });
+$('size').addEventListener('input',e=>{ state.size=+e.target.value; labels(); draw(ctx,SIZE); });
+['rings','spokes','others'].forEach(id=>$(id).addEventListener('change',e=>{ state[id]=e.target.checked; draw(ctx,SIZE); }));
+$('allToggle').addEventListener('click',()=>{ const on=Object.values(enabled).some(v=>v); const nv=!on;
+  FAM.forEach(f=>enabled[keyf(f.eps,f.q)]=nv); document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',!nv)); draw(ctx,SIZE); });
+$('resetBtn').addEventListener('click',()=>{ Object.assign(state,DEFAULTS); FAM.forEach(f=>enabled[keyf(f.eps,f.q)]=true);
+  syncInputs(); updateReadout(); updateCounts(); draw(ctx,SIZE); });
+
+const panel=$('panel'), tgl=$('togglePanel');
+tgl.addEventListener('click',()=>{ const h=panel.classList.toggle('hidden'); tgl.setAttribute('aria-pressed',String(!h)); });
+
+$('exportBtn').addEventListener('click',()=>{ const T=2600; const off=document.createElement('canvas'); off.width=off.height=T;
+  const octx=off.getContext('2d'); octx.fillStyle='#05060b'; octx.fillRect(0,0,T,T); draw(octx,T);
+  off.toBlob(b=>{ const u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u; a.download='familles_k'+state.k+'_n'+state.N+'.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(u),1000); },'image/png'); });
+
+// init
+window.addEventListener('resize',fit,{passive:true});
+syncInputs(); updateReadout(); updateCounts(); fit();
+</script>
