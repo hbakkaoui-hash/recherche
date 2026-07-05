@@ -171,6 +171,20 @@ const MATHS = [
     html: "spirale-premiers.html"
   },
   {
+    titre: "Familles hexagonales de premiers — visualisation interactive",
+    tags: ["Visualisation", "Interactif"],
+    resume: `Une carte interactive des premiers sur le <strong>réseau hexagonal centré</strong> :
+      chaque premier $p$ est coloré selon sa décomposition canonique
+      $p=3n(n+1)+\\varepsilon+6q$ (à $|q|$ minimal). Réglez le nombre d'étages, activez le
+      réseau triangulé, les 6 diagonales ou le remplissage, et isolez chaque famille
+      $(\\varepsilon,q)$ — avec export PNG.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    html: "hexagones-premiers.html"
+  },
+  {
     titre: "Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$",
     tags: ["math.NT"],
     resume: `Erdős et Graham demandent si $[1,\\ldots,p_{k+1}-1] < p_k\\,[1,\\ldots,p_k]$

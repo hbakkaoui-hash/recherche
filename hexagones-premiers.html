@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Familles hexagonales de premiers</title>
+<style>
+  :root{
+    --bg0:#0a0c12; --bg1:#05060b;
+    --panel:rgba(11,13,21,.82); --panel-solid:#0b0d15;
+    --line:#1b2030; --line2:#272d40;
+    --txt:#e8eaf3; --muted:#8a90a6; --muted2:#5b6178;
+    --accent:#d65cff; --accent2:#7fe9ff; --focus:#9b6cff;
+    --grid:#ffffff; --spoke:#ffffff; --white:#f1f4ff;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:#04050a;color:var(--txt);font-family:var(--sans);
+    overflow:hidden;-webkit-font-smoothing:antialiased}
+  .stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 120% at 50% 45%, #0a0d15 0%, #05060b 70%, #03040800 100%);}
+  canvas#fig{display:block;touch-action:none}
+
+  .ident{position:fixed;top:18px;left:20px;z-index:5;pointer-events:none;max-width:min(60vw,440px)}
+  .ident .kicker{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .ident h1{margin:.18em 0 .3em;font-size:19px;font-weight:650;color:#f3f4fb}
+  .ident .sub{font-family:var(--mono);font-size:11.5px;color:var(--accent2);opacity:.92}
+  .ident .read{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:.3em}
+  .ident .read b{color:#cfd3e6}
+  .site-back{display:inline-block;margin-bottom:.55rem;color:var(--muted);font:600 12px/1 var(--sans);text-decoration:none;letter-spacing:.3px;transition:color .2s;pointer-events:auto}
+  .site-back:hover{color:var(--accent2)}
+
+  .toolbar{position:fixed;top:16px;right:18px;z-index:7;display:flex;gap:8px}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:#dfe2ef;
+    background:var(--panel);border:1px solid var(--line2);padding:9px 13px;border-radius:10px;
+    cursor:pointer;backdrop-filter:blur(8px);transition:border-color .15s,background .15s,color .15s}
+  .btn:hover{border-color:var(--accent2);color:#fff}
+  .btn.primary{border-color:#3a2b4d;color:#f6e7ff;background:rgba(40,22,55,.7)}
+  .btn.primary:hover{border-color:var(--accent)}
+  .btn:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+  .panel{position:fixed;top:60px;right:18px;z-index:6;width:326px;
+    max-height:calc(100vh - 80px);overflow-y:auto;background:var(--panel);
+    border:1px solid var(--line2);border-radius:16px;backdrop-filter:blur(12px);
+    padding:6px 0 4px;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+    transform:translateX(0);transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .2s;
+    scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+  .panel.hidden{transform:translateX(118%);opacity:0;pointer-events:none}
+  .panel::-webkit-scrollbar{width:8px}.panel::-webkit-scrollbar-thumb{background:var(--line2);border-radius:8px}
+
+  .sec{padding:14px 16px;border-top:1px solid var(--line)}
+  .sec:first-of-type{border-top:0}
+  .sec h2{margin:0 0 12px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--muted2);font-weight:700}
+  .row{margin:11px 0}.row:first-child{margin-top:0}.row:last-child{margin-bottom:0}
+  .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .lab span{font-size:12.5px;color:#c6cadb}
+  .lab var{font-family:var(--mono);font-size:11.5px;color:var(--accent2);font-style:normal}
+  input[type=range]{width:100%;accent-color:var(--accent2);height:18px;cursor:pointer}
+  .toggle{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;margin:7px 0}
+  .toggle input{width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+  .toggle span{font-size:12.5px;color:#c6cadb}
+
+  .fhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .mini{font-family:var(--mono);font-size:10.5px;color:var(--muted);cursor:pointer;
+    border:1px solid var(--line2);border-radius:7px;padding:3px 7px;background:var(--panel-solid)}
+  .mini:hover{border-color:var(--accent2);color:#fff}
+  .fam{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .chip{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:9px;
+    border:1px solid var(--line2);background:var(--panel-solid);cursor:pointer;transition:opacity .12s,background .12s}
+  .chip .sw{width:12px;height:12px;border-radius:3px;flex:none;box-shadow:0 0 6px currentColor}
+  .chip .tx{font-family:var(--mono);font-size:11px;color:#d3d7e6;line-height:1.1}
+  .chip .ct{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:auto}
+  .chip.off{opacity:.34}
+  .chip.off .tx{text-decoration:line-through}
+
+  .footer{padding:12px 16px 14px;border-top:1px solid var(--line);display:flex;gap:8px}
+  .footer .btn{flex:1;text-align:center}
+  .note{font-family:var(--mono);font-size:10.5px;color:var(--muted2);line-height:1.5;padding:0 16px 12px}
+
+  @media (max-width:680px){
+    .ident{max-width:calc(100vw - 130px)}
+    .panel{top:auto;bottom:0;right:0;left:0;width:auto;border-radius:18px 18px 0 0;max-height:64vh}
+    .panel.hidden{transform:translateY(108%)}
+  }
+</style>
+
+<div class="stage"><canvas id="fig"></canvas></div>
+
+<div class="ident">
+  <a class="site-back" href="index.html">← Retour au site</a>
+  <div class="kicker">Nombres hexagonaux centrés</div>
+  <h1>Familles hexagonales de premiers</h1>
+  <div class="sub">p = 3·n(n+1) + ε + 6q · k=3 · 1 au centre</div>
+  <div class="read" id="readout"></div>
+</div>
+
+<div class="toolbar">
+  <button class="btn" id="togglePanel" aria-pressed="true">Réglages</button>
+  <button class="btn primary" id="exportBtn">Exporter PNG</button>
+</div>
+
+<aside class="panel" id="panel" aria-label="Réglages">
+  <div class="sec">
+    <h2>Figure</h2>
+    <div class="row">
+      <div class="lab"><span>Nombre d'étages</span><var id="v-etages"></var></div>
+      <input type="range" id="etages" min="1" max="100" step="1">
+    </div>
+    <div class="row">
+      <div class="lab"><span>Taille des points</span><var id="v-size"></var></div>
+      <input type="range" id="size" min="0.5" max="2.2" step="0.01">
+    </div>
+    <label class="toggle"><input type="checkbox" id="grid"><span>Réseau triangulé</span></label>
+    <label class="toggle"><input type="checkbox" id="spokes"><span>Diagonales (6 rayons)</span></label>
+    <label class="toggle"><input type="checkbox" id="fill"><span>Remplissage hexagonal</span></label>
+    <label class="toggle"><input type="checkbox" id="others"><span>Points ordinaires (gris)</span></label>
+  </div>
+
+  <div class="sec">
+    <div class="fhead">
+      <h2 style="margin:0">Familles (ε, q)</h2>
+      <span class="mini" id="allToggle">Tout / Rien</span>
+    </div>
+    <div class="fam" id="famGrid"></div>
+  </div>
+
+  <div class="note">Chaque premier est coloré selon sa décomposition canonique
+    (m, ε, q) à |q| minimal. Les premiers avec |q| &gt; 2 restent gris.</div>
+
+  <div class="footer">
+    <button class="btn" id="resetBtn">Réinitialiser</button>
+  </div>
+</aside>
+
+<script>
+// ---------- géométrie hexagonale ----------
+const D=[[1,-1,0],[0,-1,1],[-1,0,1],[-1,1,0],[0,1,-1],[1,0,-1]];
+function spiral(N){
+  const cells=[[0,0,0]];
+  for(let r=1;r<=N;r++){
+    let x=D[4][0]*r,y=D[4][1]*r,z=D[4][2]*r;
+    for(let i=0;i<6;i++) for(let j=0;j<r;j++){
+      cells.push([x,y,z]); x+=D[i][0]; y+=D[i][1]; z+=D[i][2];
+    }
+  }
+  return cells;
+}
+function toPixel(c){ return [Math.sqrt(3)*(c[0]+c[2]/2), 1.5*c[2]]; }
+
+// ---------- arithmétique ----------
+function isPrime(n){
+  if(n<2) return false; if(n%2===0) return n===2; if(n%3===0) return n===3;
+  for(let i=5;i*i<=n;i+=6){ if(n%i===0||n%(i+2)===0) return false; } return true;
+}
+function canon(p){
+  const r=((p%6)+6)%6; let eps;
+  if(r===1) eps=1; else if(r===5) eps=-1; else return null;
+  const target=p-eps;
+  const m0=Math.round((-1+Math.sqrt(1+4*target/3))/2);
+  let best=null;
+  for(let m=m0-2;m<=m0+2;m++){ if(m<1) continue;
+    const diff=target-3*m*(m+1); if(diff%6!==0) continue; const q=diff/6;
+    if(best===null||Math.abs(q)<Math.abs(best.q)||(Math.abs(q)===Math.abs(best.q)&&q>best.q)) best={m,q};
+  }
+  return best?{eps,q:best.q,m:best.m}:null;
+}
+
+// ---------- familles ----------
+const FAM=[
+  {eps:+1,q:0, color:'#F87171'}, {eps:-1,q:0, color:'#4ADE80'},
+  {eps:+1,q:+1,color:'#60A5FA'}, {eps:-1,q:+1,color:'#FB923C'},
+  {eps:+1,q:-1,color:'#A78BFA'}, {eps:-1,q:-1,color:'#22D3EE'},
+  {eps:+1,q:+2,color:'#F472B6'}, {eps:-1,q:+2,color:'#A3E635'},
+  {eps:+1,q:-2,color:'#FCD34D'}, {eps:-1,q:-2,color:'#E879F9'},
+];
+const key=(e,q)=>e+'|'+q;
+function famLabel(e,q){ const es=e>0?'+1':'−1'; const qs=(q>0?'+':'')+q; return 'ε='+es+', q='+qs; }
+
+// ---------- état ----------
+const DEFAULTS={N:6,size:1,grid:true,spokes:true,fill:true,others:true};
+const state=Object.assign({},DEFAULTS);
+const enabled={}; FAM.forEach(f=>enabled[key(f.eps,f.q)]=true);
+
+// ---------- données (cache par N) ----------
+const cache={};
+function ensureData(N){
+  if(cache[N]) return cache[N];
+  const cells=spiral(N);
+  const pos=cells.map(toPixel);
+  const total=cells.length;
+  let maxDist=0; for(const p of pos){ const d=Math.hypot(p[0],p[1]); if(d>maxDist) maxDist=d; }
+  // index map + edges (3 directions to avoid doubles)
+  const map=new Map(); cells.forEach((c,i)=>map.set(c[0]+','+c[1]+','+c[2],i));
+  const edges=[];
+  for(let i=0;i<total;i++){ const c=cells[i];
+    for(let d=0;d<3;d++){ const nb=(c[0]+D[d][0])+','+(c[1]+D[d][1])+','+(c[2]+D[d][2]);
+      const j=map.get(nb); if(j!==undefined) edges.push([i,j]);
+    }
+  }
+  // family assignment + per-key index lists
+  const lists={}; FAM.forEach(f=>lists[key(f.eps,f.q)]=[]);
+  const grayIdx=[]; const counts={}; FAM.forEach(f=>counts[key(f.eps,f.q)]=0);
+  for(let i=1;i<total;i++){ const p=i+1;
+    let placed=false;
+    if(isPrime(p)){ const c=canon(p);
+      if(c&&Math.abs(c.q)<=2){ const k=key(c.eps,c.q); lists[k].push(i); counts[k]++; placed=true; }
+    }
+    if(!placed) grayIdx.push(i);
+  }
+  // corners
+  const corners=D.map(d=>toPixel([N*d[0],N*d[1],N*d[2]]));
+  return cache[N]={cells,pos,total,maxDist,edges,lists,grayIdx,counts,corners};
+}
+
+// ---------- rendu ----------
+const canvas=document.getElementById('fig'), ctx=canvas.getContext('2d');
+let SIZE=0;
+
+function draw(g,size){
+  const cx=size/2, cy=size/2;
+  g.globalCompositeOperation='source-over';
+  // dark background
+  let bg=g.createRadialGradient(cx,cy,0,cx,cy,size*0.72);
+  bg.addColorStop(0,'#0a0d15'); bg.addColorStop(1,'#05060b');
+  g.fillStyle=bg; g.fillRect(0,0,size,size);
+
+  const d=ensureData(state.N);
+  const scale=(size*0.445)/d.maxDist;
+  const X=px=>cx+px[0]*scale, Y=px=>cy-px[1]*scale;   // y up
+  const unit=scale*Math.sqrt(3);
+  const whiteR=Math.max(0.6, unit*0.15*state.size);
+  const colR  =Math.max(1.2, unit*0.33*state.size);
+
+  // hexagon frame (subtle)
+  if(state.fill){
+    g.beginPath();
+    d.corners.forEach((c,i)=>{ const x=X(c),y=Y(c); i?g.lineTo(x,y):g.moveTo(x,y); });
+    g.closePath();
+    g.fillStyle='rgba(255,255,255,0.02)'; g.fill();
+    g.lineWidth=1.3; g.strokeStyle='rgba(255,255,255,0.26)'; g.stroke();
+  }
+  // triangular grid (faint)
+  if(state.grid){
+    g.lineWidth=Math.max(.5, unit*0.04); g.strokeStyle='rgba(255,255,255,0.11)';
+    g.beginPath();
+    for(const [a,b] of d.edges){ g.moveTo(X(d.pos[a]),Y(d.pos[a])); g.lineTo(X(d.pos[b]),Y(d.pos[b])); }
+    g.stroke();
+  }
+  // 6 diagonals
+  if(state.spokes){
+    g.lineWidth=1.2; g.strokeStyle='rgba(255,255,255,0.28)'; g.setLineDash([7,5]);
+    for(const c of d.corners){ const vx=X(c)-cx, vy=Y(c)-cy;
+      g.beginPath(); g.moveTo(cx-1.18*vx,cy-1.18*vy); g.lineTo(cx+1.18*vx,cy+1.18*vy); g.stroke(); }
+    g.setLineDash([]);
+  }
+
+  // white ordinary points : additive glow + crisp core
+  if(state.others){
+    g.globalCompositeOperation='lighter';
+    g.fillStyle='rgba(150,180,255,0.13)';
+    const gR=whiteR*2.2; g.beginPath();
+    for(const i of d.grayIdx){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+gR,y); g.arc(x,y,gR,0,6.2832); }
+    g.fill();
+    g.globalCompositeOperation='source-over';
+    g.fillStyle=getVar('--white'); g.beginPath();
+    for(const i of d.grayIdx){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+whiteR,y); g.arc(x,y,whiteR,0,6.2832); }
+    g.fill();
+  }
+
+  // colored family points : crisp cores + thin outline (no haze)
+  for(const f of FAM){ const k=key(f.eps,f.q); if(!enabled[k]) continue;
+    const idx=d.lists[k]; if(!idx.length) continue;
+    g.globalCompositeOperation='source-over';
+    g.beginPath();
+    for(const i of idx){ const x=X(d.pos[i]),y=Y(d.pos[i]); g.moveTo(x+colR,y); g.arc(x,y,colR,0,6.2832); }
+    g.fillStyle=f.color; g.fill();
+    g.lineWidth=Math.max(.6,colR*0.18); g.strokeStyle='rgba(4,5,10,0.6)'; g.stroke();
+  }
+
+  // center = 1 : magenta singularity
+  const x0=X(d.pos[0]), y0=Y(d.pos[0]);
+  g.globalCompositeOperation='lighter';
+  g.fillStyle='rgba(214,92,255,0.5)';
+  const cg=Math.max(6,colR*3.2); g.beginPath(); g.moveTo(x0+cg,y0); g.arc(x0,y0,cg,0,6.2832); g.fill();
+  g.globalCompositeOperation='source-over';
+  g.fillStyle='#ff6ee0'; g.beginPath(); g.arc(x0,y0,Math.max(2,colR*1.1),0,6.2832); g.fill();
+
+  // vignette
+  let v=g.createRadialGradient(cx,cy,size*0.32,cx,cy,size*0.62);
+  v.addColorStop(0,'rgba(2,3,8,0)'); v.addColorStop(1,'rgba(2,3,8,.5)');
+  g.fillStyle=v; g.fillRect(0,0,size,size);
+}
+
+// helpers to read CSS vars / alpha
+function getVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+function hexA(hex,a){ // hex like #rrggbb -> rgba
+  const h=hex.replace('#',''); const r=parseInt(h.slice(0,2),16),g=parseInt(h.slice(2,4),16),b=parseInt(h.slice(4,6),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function hexRGB(hex){ const h=hex.replace('#',''); return parseInt(h.slice(0,2),16)+','+parseInt(h.slice(2,4),16)+','+parseInt(h.slice(4,6),16); }
+
+// ---------- fit + readout ----------
+function fit(){
+  const dpr=Math.min(2,window.devicePixelRatio||1);
+  const st=document.querySelector('.stage');
+  const s=Math.max(160,Math.min(st.clientWidth,st.clientHeight));
+  SIZE=Math.round(s*dpr);
+  canvas.width=SIZE; canvas.height=SIZE; canvas.style.width=s+'px'; canvas.style.height=s+'px';
+  draw(ctx,SIZE);
+}
+function updateReadout(){
+  const d=ensureData(state.N);
+  document.getElementById('readout').innerHTML=
+    `n = <b>${state.N}</b> étages — <b>${d.total.toLocaleString('fr-FR')}</b> points (H_${state.N})`;
+}
+
+// ---------- UI : familles ----------
+const famGrid=document.getElementById('famGrid');
+FAM.forEach(f=>{
+  const k=key(f.eps,f.q);
+  const el=document.createElement('div'); el.className='chip'; el.dataset.k=k;
+  el.innerHTML=`<span class="sw" style="background:${f.color}"></span>`+
+               `<span class="tx">${famLabel(f.eps,f.q)}</span>`+
+               `<span class="ct" id="ct-${k}"></span>`;
+  el.addEventListener('click',()=>{ enabled[k]=!enabled[k]; el.classList.toggle('off',!enabled[k]); draw(ctx,SIZE); });
+  famGrid.appendChild(el);
+});
+function updateCounts(){
+  const d=ensureData(state.N);
+  FAM.forEach(f=>{ const k=key(f.eps,f.q); const e=document.getElementById('ct-'+k); if(e) e.textContent=d.counts[k]; });
+}
+
+// ---------- UI : wiring ----------
+const $=id=>document.getElementById(id);
+function labels(){
+  $('v-etages').textContent=state.N;
+  $('v-size').textContent=state.size.toFixed(2).replace('.',',');
+}
+function syncInputs(){
+  $('etages').value=state.N; $('size').value=state.size;
+  $('grid').checked=state.grid; $('spokes').checked=state.spokes;
+  $('fill').checked=state.fill; $('others').checked=state.others;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',!enabled[c.dataset.k]));
+  labels();
+}
+$('etages').addEventListener('input',e=>{ state.N=+e.target.value; labels(); updateReadout(); updateCounts(); draw(ctx,SIZE); });
+$('size').addEventListener('input',e=>{ state.size=+e.target.value; labels(); draw(ctx,SIZE); });
+['grid','spokes','fill','others'].forEach(id=>{
+  $(id).addEventListener('change',e=>{ state[id]=e.target.checked; draw(ctx,SIZE); });
+});
+$('allToggle').addEventListener('click',()=>{
+  const anyOn=Object.values(enabled).some(v=>v); const nv=!anyOn;
+  FAM.forEach(f=>enabled[key(f.eps,f.q)]=nv);
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('off',!nv));
+  draw(ctx,SIZE);
+});
+$('resetBtn').addEventListener('click',()=>{
+  Object.assign(state,DEFAULTS); FAM.forEach(f=>enabled[key(f.eps,f.q)]=true);
+  syncInputs(); updateReadout(); updateCounts(); draw(ctx,SIZE);
+});
+
+// panel toggle
+const panel=$('panel'), tgl=$('togglePanel');
+tgl.addEventListener('click',()=>{ const h=panel.classList.toggle('hidden'); tgl.setAttribute('aria-pressed',String(!h)); });
+
+// export
+$('exportBtn').addEventListener('click',()=>{
+  const T=2600; const off=document.createElement('canvas'); off.width=off.height=T;
+  const octx=off.getContext('2d');
+  octx.fillStyle='#05060b'; octx.fillRect(0,0,T,T);
+  draw(octx,T);
+  off.toBlob(b=>{ const u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u; a.download='familles_hexagonales_n'+state.N+'.png'; a.click(); setTimeout(()=>URL.revokeObjectURL(u),1000); },'image/png');
+});
+
+// init
+window.addEventListener('resize',fit,{passive:true});
+syncInputs(); updateReadout(); updateCounts(); fit();
+</script>
