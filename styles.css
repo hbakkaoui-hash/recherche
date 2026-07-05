@@ -119,7 +119,7 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 1.4rem;
-  align-items: start;
+  align-items: stretch;
 }
 .card {
   background: var(--card);
@@ -127,6 +127,8 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   padding: 1.7rem;
   transition: transform 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 .card:hover { transform: translateY(-3px); border-color: #3a4252; }
 
@@ -145,7 +147,7 @@ a { color: inherit; text-decoration: none; }
 .card-title-link .arrow { color: var(--accent); opacity: 0; transition: opacity 0.2s, transform 0.2s; display: inline-block; }
 .card-title-link:hover { color: var(--accent); }
 .card-title-link:hover .arrow { opacity: 1; transform: translateX(3px); }
-.card-resume { color: var(--text-muted); font-size: 0.96rem; }
+.card-resume { color: var(--text-muted); font-size: 0.96rem; flex-grow: 1; }
 
 .card-links {
   display: flex;

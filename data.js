@@ -162,8 +162,11 @@ const MATHS = [
     tags: ["Visualisation", "Interactif"],
     resume: `Une visualisation interactive des <strong>familles paramétriques de nombres
       premiers</strong> $p=k\\,m(m+1)+e+2kq$ (dont la famille hexagonale $p=3m(m+1)+1$).
-      Réglez les paramètres, la palette et la rotation, affichez ou non les non-premiers,
-      et observez la répartition des premiers en spirale — avec export PNG.`,
+      Chaque terme est placé sur une spirale ; les premiers ressortent en points lumineux,
+      révélant la structure et la densité de la famille (par défaut, près de 20 % de premiers
+      sur 10 000 termes). Réglez les paramètres, la palette et la rotation, affichez ou non
+      les non-premiers, et observez la répartition en spirale. Un outil pour <em>donner à
+      voir</em> la géométrie qui sous-tend les papiers arXiv — avec export PNG.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
@@ -173,11 +176,13 @@ const MATHS = [
   {
     titre: "Familles hexagonales de premiers — visualisation interactive",
     tags: ["Visualisation", "Interactif"],
-    resume: `Une carte interactive des premiers sur le <strong>réseau hexagonal centré</strong> :
-      chaque premier $p$ est coloré selon sa décomposition canonique
-      $p=3n(n+1)+\\varepsilon+6q$ (à $|q|$ minimal). Réglez le nombre d'étages, activez le
-      réseau triangulé, les 6 diagonales ou le remplissage, et isolez chaque famille
-      $(\\varepsilon,q)$ — avec export PNG.`,
+    resume: `Une carte interactive des premiers sur le <strong>réseau hexagonal centré</strong>
+      ($3n^2+3n+1=(n+1)^3-n^3$) : chaque premier $p$ est coloré selon sa décomposition
+      canonique $p=3n(n+1)+\\varepsilon+6q$ (à $|q|$ minimal). Les premiers se répartissent le
+      long des 6 diagonales et des couches concentriques ; isoler une famille
+      $(\\varepsilon,q)$ met en évidence sa géométrie propre et la symétrie d'ordre 6 du réseau.
+      Réglez le nombre d'étages, activez le réseau triangulé, les diagonales ou le remplissage
+      — avec export PNG.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
@@ -203,9 +208,12 @@ const MATHS = [
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
     tags: ["Lean 4", "Mathlib"],
-    resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4</strong> au sein du
-      dépôt <em>formal-conjectures</em> de Google DeepMind. Première contribution fusionnée
-      (PR #4274, problème #448).`,
+    resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4</strong> au sein du dépôt
+      <em>formal-conjectures</em> de Google DeepMind. Ces formalisations traduisent l'énoncé
+      d'un problème en un langage <strong>vérifié par ordinateur</strong> (Lean 4 / Mathlib),
+      garantissant sa correction logique ligne à ligne — une étape vers des mathématiques dont
+      chaque déduction est certifiée par la machine. Première contribution fusionnée (PR #4274,
+      problème #448), sur un dépôt qui rassemble de nombreuses conjectures ainsi mises en forme.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
