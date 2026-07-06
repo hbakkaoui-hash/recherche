@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unité 6 — Une origine 5D de la dualité d'échelle · H. Bakkaoui</title>
-<meta name="description" content="Unit 6 — A 5D origin of scale duality: a compactified spacetime scale fifth dimension. Kaluza–Klein reduction. Hassane Bakkaoui.">
-  <link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/unite6.html">
+<title>Unité 6 — Origine 5D de la dualité d'échelle · H. Bakkaoui</title>
+<meta name="description" content="Unité 6 : origine 5D de la dualité d'échelle — une cinquième dimension d'échelle espace-temporelle compactifiée, réduction de Kaluza–Klein, énergie de Casimir. Hassane Bakkaoui.">
+<link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/unite6.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
 <link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="article.css">
+<link rel="stylesheet" href="article.css?v=4">
 <script src="mathjax-setup.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
@@ -25,255 +26,119 @@
     </div>
   </div>
 <div class="center">
-<p><span> PREPRINT    standalone document (hep-th / gr-qc)    June
-2026</span><br />
-</p>
-<p><strong>Unit 6   A 5D origin of scale duality:<br />
-a compactified spacetime scale fifth dimension</strong></p>
-<p><em>What the five-dimensional embedding generates,<br />
-and what it cannot predict</em></p>
+<p><strong>Unité 6 · Origine 5D de la dualité d’échelle :<br />
+une cinquième dimension d’échelle espace-temporelle
+compactifiée</strong></p>
+<p><em>Ce que le plongement à cinq dimensions engendre, et ce qu’il ne
+peut pas prédire</em></p>
 <p><span>Hassane Bakkaoui</span><br />
-<span>Independent researcher    <a
-href="mailto:bakkahassa@hotmail.com">bakkahassa@hotmail.com</a></span></p>
+<span>Chercheur indépendant · <a
+href="mailto:bakkahassa@hotmail.com">bakkahassa@hotmail.com</a> ·
+PRÉPRINT (hep-th / gr-qc) · juin 2026</span></p>
 </div>
-<hr />
-<p>height 0.9pt</p>
-<div class="center">
-<div class="minipage">
-<p><strong>ABSTRACT</strong></p>
-<p><strong>Context.</strong> Units 1–3 treat the scale axes (<span
-class="math inline">\(\psi\)</span> spatial, <span
-class="math inline">\(\chi\)</span> temporal) as <em>internal
-targets</em> of a sigma model — explicitly <em>not</em> spacetime
-dimensions — so as to avoid ghosts and closed timelike curves (result
-F2). <strong>Problem.</strong> We study the <em>opposite</em> choice:
-promoting the scale axis to a genuine fifth spacetime dimension. Two
-questions: does this embedding <em>regenerate</em> the corpus action?
-and does it allow <em>predicting</em> the coupling <span
-class="math inline">\(\beta\)</span> rather than fitting it?
-<strong>Method.</strong> Kaluza–Klein reduction of a warped 5D metric
-along a compact scale circle, with symbolic verification of all the
-tensor algebra, spectral computation of the KK tower, and heat-kernel
-expansion of the deformed operator. <strong>Results.</strong>
-(i) <em>Generative</em> <span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> <span
-style="color: tgnum"><span class="sans-serif">[numerical]</span></span>
-: the KK reduction reproduces the corpus structure — induced non-minimal
-coupling <span class="math inline">\(f(\sigma)=a(\sigma)^2\)</span>,
-trigonometric form <span
-class="math inline">\(f=1+\beta\cos\sigma\)</span> <em>forced</em> by
-compactness, <span class="math inline">\(V\)</span>–<span
-class="math inline">\(f\)</span> locking giving exactly <span
-class="math inline">\(V=\alpha(1-\cos\sigma)\)</span>, and the F2 health
-criterion <em>re-derived</em> (spacelike scale axis <span
-class="math inline">\(\to\)</span> healthy; timelike <span
-class="math inline">\(\to\)</span> ghost); for <span
-class="math inline">\(a=e^{\sigma/\ell}\)</span> the geometry is exactly
-AdS<span class="math inline">\(_5\)</span>, the scale playing the role
-of the holographic / renormalization-group direction, <span
-class="math inline">\(\partial_\sigma\)</span> its dilatation isometry
-and <span class="math inline">\(\sigma\to-\sigma\)</span> a scale mirror
-(cousin of T-duality). The discreteness of the KK tower further provides
-a <em>bridge</em> (candidate, not derived) toward the <span
-class="math inline">\(\tau_0,\varepsilon\)</span> clock of Unit 1.
-(ii) <em>Cost</em> <span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> : the promotion
-<em>reopens</em> the ghost / closed-timelike-curve question that F2
-closed by postulate (closed here by the choice of spatial signature),
-and closing the warp into a loop requires a violation of the null energy
-condition (NEC) in the bulk, localized at the Planck pole <span
-class="math inline">\(P\)</span>. (iii) <em>Conjecture</em> <span
-style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> : this exotic source is
-identified with vacuum Casimir energy — correct tensor structure <span
-class="math inline">\(\mathop{\mathrm{diag}}(1,1,1,1,-4)\)</span>,
-correct sign (violating the NEC) for periodic fields, correct Planckian
-magnitude (self-consistent once <span
-class="math inline">\(\ell\sim\ell_5\)</span>). (iv) <em>Rigorous
-negative</em> <span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> : vacuum energy does
-<em>not</em> predict <span class="math inline">\(\beta\)</span>. The
-third heat-kernel coefficient of the warped operator is non-zero, <span
-class="math inline">\(b_3(\beta)\simeq0.146\,\beta^2\)</span>, so the 5D
-Casimir energy is <em>ultraviolet-divergent</em> at the very order that
-would fix <span class="math inline">\(\beta\)</span>; the value <span
-class="math inline">\(\beta_\star\)</span> depends on the
-renormalization scheme. The corpus <span
-class="math inline">\(\sigma\)</span>-model formulation does not have
-this bulk divergence — a point in its favor.
-<strong>Conclusion.</strong> The 5D embedding is a <em>structural
-origin</em> (generative), not a more predictive replacement; <span
-class="math inline">\(\beta\)</span> remains a coupling constrained by
-the CMB, as in the corpus.</p>
-<p><strong>Keywords:</strong> scale duality; Kaluza–Klein reduction;
-warped extra dimension; AdS<span class="math inline">\(_5\)</span> /
-renormalization direction; induced non-minimal coupling; Casimir energy;
-null energy condition; Seeley–DeWitt coefficients; natural
-inflation.</p>
-<p><strong>PACS:</strong> 04.50.<span class="math inline">\(-\)</span>h,
-11.10.Kk, 04.62.+v, 98.80.Cq. <strong>MSC:</strong> 83E15, 81T20,
-83F05.</p>
-<p><strong>Epistemic status:</strong> <span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> exact algebra / symbolic
-computation    <span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> reproducible integration   
-<span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> plausible, not proven   
-<span style="color: tgheur"><span
-class="sans-serif">[heuristic]</span></span> analogy    <span
-style="color: tgspec"><span
-class="sans-serif">[speculation]</span></span> open    <span
-style="color: tgver"><span class="sans-serif">[to check]</span></span>
-external ref.    <span style="color: tgopen"><span
-class="sans-serif">[open]</span></span> to be established. No conjecture
-is presented as a theorem.</p>
-</div>
-</div>
-<hr />
-<p>height 0.4pt</p>
-<p><strong>Preliminary note.</strong> This unit explores a geometric
-choice deliberately opposite to that of the corpus, for the sole purpose
-of testing whether the scale-duality action has a dimensional origin.
-The verdict is mixed and we record it as such: the embedding is
-remarkably generative, but it <em>does not improve</em> the predictive
-power of the framework and, on one precise point (the ultraviolet
-behavior of the vacuum), it is less well-behaved than the original <span
-class="math inline">\(\sigma\)</span>-model formulation. The
-formalization was carried out in dialogue with analytical-assistance
-systems, under the direction of the author, who bears full
-responsibility for the scientific content.</p>
-<h1 id="introduction-how-and-why-a-fifth-scale-dimension">Introduction:
-how and why a fifth scale dimension</h1>
-<h2 id="the-corpus-choice-and-its-opposite">The corpus choice, and its
-opposite</h2>
-<p>The corpus (Units 1–3) rests on one hypothesis: the logarithmic scale
-axis <span class="math inline">\(u=\ln(\lambda/\ell_P)\)</span>, usually
-non-compact, is in fact a circle, via the projection <span
-class="math inline">\(\psi=2\arctan u\in(-\pi,\pi]\)</span>, which
-identifies the Planck pole (<span class="math inline">\(\psi=0\)</span>,
-denoted <span class="math inline">\(P\)</span>) and a “unified” pole
-(<span class="math inline">\(\psi=\pm\pi\)</span> identified, denoted
-<span class="math inline">\(\infty^{*}\)</span>). One point is crucial
-there: these scale circles are <em>internal targets</em> of a Euclidean
-sigma model, <em>not</em> spacetime dimensions. This is result F2: since
-<span class="math inline">\(\chi\)</span> is not a timelike coordinate,
-there is neither ghost nor closed timelike curve. This choice is
-<em>conservative</em>: it imports the duality structure without touching
-the spacetime signature.</p>
-<p>The question of this unit is the <em>opposite</em> choice. <em>What
-if</em> one took the scale axis literally, as a genuine fifth spacetime
-dimension? This choice is bolder: it reopens the ghost and CTC question
-that F2 closed by postulate. But it offers a possible payoff: if the
-corpus action <em>descends</em> from a 5D geometry by dimensional
-reduction, then its particular form (the locked non-minimal coupling,
-the bounded potential) ceases to be a choice and becomes a
-<em>consequence</em>. This is the generative stake we test.</p>
-<h2 id="why-spacetime-the-relativistic-locking">Why “spacetime”: the
-relativistic locking</h2>
-<p>The corpus has <em>two</em> scale axes: a spatial axis <span
-class="math inline">\(\psi\)</span> (length scale <span
-class="math inline">\(\lambda\)</span>) and a temporal axis <span
-class="math inline">\(\chi\)</span> (duration scale <span
-class="math inline">\(\tau\)</span>). A fifth dimension is
-<em>unique</em>. For a single dimension to carry both the spatial scale
-and the temporal scale, these two scales must be <em>locked</em>: this
-is the relativistic locking <span
-class="math inline">\(\tau=\lambda/c\)</span>, i.e. a dynamical exponent
-<span class="math inline">\(z=1\)</span>. Under this locking, the two
-axes <span class="math inline">\(\psi\)</span> and <span
-class="math inline">\(\chi\)</span> collapse onto a single diagonal
-coordinate, which we denote <span class="math inline">\(\sigma\)</span>.
-The fifth dimension is thus <em>spacetime</em> in the precise sense that
-it simultaneously encodes both scales, tied by <span
-class="math inline">\(c\)</span> — not in the sense of a mixed
-signature.</p>
+<p><strong>Note liminaire.</strong> Cette unité explore un choix
+géométrique délibérément contraire à celui du corpus, dans le seul but
+de tester si l’action de dualité d’échelle possède une origine
+dimensionnelle. Le verdict est mixte et nous le consignons tel quel : le
+plongement est remarquablement génératif, mais il <em>n’améliore
+pas</em> le pouvoir prédictif du cadre et, sur un point précis (la tenue
+ultraviolette du vide), il est moins bien comporté que la formulation
+<span class="math inline">\(\sigma\)</span>-modèle d’origine. La
+formalisation a été conduite en dialogue avec des systèmes d’assistance
+analytique, sous la direction de l’auteur, à qui revient l’entière
+responsabilité du contenu scientifique.</p>
+<h1
+id="introduction-comment-et-pourquoi-une-cinquième-dimension-déchelle">Introduction
+: comment et pourquoi une cinquième dimension d’échelle</h1>
+<h2 id="le-choix-du-corpus-et-son-contraire">Le choix du corpus, et son
+contraire</h2>
+<p>Le corpus (Unités 1–3) repose sur une hypothèse : l’axe d’échelle
+logarithmique <span
+class="math inline">\(u=\ln(\lambda/\ell_P)\)</span>, habituellement non
+compact, est en réalité un cercle, via la projection <span
+class="math inline">\(\psi=2\arctan u\in(-\pi,\pi]\)</span>, qui
+identifie le pôle de Planck (<span
+class="math inline">\(\psi=0\)</span>, noté <span
+class="math inline">\(P\)</span>) et un pôle « unifié » (<span
+class="math inline">\(\psi=\pm\pi\)</span> identifiés, noté <span
+class="math inline">\(\infty^{*}\)</span>). Un point y est capital : ces
+cercles d’échelle sont des <em>cibles internes</em> d’un modèle sigma
+euclidien, <em>non</em> des dimensions de l’espace-temps. C’est le
+résultat F2 : <span class="math inline">\(\chi\)</span> n’étant pas une
+coordonnée de genre temps, il n’y a ni fantôme ni courbe temporelle
+fermée.</p>
+<p>La question de cette unité est le choix <em>opposé</em>. <em>Et
+si</em> l’on prenait l’axe d’échelle au pied de la lettre, comme une
+véritable cinquième dimension de l’espace-temps ? Ce choix est plus
+audacieux : il rouvre la question des fantômes et des CTC que F2 fermait
+par postulat. Mais il offre une contrepartie possible : si l’action du
+corpus <em>descend</em> d’une géométrie 5D par réduction dimensionnelle,
+alors sa forme particulière (le couplage non minimal verrouillé, le
+potentiel borné) cesse d’être un choix pour devenir une
+<em>conséquence</em>.</p>
+<h2 id="pourquoi-espace-temporelle-le-verrouillage-relativiste">Pourquoi
+« espace-temporelle » : le verrouillage relativiste</h2>
+<p>Le corpus possède <em>deux</em> axes d’échelle : un axe spatial <span
+class="math inline">\(\psi\)</span> et un axe temporel <span
+class="math inline">\(\chi\)</span>. Une cinquième dimension est
+<em>unique</em>. Pour qu’une seule dimension porte à la fois l’échelle
+spatiale et l’échelle temporelle, il faut que ces deux échelles soient
+<em>verrouillées</em> : c’est le verrouillage relativiste <span
+class="math inline">\(\tau=\lambda/c\)</span>, soit un exposant
+dynamique <span class="math inline">\(z=1\)</span>. Sous ce
+verrouillage, les deux axes <span class="math inline">\(\psi\)</span> et
+<span class="math inline">\(\chi\)</span> se rabattent sur une unique
+coordonnée diagonale, notée <span
+class="math inline">\(\sigma\)</span>.</p>
 <div class="remarquebox">
-<p><span>dictionary with Units 2–3</span> In this unit, <span
-class="math inline">\(\beta\)</span> denotes the amplitude of the 5D
-non-minimal coupling along the diagonal axis <span
-class="math inline">\(\sigma\)</span>. Under the identification <span
-class="math inline">\(\sigma\leftrightarrow(\psi=\chi)\)</span>, it
-coincides with the <em>diagonal</em> non-minimal coupling of the corpus,
-i.e. twice the per-axis coupling. The diagonal closure threshold <span
-class="math inline">\(\beta_c^{\mathrm{diag}}=-1/3\)</span> thus
-corresponds to the per-axis threshold <span
-class="math inline">\(-1/6\)</span> of Units 2–3, and the viable band
-translates accordingly. All the formulas below are written with the
-diagonal <span class="math inline">\(\sigma\)</span> and stay within the
-“single <span class="math inline">\(\beta\)</span>” convention.</p>
+<p><span>dictionnaire avec les Unités 2–3</span> Dans cette unité, <span
+class="math inline">\(\beta\)</span> désigne l’amplitude du couplage non
+minimal 5D le long de l’axe diagonal <span
+class="math inline">\(\sigma\)</span>. Sous l’identification <span
+class="math inline">\(\sigma\leftrightarrow(\psi=\chi)\)</span>, il
+coïncide avec le couplage non minimal <em>diagonal</em> du corpus, soit
+le double du couplage par axe. Le seuil de clôture diagonal <span
+class="math inline">\(\beta_c^{\mathrm{diag}}=-1/3\)</span> correspond
+au seuil par axe <span class="math inline">\(-1/6\)</span> des Unités
+2–3.</p>
 </div>
-<h2 id="one-point-compactification-and-duality-involution">One-point
-compactification and duality involution</h2>
-<p>The compactified scale axis identifies the infinitely small and the
-infinitely large. The projection <span
-class="math inline">\(\sigma=2\arctan u\)</span> sends <span
-class="math inline">\(u=0\)</span> (Planck) to <span
-class="math inline">\(\sigma=0\)</span> (<span
-class="math inline">\(P\)</span>, true vacuum) and <span
-class="math inline">\(u\to\pm\infty\)</span> (extreme scales) to <span
-class="math inline">\(\sigma=\pm\pi\)</span> (<span
-class="math inline">\(\infty^{*}\)</span>, false vacuum), the two poles
-<span class="math inline">\(\pm\pi\)</span> being identified. The scale
-duality <span
-class="math inline">\(\lambda\mapsto\ell_P^2/\lambda\)</span> is the
-involution <span
-class="math inline">\(\mathrm{D}:\sigma\mapsto-\sigma\)</span>, whose
-<span class="math inline">\(P\)</span> and <span
-class="math inline">\(\infty^{*}\)</span> are the two fixed points. It
-is this <span class="math inline">\(\mathbb{Z}_2\)</span> involution
-that will constrain the form of the warp (§<a href="#sec:gen"
-data-reference-type="ref" data-reference="sec:gen">4</a>).</p>
-<h2 id="the-geometric-anchor-scale-as-a-holographic-direction">The
-geometric anchor: scale as a holographic direction</h2>
-<p>The choice is not gratuitous. A 5D metric warped along the scale
-coordinate, <span class="math display">\[\begin{equation}
+<h2
+id="lancrage-géométrique-léchelle-comme-direction-holographique">L’ancrage
+géométrique : l’échelle comme direction holographique</h2>
+<p>Une métrique 5D gauchie le long de la coordonnée d’échelle, <span
+class="math display">\[\begin{equation}
 \label{eq:metric}
 ds_5^2 \;=\; a(\sigma)^2\,\eta_{\mu\nu}\,dx^\mu dx^\nu \;+\;
 \ell^2\,d\sigma^2,
 \qquad \mu,\nu=0,1,2,3,
-\end{equation}\]</span> takes, for the exponential choice <span
-class="math inline">\(a(\sigma)=e^{\sigma/\ell}\)</span>, the exact form
-of anti-de Sitter space AdS<span class="math inline">\(_5\)</span> in
-Poincaré coordinates. Now, in the AdS/CFT correspondence, the radial
-coordinate of AdS<span class="math inline">\(_5\)</span> <em>is</em> the
-energy scale of the boundary theory, i.e. the renormalization-group
-direction. Identifying the scale axis with a fifth dimension is
-therefore to rediscover the holographic intuition: “moving in scale”
-<span class="math inline">\(=\)</span> “moving in a dimension”. The
-compactification into a circle (instead of the radial half-line of AdS)
-is what distinguishes our framework and breaks the exact dilatation,
-generating a hierarchy of scales between <span
-class="math inline">\(P\)</span> and <span
-class="math inline">\(\infty^{*}\)</span>. The program is then clear:
-<em>reduce</em> <a href="#eq:metric" data-reference-type="eqref"
-data-reference="eq:metric">[eq:metric]</a> over <span
-class="math inline">\(\sigma\)</span> and check what the 4D
-inherits.</p>
-<h1 id="formal-framework-warped-metric-and-kaluzaklein-reduction">Formal
-framework: warped metric and Kaluza–Klein reduction</h1>
+\end{equation}\]</span> prend, pour le choix exponentiel <span
+class="math inline">\(a(\sigma)=e^{\sigma/\ell}\)</span>, la forme
+exacte de l’espace anti-de Sitter AdS<span
+class="math inline">\(_5\)</span> en coordonnées de Poincaré. Or, dans
+la correspondance AdS/CFT, la coordonnée radiale de AdS<span
+class="math inline">\(_5\)</span> <em>est</em> l’échelle d’énergie de la
+théorie de bord, c’est-à-dire la direction du groupe de
+renormalisation.</p>
+<h1 id="cadre-formel-métrique-gauchie-et-réduction-de-kaluzaklein">Cadre
+formel : métrique gauchie et réduction de Kaluza–Klein</h1>
 <div class="postulatbox">
-<p><span>5D arena</span><span id="post:arene"
-data-label="post:arene"></span> The fundamental spacetime is <span
+<p><span>arène 5D</span><span id="post:arene"
+data-label="post:arene"></span> L’espace-temps fondamental est <span
 class="math inline">\(\mathcal{M}_5=\mathcal{M}_{3+1}\times
-S^1_\sigma\)</span>, where <span
-class="math inline">\(S^1_\sigma\)</span> is the scale circle (period
-<span class="math inline">\(2\pi\)</span>), <span
+S^1_\sigma\)</span>, où <span class="math inline">\(S^1_\sigma\)</span>
+est le cercle d’échelle (période <span
+class="math inline">\(2\pi\)</span>), <span
 class="math inline">\(\sigma=0\equiv P\)</span>, <span
-class="math inline">\(\sigma=\pm\pi\equiv\infty^{*}\)</span>. The metric
-is <a href="#eq:metric" data-reference-type="eqref"
-data-reference="eq:metric">[eq:metric]</a> with <span
-class="math inline">\(a(\sigma)&gt;0\)</span> periodic. The coordinate
-<span class="math inline">\(\sigma\)</span> is spacelike (<span
-class="math inline">\(g_{\sigma\sigma}=+\ell^2\)</span>), the only
-choice compatible with the absence of ghosts (§<a href="#sec:gen"
-data-reference-type="ref" data-reference="sec:gen">4</a>, F2).</p>
+class="math inline">\(\sigma=\pm\pi\equiv\infty^{*}\)</span>. La
+coordonnée <span class="math inline">\(\sigma\)</span> est de genre
+espace (<span class="math inline">\(g_{\sigma\sigma}=+\ell^2\)</span>),
+seul choix compatible avec l’absence de fantôme.</p>
 </div>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> (verified by symbolic
-computation) For the metric <a href="#eq:metric"
-data-reference-type="eqref" data-reference="eq:metric">[eq:metric]</a>,
-the non-zero components of the 5D Einstein tensor are, writing <span
-class="math inline">\(&#39;=d/d\sigma\)</span> and <span
+<p><strong class="etag et6-preuve">▪ preuve</strong> (vérifié par calcul formel) Pour la
+métrique <a href="#eq:metric" data-reference-type="eqref"
+data-reference="eq:metric">[eq:metric]</a>, les composantes non nulles
+du tenseur d’Einstein 5D sont, en notant <span
+class="math inline">\(&#39;=d/d\sigma\)</span> et <span
 class="math inline">\(\ell=1\)</span>, <span
 class="math display">\[\begin{equation}
 \label{eq:einstein}
@@ -283,343 +148,205 @@ x}=3\!\left(\frac{a&#39;&#39;}{a}+\frac{a&#39;^2}{a^2}\right),
 G^\sigma_{\ \sigma}=6\,\frac{a&#39;^2}{a^2},
 \qquad
 R_5=-8\frac{a&#39;&#39;}{a}-12\frac{a&#39;^2}{a^2}.
-\end{equation}\]</span> The reduction of the 5D Einstein–Hilbert action
-<span class="math inline">\(\int d^5x\sqrt{-g_5}\,R_5\)</span> over the
-circle produces, in the 4D Jordan frame, a tensor–scalar system whose
-non-minimal coupling is the <em>square of the warp</em>, <span
-class="math display">\[\begin{equation}
+\end{equation}\]</span> La réduction de l’action d’Einstein–Hilbert 5D
+sur le cercle produit, dans le repère de Jordan 4D, un système
+tenseur-scalaire dont le couplage non minimal est le <em>carré du
+warp</em>, <span class="math display">\[\begin{equation}
 \label{eq:fa2}
-\boxed{\,f(\sigma)=a(\sigma)^2\,}\qquad\text{(gravity induced by the
-warping).}
+f(\sigma)=a(\sigma)^2\qquad\text{(gravité induite par le
+gauchissement).}
 \end{equation}\]</span></p>
-<h1 id="sec:geom">General geometric properties</h1>
-<p>Before the reduction, the metric <a href="#eq:metric"
-data-reference-type="eqref" data-reference="eq:metric">[eq:metric]</a>
-has a geometric structure that clarifies <em>why</em> the identification
-scale <span class="math inline">\(=\)</span> dimension is natural — and
-what it costs.</p>
-<h2 id="ads_5-and-the-dilatation-isometry">AdS<span
-class="math inline">\(_5\)</span> and the dilatation isometry</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> In the current region, the
-exponential warp <span
-class="math inline">\(a(\sigma)=e^{\sigma/\ell}\)</span> gives <span
-class="math display">\[\begin{equation}
+<h1 id="sec:geom">Propriétés géométriques générales</h1>
+<h2 id="ads_5-et-lisométrie-de-dilatation">AdS<span
+class="math inline">\(_5\)</span> et l’isométrie de dilatation</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> Dans la région courante, le warp exponentiel
+<span class="math inline">\(a(\sigma)=e^{\sigma/\ell}\)</span> donne
+<span class="math display">\[\begin{equation}
 \label{eq:ads}
 ds_5^2=e^{2\sigma/\ell}\,\eta_{\mu\nu}dx^\mu dx^\nu+\ell^2
 d\sigma^2,\qquad
 R_5=-\frac{20}{\ell^2}\ \ \text{(constant)},
-\end{equation}\]</span> i.e. <em>exactly</em> anti-de Sitter space
-AdS<span class="math inline">\(_5\)</span> of radius <span
-class="math inline">\(\ell\)</span>. The shift <span
+\end{equation}\]</span> soit <em>exactement</em> l’espace anti-de Sitter
+AdS<span class="math inline">\(_5\)</span> de rayon <span
+class="math inline">\(\ell\)</span>. Le décalage <span
 class="math inline">\(\sigma\to\sigma+\lambda_0\ell,\ x^\mu\to
-e^{-\lambda_0}x^\mu\)</span> leaves <span
-class="math inline">\(ds_5^2\)</span> invariant: this is the dilatation,
-whose Killing vector is <span
-class="math inline">\(\partial_\sigma\)</span>. <span
-style="color: tgver"><span class="sans-serif">[to check]</span></span>
-(standard reading) the scale coordinate <span
-class="math inline">\(\sigma\)</span> is then the radial / holographic
-direction of AdS, identified with the renormalization scale; the Noether
-charge of <span class="math inline">\(\partial_\sigma\)</span> is a
-genuine <em>scale momentum</em> — the dynamical analogue of the
-topological winding charge of Units 2–3. The intuition “scale <span
-class="math inline">\(=\)</span> dimension” therefore lands on
-marked-out ground, not out of nowhere.</p>
-<h2 id="the-duality-involution-a-scale-mirror">The duality involution: a
-scale mirror</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> The map <span
-class="math inline">\(\mathcal{D}:\sigma\to-\sigma\)</span>, i.e. <span
-class="math inline">\(\lambda\to\ell_P^2/\lambda\)</span>, exchanges
-ultraviolet and infrared — the analogue of string T-duality. Its fixed
-points are exactly <span class="math inline">\(\sigma=0\)</span> (<span
-class="math inline">\(P\)</span>) and <span
+e^{-\lambda_0}x^\mu\)</span> laisse <span
+class="math inline">\(ds_5^2\)</span> invariant : c’est la dilatation,
+dont <span class="math inline">\(\partial_\sigma\)</span> est le vecteur
+de Killing. <strong class="etag et6-ver">▪ à vérifier</strong> la coordonnée d’échelle <span
+class="math inline">\(\sigma\)</span> est alors la direction radiale /
+holographique d’AdS.</p>
+<h2 id="linvolution-de-dualité-un-miroir-déchelle">L’involution de
+dualité : un miroir d’échelle</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> L’application <span
+class="math inline">\(\mathcal{D}:\sigma\to-\sigma\)</span>, soit <span
+class="math inline">\(\lambda\to\ell_P^2/\lambda\)</span>, échange
+ultraviolet et infrarouge — l’analogue de la T-dualité des cordes. Ses
+points fixes sont exactement <span
+class="math inline">\(\sigma=0\)</span> (<span
+class="math inline">\(P\)</span>) et <span
 class="math inline">\(\sigma=\pi\)</span> (<span
-class="math inline">\(\infty^{*}\)</span>): a scale mirror that leaves
-the Planck point and the confluence point invariant. Keeping the
-temporal axis independent, one recovers the Klein group <span
-class="math inline">\(\mathbb{Z}_2\times\mathbb{Z}_2\)</span> of Units
-2–3.</p>
-<h2 id="compactness-breaks-dilatation-and-that-is-an-asset">Compactness
-breaks dilatation — and that is an asset</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> A <em>periodic</em> warp cannot
-be the exact exponential <a href="#eq:ads" data-reference-type="eqref"
-data-reference="eq:ads">[eq:ads]</a> (which is not periodic):
-periodicity forces the bounded form <span
-class="math inline">\(a^2=1+\beta\cos\sigma\)</span> and therefore
-<em>breaks</em> the exact dilatation isometry. Far from being a defect,
-this breaking is precisely what <em>generates a hierarchy of scales</em>
-(<span class="math inline">\(\ell_P\)</span> versus the cosmological
-scale) between <span class="math inline">\(P\)</span> and <span
-class="math inline">\(\infty^{*}\)</span>, instead of an exact scale
-invariance that nothing observes.</p>
+class="math inline">\(\infty^{*}\)</span>).</p>
+<h2 id="la-compacité-brise-la-dilatation-et-cest-un-atout">La compacité
+brise la dilatation — et c’est un atout</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> Un warp <em>périodique</em> ne peut être
+l’exponentielle exacte <a href="#eq:ads" data-reference-type="eqref"
+data-reference="eq:ads">[eq:ads]</a> : la périodicité force la forme
+bornée <span class="math inline">\(a^2=1+\beta\cos\sigma\)</span> et
+<em>brise</em> donc l’isométrie de dilatation exacte. Cette brisure est
+précisément ce qui <em>engendre une hiérarchie d’échelles</em> entre
+<span class="math inline">\(P\)</span> et <span
+class="math inline">\(\infty^{*}\)</span>.</p>
 <h2
-id="kaluzaklein-tower-and-a-candidate-origin-for-the-clock-bridge-to-unit-1">Kaluza–Klein
-tower and a candidate origin for the clock (bridge to Unit 1)</h2>
-<p><span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> Since the extra dimension
-is a circle, every field there has a <em>discrete</em> spectrum (§<a
-href="#sec:beta" data-reference-type="ref"
-data-reference="sec:beta">6</a>, Fig. <a href="#fig:spectre"
-data-reference-type="ref" data-reference="fig:spectre">3</a>): zero mode
-<span class="math inline">\(=\)</span> 4D physics, massive modes
-quantized by <span class="math inline">\(1/\ell\)</span>. This
-discreteness is the geometric candidate for the origin of the
-<em>intermittent clock</em> of Unit 1: the oscillation in the compact
-direction <span class="math inline">\(\sigma\)</span> would play the
-role of the pendulum whose average gives the existence factor <span
-class="math inline">\(\varepsilon=E(k)/K(k)\)</span> and the period
-<span class="math inline">\(\tau_0=2\pi\sqrt{\omega/\alpha}\)</span>.
-The scale coherence is encouraging — the fundamental KK frequency <span
-class="math inline">\(\sim 1/\ell\)</span> fixes a period <span
-class="math inline">\(\sim\ell\)</span>, and <span
-class="math inline">\(\ell\sim\sqrt{\omega/\alpha}\)</span> recovers the
-right order of magnitude for <span class="math inline">\(\tau_0\)</span>
-— but this is <em>not</em> a derivation: we have not established it in
-this work. It is the direction that would turn a conjecture of Unit 1
-into a result, and we record it as such, without overstating it. <span
-style="color: tgopen"><span class="sans-serif">[open]</span></span></p>
-<h2 id="degeneracy-at-the-confluence-point">Degeneracy at the confluence
-point</h2>
-<p><span style="color: tgopen"><span
-class="sans-serif">[open]</span></span> The exponential reading <a
-href="#eq:ads" data-reference-type="eqref"
-data-reference="eq:ads">[eq:ads]</a> would suggest a degeneracy at <span
-class="math inline">\(\infty^{*}\)</span>, where the two limits of the
-warp (<span class="math inline">\(a\to\infty\)</span> and <span
-class="math inline">\(a\to0\)</span>) would be glued together. But the
-<em>periodic</em> warp regularizes this gluing: at <span
-class="math inline">\(\sigma=\pi\)</span>, <span
-class="math inline">\(a^2=1-\beta\)</span> stays <em>finite</em> (the 4D
-slice does not degenerate). The apparent singularity of the exponential
-is therefore an artifact of its global extrapolation; the full
-consistency of the stereographic compactification of scale with the warp
-dynamics, however, remains to be established.</p>
-<h1 id="sec:gen">The generative content</h1>
-<h2 id="trigonometric-form-forced-by-compactness">Trigonometric form
-forced by compactness</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> Since the coordinate <span
-class="math inline">\(\sigma\)</span> is a compact angle, <span
-class="math inline">\(f(\sigma)\)</span> must be <span
-class="math inline">\(2\pi\)</span>-periodic; invariance under the
-duality involution <span
-class="math inline">\(\mathrm{D}:\sigma\to-\sigma\)</span> imposes
-parity. The lowest non-trivial harmonic form is therefore <span
+id="tour-de-kaluzaklein-et-origine-candidate-de-lhorloge-pont-vers-lunité-1">Tour
+de Kaluza–Klein et origine candidate de l’horloge (pont vers
+l’Unité 1)</h2>
+<p><strong class="etag et6-conj">▪ conjecture</strong> La dimension supplémentaire étant un cercle,
+tout champ y possède un spectre <em>discret</em> (Fig. <a
+href="#fig:spectre" data-reference-type="ref"
+data-reference="fig:spectre">3</a>) : mode zéro <span
+class="math inline">\(=\)</span> physique 4D, modes massifs quantifiés
+par <span class="math inline">\(1/\ell\)</span>. Cette discrétude est le
+candidat géométrique à l’origine de l’<em>horloge intermittente</em> de
+l’Unité 1 : l’oscillation dans la direction compacte <span
+class="math inline">\(\sigma\)</span> jouerait le rôle du pendule dont
+la moyenne donne le facteur d’existence <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span>. La cohérence
+d’échelle est encourageante, mais ce n’est <em>pas</em> une dérivation.
+<strong class="etag et6-ouv">▪ ouvert</strong></p>
+<h1 id="sec:gen">Le contenu génératif</h1>
+<h2 id="forme-trigonométrique-imposée-par-la-compacité">Forme
+trigonométrique imposée par la compacité</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> La coordonnée <span
+class="math inline">\(\sigma\)</span> étant un angle compact, <span
+class="math inline">\(f(\sigma)\)</span> doit être <span
+class="math inline">\(2\pi\)</span>-périodique ; l’invariance sous
+l’involution de dualité <span
+class="math inline">\(\mathrm{D}:\sigma\to-\sigma\)</span> impose la
+parité. La forme non triviale de plus basse harmonique est donc <span
 class="math display">\[\begin{equation}
 \label{eq:ftrig}
 f(\sigma)=1+\beta\cos\sigma,\qquad a(\sigma)=\sqrt{1+\beta\cos\sigma},
-\end{equation}\]</span> with <span
-class="math inline">\(f(P)=1+\beta\)</span> (true vacuum) and <span
-class="math inline">\(f(\infty^{*})=1-\beta\)</span> (false vacuum).
-Positivity <span class="math inline">\(f&gt;0\)</span> requires <span
-class="math inline">\(|\beta|&lt;1\)</span>. This is exactly the
-non-minimal structure of the corpus, here <em>forced</em> by the compact
-geometry rather than postulated.</p>
-<h2 id="vf-locking-the-bounded-potential-descends-from-the-warp"><span
-class="math inline">\(V\)</span>–<span class="math inline">\(f\)</span>
-locking: the bounded potential descends from the warp</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> We seek the simplest 4D
-potential compatible with compactness: periodic, <em>affine in</em>
-<span class="math inline">\(f\)</span> (hence generated by the same
-source as the coupling), and vanishing at the true vacuum, <span
-class="math inline">\(V(P)=0\)</span>. These three conditions determine
-it uniquely. Writing <span class="math inline">\(V=A+Bf\)</span> and
-imposing <span class="math inline">\(V(P)=A+B(1+\beta)=0\)</span>, one
-obtains <span class="math display">\[\begin{equation}
+\end{equation}\]</span> avec <span
+class="math inline">\(f(P)=1+\beta\)</span> (vrai vide) et <span
+class="math inline">\(f(\infty^{*})=1-\beta\)</span> (faux vide). La
+positivité <span class="math inline">\(f&gt;0\)</span> exige <span
+class="math inline">\(|\beta|&lt;1\)</span>.</p>
+<h2 id="verrouillage-vf-le-potentiel-borné-descend-du-warp">Verrouillage
+<span class="math inline">\(V\)</span>–<span
+class="math inline">\(f\)</span> : le potentiel borné descend du
+warp</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> On cherche le potentiel 4D le plus simple
+compatible avec la compacité : périodique, <em>affine en</em> <span
+class="math inline">\(f\)</span>, et s’annulant au vrai vide, <span
+class="math inline">\(V(P)=0\)</span>. Écrivant <span
+class="math inline">\(V=A+Bf\)</span> et imposant <span
+class="math inline">\(V(P)=A+B(1+\beta)=0\)</span>, on obtient <span
+class="math display">\[\begin{equation}
 \label{eq:Vlock}
-\boxed{\,V(\sigma)=\frac{\alpha}{\beta}\,\bigl(1+\beta-f\bigr)=\alpha\,(1-\cos\sigma)\,},
+V(\sigma)=\frac{\alpha}{\beta}\,\bigl(1+\beta-f\bigr)=\alpha\,(1-\cos\sigma),
 \qquad V(P)=0,\quad V(\infty^{*})=2\alpha,
-\end{equation}\]</span> i.e. <em>exactly</em> the bounded potential of
-the corpus. A brane-tension term, which would behave like <span
-class="math inline">\(a^4=f^2=(1+\beta\cos\sigma)^2\)</span>, would
-inject a second harmonic <span
-class="math inline">\(\cos2\sigma\)</span> (via <span
-class="math inline">\(\cos^2\sigma\)</span>) absent from <a
-href="#eq:Vlock" data-reference-type="eqref"
-data-reference="eq:Vlock">[eq:Vlock]</a>: the potential therefore does
-<em>not</em> descend from a brane tension, but from a source in <span
-class="math inline">\(a^2\)</span>. The coupling and the potential thus
-share a single geometric origin.</p>
-<h2 id="the-cost-and-the-f2-criterion-re-derived-from-5d">The cost, and
-the F2 criterion re-derived from 5D</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> <em>The cost of the
-promotion.</em> Making scale a genuine dimension <em>reopens</em> the
-question that the corpus had closed by postulate (F2): a
-<em>timelike</em>, compact extra dimension generates closed timelike
-curves and ghosts. We close it again, but only at the price of a
-signature choice. The kinetic term of <span
-class="math inline">\(\sigma\)</span> arising from the reduction carries
-the sign of <span class="math inline">\(g_{\sigma\sigma}\)</span>. For
-spacelike <span class="math inline">\(\sigma\)</span> (<span
-class="math inline">\(g_{\sigma\sigma}=+\ell^2\)</span>), the 4D kinetic
-term has a healthy sign; for timelike <span
-class="math inline">\(\sigma\)</span>, it becomes a ghost (opposite
-sign, verified by the determinant of the induced metric). The corpus
-result F2 — absence of ghost and CTC — therefore appears here as a
-<em>consequence</em> of the signature choice of the fifth dimension,
-where the corpus posited it. This choice (spacelike) is that of
-Postulate <a href="#post:arene" data-reference-type="ref"
-data-reference="post:arene">[post:arene]</a>.</p>
-<h2 id="the-cost-null-energy-condition-violation-at-the-planck-pole">The
-cost: null energy condition violation at the Planck pole</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> For a <em>periodic</em> warp <a
+\end{equation}\]</span> soit <em>exactement</em> le potentiel borné du
+corpus.</p>
+<h2
+id="le-coût-violation-de-la-condition-dénergie-nulle-au-pôle-de-planck">Le
+coût : violation de la condition d’énergie nulle au pôle de Planck</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> Pour qu’un warp <em>périodique</em> <a
 href="#eq:ftrig" data-reference-type="eqref"
-data-reference="eq:ftrig">[eq:ftrig]</a> (which must come back down
-after rising, in order to close) to solve the 5D Einstein equations, the
-bulk source must violate the null energy condition along <span
-class="math inline">\(\sigma\)</span>. The relevant combination is read
-off <a href="#eq:einstein" data-reference-type="eqref"
-data-reference="eq:einstein">[eq:einstein]</a>: <span
+data-reference="eq:ftrig">[eq:ftrig]</a> soit solution des équations
+d’Einstein 5D, la source de volume doit violer la condition d’énergie
+nulle le long de <span class="math inline">\(\sigma\)</span>. La
+combinaison pertinente se lit sur <a href="#eq:einstein"
+data-reference-type="eqref"
+data-reference="eq:einstein">[eq:einstein]</a> : <span
 class="math display">\[\begin{equation}
 \label{eq:NEC}
 \kappa^2\,(\rho+p_\sigma)=G^\sigma_{\ \sigma}-G^t_{\ t}=-3\,(\ln
 a)&#39;&#39;
 =\frac{3\beta\,(\beta+\cos\sigma)}{2\,(1+\beta\cos\sigma)^2}.
-\end{equation}\]</span> For the physical sign <span
-class="math inline">\(\beta&lt;0\)</span>, this quantity is
-<em>negative</em> (NEC violated) in the neighborhood of <span
-class="math inline">\(P\)</span> (<span
-class="math inline">\(\sigma=0\)</span>: <span
-class="math inline">\(3\beta/[2(1+\beta)]&lt;0\)</span>, minimum of the
-warp) and positive (healthy) in the neighborhood of <span
-class="math inline">\(\infty^{*}\)</span> (Fig. <a href="#fig:nec"
-data-reference-type="ref" data-reference="fig:nec">1</a>). The violation
-is therefore localized exactly at the Planck pole.</p>
+\end{equation}\]</span> Pour le signe physique <span
+class="math inline">\(\beta&lt;0\)</span>, cette quantité est
+<em>négative</em> (NEC violée) au voisinage de <span
+class="math inline">\(P\)</span> et positive (saine) au voisinage de
+<span class="math inline">\(\infty^{*}\)</span> (Fig. <a href="#fig:nec"
+data-reference-type="ref" data-reference="fig:nec">1</a>). La violation
+est donc localisée exactement au pôle de Planck.</p>
 <figure id="fig:nec" data-latex-placement="t">
-<img src="figs_u6/fig_source_NEC.png" style="width:66.0%" />
-<figcaption><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> Required source <span
-class="math inline">\(\rho+p_\sigma\)</span> along the scale circle
-(<span class="math inline">\(\beta=-0.3\)</span>, Eq. <a href="#eq:NEC"
-data-reference-type="eqref" data-reference="eq:NEC">[eq:NEC]</a>). The
-null energy condition is violated (red region, <span
-class="math inline">\(\rho+p_\sigma&lt;0\)</span>) in a neighborhood of
-the Planck pole <span class="math inline">\(P\)</span>, where the warp
-reaches its minimum; it is healthy near <span
-class="math inline">\(\infty^{*}\)</span>. Closing the scale line into a
-loop has a cost, and this cost concentrates at Planck.</figcaption>
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_source_NEC.png" style="width:66.0%" />
+<figcaption><strong class="etag et6-num">▪ numérique</strong> Source requise <span
+class="math inline">\(\rho+p_\sigma\)</span> le long du cercle d’échelle
+(<span class="math inline">\(\beta=-0{,}3\)</span>, éq. <a
+href="#eq:NEC" data-reference-type="eqref"
+data-reference="eq:NEC">[eq:NEC]</a>). La condition d’énergie nulle est
+violée dans un voisinage du pôle de Planck <span
+class="math inline">\(P\)</span>.</figcaption>
 </figure>
-<h1 id="sec:casimir">The exotic source: vacuum Casimir energy</h1>
-<p>The decisive question is the <em>nature</em> of this source. Is it an
-ad hoc defect (fatal), or a natural quantum effect? We show that it is
-Casimir energy.</p>
-<h2 id="tensor-structure">Tensor structure</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> Decomposing the required source
-<span class="math inline">\(\kappa^2 T^A_{\ B}=G^A_{\ B}\)</span> into a
-trace part (bulk cosmological constant) and a traceless part, the latter
-equals <span class="math display">\[\begin{equation}
+<h1 id="sec:casimir">La source exotique : énergie de Casimir du
+vide</h1>
+<h2 id="structure-tensorielle">Structure tensorielle</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> En décomposant la source requise <span
+class="math inline">\(\kappa^2 T^A_{\ B}=G^A_{\ B}\)</span> en une
+partie de trace et une partie sans trace, cette dernière vaut <span
+class="math display">\[\begin{equation}
 \label{eq:traceless}
 \tau^A_{\ B}=\frac{3}{5}\,(\ln
 a)&#39;&#39;\;\mathop{\mathrm{diag}}(1,1,1,1,-4),
-\end{equation}\]</span> i.e. exactly the structure of a conformal
-(Casimir) tensor on a circle. This form is imposed by the isotropy of
-the four extended dimensions plus one compact dimension: it is therefore
-partly kinematic, and the physical content resides in the <em>sign</em>
-and the <em>magnitude</em>.</p>
-<h2 id="sign">Sign</h2>
-<p><span style="color: tgver"><span class="sans-serif">[to
-check]</span></span> (standard result) A massless <em>periodic</em>
-field in 5D has a negative Casimir energy <span class="citation"
-data-cites="Casimir"></span>, <span
+\end{equation}\]</span> soit exactement la structure d’un tenseur
+conforme (de Casimir) sur un cercle.</p>
+<h2 id="signe">Signe</h2>
+<p><strong class="etag et6-ver">▪ à vérifier</strong> Un champ sans masse <em>périodique</em> en 5D
+a une énergie de Casimir <span class="citation"
+data-cites="Casimir"></span> négative, <span
 class="math display">\[\begin{equation}
 \label{eq:rhocas}
 \rho_{\mathrm{Cas}}=-\frac{\Gamma(5/2)\,\zeta(5)}{\pi^{5/2}\,L^5}&lt;0,
-\end{equation}\]</span> which gives <span
-class="math inline">\(\rho+p_\sigma&lt;0\)</span> along the circle:
-precisely the NEC violation required by <a href="#eq:NEC"
-data-reference-type="eqref" data-reference="eq:NEC">[eq:NEC]</a>. The
-“periodic” nature is that of the Kaluza–Klein fields <span
-class="citation" data-cites="Kaluza Klein"></span> themselves and of the
-5D graviton: no new ingredient (Fig. <a href="#fig:casimir"
-data-reference-type="ref" data-reference="fig:casimir">2</a>).</p>
-<h2 id="magnitude-and-self-consistency">Magnitude and
-self-consistency</h2>
-<p><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> The required exotic density
-at <span class="math inline">\(P\)</span> is <span
-class="math inline">\(\simeq 0.64/(\kappa^2\ell^2)\)</span>. Equating it
-to the Casimir density of a circle of radius <span
-class="math inline">\(\ell\)</span>, <span class="math inline">\(\sim
-1/\ell^5\)</span>, imposes <span class="math display">\[\begin{equation}
+\end{equation}\]</span> ce qui donne <span
+class="math inline">\(\rho+p_\sigma&lt;0\)</span> le long du cercle :
+précisément la violation de NEC requise.</p>
+<h2 id="magnitude-et-auto-cohérence">Magnitude et auto-cohérence</h2>
+<p><strong class="etag et6-num">▪ numérique</strong> La densité exotique requise en <span
+class="math inline">\(P\)</span> vaut <span class="math inline">\(\simeq
+0{,}64/(\kappa^2\ell^2)\)</span>. L’égaler à la densité de Casimir d’un
+cercle de rayon <span class="math inline">\(\ell\)</span>, <span
+class="math inline">\(\sim 1/\ell^5\)</span>, impose <span
+class="math display">\[\begin{equation}
 \label{eq:selfcons}
 \ell\sim 1/M_5=\ell_5,
-\end{equation}\]</span> i.e. a circle of Planckian size — which is
-tautologically the case, since the pole <span
-class="math inline">\(P\)</span> <em>is</em> the Planck point. No
-hierarchy, no fine-tuning: the scale circle is held closed by its own
-zero-point energy, exactly at Planck. This cleanly closes the
-quantum <span class="math inline">\(\leftrightarrow\)</span> gravity
-thread of the corpus: the same pole <span
-class="math inline">\(P\)</span> that cancels the gravitational
-potential (<span class="math inline">\(V=0\)</span>) is held closed by
-the quantum vacuum energy. <span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span></p>
+\end{equation}\]</span> soit un cercle de taille planckienne.
+<strong class="etag et6-conj">▪ conjecture</strong></p>
 <figure id="fig:casimir" data-latex-placement="t">
-<img src="figs_u6/fig_casimir.png" />
-<figcaption><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> <em>Left:</em>
-decomposition of the source into a trace part <span
-class="math inline">\(\Lambda_5(\sigma)\)</span> and a traceless part
-(Casimir amplitude <span class="math inline">\(\tfrac{3}{5}(\ln
-a)&#39;&#39;\)</span>). <em>Right:</em> the NEC combination <span
-class="math inline">\(\rho+p_\sigma\)</span>, of structure <span
-class="math inline">\(\mathop{\mathrm{diag}}(1,1,1,1,-4)\)</span>,
-violated at the Casimir well centered on <span
-class="math inline">\(P\)</span> and healthy toward <span
-class="math inline">\(\infty^{*}\)</span>. Sign, structure and magnitude
-(<span class="math inline">\(\ell\sim\ell_5\)</span>) coincide with
-those of the Casimir energy of periodic fields.</figcaption>
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_casimir.png" />
+<figcaption><strong class="etag et6-num">▪ numérique</strong> <em>À gauche :</em> décomposition de
+la source en partie de trace <span
+class="math inline">\(\Lambda_5(\sigma)\)</span> et partie sans trace.
+<em>À droite :</em> la combinaison NEC <span
+class="math inline">\(\rho+p_\sigma\)</span>, violée au puits de Casimir
+centré sur <span class="math inline">\(P\)</span> et saine vers <span
+class="math inline">\(\infty^{*}\)</span>.</figcaption>
 </figure>
-<h1 id="sec:beta">Does vacuum energy predict <span
-class="math inline">\(\beta\)</span>? The heat-kernel obstruction</h1>
-<p>If the warp is held by the Casimir energy, can one go further and
-<em>predict</em> <span class="math inline">\(\beta\)</span> as the value
-that minimizes the vacuum energy, rather than fitting it to the CMB?
-This is the heaviest computation of this work — explicit KK spectrum,
-Casimir energy regularized by the spectral zeta function, and a test of
-<em>dynamical</em> stabilization of the warp — and we validate each step
-before drawing a conclusion. We show that the answer is no, for a
-rigorous reason.</p>
-<h2 id="kk-spectrum-on-the-warped-circle">KK spectrum on the warped
-circle</h2>
-<p><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> A 5D scalar field separated
-into modes, <span
-class="math inline">\(\Phi=\sum_n\phi_n(x)\psi_n(\sigma)\)</span>, leads
-to the Sturm–Liouville problem <span
+<h1 id="sec:beta">L’énergie du vide prédit-elle <span
+class="math inline">\(\beta\)</span> ? L’obstruction du noyau de la
+chaleur</h1>
+<h2 id="spectre-kk-sur-le-cercle-gauchi">Spectre KK sur le cercle
+gauchi</h2>
+<p><strong class="etag et6-num">▪ numérique</strong> Un champ scalaire 5D séparé en modes, <span
+class="math inline">\(\Phi=\sum_n\phi_n(x)\psi_n(\sigma)\)</span>,
+conduit au problème de Sturm–Liouville <span
 class="math display">\[\begin{equation}
 \label{eq:SL}
 -\bigl(a^4\psi_n&#39;\bigr)&#39;=\lambda_n\,a^2\,\psi_n,\qquad
 \lambda_n=M_n^2\ell^2,
-\end{equation}\]</span> on the circle, with periodic conditions. The
-zero mode (<span class="math inline">\(\lambda_0=0\)</span>) is the 4D
-graviton; the KK tower <em>compresses</em> as <span
-class="math inline">\(|\beta|\)</span> grows, the high modes tending to
-<span class="math inline">\((n/L_*)^2\)</span> with the effective size
-<span class="math inline">\(L_*=\frac{1}{2\pi}\oint
-d\sigma/a&gt;1\)</span> (Fig. <a href="#fig:spectre"
-data-reference-type="ref" data-reference="fig:spectre">3</a>). The
-fundamental mode stays pinned at <span
-class="math inline">\(M_1=1/\ell\)</span> for all <span
-class="math inline">\(\beta\)</span>.</p>
+\end{equation}\]</span> sur le cercle, avec conditions périodiques. Le
+mode zéro (<span class="math inline">\(\lambda_0=0\)</span>) est le
+graviton 4D ; la tour KK <em>se comprime</em> quand <span
+class="math inline">\(|\beta|\)</span> croît (Fig. <a
+href="#fig:spectre" data-reference-type="ref"
+data-reference="fig:spectre">3</a>).</p>
 <table id="tab:spectre">
-<caption><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> Kaluza–Klein masses <span
-class="math inline">\(M_n\ell\)</span> on the warped scale circle
-(spectral Fourier solver). Validation at <span
-class="math inline">\(\beta=0\)</span>: <span
-class="math inline">\(M_n=n\)</span> exactly. The warp compresses the
-tower as <span class="math inline">\(|\beta|\)</span> grows (high modes
-<span class="math inline">\(\to(n/L_*)^2\)</span>), while the
-fundamental stays pinned at <span
-class="math inline">\(M_1=1/\ell\)</span>.</caption>
+<caption><strong class="etag et6-num">▪ numérique</strong> Masses de Kaluza–Klein <span
+class="math inline">\(M_n\ell\)</span> sur le cercle d’échelle gauchi.
+Validation à <span class="math inline">\(\beta=0\)</span> : <span
+class="math inline">\(M_n=n\)</span> exactement.</caption>
 <thead>
 <tr>
 <th style="text-align: center;"><span
@@ -645,666 +372,207 @@ class="math inline">\(L_*\)</span></th>
 <td style="text-align: center;"><span
 class="math inline">\(0\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.000\)</span></td>
+class="math inline">\(1{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(2.000\)</span></td>
+class="math inline">\(2{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(3.000\)</span></td>
+class="math inline">\(3{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(4.000\)</span></td>
+class="math inline">\(4{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(5.000\)</span></td>
+class="math inline">\(5{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(6.000\)</span></td>
+class="math inline">\(6{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.0000\)</span></td>
+class="math inline">\(1{,}0000\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span
-class="math inline">\(-0.15\)</span></td>
+class="math inline">\(-0{,}15\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.000\)</span></td>
+class="math inline">\(1{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.993\)</span></td>
+class="math inline">\(1{,}993\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(2.988\)</span></td>
+class="math inline">\(2{,}988\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(3.984\)</span></td>
+class="math inline">\(3{,}984\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(4.979\)</span></td>
+class="math inline">\(4{,}979\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(5.975\)</span></td>
+class="math inline">\(5{,}975\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.0041\)</span></td>
+class="math inline">\(1{,}0041\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span
-class="math inline">\(-0.30\)</span></td>
+class="math inline">\(-0{,}30\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.000\)</span></td>
+class="math inline">\(1{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.972\)</span></td>
+class="math inline">\(1{,}972\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(2.952\)</span></td>
+class="math inline">\(2{,}952\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(3.934\)</span></td>
+class="math inline">\(3{,}934\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(4.915\)</span></td>
+class="math inline">\(4{,}915\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(5.898\)</span></td>
+class="math inline">\(5{,}898\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.0176\)</span></td>
+class="math inline">\(1{,}0176\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span
-class="math inline">\(-0.45\)</span></td>
+class="math inline">\(-0{,}45\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.000\)</span></td>
+class="math inline">\(1{,}000\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.935\)</span></td>
+class="math inline">\(1{,}935\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(2.888\)</span></td>
+class="math inline">\(2{,}888\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(3.844\)</span></td>
+class="math inline">\(3{,}844\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(4.801\)</span></td>
+class="math inline">\(4{,}801\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(5.759\)</span></td>
+class="math inline">\(5{,}759\)</span></td>
 <td style="text-align: center;"><span
-class="math inline">\(1.0427\)</span></td>
+class="math inline">\(1{,}0427\)</span></td>
 </tr>
 </tbody>
 </table>
 <figure id="fig:spectre" data-latex-placement="t">
-<img src="figs_u6/fig_spectre_KK.png" />
-<figcaption><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> <em>Left:</em> Kaluza–Klein
-tower <span class="math inline">\(M_n\ell\)</span> on the warped scale
-circle, for several <span class="math inline">\(\beta\)</span>
-(validation at <span class="math inline">\(\beta=0\)</span>: <span
-class="math inline">\(M_n=n\)</span>). The warp compresses the high
-modes. <em>Right:</em> the effective size <span
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_spectre_KK.png" />
+<figcaption><strong class="etag et6-num">▪ numérique</strong> <em>À gauche :</em> tour de
+Kaluza–Klein <span class="math inline">\(M_n\ell\)</span> sur le cercle
+d’échelle gauchi. <em>À droite :</em> la taille effective <span
 class="math inline">\(L_*(\beta)=\frac{1}{2\pi}\oint d\sigma/a\)</span>,
-even in <span class="math inline">\(\beta\)</span>.</figcaption>
+paire en <span class="math inline">\(\beta\)</span>.</figcaption>
 </figure>
-<h2
-id="validated-machinery-and-the-nature-of-the-stabilization">Validated
-machinery, and the nature of the stabilization</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> The total Casimir energy per 4D
-volume, for a periodic scalar field, is <span
+<h2 id="machinerie-validée-et-la-nature-de-la-stabilisation">Machinerie
+validée, et la nature de la stabilisation</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> L’énergie de Casimir totale par volume 4D,
+pour un champ scalaire périodique, est <span
 class="math display">\[\begin{equation}
 \label{eq:Ecas}
 \mathcal{E}(\beta)=\frac{1}{120\pi^2\ell^5}\,\zeta_L(-5/2;\beta),\qquad
 \zeta_L(s)=\sum_{n\ge1}\lambda_n^{-s},
-\end{equation}\]</span> where <span
-class="math inline">\(\zeta_L\)</span> is the spectral zeta function of
-the operator <a href="#eq:SL" data-reference-type="eqref"
-data-reference="eq:SL">[eq:SL]</a>. <em>Validation at <span
-class="math inline">\(\beta=0\)</span>:</em> since the spectrum there is
-exactly <span class="math inline">\(\lambda_n=n^2\)</span> (doubly
-degenerate, cf. Table <a href="#tab:spectre" data-reference-type="ref"
-data-reference="tab:spectre">1</a>), one recovers <span
-class="math display">\[\begin{equation}
+\end{equation}\]</span> où <span class="math inline">\(\zeta_L\)</span>
+est la fonction zêta spectrale de l’opérateur <a href="#eq:SL"
+data-reference-type="eqref" data-reference="eq:SL">[eq:SL]</a>.
+<em>Validation à <span class="math inline">\(\beta=0\)</span> :</em>
+<span class="math display">\[\begin{equation}
 \label{eq:val0}
-\zeta_L(-5/2;0)=2\zeta(-5)=-\tfrac{1}{126},
-\end{equation}\]</span> — the zeta-regularization machinery is therefore
-correct in this controlled limit, and the energy there is negative
-(attractive Casimir, consistent with <span
-class="math inline">\(\rho_{\mathrm{Cas}}&lt;0\)</span> of §<a
-href="#sec:casimir" data-reference-type="ref"
-data-reference="sec:casimir">5</a>).</p>
-<p><em>The nature of the problem.</em> The lift <span
-class="math inline">\(\sigma\to\sigma+\pi\)</span> exchanges <span
-class="math inline">\(\beta\to-\beta\)</span> while being an isometry of
-the circle; the energy is therefore <em>even</em>, <span
-class="math display">\[\begin{equation}
-\label{eq:even}
-\mathcal{E}(\beta)=\mathcal{E}(-\beta)=\mathcal{E}_0+\mathcal{E}_2\,\beta^2+\mathcal{E}_4\,\beta^4+\cdots
-\qquad(\text{verified: }L_*(-0.3)=L_*(+0.3)).
-\end{equation}\]</span> Decisive consequence: the Casimir energy
-<em>cannot</em> fix <span class="math inline">\(\beta\)</span> at first
-order. The uniform circle <span class="math inline">\(\beta=0\)</span>
-is an extremum, and <span class="math inline">\(\beta\)</span> appears
-only at second order — this is a <em>moduli stabilization</em> problem
-(à la Coleman–Weinberg), where the Casimir contribution <span
-class="math inline">\(\mathcal{E}_2\)</span> competes with the
-(positive) gravitational cost of curving the circle, <span
-class="math inline">\(\beta_\star\)</span> emerging from the balance at
-orders <span class="math inline">\(\beta^2,\beta^4\)</span>. It is
-precisely this framework that the next subsection defeats: the
-coefficient <span class="math inline">\(\mathcal{E}_2\)</span> itself is
-ill-defined (divergent).</p>
+\zeta_L(-5/2;0)=2\zeta(-5)=-\tfrac{1}{126}.
+\end{equation}\]</span> L’énergie est <em>paire</em>, <span
+class="math inline">\(\mathcal{E}(\beta)=\mathcal{E}(-\beta)\)</span> :
+le Casimir ne peut <em>pas</em> fixer <span
+class="math inline">\(\beta\)</span> au premier ordre. C’est un problème
+de <em>stabilisation de module</em>.</p>
 <h2
-id="the-obstruction-ultraviolet-divergence-at-the-order-that-matters">The
-obstruction: ultraviolet divergence at the order that matters</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> <span
-style="color: tgnum"><span class="sans-serif">[numerical]</span></span>
-In Schrödinger form, <a href="#eq:SL" data-reference-type="eqref"
-data-reference="eq:SL">[eq:SL]</a> becomes <span
-class="math inline">\(-v&#39;&#39;+Q(\sigma)v=\lambda v\)</span> with
-the effective potential (closed form) <span
-class="math display">\[\begin{equation}
+id="lobstruction-divergence-ultraviolette-à-lordre-qui-compte">L’obstruction
+: divergence ultraviolette à l’ordre qui compte</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> <strong class="etag et6-num">▪ numérique</strong> En forme de
+Schrödinger, <a href="#eq:SL" data-reference-type="eqref"
+data-reference="eq:SL">[eq:SL]</a> devient <span
+class="math inline">\(-v&#39;&#39;+Q(\sigma)v=\lambda v\)</span> avec le
+potentiel effectif <span class="math display">\[\begin{equation}
 \label{eq:Q}
 Q(\sigma)=\frac{3}{16}\,\frac{f&#39;^2}{f}+\frac{3}{4}\,f&#39;&#39;.
-\end{equation}\]</span> The Seeley–DeWitt coefficients <span
-class="citation" data-cites="Vassilevich Gilkey"></span> of this
-operator control the poles of <span
-class="math inline">\(\zeta_L(s)\)</span>: <span
-class="math inline">\(\zeta_L(s)\)</span> has a pole at <span
-class="math inline">\(s=\tfrac{1}{2}-k\)</span> with residue <span
-class="math inline">\(\propto b_k\)</span>, where <span
-class="math display">\[\begin{equation}
-\label{eq:bk}
-b_1=-\!\int Q\,dt,\qquad b_2=\tfrac12\!\int Q^2\,dt,\qquad
-b_3=\int\!\Bigl(-\tfrac16 Q^3+\tfrac1{12}\dot Q^2\Bigr)dt .
-\end{equation}\]</span> The energy lives at <span
-class="math inline">\(s=-5/2\)</span>, i.e. <span
-class="math inline">\(k=3\)</span>. The computation gives (Fig. <a
+\end{equation}\]</span> Les coefficients de Seeley–DeWitt <span
+class="citation" data-cites="Vassilevich Gilkey"></span> contrôlent les
+pôles de <span class="math inline">\(\zeta_L(s)\)</span>. L’énergie vit
+en <span class="math inline">\(s=-5/2\)</span>, soit <span
+class="math inline">\(k=3\)</span>. Le calcul donne (Fig. <a
 href="#fig:b3" data-reference-type="ref" data-reference="fig:b3">4</a>)
 <span class="math display">\[\begin{equation}
 \label{eq:b3}
-\boxed{\,b_3(\beta)\simeq 0.146\,\beta^2\neq 0\quad(\beta\neq0),\qquad
-b_3(0)=0\,}
-\end{equation}\]</span> the dominant term coming from <span
-class="math inline">\(\int\dot Q^2\,dt\propto\beta^2\)</span> (a
-Korteweg–de Vries invariant, robustly non-zero). Chain of consequences,
-each link verified: <span class="math display">\[\begin{equation}
-\label{eq:chain}
-b_3\neq0\;\Longrightarrow\;\zeta_L\ \text{has a pole at}\ s=-\tfrac52
-\;\Longrightarrow\;\mathcal{E}\propto\zeta_L(-\tfrac52)\ \text{diverges}
-\;\Longrightarrow\;\text{a bulk counterterm is required}.
-\end{equation}\]</span></p>
+b_3(\beta)\simeq 0{,}146\,\beta^2\neq 0\quad(\beta\neq0),\qquad
+b_3(0)=0,
+\end{equation}\]</span> donc <span
+class="math inline">\(\zeta_L\)</span> a un pôle en <span
+class="math inline">\(s=-\tfrac52\)</span> et l’énergie de Casimir 5D
+diverge dans l’ultraviolet.</p>
 <figure id="fig:b3" data-latex-placement="t">
-<img src="figs_u6/fig_b3.png" style="width:64.0%" />
-<figcaption><span style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span> The third heat-kernel
-coefficient <span class="math inline">\(b_3(\beta)\)</span>, which
-controls <span class="math inline">\(\zeta_L(-5/2)\)</span>. Non-zero
-for <span class="math inline">\(\beta\neq0\)</span> (dominant law <span
-class="math inline">\(0.146\,\beta^2\)</span>), it signals a pole at
-<span class="math inline">\(s=-5/2\)</span>: the 5D Casimir energy is
-ultraviolet-divergent, with a divergence <em>depending on <span
-class="math inline">\(\beta\)</span></em>. At <span
-class="math inline">\(\beta=0\)</span> (flat circle), <span
-class="math inline">\(b_3=0\)</span> and the energy is finite (<span
-class="math inline">\(-1/126\)</span>).</figcaption>
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_b3.png" style="width:64.0%" />
+<figcaption><strong class="etag et6-num">▪ numérique</strong> Le troisième coefficient de noyau de
+la chaleur <span class="math inline">\(b_3(\beta)\)</span>. Non nul pour
+<span class="math inline">\(\beta\neq0\)</span> (loi dominante <span
+class="math inline">\(0{,}146\,\beta^2\)</span>), il signale un pôle en
+<span class="math inline">\(s=-5/2\)</span>.</figcaption>
 </figure>
-<h2 id="consequence-and-escape-route">Consequence and escape route</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> The vacuum energy that would
-fix <span class="math inline">\(\beta\)</span> therefore requires a
-local counterterm <em>depending on <span
-class="math inline">\(\beta\)</span></em> (a higher-curvature term in
-the 5D action). Since its coefficient is free, the renormalized energy
-carries a scale dependence <span class="math inline">\(\propto
-b_3(\beta)\ln\mu\)</span>: the value <span
-class="math inline">\(\beta_\star\)</span> depends on the
-renormalization scheme. This behavior is the known one of Casimir
-energies in warped 5D (Randall–Sundrum type) <span class="citation"
-data-cites="RS"></span>, which renormalize brane tensions and the bulk
-cosmological constant. The only escape route would be a
-<em>supersymmetric</em> field content, where <span
-class="math inline">\(\sum_F(-1)^F b_3=0\)</span> would render the
-energy finite; but <span class="math inline">\(\beta_\star\)</span>
-would then remain <em>content-dependent</em>. In all cases: no
-parameter-free prediction. <span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span></p>
-<h2 id="a-point-in-favor-of-the-sigma-model">A point in favor of the
-<span class="math inline">\(\sigma\)</span>-model</h2>
-<p><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> The original corpus formulation
-treats <span class="math inline">\(\sigma\)</span> as an internal
-target: there is then <em>no</em> bulk circle on which fields wind,
-hence no analogous Casimir divergence. On this precise point, the <span
-class="math inline">\(\sigma\)</span>-model is better behaved than its
-5D promotion. The dimensional embedding illuminates the <em>origin</em>
-of the action, but does not provide better control of <span
-class="math inline">\(\beta\)</span>.</p>
+<h2 id="un-point-en-faveur-du-sigma-modèle">Un point en faveur du <span
+class="math inline">\(\sigma\)</span>-modèle</h2>
+<p><strong class="etag et6-preuve">▪ preuve</strong> La formulation d’origine du corpus traite
+<span class="math inline">\(\sigma\)</span> comme une cible interne : il
+n’y a alors <em>pas</em> de cercle de volume où des champs s’enroulent,
+donc pas de divergence de Casimir analogue. Sur ce point précis, le
+<span class="math inline">\(\sigma\)</span>-modèle est mieux comporté
+que sa promotion 5D.</p>
 <h1 id="discussion">Discussion</h1>
-<h2 id="what-the-5d-embedding-brings-and-what-it-does-not">What the 5D
-embedding brings, and what it does not</h2>
-<p>The assessment is mixed and instructive. The embedding
-<em>regenerates</em> the corpus structure: the non-minimal coupling
-<span class="math inline">\(f=a^2\)</span>, its trigonometric form, the
-<span class="math inline">\(V\)</span>–<span
-class="math inline">\(f\)</span> locking, and the F2 health criterion
-become consequences of the warped 5D geometry rather than choices. It
-also provides a <em>natural origin</em> for the required exotic source:
-vacuum Casimir energy, with correct sign, structure and Planckian
-magnitude. But it <em>does not improve</em> predictive power: the
-coupling <span class="math inline">\(\beta\)</span> cannot be predicted
-from the vacuum energy, whose relevant part is UV-divergent. The
-embedding is thus to be read as a structural <em>origin story</em>, not
-as a more fundamental framework replacing the <span
-class="math inline">\(\sigma\)</span>-model.</p>
-<h2 id="positioning-in-the-literature-and-related-work">Positioning in
-the literature and related work</h2>
-<p>None of the physical bricks mobilized here is proper to this work:
-each has an identifiable lineage, which we first survey, before
-isolating what is, properly, a matter of <em>assembly</em>.</p>
-<ul>
-<li><p><em>Scale as a variable.</em> Promoting resolution/scale to the
-rank of a coordinate is the guiding idea of Nottale’s scale
-relativity <span class="citation" data-cites="Nottale"></span>; on the
-holographic side, the identification “radial coordinate <span
-class="math inline">\(=\)</span> energy scale / renormalization
-direction” <a href="#eq:metric" data-reference-type="eqref"
-data-reference="eq:metric">[eq:metric]</a> is an established fact of
-AdS/CFT <span class="citation"
-data-cites="Maldacena dBVV"></span>.</p></li>
-<li><p><em>Inflation.</em> Our inflationary sector (periodic non-minimal
-coupling <span class="math inline">\(f=1+\beta\cos\)</span>, <span
-class="math inline">\(V\propto 1-\cos\)</span>) coincides with the
-periodic non-minimal-coupling natural inflation of
-Ferreira–Notari–Simeon <span class="citation" data-cites="FNS"></span>
-and Simeon <span class="citation" data-cites="Simeon"></span>, which
-brings “bare” natural inflation <span class="citation"
-data-cites="Freese"></span> — today disfavored by the data — back within
-the <span class="math inline">\((n_s,r)\)</span> contours at the GUT
-scale.</p></li>
-<li><p><em>c-function / directed flow.</em> The link “null energy
-condition <span class="math inline">\(\Rightarrow\)</span> a monotone
-function along the flow” goes back to the Zamolodchikov c-theorem <span
-class="citation" data-cites="Zamolodchikov"></span> and its holographic
-version <span class="citation" data-cites="FGPW"></span>; our
-cosmological c-function is an FRW adaptation of it.</p></li>
-<li><p><em>Bulk Casimir.</em> The Casimir energy of a compact dimension,
-regularized over the KK tower, and its tendency to stabilize or
-destabilize the radius, are classical since Appelquist–Chodos <span
-class="citation" data-cites="AppelquistChodos"></span>.</p></li>
-<li><p><em>Scale duality.</em> The UV <span
-class="math inline">\(\leftrightarrow\)</span> IR inversion with a
-minimal length (“zero-point length”, <span
-class="math inline">\(ds\to\ell_P^2/ds\)</span>) of Padmanabhan <span
-class="citation" data-cites="Padmanabhan"></span>, a cousin of string
-T-duality, prefigures our involution <span
-class="math inline">\(\mathcal{D}:\sigma\to-\sigma\)</span> <a
-href="#eq:metric" data-reference-type="eqref"
-data-reference="eq:metric">[eq:metric]</a>.</p></li>
-<li><p><em>Relational clock.</em> The bridge whereby gravity modulates
-the rate of an internal clock is the Page–Wootters formalism <span
-class="citation" data-cites="PageWootters"></span> (sector developed in
-Units 1 and 4–5).</p></li>
-<li><p><em>Closure.</em> That a regular black hole requires an
-energy-condition violation (de Sitter core) is established since
-Bardeen <span class="citation" data-cites="Bardeen"></span> and
-Hayward <span class="citation" data-cites="Hayward"></span>.</p></li>
-</ul>
-<div class="tcolorbox">
-<p>None of the ingredients above is new in isolation, and we claim
-<em>no new observable</em>: the predicted <span
-class="math inline">\((n_s,r)\)</span> are degenerate with non-minimal
-natural inflation <span class="citation"
-data-cites="FNS Simeon"></span>. What is proper to the corpus comes down
-to three points.</p>
-<ol>
-<li><p><strong>The unifying move.</strong> Compactifying <em>both</em>
-scale axes — spatial and temporal — as internal targets of a single
-scalar–tensor <span class="math inline">\(\sigma\)</span>-model (<span
-class="math inline">\(f=1+\beta(\cos\psi+\cos\chi)\)</span>, <span
-class="math inline">\(V=\alpha(2-\cos\psi-\cos\chi)\)</span>), then
-realizing the compact object as a circle/torus (Units 1–4) <span
-class="citation" data-cites="U1 U2 U3 U4"></span>, a sphere
-(Unit 5) <span class="citation" data-cites="U5"></span>, or a warped
-fifth dimension (this Unit). We have not found this precise construction
-elsewhere: it is <em>in the spirit</em> of Nottale <span
-class="citation" data-cites="Nottale"></span> and of holographic
-RG <span class="citation" data-cites="Maldacena dBVV"></span>, but its
-realization as a scale <span class="math inline">\(\sigma\)</span>-model
-is proper to the corpus.</p></li>
-<li><p><strong>Over-determination.</strong> A single coupling <span
-class="math inline">\(\beta\)</span>, fixed once by the CMB, must
-<em>simultaneously</em> satisfy several sectors (inflation, static
-closure, false-vacuum metastability, clock freeze, core stability, RG
-flow), through crossed internal identities — the same threshold <span
-class="math inline">\(\beta_c\)</span> pivoting two sectors at once.
-This is the methodological signature of the programme, and its possibly
-fortuitous character is explicitly left <span
-style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> / <span
-style="color: tgopen"><span
-class="sans-serif">[open]</span></span>.</p></li>
-<li><p><strong>The model-internal exact forms.</strong> A closed-form
-Hawking–Moss action vanishing at the threshold, the spectral validation
-<span class="math inline">\(\zeta_L(-5/2;0)=-1/126\)</span>, the
-heat-kernel coefficient <span
-class="math inline">\(b_3(\beta)\simeq0.146\,\beta^2\)</span>, the
-existence factor <span
-class="math inline">\(\varepsilon=E(k)/K(k)\)</span>: exact results, but
-<em>internal</em> to the framework.</p></li>
-</ol>
-<p>In sum, the contribution is not a distinctive prediction but a
-<em>grammar</em>: a single compact geometry that reorganizes disparate
-phenomena under a handful of numbers, each statement carrying its
-epistemic status. Anything distinctive lives at GUT/Planck curvature
-(screened) or remains structurally real but silent in the currently
-accessible spectrum.</p>
-</div>
-<h2 id="mapping-the-assembly">Mapping the assembly</h2>
-<p>These three traits are read directly off Figures <a
-href="#fig:genealogie" data-reference-type="ref"
-data-reference="fig:genealogie">5</a>–<a href="#fig:formes"
-data-reference-type="ref" data-reference="fig:formes">7</a>. The
-genealogy (Fig. <a href="#fig:genealogie" data-reference-type="ref"
-data-reference="fig:genealogie">5</a>) separates the borrowed bricks —
-each of identifiable lineage — from their systematization, which is the
-proper object. The over-determination (Fig. <a href="#fig:surdet"
-data-reference-type="ref" data-reference="fig:surdet">6</a>) shows a
-single <span class="math inline">\((\alpha,\beta)\)</span> feeding six
-sectors, and the exact interlocking of thresholds (<span
-class="math inline">\(\beta_c=-1/3\)</span> where <span
-class="math inline">\(R_{\mathrm{core}}=R_c=6\alpha\)</span>;
-bifurcation at <span class="math inline">\(-1/6\)</span>). Finally the
-model-internal closed forms (Fig. <a href="#fig:formes"
-data-reference-type="ref" data-reference="fig:formes">7</a>) — <span
-class="math inline">\(\zeta_L(-5/2;0)=-1/126\)</span>, <span
-class="math inline">\(b_3\simeq0.146\,\beta^2\)</span>, <span
-class="math inline">\(B_{\mathrm{HM}}\propto(3\beta+\tfrac12)^2\)</span>
-vanishing at <span class="math inline">\(-1/6\)</span>, <span
-class="math inline">\(\varepsilon=E/K\)</span> — are exact and
-reproducible, but proper to the framework. All three are regenerated by
-the script <code>U6_appartenance.py</code> (§ Reproducibility).</p>
+<h2 id="ce-que-le-plongement-5d-apporte-et-ce-quil-napporte-pas">Ce que
+le plongement 5D apporte, et ce qu’il n’apporte pas</h2>
+<p>Le bilan est mixte et instructif. Le plongement <em>réengendre</em>
+la structure du corpus. Il fournit aussi une <em>origine naturelle</em>
+de la source exotique requise : l’énergie de Casimir du vide. Mais il
+<em>n’améliore pas</em> le pouvoir prédictif : le couplage <span
+class="math inline">\(\beta\)</span> ne se laisse pas prédire par
+l’énergie du vide, dont la partie pertinente est UV-divergente.</p>
 <figure id="fig:genealogie" data-latex-placement="htbp">
-<img src="figs_u6/fig_genealogie.png" style="width:86.0%" />
-<figcaption><em>Genealogy of the assembly.</em> Each physical brick
-(grey) has an identifiable lineage in the literature; the corpus unifies
-them into a single compact geometry (teal). The proper contribution is
-not a brick, but their systematization.</figcaption>
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_genealogie.png" style="width:86.0%" />
+<figcaption><em>Généalogie de l’assemblage.</em> Chaque brique physique
+a une filiation identifiable ; le corpus les réunit en une seule
+géométrie compacte.</figcaption>
 </figure>
 <figure id="fig:surdet" data-latex-placement="htbp">
-<img src="figs_u6/fig_surdetermination.png" />
-<figcaption><em>Over-determination.</em> <strong>(a)</strong> A single
-<span class="math inline">\((\alpha,\beta)\)</span>, fixed by the CMB,
-feeds six sectors. <strong>(b)</strong> Interlocking of thresholds:
-<span class="math inline">\(R_{\mathrm{core}}(\beta)\)</span> and <span
-class="math inline">\(R_c(\beta)\)</span> cross exactly at <span
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_surdetermination.png" />
+<figcaption><em>Sur-détermination.</em> Un seul <span
+class="math inline">\((\alpha,\beta)\)</span>, calé par le CMB, alimente
+six secteurs. Emboîtement des seuils : <span
 class="math inline">\(\beta_c=-1/3\)</span> (<span
-class="math inline">\(R=6\alpha\)</span>); the false-vacuum bifurcation
-is at <span class="math inline">\(\beta_c=-1/6\)</span>. A single
-parameter governs two distinct sectors.</figcaption>
+class="math inline">\(R=6\alpha\)</span>) et bifurcation à <span
+class="math inline">\(-1/6\)</span>.</figcaption>
 </figure>
 <figure id="fig:formes" data-latex-placement="htbp">
-<img src="figs_u6/fig_formes_exactes.png" />
-<figcaption><em>Model-internal exact forms.</em> <strong>(a)</strong>
-<span class="math inline">\(b_3(\beta)\)</span>: the corpus law <span
-class="math inline">\(0.146\,\beta^2\)</span>, with the points
-recomputed from the heat kernel. <strong>(b)</strong> <span
-class="math inline">\(B_{\mathrm{HM}}\propto(3\beta+\tfrac12)^2\)</span>,
-vanishing at <span class="math inline">\(\beta=-1/6\)</span>.
-<strong>(c)</strong> <span
-class="math inline">\(\varepsilon=E(k)/K(k)\)</span>, decreasing from
-<span class="math inline">\(1\)</span> to <span
-class="math inline">\(0\)</span>. Exact, reproducible results, but
-proper to the framework.</figcaption>
-</figure>
-<h1 id="epistemic-status-and-limitations">Epistemic status and
-limitations</h1>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;"><strong>Content</strong></th>
-<th style="text-align: left;"><strong>Status</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">KK reduction <span
-class="math inline">\(\Rightarrow\)</span> <span
-class="math inline">\(f=a^2\)</span>; trigonometric form forced by
-compactness; <span class="math inline">\(V\)</span>–<span
-class="math inline">\(f\)</span> locking giving <span
-class="math inline">\(V=\alpha(1-\cos\sigma)\)</span>; F2 criterion
-re-derived; 5D Einstein tensor and NEC combination <a href="#eq:NEC"
-data-reference-type="eqref" data-reference="eq:NEC">[eq:NEC]</a>;
-AdS<span class="math inline">\(_5\)</span> identification for <span
-class="math inline">\(a=e^{\sigma/\ell}\)</span>.</td>
-<td style="text-align: left;"><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> <span
-style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Geometric structure: AdS<span
-class="math inline">\(_5\)</span> as a dilatation isometry (<span
-class="math inline">\(R_5=-20/\ell^2\)</span>, Killing <span
-class="math inline">\(\partial_\sigma\)</span>, scale momentum); duality
-involution <span
-class="math inline">\(\mathcal{D}:\sigma\to-\sigma\)</span> (T-duality,
-fixed points <span class="math inline">\(P,\infty^{*}\)</span>);
-compactness breaks dilatation and generates the hierarchy.</td>
-<td style="text-align: left;"><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Geometric origin of the Unit 1 clock (KK
-tower <span class="math inline">\(\to\)</span> <span
-class="math inline">\(\tau_0,\varepsilon\)</span>): scale coherence, but
-not derived in this work.</td>
-<td style="text-align: left;"><span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> <span
-style="color: tgopen"><span class="sans-serif">[open]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;">KK spectrum on the warped circle;
-compression and <span class="math inline">\(L_*\)</span>; validation
-<span class="math inline">\(\zeta_L(-5/2;0)=-1/126\)</span>; <span
-class="math inline">\(\mathcal{E}(\beta)=\mathcal{E}(-\beta)\)</span>;
-coefficients <span class="math inline">\(b_1,b_2,b_3\)</span>; <span
-class="math inline">\(b_3(\beta)\simeq0.146\beta^2\)</span>; UV
-divergence at <span class="math inline">\(s=-5/2\)</span>.</td>
-<td style="text-align: left;"><span style="color: tgproof"><span
-class="sans-serif">[proof]</span></span> <span
-style="color: tgnum"><span
-class="sans-serif">[numerical]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Exotic source identified with Casimir
-energy (sign, structure, self-consistent Planckian magnitude).</td>
-<td style="text-align: left;"><span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;"><span
-class="math inline">\(\beta_\star\)</span> not predicted parameter-free:
-scheme dependence (counterterm <span class="math inline">\(\propto
-b_3\)</span>), supersymmetric escape route but content-dependent.</td>
-<td style="text-align: left;"><span style="color: tgconj"><span
-class="sans-serif">[conjecture]</span></span> <span
-style="color: tgopen"><span class="sans-serif">[open]</span></span></td>
-</tr>
-<tr>
-<td style="text-align: left;">Multi-field resolution off the diagonal;
-exact behavior near the poles; degeneracy at the confluence point <span
-class="math inline">\(\infty^{*}\)</span>; explicit computation of the
-5D counterterms; the ghost question beyond the signature choice.</td>
-<td style="text-align: left;"><span style="color: tgopen"><span
-class="sans-serif">[open]</span></span></td>
-</tr>
-</tbody>
-</table>
-<p>The distinction of statuses is not an ornament but a constitutive
-part of the method: it guarantees that this work can be reused without
-any statement exceeding what is actually established.</p>
-<h1 id="conclusion">Conclusion</h1>
-<p>Promoting the scale axis to the rank of a compactified spacetime
-fifth dimension — the inverse of the corpus choice — lands first on
-marked-out geometric ground: the warped metric is AdS<span
-class="math inline">\(_5\)</span>, the scale is its renormalization
-direction, <span class="math inline">\(\partial_\sigma\)</span> is its
-dilatation isometry, and the involution <span
-class="math inline">\(\sigma\to-\sigma\)</span> is a scale mirror
-(cousin of T-duality) leaving <span class="math inline">\(P\)</span> and
-<span class="math inline">\(\infty^{*}\)</span> fixed. Closing this
-scale line into a loop breaks the exact dilatation — which, far from
-being a defect, <em>generates the hierarchy</em> of scales.</p>
-<p>The embedding is then <em>generative</em>: the Kaluza–Klein reduction
-reproduces the non-minimal coupling <span
-class="math inline">\(f=a^2\)</span>, its trigonometric form imposed by
-compactness, the <span class="math inline">\(V\)</span>–<span
-class="math inline">\(f\)</span> locking giving <span
-class="math inline">\(V=\alpha(1-\cos\sigma)\)</span>, and F2 health. It
-even offers a <em>bridge</em> toward Unit 1: the discreteness of the KK
-tower is the geometric candidate for the origin of the intermittent
-clock (<span class="math inline">\(\tau_0,\varepsilon\)</span>) —
-coherent in order of magnitude, but <em>not derived</em> here, and we
-record it as such.</p>
-<p>Two costs, in all honesty. On the one hand, the promotion
-<em>reopens</em> the ghost and closed-timelike-curve question that F2
-closed by postulate; we close it again, but only by keeping the scale on
-the <em>space</em> side. On the other hand, closing the circle requires
-a null-energy-condition violation at the Planck pole — a cost that
-naturally identifies with vacuum Casimir energy, with correct sign,
-structure and Planckian magnitude. But the embedding <em>does not
-improve</em> predictive power: the vacuum energy does not fix <span
-class="math inline">\(\beta\)</span>, its relevant part being
-UV-divergent (<span class="math inline">\(b_3\neq0\)</span>), so that
-<span class="math inline">\(\beta_\star\)</span> depends on the scheme;
-on this point, the original <span
-class="math inline">\(\sigma\)</span>-model is even better behaved.</p>
-<p>The 5D embedding is therefore an illuminating <em>structural
-origin</em> — it recovers and grounds the form of the framework — and
-not a more fundamental replacement. This is the price at which, with the
-honest labeling of each statement, a geometric intuition can be
-evaluated for what it is worth: here, a fine origin and a promising
-bridge, but not a prediction.</p>
-<h4 id="acknowledgments">Acknowledgments</h4>
-<p>The author thanks the symbolic- and numerical-computation tools
-(SymPy, SciPy, NumPy), which enabled the systematic verification of each
-step, and the hep-th/gr-qc community for the standards of rigor that
-guided this work. The formalization was carried out in dialogue with
-analytical-assistance systems, under the direction of the author, who
-bears full responsibility for the scientific content.</p>
-<h1 class="unnumbered" id="reproducibility">Reproducibility</h1>
-<p>The numerical results and symbolic verifications are reproduced by
-two standalone scripts (NumPy/SymPy/SciPy/Matplotlib), with sections
-coded to be proper to this document:</p>
-<ul>
-<li><p>Geometric structure: AdS<span class="math inline">\(_5\)</span>
-for <span class="math inline">\(a=e^{\sigma/\ell}\)</span> (<span
-class="math inline">\(R_5=-20/\ell^2\)</span> constant); dilatation
-isometry (Killing <span class="math inline">\(\partial_\sigma\)</span>);
-duality involution <span
-class="math inline">\(\mathcal{D}:\sigma\to-\sigma\)</span> and its
-fixed points <span class="math inline">\(P,\infty^{*}\)</span>.</p></li>
-<li><p>KK reduction: 5D Einstein tensor <a href="#eq:einstein"
-data-reference-type="eqref"
-data-reference="eq:einstein">[eq:einstein]</a>, induced coupling <span
-class="math inline">\(f=a^2\)</span>, <span
-class="math inline">\(V\)</span>–<span class="math inline">\(f\)</span>
-locking <a href="#eq:Vlock" data-reference-type="eqref"
-data-reference="eq:Vlock">[eq:Vlock]</a>, absence of a second harmonic
-(brane-tension test); F2 criterion (sign of the kinetic term according
-to the signature of <span
-class="math inline">\(\sigma\)</span>).</p></li>
-<li><p>NEC combination <a href="#eq:NEC" data-reference-type="eqref"
-data-reference="eq:NEC">[eq:NEC]</a>; localization of the violation at
-<span class="math inline">\(P\)</span>.</p></li>
-<li><p>Decomposition of the source: trace part <span
-class="math inline">\(\Lambda_5(\sigma)\)</span> and traceless part
-<span
-class="math inline">\(\propto\mathop{\mathrm{diag}}(1,1,1,1,-4)\)</span> <a
-href="#eq:traceless" data-reference-type="eqref"
-data-reference="eq:traceless">[eq:traceless]</a>; sign of the periodic
-Casimir <a href="#eq:rhocas" data-reference-type="eqref"
-data-reference="eq:rhocas">[eq:rhocas]</a>; self-consistency <span
-class="math inline">\(\ell\sim\ell_5\)</span> <a href="#eq:selfcons"
-data-reference-type="eqref"
-data-reference="eq:selfcons">[eq:selfcons]</a>.</p></li>
-<li><p>Warped KK spectrum <a href="#eq:SL" data-reference-type="eqref"
-data-reference="eq:SL">[eq:SL]</a> (spectral Fourier solver);
-compression and <span class="math inline">\(L_*\)</span>; symmetry <span
-class="math inline">\(\beta\to-\beta\)</span>; validation <span
-class="math inline">\(\zeta_L(-5/2;0)=2\zeta(-5)=-1/126\)</span>.</p></li>
-<li><p>Schrödinger form <a href="#eq:Q" data-reference-type="eqref"
-data-reference="eq:Q">[eq:Q]</a>; heat-kernel coefficients <a
-href="#eq:bk" data-reference-type="eqref"
-data-reference="eq:bk">[eq:bk]</a>; <span
-class="math inline">\(b_3(\beta)\simeq0.146\,\beta^2\)</span> <a
-href="#eq:b3" data-reference-type="eqref"
-data-reference="eq:b3">[eq:b3]</a>; pole structure and UV divergence <a
-href="#eq:chain" data-reference-type="eqref"
-data-reference="eq:chain">[eq:chain]</a>.</p></li>
-<li><p>Mapping the assembly (Fig. <a href="#fig:genealogie"
-data-reference-type="ref" data-reference="fig:genealogie">5</a>–<a
-href="#fig:formes" data-reference-type="ref"
-data-reference="fig:formes">7</a>): recomputed cross-checks — <span
-class="math inline">\(\zeta_L(-5/2;0)=2\zeta(-5)=-1/126\)</span>; <span
-class="math inline">\(b_3(\beta)\)</span> by integration of the heat
-kernel <span class="math inline">\(\to 0.146\,\beta^2\)</span> (limit
-<span class="math inline">\(3\pi/64\)</span>); <span
+<img alt="Figure — Unité 6, origine 5D de la dualité d'échelle" src="figs_u6/fig_formes_exactes.png" />
+<figcaption><em>Formes exactes internes.</em> <span
+class="math inline">\(b_3(\beta)\)</span> ; <span
 class="math inline">\(B_{\mathrm{HM}}\propto(3\beta+\tfrac12)^2\)</span>
-vanishing at <span class="math inline">\(\beta=-1/6\)</span>;
-interlocking <span class="math inline">\(R_{\mathrm{core}}=R_c\)</span>
-at <span class="math inline">\(\beta=-1/3\)</span> (<span
-class="math inline">\(R=6\alpha\)</span>); <span
-class="math inline">\(\varepsilon=E/K\)</span>.</p></li>
-</ul>
-<p>Files: <code>U6_5D_reproductible.py</code> (computations),
-<code>U6_figures.py</code> (Fig. 1–4) and
-<code>U6_appartenance.py</code> (cartography, Fig. 5–7). Convention:
-<span class="math inline">\(\ell=M_5^{-1}=1\)</span> unless stated
-otherwise; the prefix <code>U6_5D_</code> and the codes
-<code>[W</code><span class="math inline">\(\cdot\)</span><code>]</code>
-are specific to this document.</p>
+nulle à <span class="math inline">\(\beta=-1/6\)</span> ; <span
+class="math inline">\(\varepsilon=E(k)/K(k)\)</span>. Résultats exacts,
+propres au cadre.</figcaption>
+</figure>
+<h1 id="conclusion">Conclusion</h1>
+<p>Promouvoir l’axe d’échelle au rang de cinquième dimension
+espace-temporelle compactifiée atterrit d’abord sur un terrain
+géométrique balisé : la métrique gauchie est AdS<span
+class="math inline">\(_5\)</span>, l’échelle en est la direction de
+renormalisation. Le plongement est ensuite <em>génératif</em> : la
+réduction de Kaluza–Klein reproduit le couplage non minimal <span
+class="math inline">\(f=a^2\)</span>, sa forme trigonométrique, le
+verrouillage <span class="math inline">\(V\)</span>–<span
+class="math inline">\(f\)</span>, et la santé F2. Mais il <em>n’améliore
+pas</em> le pouvoir prédictif : l’énergie du vide ne fixe pas <span
+class="math inline">\(\beta\)</span> (<span
+class="math inline">\(b_3\neq0\)</span>), de sorte que <span
+class="math inline">\(\beta_\star\)</span> dépend du schéma. Le
+plongement 5D est donc une <em>origine structurelle</em> éclairante, et
+non un remplaçant plus fondamental.</p>
+<h4 id="remerciements">Remerciements</h4>
+<p>L’auteur remercie les outils de calcul formel et numérique (SymPy,
+SciPy, NumPy). La formalisation a été conduite en dialogue avec des
+systèmes d’assistance analytique, sous la direction de l’auteur, à qui
+revient l’entière responsabilité du contenu scientifique.</p>
 <div class="thebibliography">
-<p><span>99</span> H. Bakkaoui, <em>Quantum Existence Discontinuity
-(HDEQ)</em>, Unit 1, Zenodo (2026), <a
-href="https://doi.org/10.5281/zenodo.19854631">doi:10.5281/zenodo.19854631</a>.
-H. Bakkaoui, <em>A compactified scale-duality field: closure of the
-static sector and falsifiable natural inflation</em>, Unit 2, Zenodo
-(2026), <a
-href="https://doi.org/10.5281/zenodo.20466331">doi:10.5281/zenodo.20466331</a>.
-H. Bakkaoui, <em>Compactified scale duality: a geometric route toward
-unification</em>, Unit 3, Zenodo (2026), <a
-href="https://doi.org/10.5281/zenodo.20542442">doi:10.5281/zenodo.20542442</a>.
-H. Bakkaoui, <em>Gravitational collapse, metastable false vacuum,
-isocurvature, and exact Mukhanov–Sasaki spectrum</em>, Unit 4, Zenodo
-(2026), <a
-href="https://doi.org/10.5281/zenodo.20671559">doi:10.5281/zenodo.20671559</a>.
-H. Bakkaoui, <em>Spherical compactification of scale space: latitude as
-a directed renormalization coordinate</em>, Unit 5, Zenodo (2026), <a
-href="https://doi.org/10.5281/zenodo.20671839">doi:10.5281/zenodo.20671839</a>.
-T. Kaluza, <em>Zum Unitätsproblem der Physik</em>, Sitzungsber. Preuss.
-Akad. Wiss. Berlin, 966 (1921). O. Klein, <em>Quantentheorie und
-fünfdimensionale Relativitätstheorie</em>, Z. Phys. <strong>37</strong>,
-895 (1926). J. M. Maldacena, <em>The large <span
-class="math inline">\(N\)</span> limit of superconformal field theories
-and supergravity</em>, Adv. Theor. Math. Phys. <strong>2</strong>, 231
-(1998). L. Randall &amp; R. Sundrum, <em>A large mass hierarchy from a
-small extra dimension</em>, Phys. Rev. Lett. <strong>83</strong>, 3370
-(1999). H. B. G. Casimir, <em>On the attraction between two perfectly
-conducting plates</em>, Proc. K. Ned. Akad. Wet. <strong>51</strong>,
-793 (1948). T. Appelquist &amp; A. Chodos, <em>Quantum effects in
-Kaluza–Klein theories</em>, Phys. Rev. Lett. <strong>50</strong>, 141
-(1983). D. V. Vassilevich, <em>Heat kernel expansion: user’s
-manual</em>, Phys. Rep. <strong>388</strong>, 279 (2003). P. B. Gilkey,
-<em>Invariance Theory, the Heat Equation, and the Atiyah–Singer Index
-Theorem</em> (CRC Press, 1995). K. Freese, J. A. Frieman &amp; A. V.
-Olinto, <em>Natural inflation with pseudo Nambu–Goldstone bosons</em>,
-Phys. Rev. Lett. <strong>65</strong>, 3233 (1990). R. Z. Ferreira, A.
-Notari &amp; G. Simeon, <em>Natural inflation with a periodic
-non-minimal coupling</em>, JCAP <strong>11</strong> (2018) 021. G.
-Simeon, <em>Scalar-tensor extension of natural inflation</em>, JCAP
-<strong>07</strong> (2020) 028. L. Nottale, <em>The theory of scale
-relativity</em>, Int. J. Mod. Phys. A <strong>7</strong>, 4899 (1992).
-J. de Boer, E. Verlinde &amp; H. Verlinde, <em>On the holographic
-renormalization group</em>, JHEP <strong>08</strong> (2000) 003. A. B.
-Zamolodchikov, <em>Irreversibility of the flux of the renormalization
-group in a 2D field theory</em>, JETP Lett. <strong>43</strong>, 730
-(1986). D. Z. Freedman, S. S. Gubser, K. Pilch &amp; N. P. Warner,
-<em>Renormalization group flows from holography–supersymmetry and a
-c-theorem</em>, Adv. Theor. Math. Phys. <strong>3</strong>, 363 (1999).
-T. Padmanabhan, <em>Duality and zero-point length of spacetime</em>,
-Phys. Rev. Lett. <strong>78</strong>, 1854 (1997). D. N. Page &amp; W.
-K. Wootters, <em>Evolution without evolution: dynamics described by
-stationary observables</em>, Phys. Rev. D <strong>27</strong>, 2885
-(1983). J. M. Bardeen, <em>Non-singular general-relativistic
-gravitational collapse</em>, in <em>Proc. Int. Conf. GR5</em> (Tbilisi,
-1968), p. 174. S. A. Hayward, <em>Formation and evaporation of regular
-black holes</em>, Phys. Rev. Lett. <strong>96</strong>, 031103
-(2006).</p>
+<p><span>99</span> H. B. G. Casimir, <em>On the attraction between two
+perfectly conducting plates</em>, Proc. K. Ned. Akad. Wet.
+<strong>51</strong>, 793 (1948). D. V. Vassilevich, <em>Heat kernel
+expansion: user’s manual</em>, Phys. Rep. <strong>388</strong>, 279
+(2003). P. B. Gilkey, <em>Invariance Theory, the Heat Equation, and the
+Atiyah–Singer Index Theorem</em> (CRC Press, 1995). L. Randall &amp; R.
+Sundrum, <em>A large mass hierarchy from a small extra dimension</em>,
+Phys. Rev. Lett. <strong>83</strong>, 3370 (1999).</p>
 </div>
 </article>
 <footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
