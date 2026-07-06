@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A parametric family of primes p = km(m+1)+e+2kq · H. Bakkaoui</title>
-<meta name="description" content="A parametric family of primes p=km(m+1)+e+2kq: heuristic laws, conditional theorems, and unconditional primality certificates. Hassane Bakkaoui.">
-  <link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/primes-parametriques.html">
+<title>Une famille paramétrique de nombres premiers p = km(m+1)+ε+2kq · H. Bakkaoui</title>
+<meta name="description" content="Famille paramétrique de nombres premiers p = km(m+1)+ε+2kq : lois heuristiques, théorèmes conditionnels et certificats de primalité inconditionnels. Hassane Bakkaoui.">
+<link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/primes-parametriques.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
 <link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="article.css">
+<link rel="stylesheet" href="article.css?v=3">
 <script src="mathjax-setup.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
@@ -16,7 +17,7 @@
 <article class="paper">
   <div class="paper-head">
     <div class="paper-tags"><span class="tag">math.NT</span></div>
-    <h1 class="paper-title">Une famille paramétrique de nombres premiers $p=k\,m(m+1)+e+2kq$</h1>
+    <h1 class="paper-title">Une famille paramétrique de nombres premiers $p=k\,m(m+1)+\varepsilon+2kq$</h1>
     <p class="paper-author">Hassane Bakkaoui &middot; Chercheur indépendant</p>
     <div class="paper-links">
       <a href="https://arxiv.org/pdf/2606.16189" target="_blank" rel="noopener">PDF</a>
@@ -24,558 +25,566 @@
     </div>
   </div>
 <div class="tcolorbox">
-<p><strong>Epistemic key (read first).</strong> Four levels of certainty
-are tagged throughout:</p>
+<p><strong>Clé épistémique (à lire en premier).</strong> Quatre niveaux
+de certitude sont signalés tout au long du texte :</p>
 <p><span style="color: rigorousgreen"><span
 class="math inline">\(\blacksquare\)</span>
-<strong>RIGOROUS</strong></span>: unconditional, proved from classical
-theorems.<br />
+<strong class="etag et-rig">RIGOUREUX</strong></span> : inconditionnel, démontré à partir de
+théorèmes classiques.<br />
 <span style="color: conditionalorange"><span
 class="math inline">\(\blacksquare\)</span>
-<strong>CONDITIONAL</strong></span>: established under explicit
-hypotheses (GRH, RH, Bateman–Horn).<br />
+<strong class="etag et-cond">CONDITIONNEL</strong></span> : établi sous des hypothèses
+explicites (GRH, RH, Bateman–Horn).<br />
 <span style="color: heuristicblue"><span
 class="math inline">\(\blacksquare\)</span>
-<strong>HEURISTIC</strong></span>: predicted under standard heuristics
-and validated numerically.<br />
+<strong class="etag et-heur">HEURISTIQUE</strong></span> : prédit sous des heuristiques
+standard et validé numériquement.<br />
 <span style="color: negativered"><span
 class="math inline">\(\blacksquare\)</span>
-<strong>NEGATIVE</strong></span>: rigorous invalidation of a previously
-reported claim (including the author’s own).</p>
-<p>No result is presented as an unconditional breakthrough.</p>
+<strong class="etag et-neg">NÉGATIF</strong></span> : invalidation rigoureuse d’une
+affirmation antérieure (y compris de l’auteur).</p>
+<p>Aucun résultat n’est présenté comme une avancée inconditionnelle
+majeure.</p>
 </div>
 <h1 id="introduction">Introduction</h1>
-<h2 id="motivation-and-programme">Motivation and programme</h2>
-<p>This paper undertakes a theoretical exploration of the distribution
-of primes through a parametric approach. We rewrite primes under a
-doubly indexed parametric form in order to analyse structures,
-regularities, and concentration phenomena observable within specific
-parametric frames—not in the sense of a strict periodicity, but as the
-possible existence of arithmetic constraints. We concentrate throughout
-on what can be demonstrated and on observations formulable within a
-rigorous framework. The paper does not claim to settle any classical
-question; it opens a complementary direction of study.</p>
-<p>The seed is elementary: every prime <span
-class="math inline">\(p&gt;3\)</span> satisfies <span
-class="math inline">\(p\equiv\pm1\pmod6\)</span>, i.e. <span
-class="math inline">\(p\)</span> lies at signed distance one from the
-nearest multiple of <span class="math inline">\(6\)</span>. The family
-studied here, <span class="math display">\[\begin{equation}
+<h2 id="motivation-et-programme">Motivation et programme</h2>
+<p>Ce manuscrit entreprend une exploration théorique de la distribution
+des premiers selon une approche paramétrique. Nous réécrivons les
+premiers sous une forme paramétrique doublement indexée afin d’analyser
+les structures, régularités et phénomènes de concentration observables
+dans des cadres paramétriques spécifiques — non au sens d’une
+périodicité stricte, mais comme l’existence possible de contraintes
+arithmétiques. Nous nous concentrons sur ce qui peut être démontré et
+sur les observations formulables dans un cadre rigoureux. Le manuscrit
+ne prétend trancher aucune question classique ; il ouvre une direction
+complémentaire d’étude.</p>
+<p>L’amorce est élémentaire : tout premier <span
+class="math inline">\(p&gt;3\)</span> vérifie <span
+class="math inline">\(p\equiv\pm1\pmod6\)</span>, c.-à-d. <span
+class="math inline">\(p\)</span> se situe à distance signée <span
+class="math inline">\(1\)</span> du multiple de <span
+class="math inline">\(6\)</span> le plus proche. La famille étudiée ici,
+<span class="math display">\[\begin{equation}
 \label{eq:family}
 p_{k,m,\varepsilon,q}=km(m+1)+\varepsilon+2kq,
-\end{equation}\]</span> generalises this by replacing <span
-class="math inline">\(6\)</span> with <span
-class="math inline">\(2k\)</span>, the linear variable by the pronic
-number <span class="math inline">\(m(m+1)\)</span>, and by making the
-search offset <span class="math inline">\(q\)</span> explicit. For fixed
-<span class="math inline">\(m,\varepsilon\)</span>, <a href="#eq:family"
+\end{equation}\]</span> généralise cela en remplaçant <span
+class="math inline">\(6\)</span> par <span
+class="math inline">\(2k\)</span>, la variable linéaire par le nombre
+pronique <span class="math inline">\(m(m+1)\)</span>, et en rendant
+explicite le décalage <span class="math inline">\(q\)</span>. À <span
+class="math inline">\(m,\varepsilon\)</span> fixés, <a href="#eq:family"
 data-reference-type="eqref" data-reference="eq:family">[eq:family]</a>
-is an arithmetic progression of common difference <span
-class="math inline">\(2k\)</span>, to which Dirichlet’s theorem applies
-unconditionally. The minimal offset <span
-class="math inline">\(q_{\min}(k,m,\varepsilon)\)</span>—the integer of
-least absolute value making <span class="math inline">\(p\)</span>
-prime—is the central object.</p>
-<p>Three layers describe <span class="math inline">\(q_{\min}\)</span>:
-the <em>marginal</em> layer (size <span
-class="math inline">\(|q_{\min}|\)</span> versus <span
-class="math inline">\(m\)</span>, §5), the <em>conditional</em> layer
-(law of <span class="math inline">\(|q|\)</span> given <span
-class="math inline">\(m\)</span>, §§4–5), and the <em>modular</em> layer
+est une progression arithmétique de raison <span
+class="math inline">\(2k\)</span>, à laquelle le théorème de Dirichlet
+s’applique inconditionnellement. Le décalage minimal <span
+class="math inline">\(q_{\min}(k,m,\varepsilon)\)</span> — l’entier de
+plus petite valeur absolue rendant <span
+class="math inline">\(p\)</span> premier — est l’objet central.</p>
+<p>Trois couches décrivent <span class="math inline">\(q_{\min}\)</span>
+: la couche <em>marginale</em> (taille de <span
+class="math inline">\(|q_{\min}|\)</span> en fonction de <span
+class="math inline">\(m\)</span>, §5), la couche <em>conditionnelle</em>
+(loi de <span class="math inline">\(|q|\)</span> sachant <span
+class="math inline">\(m\)</span>, §§4–5) et la couche <em>modulaire</em>
 (<span class="math inline">\(q_{\min}\bmod\ell\)</span>, §§3–4),
-complemented by a fourth <em>computational</em> layer (§§3,7).</p>
-<h2 id="the-parametric-family">The parametric family</h2>
-<p>We fix <span class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>
-admissible, meaning <span
-class="math inline">\(\gcd(\varepsilon,2k)=1\)</span> for at least one
-<span class="math inline">\(\varepsilon\in\{\pm1\}\)</span>; set <span
+complétées par une quatrième couche <em>computationnelle</em>
+(§§3,7).</p>
+<h2 id="la-famille-paramétrique">La famille paramétrique</h2>
+<p>On fixe <span class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>
+admissible, c.-à-d. <span
+class="math inline">\(\gcd(\varepsilon,2k)=1\)</span> pour au moins un
+<span class="math inline">\(\varepsilon\in\{\pm1\}\)</span> ; on pose
+<span
 class="math inline">\(E_k:=\{\varepsilon\in\{\pm1\}:\gcd(\varepsilon,2k)=1\}\)</span>.
-Since <span class="math inline">\(\gcd(\pm1,n)=1\)</span>, <span
-class="math inline">\(E_k=\{-1,+1\}\)</span> for all <span
-class="math inline">\(k\ge1\)</span>. The generalised hexagonal base is
-<span class="math inline">\(H^{(k)}_m:=km(m+1)+1\)</span>. For <span
+Comme <span class="math inline">\(\gcd(\pm1,n)=1\)</span>, <span
+class="math inline">\(E_k=\{-1,+1\}\)</span> pour tout <span
+class="math inline">\(k\ge1\)</span>. La base hexagonale généralisée est
+<span class="math inline">\(H^{(k)}_m:=km(m+1)+1\)</span>. Pour <span
 class="math inline">\(k=3\)</span>, <span
 class="math inline">\(\{H^{(3)}_m\}=\{7,19,37,61,91,127,\dots\}\)</span>
-are the centred hexagonal numbers (OEIS A003215), lattice points of
+sont les nombres hexagonaux centrés (OEIS A003215), points du réseau
 <span class="math inline">\(\mathbb{Z}[\omega]\)</span>, <span
 class="math inline">\(\omega=e^{2\pi i/3}\)</span>.</p>
-<h2 id="main-results">Main results</h2>
-<p>The complete epistemic synopsis is Table <a href="#tab:layers"
-data-reference-type="ref" data-reference="tab:layers">1</a>; proofs
-occupy §§3–6.</p>
+<h2 id="résultats-principaux">Résultats principaux</h2>
+<p>La synthèse épistémique complète est la Table <a href="#tab:layers"
+data-reference-type="ref" data-reference="tab:layers">1</a> ; les
+preuves occupent les §§3–6.</p>
 <table id="tab:layers">
-<caption>The three layers of the parametric prime family.</caption>
+<caption>Les trois couches de la famille paramétrique.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Layer</th>
-<th style="text-align: left;">Quantity</th>
-<th style="text-align: left;">Main law</th>
-<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Couche</th>
+<th style="text-align: left;">Quantité</th>
+<th style="text-align: left;">Loi principale</th>
+<th style="text-align: left;">Statut</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Marginal</td>
+<td style="text-align: left;">Marginale</td>
 <td style="text-align: left;"><span
 class="math inline">\(\mathbb{E}[|q_{\min}|]\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\sim \log
 m/C_k\)</span></td>
-<td style="text-align: left;">Heuristic</td>
+<td style="text-align: left;">Heuristique</td>
 </tr>
 <tr>
-<td style="text-align: left;">Conditional</td>
+<td style="text-align: left;">Conditionnelle</td>
 <td style="text-align: left;"><span
 class="math inline">\(\mathbb{E}[|q|\mid m]\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(=m/4+O((\log
 m)^2/\sqrt m)\)</span></td>
-<td style="text-align: left;">Conditional</td>
+<td style="text-align: left;">Conditionnel</td>
 </tr>
 <tr>
-<td style="text-align: left;">Modular</td>
+<td style="text-align: left;">Modulaire</td>
 <td style="text-align: left;"><span
 class="math inline">\(P(q_{\min}\equiv r)\)</span></td>
 <td style="text-align: left;"><span
 class="math inline">\(=\pi_{\mathrm{perm}}(r)/(\ell-1)+O(N^{-1/2})\)</span></td>
-<td style="text-align: left;">Conditional</td>
+<td style="text-align: left;">Conditionnel</td>
 </tr>
 <tr>
-<td style="text-align: left;">Modular (<span
+<td style="text-align: left;">Modulaire (<span
 class="math inline">\(\ell\mid 2k\)</span>)</td>
 <td style="text-align: left;"><span
 class="math inline">\(p\bmod\ell\)</span></td>
 <td style="text-align: left;"><span
-class="math inline">\(\equiv\varepsilon\)</span> exactly, indep. of
+class="math inline">\(\equiv\varepsilon\)</span> exactement, indép. de
 <span class="math inline">\(q\)</span></td>
-<td style="text-align: left;"><strong>Rigorous</strong></td>
+<td style="text-align: left;"><strong>Rigoureux</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Modular (<span
+<td style="text-align: left;">Modulaire (<span
 class="math inline">\(\ell\mid 2k\)</span>)</td>
 <td style="text-align: left;"><span
 class="math inline">\(q_{\min}\bmod\ell\)</span></td>
 <td style="text-align: left;"><span
 class="math inline">\(F_N(r)=1/\ell+O(N^{-1/2})\)</span></td>
-<td style="text-align: left;">Heuristic</td>
+<td style="text-align: left;">Heuristique</td>
 </tr>
 <tr>
-<td style="text-align: left;">Computational</td>
+<td style="text-align: left;">Computationnelle</td>
 <td style="text-align: left;"><span
 class="math inline">\(p=3m(m+1)+1\)</span></td>
-<td style="text-align: left;">Pocklington certificate</td>
-<td style="text-align: left;"><strong>Rigorous</strong></td>
+<td style="text-align: left;">certificat Pocklington</td>
+<td style="text-align: left;"><strong>Rigoureux</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Analytic-negative</td>
+<td style="text-align: left;">Analytique-négatif</td>
 <td style="text-align: left;"><span
 class="math inline">\(A_N(\gamma)\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(\to0\)</span>
-(rate <span class="math inline">\(X^{-\delta}\)</span> cond.)</td>
-<td style="text-align: left;"><strong>Rigorous</strong></td>
+(taux <span class="math inline">\(X^{-\delta}\)</span> cond.)</td>
+<td style="text-align: left;"><strong>Rigoureux</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="theorem">
-<p><strong>Theorem 1</strong> (Rigorous; degenerate modular axis,
-Theorem <a href="#thm:A" data-reference-type="ref"
-data-reference="thm:A">17</a>). <em>Let <span
-class="math inline">\(k\in\mathbb{N}^{\ast}\)</span> and <span
-class="math inline">\(\ell\)</span> a prime dividing <span
-class="math inline">\(2k\)</span>. Then for every admissible <span
-class="math inline">\(\varepsilon\)</span>, every <span
+<p><strong>Théorème 1</strong> (Rigoureux ; axe modulaire dégénéré,
+Théorème <a href="#thm:A" data-reference-type="ref"
+data-reference="thm:A">17</a>). <em>Soit <span
+class="math inline">\(k\in\mathbb{N}^{\ast}\)</span> et <span
+class="math inline">\(\ell\)</span> un premier divisant <span
+class="math inline">\(2k\)</span>. Alors pour tout <span
+class="math inline">\(\varepsilon\)</span> admissible et tous <span
 class="math inline">\(m,q\)</span>, <span
 class="math display">\[p_{k,m,\varepsilon,q}\equiv\varepsilon\pmod\ell,\]</span>
-independently of <span class="math inline">\(q\)</span>. The degenerate
-modular axis is fixed exactly.</em></p>
+indépendamment de <span class="math inline">\(q\)</span>. L’axe
+modulaire dégénéré est fixé exactement.</em></p>
 </div>
 <div class="theorem">
-<p><strong>Theorem 2</strong> (Rigorous; Theorem <a href="#thm:B"
-data-reference-type="ref" data-reference="thm:B">22</a>). <em>For every
-<span class="math inline">\((a,b)\in(\mathbb{N}^{\ast})^2\)</span> such
-that <span class="math inline">\(p:=3m(m+1)+1\)</span> with <span
-class="math inline">\(m=2^a3^b-1\)</span> is prime, the
-Pocklington–Lehmer criterion gives an unconditional certificate with
-<span class="math inline">\(F=2^a3^{b+1}&gt;\sqrt p\)</span>. The
-algorithm produced a prime <span
+<p><strong>Théorème 2</strong> (Rigoureux ; Théorème <a href="#thm:B"
+data-reference-type="ref" data-reference="thm:B">22</a>). <em>Pour tout
+<span class="math inline">\((a,b)\in(\mathbb{N}^{\ast})^2\)</span> tel
+que <span class="math inline">\(p:=3m(m+1)+1\)</span> avec <span
+class="math inline">\(m=2^a3^b-1\)</span> soit premier, le critère de
+Pocklington–Lehmer fournit un certificat inconditionnel avec <span
+class="math inline">\(F=2^a3^{b+1}&gt;\sqrt p\)</span>. L’algorithme a
+produit un premier <span
 class="math inline">\(p^{\ast}=3m^{\ast}(m^{\ast}+1)+1\)</span>, <span
-class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span>, of
-<span class="math inline">\(29\,998\)</span> decimal digits, certified
-unconditionally in <span class="math inline">\(3\)</span>h<span
-class="math inline">\(06\)</span>min on consumer hardware.</em></p>
+class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span>, de
+<span class="math inline">\(29\,998\)</span> chiffres décimaux, certifié
+inconditionnellement en <span class="math inline">\(3\)</span>h<span
+class="math inline">\(06\)</span>min sur matériel grand public.</em></p>
 </div>
 <div class="theorem">
-<p><strong>Theorem 3</strong> (Rigorous, unconditional; Theorem <a
+<p><strong>Théorème 3</strong> (Rigoureux, inconditionnel ; Théorème <a
 href="#thm:67" data-reference-type="ref"
-data-reference="thm:67">48</a>). <em>For every fixed <span
-class="math inline">\(\gamma\in\mathbb{R}\)</span>, the regression
-amplitude <span
+data-reference="thm:67">48</a>). <em>Pour tout <span
+class="math inline">\(\gamma\in\mathbb{R}\)</span> fixé, l’amplitude de
+régression <span
 class="math inline">\(A_N(\gamma)=\tfrac{2}{\pi(X)}\big|\sum_{p\le
-X}(\{\sqrt{p/3}\}-\tfrac12)\,p^{-i\gamma}\big|\)</span> satisfies <span
-class="math inline">\(A_N(\gamma)\to0\)</span> unconditionally (with an
-explicit power saving <span class="math inline">\(X^{-\delta}\)</span>
-under a standard Type II estimate). No ordinate of <span
-class="math inline">\(\zeta\)</span> carries a surviving linear
-signal.</em></p>
+X}(\{\sqrt{p/3}\}-\tfrac12)\,p^{-i\gamma}\big|\)</span> vérifie <span
+class="math inline">\(A_N(\gamma)\to0\)</span> inconditionnellement
+(avec une économie de puissance explicite <span
+class="math inline">\(X^{-\delta}\)</span> sous une estimation Type II
+standard). Aucune ordonnée de <span class="math inline">\(\zeta\)</span>
+ne porte de signal linéaire survivant.</em></p>
 </div>
 <div class="theorem">
-<p><strong>Theorem 4</strong> (Conditional under GRH; Theorem <a
+<p><strong>Théorème 4</strong> (Conditionnel sous GRH ; Théorème <a
 href="#thm:C" data-reference-type="ref" data-reference="thm:C">34</a>).
-<em>Under GRH, for each fixed admissible <span
-class="math inline">\(k,\varepsilon\)</span>, <span
+<em>Sous GRH, pour chaque <span
+class="math inline">\(k,\varepsilon\)</span> admissibles fixés, <span
 class="math inline">\(|q_{\min}(k,m,\varepsilon)|=O_k(m(\log
 m)^2)\)</span>.</em></p>
 </div>
 <div class="theorem">
-<p><strong>Theorem 5</strong> (Conditional under H1+GRH+H3; Theorem <a
-href="#thm:D" data-reference-type="ref" data-reference="thm:D">36</a>).
-<em>For <span class="math inline">\(k=3\)</span>, <span
+<p><strong>Théorème 5</strong> (Conditionnel sous H1+GRH+H3 ;
+Théorème <a href="#thm:D" data-reference-type="ref"
+data-reference="thm:D">36</a>). <em>Pour <span
+class="math inline">\(k=3\)</span>, <span
 class="math inline">\(\varepsilon\in\{\pm1\}\)</span>, <span
 class="math inline">\(\mathbb{E}[|q|\mid m]=\tfrac{m}{4}+O((\log
 m)^2/\sqrt m)\)</span>.</em></p>
 </div>
 <div class="theorem">
-<p><strong>Theorem 6</strong> (Conditional under RH; Theorem <a
+<p><strong>Théorème 6</strong> (Conditionnel sous RH ; Théorème <a
 href="#thm:65" data-reference-type="ref"
-data-reference="thm:65">50</a>). <em>Under RH, the per-prime <span
-class="math inline">\(\zeta\)</span>-footprint on the layer occupancy is
-<span class="math inline">\(\ll p^{-1/4}(\log p)^2\)</span> (Selberg
-variance).</em></p>
+data-reference="thm:65">50</a>). <em>Sous RH, l’empreinte de <span
+class="math inline">\(\zeta\)</span> par premier sur l’occupation des
+couches est <span class="math inline">\(\ll p^{-1/4}(\log p)^2\)</span>
+(variance de Selberg).</em></p>
 </div>
-<p> <strong>Heuristic laws.</strong> <span
+<p><strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Lois
+heuristiques.</strong> <span
 class="math inline">\(\mathbb{E}[|q_{\min}|]\sim\log m/C_k\)</span>
 (<span class="math inline">\(R^2=0.984\)</span>, <span
-class="math inline">\(N=10^6\)</span>); <span
-class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span> stable to <span
-class="math inline">\({&lt;}0.02\%\)</span> across <span
-class="math inline">\(3\le k\le29\)</span>; and <span
-class="math inline">\(q_{\min}\bmod\ell\)</span> is empirically
-equidistributed for <span class="math inline">\(\ell\mid2k\)</span>.</p>
-<p> <strong>Negative result (Prop. <a href="#prop:64"
-data-reference-type="ref" data-reference="prop:64">46</a>).</strong> At
-<span class="math inline">\(N=10^8\)</span>: <span
+class="math inline">\(N=10^6\)</span>) ; <span
+class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span> stable à <span
+class="math inline">\({&lt;}0.02\%\)</span> sur <span
+class="math inline">\(3\le k\le29\)</span> ; et <span
+class="math inline">\(q_{\min}\bmod\ell\)</span> empiriquement
+équidistribué pour <span class="math inline">\(\ell\mid2k\)</span>.</p>
+<p><strong class="etag et-neg">▪ NÉGATIF</strong> <strong>Résultat négatif (Prop. <a
+href="#prop:64" data-reference-type="ref"
+data-reference="prop:64">46</a>).</strong> À <span
+class="math inline">\(N=10^8\)</span> : <span
 class="math inline">\(R^2=1.16\times10^{-7}\)</span>, <span
-class="math inline">\(z=-2.20\sigma\)</span>; three permutation tests
-confirm the absence of any spectral signal of <span
-class="math inline">\(\zeta(s)\)</span> in <span
+class="math inline">\(z=-2.20\sigma\)</span> ; trois tests de
+permutation confirment l’absence de signal spectral de <span
+class="math inline">\(\zeta(s)\)</span> dans <span
 class="math inline">\(Q(r)\)</span>.</p>
-<h2 id="what-is-and-is-not-claimed">What is and is not claimed</h2>
-<p>The paper (i) proves a rigorous structural law (the exact degenerate
-axis); (ii) establishes <em>two genuinely unconditional pillars</em>—the
-constructive Pocklington record (Theorem <a href="#thm:B"
-data-reference-type="ref" data-reference="thm:B">22</a>) and the
-analytic-negative vanishing of the <span
-class="math inline">\(\zeta\)</span>-signal (Theorem <a href="#thm:67"
-data-reference-type="ref" data-reference="thm:67">48</a>); (iii)
-establishes three conditional theorems (C, D, E) under GRH/Bateman–Horn
-and one conditional <span class="math inline">\(\zeta\)</span>-footprint
-bound (Theorem <a href="#thm:65" data-reference-type="ref"
-data-reference="thm:65">50</a>) under RH; (iv) validates three heuristic
-laws at <span class="math inline">\(N\in\{10^6,10^7,10^8\}\)</span>. It
-claims <em>no</em> unconditional progress on classical problems (parity
-barrier, uniform PNT at <span class="math inline">\(N^{1/2}\)</span>,
-RH), and <span class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span> is a
-geometric identity, not a mysterious invariant.</p>
-<h4 id="a-correction-of-record.">A correction of record.</h4>
-<p>An earlier version stated, as “Theorem A”, that <span
-class="math inline">\(q_{\min}\)</span> itself is uniformly distributed
-modulo <span class="math inline">\(\ell\)</span> for <span
-class="math inline">\(\ell\mid2k\)</span>, by reduction to
-Bombieri–Vinogradov. That reduction is invalid: since <em>all</em>
-family primes lie in the single class <span
-class="math inline">\(\varepsilon\bmod\ell\)</span>, the distribution of
-<span class="math inline">\(q_{\min}\bmod\ell\)</span> is governed by
-the position of the <em>first</em> prime in each progression, not by
-Bombieri–Vinogradov. The empirical equidistribution survives only as a
-heuristic (Observation <a href="#obs:32prime" data-reference-type="ref"
-data-reference="obs:32prime">18</a>). Detecting and reclassifying this
-is part of the discipline of the epistemic key.</p>
-<h1 id="the-parametric-family-structure-and-elementary-properties">The
-parametric family: structure and elementary properties</h1>
+<h2 id="ce-qui-est-et-nest-pas-revendiqué">Ce qui est, et n’est pas,
+revendiqué</h2>
+<p>Le manuscrit (i) démontre une loi structurelle rigoureuse (l’axe
+dégénéré exact) ; (ii) établit <em>deux piliers authentiquement
+inconditionnels</em> — le record Pocklington constructif (Théorème <a
+href="#thm:B" data-reference-type="ref" data-reference="thm:B">22</a>)
+et l’annulation analytique-négative du signal <span
+class="math inline">\(\zeta\)</span> (Théorème <a href="#thm:67"
+data-reference-type="ref" data-reference="thm:67">48</a>) ; (iii)
+établit trois théorèmes conditionnels (C, D, E) sous GRH/Bateman–Horn et
+une borne conditionnelle sur l’empreinte <span
+class="math inline">\(\zeta\)</span> (Théorème <a href="#thm:65"
+data-reference-type="ref" data-reference="thm:65">50</a>) sous RH ; (iv)
+valide trois lois heuristiques à <span
+class="math inline">\(N\in\{10^6,10^7,10^8\}\)</span>. Il ne revendique
+<em>aucun</em> progrès inconditionnel sur les problèmes classiques
+(barrière de parité, PNT uniforme à <span
+class="math inline">\(N^{1/2}\)</span>, RH), et <span
+class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span> est une identité
+géométrique, non un invariant mystérieux.</p>
+<h4 id="une-correction-de-rigueur.">Une correction de rigueur.</h4>
+<p>Une version antérieure énonçait, comme « Théorème A », que <span
+class="math inline">\(q_{\min}\)</span> lui-même serait uniformément
+distribué modulo <span class="math inline">\(\ell\)</span> pour <span
+class="math inline">\(\ell\mid2k\)</span>, par réduction à
+Bombieri–Vinogradov. Cette réduction est invalide : comme <em>tous</em>
+les premiers de la famille vivent dans l’unique classe <span
+class="math inline">\(\varepsilon\bmod\ell\)</span>, la distribution de
+<span class="math inline">\(q_{\min}\bmod\ell\)</span> est gouvernée par
+la position du <em>premier</em> nombre premier de chaque progression, et
+non par Bombieri–Vinogradov. L’équidistribution empirique ne survit que
+comme heuristique (Observation <a href="#obs:32prime"
+data-reference-type="ref" data-reference="obs:32prime">18</a>). Détecter
+et reclasser cela relève de la discipline de la clé épistémique.</p>
+<h1 id="la-famille-paramétrique-structure-et-propriétés-élémentaires">La
+famille paramétrique : structure et propriétés élémentaires</h1>
 <div class="definition">
-<p><strong>Definition 7</strong> (Canonical triple). Given a prime <span
-class="math inline">\(p&gt;k+1\)</span> and <span
-class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>, the canonical
-triple is the unique <span
+<p><strong>Définition 7</strong> (Triplet canonique). Étant donnés un
+premier <span class="math inline">\(p&gt;k+1\)</span> et <span
+class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>, le triplet
+canonique est l’unique <span
 class="math inline">\((m,\varepsilon,q)\in\mathbb{N}^{\ast}\times
-E_k\times\mathbb{Z}\)</span> with <span
-class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span> and <span
-class="math inline">\(|q|\)</span> minimal. Then <span
+E_k\times\mathbb{Z}\)</span> avec <span
+class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span> et <span
+class="math inline">\(|q|\)</span> minimal. On pose <span
 class="math inline">\(q_{\min}(k,m,\varepsilon):=q\)</span>.</p>
 </div>
 <div id="prop:24" class="proposition">
-<p><strong>Proposition 8</strong> (Rigorous). <em>For <span
-class="math inline">\(k=3\)</span>, the sign <span
-class="math inline">\(\varepsilon\)</span> of the canonical triple of a
-prime <span class="math inline">\(p&gt;3\)</span> is determined by <span
-class="math inline">\(p\bmod6\)</span>: <span
+<p><strong>Proposition 8</strong> (Rigoureux). <em>Pour <span
+class="math inline">\(k=3\)</span>, le signe <span
+class="math inline">\(\varepsilon\)</span> du triplet canonique d’un
+premier <span class="math inline">\(p&gt;3\)</span> est déterminé par
+<span class="math inline">\(p\bmod6\)</span> : <span
 class="math inline">\(p\equiv1\pmod6\Leftrightarrow\varepsilon=+1\)</span>,
 <span
 class="math inline">\(p\equiv5\pmod6\Leftrightarrow\varepsilon=-1\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> For <span class="math inline">\(k=3\)</span>, <a
+<p><em>Proof.</em> Pour <span class="math inline">\(k=3\)</span>, <a
 href="#eq:family" data-reference-type="eqref"
-data-reference="eq:family">[eq:family]</a> reads <span
-class="math inline">\(p=3m(m+1)+\varepsilon+6q\)</span>. As <span
-class="math inline">\(m(m+1)\)</span> is even, <span
-class="math inline">\(3m(m+1)\equiv0\pmod6\)</span>, so <span
-class="math inline">\(p\equiv\varepsilon\pmod6\)</span>; the classes
-coprime to <span class="math inline">\(6\)</span> are <span
+data-reference="eq:family">[eq:family]</a> s’écrit <span
+class="math inline">\(p=3m(m+1)+\varepsilon+6q\)</span>. Comme <span
+class="math inline">\(m(m+1)\)</span> est pair, <span
+class="math inline">\(3m(m+1)\equiv0\pmod6\)</span>, donc <span
+class="math inline">\(p\equiv\varepsilon\pmod6\)</span> ; les classes
+premières à <span class="math inline">\(6\)</span> sont <span
 class="math inline">\(\{1,5\}\equiv\{+1,-1\}\)</span>. ◻</p>
 </div>
 <div id="thm:25" class="theorem">
-<p><strong>Theorem 9</strong> (Rigorous; infinitude). <em>For every
+<p><strong>Théorème 9</strong> (Rigoureux ; infinitude). <em>Pour tous
 <span class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>, <span
 class="math inline">\(\varepsilon\in E_k\)</span>, <span
-class="math inline">\(m\in\mathbb{N}^{\ast}\)</span>, the set <span
+class="math inline">\(m\in\mathbb{N}^{\ast}\)</span>, l’ensemble <span
 class="math inline">\(\{p_{k,m,\varepsilon,q}:q\in\mathbb{Z}\}\cap\mathbb{P}\)</span>
-is infinite.</em></p>
+est infini.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> At fixed <span
-class="math inline">\((k,m,\varepsilon)\)</span>, <a href="#eq:family"
-data-reference-type="eqref" data-reference="eq:family">[eq:family]</a>
-is an AP in <span class="math inline">\(q\)</span> of difference <span
-class="math inline">\(2k\)</span> and initial term <span
-class="math inline">\(km(m+1)+\varepsilon\)</span>, with <span
+<p><em>Proof.</em> À <span
+class="math inline">\((k,m,\varepsilon)\)</span> fixés, <a
+href="#eq:family" data-reference-type="eqref"
+data-reference="eq:family">[eq:family]</a> est une progression
+arithmétique en <span class="math inline">\(q\)</span> de raison <span
+class="math inline">\(2k\)</span> et de premier terme <span
+class="math inline">\(km(m+1)+\varepsilon\)</span>, avec <span
 class="math inline">\(\gcd(2k,km(m+1)+\varepsilon)=\gcd(2k,\varepsilon)=1\)</span>.
-Dirichlet’s theorem applies. ◻</p>
+Le théorème de Dirichlet s’applique. ◻</p>
 </div>
 <div id="thm:27" class="theorem">
-<p><strong>Theorem 10</strong> (Rigorous; upper bound). <em>For every
-prime <span class="math inline">\(p&gt;k+1\)</span> and admissible <span
-class="math inline">\(k\)</span>, <span
+<p><strong>Théorème 10</strong> (Rigoureux ; borne supérieure). <em>Pour
+tout premier <span class="math inline">\(p&gt;k+1\)</span> et tout <span
+class="math inline">\(k\)</span> admissible, <span
 class="math inline">\(|q_{\min}(k,m,\varepsilon)|\le\tfrac{m+1}{2}\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> There is a unique <span
-class="math inline">\(m\)</span> with <span
+<p><em>Proof.</em> Il existe un unique <span
+class="math inline">\(m\)</span> avec <span
 class="math inline">\(km(m+1)+\varepsilon-k(m+1)&lt;p\le
-km(m+1)+\varepsilon+k(m+1)\)</span> (consecutive values of <span
-class="math inline">\(km(m+1)\)</span> differ by <span
-class="math inline">\(2k(m+1)\)</span>, and centred intervals of
-half-width <span class="math inline">\(k(m+1)\)</span> tile <span
-class="math inline">\(\mathbb{N}\)</span>). Then <span
-class="math inline">\(q=(p-km(m+1)-\varepsilon)/(2k)\)</span> is an
-integer with <span class="math inline">\(|q|\le(m+1)/2\)</span>;
-minimality gives the claim. ◻</p>
+km(m+1)+\varepsilon+k(m+1)\)</span> (les valeurs consécutives de <span
+class="math inline">\(km(m+1)\)</span> diffèrent de <span
+class="math inline">\(2k(m+1)\)</span>, et les intervalles centrés de
+demi-largeur <span class="math inline">\(k(m+1)\)</span> pavent <span
+class="math inline">\(\mathbb{N}\)</span>). Alors <span
+class="math inline">\(q=(p-km(m+1)-\varepsilon)/(2k)\)</span> est entier
+avec <span class="math inline">\(|q|\le(m+1)/2\)</span> ; la minimalité
+conclut. ◻</p>
 </div>
 <div id="obs:28" class="observation">
-<p><strong>Observation 11</strong> (<span
-class="math inline">\(O(1)\)</span> algorithm). Theorem <a
-href="#thm:27" data-reference-type="ref" data-reference="thm:27">10</a>
-yields <span
+<p><strong>Observation 11</strong> (Algorithme en <span
+class="math inline">\(O(1)\)</span>). Le Théorème <a href="#thm:27"
+data-reference-type="ref" data-reference="thm:27">10</a> donne <span
 class="math inline">\(m=\big\lfloor\tfrac12(\sqrt{4(p-\varepsilon)/k+1}-1)\big\rfloor\)</span>
-with <span class="math inline">\(\varepsilon\)</span> fixed by <span
-class="math inline">\(p\bmod2k\)</span>; inverting <a href="#eq:family"
-data-reference-type="eqref" data-reference="eq:family">[eq:family]</a>
-gives <span class="math inline">\(q\)</span>. The triple is computed in
-constant time, without factorisation.</p>
+avec <span class="math inline">\(\varepsilon\)</span> fixé par <span
+class="math inline">\(p\bmod2k\)</span> ; l’inversion de <a
+href="#eq:family" data-reference-type="eqref"
+data-reference="eq:family">[eq:family]</a> donne <span
+class="math inline">\(q\)</span>. Le triplet se calcule en temps
+constant, sans factorisation.</p>
 </div>
 <div id="prop:29" class="proposition">
-<p><strong>Proposition 12</strong> (Rigorous, limiting form). <em>Fix
+<p><strong>Proposition 12</strong> (Rigoureux, forme limite). <em>À
 <span class="math inline">\(k\)</span>, <span
-class="math inline">\(\varepsilon\in E_k\)</span>, and let <span
+class="math inline">\(\varepsilon\in E_k\)</span> fixés, soit <span
 class="math inline">\(L^{(k,\varepsilon)}_m:=\{p\in\mathbb{P}:p=km(m+1)+\varepsilon+2kq,\
-|q|\le(m+1)/2\}\)</span>. Then, on average over primes, <span
+|q|\le(m+1)/2\}\)</span>. Alors, en moyenne sur les premiers, <span
 class="math display">\[\mathbb{E}_{p\in
 L^{(k,\varepsilon)}_m}[\,q(p)\,]\longrightarrow
-0\qquad(m\to\infty),\]</span> with a finite tie-breaking bias of order
+0\qquad(m\to\infty),\]</span> avec un biais fini de départage d’ordre
 <span class="math inline">\(O(1/m)\)</span> (Observation <a
 href="#obs:211" data-reference-type="ref"
 data-reference="obs:211">14</a>).</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> The candidate set is exactly symmetric about <span
-class="math inline">\(H^{(k)}_m\)</span>: <span
-class="math inline">\(q\mapsto-q\)</span> exchanges <span
-class="math inline">\(H^{(k)}_m+\varepsilon-1\pm2kq\)</span>. By the
-prime number theorem in arithmetic progressions the two progressions of
-difference <span class="math inline">\(2k\)</span> carry asymptotically
-equal prime densities on the short layer <span
-class="math inline">\(|q|\le(m+1)/2\)</span> (whose length is <span
-class="math inline">\(o(H^{(k)}_m)\)</span>), so the signed mean of
-<span class="math inline">\(q\)</span> over primes tends to <span
-class="math inline">\(0\)</span>. The deterministic tie-breaking of
+<p><em>Proof.</em> L’ensemble candidat est exactement symétrique autour
+de <span class="math inline">\(H^{(k)}_m\)</span> : <span
+class="math inline">\(q\mapsto-q\)</span> échange <span
+class="math inline">\(H^{(k)}_m+\varepsilon-1\pm2kq\)</span>. Par le
+théorème des nombres premiers en progressions arithmétiques, les deux
+progressions de raison <span class="math inline">\(2k\)</span> portent
+des densités de premiers asymptotiquement égales sur la couche courte
+<span class="math inline">\(|q|\le(m+1)/2\)</span> (de longueur <span
+class="math inline">\(o(H^{(k)}_m)\)</span>), donc la moyenne signée de
+<span class="math inline">\(q\)</span> sur les premiers tend vers <span
+class="math inline">\(0\)</span>. Le départage déterministe de la
 Convention <a href="#conv:tie" data-reference-type="ref"
-data-reference="conv:tie">13</a> contributes a bounded excess of order
-<span class="math inline">\(1/m\)</span>. ◻</p>
+data-reference="conv:tie">13</a> contribue un excès borné d’ordre <span
+class="math inline">\(1/m\)</span>. ◻</p>
 </div>
-<div class="tcolorbox">
 <div id="conv:tie" class="remark">
-<p><strong>Remark 13</strong> (Convention; symmetric tie-breaking). When
-<span class="math inline">\(\pm q\)</span> both yield a prime in the
-layer, the canonical triple takes <span
-class="math inline">\(q&gt;0\)</span>. This deterministic rule
-introduces the <span class="math inline">\(O(1/m)\)</span> bias of
+<p><strong>Remarque 13</strong> (Convention ; départage symétrique).
+Lorsque <span class="math inline">\(\pm q\)</span> produisent tous deux
+un premier dans la couche, le triplet canonique prend <span
+class="math inline">\(q&gt;0\)</span>. Cette règle déterministe
+introduit le biais <span class="math inline">\(O(1/m)\)</span> de la
 Proposition <a href="#prop:29" data-reference-type="ref"
 data-reference="prop:29">12</a>.</p>
 </div>
-</div>
 <div id="obs:211" class="observation">
-<p><strong>Observation 14</strong> (Negative; tie-breaking bias). The
-numerical bias <span class="math inline">\(\langle
-q\rangle\approx+0.398\)</span> reported in earlier drafts is fully
-explained by Convention <a href="#conv:tie" data-reference-type="ref"
-data-reference="conv:tie">13</a>: it is a deterministic-rule plus
-parity-discretisation effect. After rescaling, <span
-class="math inline">\(\langle q/(m+1)\rangle&lt;0.001\)</span>,
-consistent with Proposition <a href="#prop:29" data-reference-type="ref"
+<p><strong>Observation 14</strong> (Négatif ; biais de départage). Le
+biais numérique <span class="math inline">\(\langle
+q\rangle\approx+0.398\)</span> rapporté dans des brouillons antérieurs
+s’explique entièrement par la Convention <a href="#conv:tie"
+data-reference-type="ref" data-reference="conv:tie">13</a> : effet de
+règle déterministe plus discrétisation par parité. Après rééchelonnage,
+<span class="math inline">\(\langle q/(m+1)\rangle&lt;0.001\)</span>, en
+accord avec la Proposition <a href="#prop:29" data-reference-type="ref"
 data-reference="prop:29">12</a>.</p>
 </div>
 <div id="prop:212" class="proposition">
-<p><strong>Proposition 15</strong> (Rigorous; admissible classes).
-<em>For each admissible <span class="math inline">\(k\)</span>, the
-number of admissible residue classes modulo <span
-class="math inline">\(2k\)</span> is <span
-class="math inline">\(\varphi(2k)/2\)</span>; each contributes <span
-class="math inline">\(1/\varphi(2k)\cdot(1+o(1))\)</span> of <span
-class="math inline">\(\pi(X)\)</span> (Dirichlet). For <span
-class="math inline">\(k=3,15,21\)</span>: <span
+<p><strong>Proposition 15</strong> (Rigoureux ; classes admissibles).
+<em>Pour chaque <span class="math inline">\(k\)</span> admissible, le
+nombre de classes résiduelles admissibles modulo <span
+class="math inline">\(2k\)</span> est <span
+class="math inline">\(\varphi(2k)/2\)</span> ; chacune contribue <span
+class="math inline">\(1/\varphi(2k)\cdot(1+o(1))\)</span> de <span
+class="math inline">\(\pi(X)\)</span> (Dirichlet). Pour <span
+class="math inline">\(k=3,15,21\)</span> : <span
 class="math inline">\(1,4,6\)</span>.</em></p>
 </div>
 <table id="tab:struct">
-<caption>Unconditional structural results.</caption>
+<caption>Résultats structurels inconditionnels.</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Statement</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: left;">Reference</th>
+<th style="text-align: left;">Énoncé</th>
+<th style="text-align: left;">Statut</th>
+<th style="text-align: left;">Référence</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><span
-class="math inline">\(\varepsilon\)</span> determined by <span
+class="math inline">\(\varepsilon\)</span> déterminé par <span
 class="math inline">\(p\bmod6\)</span> (<span
 class="math inline">\(k=3\)</span>)</td>
-<td style="text-align: left;">Rigorous</td>
+<td style="text-align: left;">Rigoureux</td>
 <td style="text-align: left;">Prop. <a href="#prop:24"
 data-reference-type="ref" data-reference="prop:24">8</a></td>
 </tr>
 <tr>
-<td style="text-align: left;">Infinitude of <span
+<td style="text-align: left;">Infinitude de <span
 class="math inline">\(\{p_{k,m,\varepsilon,q}\}\)</span></td>
-<td style="text-align: left;">Rigorous</td>
+<td style="text-align: left;">Rigoureux</td>
 <td style="text-align: left;">Thm <a href="#thm:25"
 data-reference-type="ref" data-reference="thm:25">9</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><span
 class="math inline">\(|q_{\min}|\le(m+1)/2\)</span></td>
-<td style="text-align: left;">Rigorous</td>
+<td style="text-align: left;">Rigoureux</td>
 <td style="text-align: left;">Thm <a href="#thm:27"
 data-reference-type="ref" data-reference="thm:27">10</a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><span class="math inline">\(O(1)\)</span>
-algorithm for <span
+<td style="text-align: left;">Algorithme <span
+class="math inline">\(O(1)\)</span> pour <span
 class="math inline">\((m,\varepsilon,q)\)</span></td>
-<td style="text-align: left;">Rigorous</td>
+<td style="text-align: left;">Rigoureux</td>
 <td style="text-align: left;">Obs. <a href="#obs:28"
 data-reference-type="ref" data-reference="obs:28">11</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><span
 class="math inline">\(\mathbb{E}[q\mid m]\to0\)</span></td>
-<td style="text-align: left;">Rigorous (limit)</td>
+<td style="text-align: left;">Rigoureux (limite)</td>
 <td style="text-align: left;">Prop. <a href="#prop:29"
 data-reference-type="ref" data-reference="prop:29">12</a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><span
-class="math inline">\(\varphi(2k)/2\)</span> admissible classes</td>
-<td style="text-align: left;">Rigorous</td>
+class="math inline">\(\varphi(2k)/2\)</span> classes admissibles</td>
+<td style="text-align: left;">Rigoureux</td>
 <td style="text-align: left;">Prop. <a href="#prop:212"
 data-reference-type="ref" data-reference="prop:212">15</a></td>
 </tr>
 </tbody>
 </table>
-<h1 id="unconditional-results">Unconditional results</h1>
-<p>This section contains the rigorous backbone. Theorem <a href="#thm:A"
-data-reference-type="ref" data-reference="thm:A">17</a> fixes the
-degenerate modular axis exactly; Theorem <a href="#thm:B"
-data-reference-type="ref" data-reference="thm:B">22</a> provides
-Pocklington–Lehmer certificates for the <span
-class="math inline">\(3\)</span>-smooth subfamily, culminating in a
-<span class="math inline">\(29\,998\)</span>-digit prime; the filters of
+<h1 id="résultats-inconditionnels">Résultats inconditionnels</h1>
+<p>Cette section contient l’ossature rigoureuse. Le Théorème <a
+href="#thm:A" data-reference-type="ref" data-reference="thm:A">17</a>
+fixe l’axe modulaire dégénéré exactement ; le Théorème <a href="#thm:B"
+data-reference-type="ref" data-reference="thm:B">22</a> fournit les
+certificats Pocklington–Lehmer pour la sous-famille <span
+class="math inline">\(3\)</span>-friable, culminant avec un premier de
+<span class="math inline">\(29\,998\)</span> chiffres ; les filtres de
 §<a href="#sec:filters" data-reference-type="ref"
-data-reference="sec:filters">3.3</a> remove <span
-class="math inline">\(\approx87\%\)</span> of candidates a priori.</p>
-<h2 id="theorem-a-the-degenerate-modular-axis-is-exact">Theorem A: the
-degenerate modular axis is exact</h2>
+data-reference="sec:filters">3.3</a> éliminent <span
+class="math inline">\(\approx87\%\)</span> des candidats a priori.</p>
+<h2 id="théorème-a-laxe-modulaire-dégénéré-est-exact">Théorème A : l’axe
+modulaire dégénéré est exact</h2>
 <div class="definition">
-<p><strong>Definition 16</strong> (Empirical distribution function). For
-<span class="math inline">\(\ell\)</span> prime and <span
+<p><strong>Définition 16</strong> (Fonction de répartition empirique).
+Pour <span class="math inline">\(\ell\)</span> premier et <span
 class="math inline">\(r\in\mathbb{Z}/\ell\mathbb{Z}\)</span>, <span
 class="math inline">\(F_N(r;k,\ell):=\tfrac1N\#\{n\le
 N:q_{\min}(k,m_n,\varepsilon_n)\equiv r\ (\mathrm{mod}\
-\ell)\}\)</span>, the <span class="math inline">\(p_n\)</span> ordered
-by <span class="math inline">\(m\)</span>, then <span
-class="math inline">\(\varepsilon\)</span>, then <span
+\ell)\}\)</span>, les <span class="math inline">\(p_n\)</span> ordonnés
+par <span class="math inline">\(m\)</span>, puis <span
+class="math inline">\(\varepsilon\)</span>, puis <span
 class="math inline">\(|q|\)</span>.</p>
 </div>
 <div id="thm:A" class="theorem">
-<p><strong>Theorem 17</strong> (Rigorous). <em>Let <span
-class="math inline">\(k\in\mathbb{N}^{\ast}\)</span> be admissible and
-<span class="math inline">\(\ell\)</span> a prime with <span
-class="math inline">\(\ell\mid 2k\)</span>. Then for every admissible
-<span class="math inline">\(\varepsilon\)</span> and every <span
+<p><strong>Théorème 17</strong> (Rigoureux). <em>Soit <span
+class="math inline">\(k\in\mathbb{N}^{\ast}\)</span> admissible et <span
+class="math inline">\(\ell\)</span> un premier avec <span
+class="math inline">\(\ell\mid 2k\)</span>. Alors pour tout <span
+class="math inline">\(\varepsilon\)</span> admissible et tous <span
 class="math inline">\(m,q\)</span>, <span
 class="math display">\[\begin{equation}
 \label{eq:A}
 p_{k,m,\varepsilon,q}\equiv\varepsilon\pmod\ell,
-\end{equation}\]</span> independently of <span
-class="math inline">\(q\)</span>. Equivalently, every family prime
-occupies the single residue class <span
+\end{equation}\]</span> indépendamment de <span
+class="math inline">\(q\)</span>. De façon équivalente, tout premier de
+la famille occupe l’unique classe résiduelle <span
 class="math inline">\(\varepsilon\)</span> modulo <span
 class="math inline">\(\ell\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Since <span class="math inline">\(\ell\mid2k\)</span>
-we have <span class="math inline">\(2kq\equiv0\pmod\ell\)</span>, so
-from <a href="#eq:family" data-reference-type="eqref"
+<p><em>Proof.</em> Comme <span
+class="math inline">\(\ell\mid2k\)</span>, <span
+class="math inline">\(2kq\equiv0\pmod\ell\)</span>, donc d’après <a
+href="#eq:family" data-reference-type="eqref"
 data-reference="eq:family">[eq:family]</a>, <span
 class="math inline">\(p_{k,m,\varepsilon,q}\equiv
-km(m+1)+\varepsilon\pmod\ell\)</span>. We show <span
-class="math inline">\(km(m+1)\equiv0\pmod\ell\)</span>. If <span
-class="math inline">\(\ell\mid k\)</span> this is immediate. Otherwise
-<span class="math inline">\(\ell\mid2k\)</span> with <span
-class="math inline">\(\ell\nmid k\)</span> forces <span
-class="math inline">\(\ell=2\)</span>, and <span
-class="math inline">\(m(m+1)\)</span>, a product of consecutive
-integers, is even. In both cases <span
-class="math inline">\(p\equiv\varepsilon\pmod\ell\)</span>. Finally
-<span class="math inline">\(\gcd(\varepsilon,2k)=1\)</span> and <span
-class="math inline">\(\ell\mid2k\)</span> give <span
-class="math inline">\(\gcd(\varepsilon,\ell)=1\)</span>, so <span
+km(m+1)+\varepsilon\pmod\ell\)</span>. Montrons <span
+class="math inline">\(km(m+1)\equiv0\pmod\ell\)</span>. Si <span
+class="math inline">\(\ell\mid k\)</span> c’est immédiat. Sinon <span
+class="math inline">\(\ell\mid2k\)</span> avec <span
+class="math inline">\(\ell\nmid k\)</span> force <span
+class="math inline">\(\ell=2\)</span>, et <span
+class="math inline">\(m(m+1)\)</span>, produit d’entiers consécutifs,
+est pair. Dans les deux cas <span
+class="math inline">\(p\equiv\varepsilon\pmod\ell\)</span>. Enfin <span
+class="math inline">\(\gcd(\varepsilon,2k)=1\)</span> et <span
+class="math inline">\(\ell\mid2k\)</span> donnent <span
+class="math inline">\(\gcd(\varepsilon,\ell)=1\)</span>, donc <span
 class="math inline">\(\varepsilon\not\equiv0\)</span>. ◻</p>
 </div>
-<div class="tcolorbox">
 <div id="obs:32prime" class="observation">
-<p><strong>Observation 18</strong> (Heuristic; ex-Theorem A). For <span
-class="math inline">\(\ell\mid2k\)</span> the offset distribution
-satisfies, empirically, <span
+<p><strong>Observation 18</strong> (Heuristique ; ex-Théorème A). Pour
+<span class="math inline">\(\ell\mid2k\)</span>, la distribution de
+l’écart vérifie, empiriquement, <span
 class="math inline">\(F_N(r;k,\ell)=1/\ell+O(N^{-1/2})\)</span>
 (Table <a href="#tab:val32" data-reference-type="ref"
-data-reference="tab:val32">3</a>, max. bias <span
-class="math inline">\(\le0.27\%\)</span> over <span
-class="math inline">\(10\)</span> configurations at <span
-class="math inline">\(N=10^6\)</span>). This is <em>not</em> a corollary
-of Bombieri–Vinogradov: by Theorem <a href="#thm:A"
-data-reference-type="ref" data-reference="thm:A">17</a> all primes
-occupy the single class <span
-class="math inline">\(\varepsilon\)</span>, so <span
-class="math inline">\(q_{\min}\bmod\ell\)</span> depends on the position
-of the first prime in each progression <span
-class="math inline">\(\{km(m+1)+\varepsilon+2kq\}\)</span>. The
-uniformity is therefore recorded as a heuristic regularity, not a
-theorem.</p>
-</div>
+data-reference="tab:val32">3</a>, biais max. <span
+class="math inline">\(\le0.27\%\)</span> sur <span
+class="math inline">\(10\)</span> configurations à <span
+class="math inline">\(N=10^6\)</span>). Ce n’est <em>pas</em> un
+corollaire de Bombieri–Vinogradov : par le Théorème <a href="#thm:A"
+data-reference-type="ref" data-reference="thm:A">17</a> tous les
+premiers occupent l’unique classe <span
+class="math inline">\(\varepsilon\)</span>, donc <span
+class="math inline">\(q_{\min}\bmod\ell\)</span> dépend de la position
+du premier nombre premier de chaque progression <span
+class="math inline">\(\{km(m+1)+\varepsilon+2kq\}\)</span>. L’uniformité
+est donc consignée comme régularité heuristique, non comme théorème.</p>
 </div>
 <table id="tab:val32">
-<caption>Empirical distribution of <span
-class="math inline">\(q_{\min}\bmod\ell\)</span> for <span
-class="math inline">\(\ell\mid2k\)</span> at <span
+<caption>Distribution empirique de <span
+class="math inline">\(q_{\min}\bmod\ell\)</span> pour <span
+class="math inline">\(\ell\mid2k\)</span> à <span
 class="math inline">\(N=10^6\)</span> (Observation <a
 href="#obs:32prime" data-reference-type="ref"
 data-reference="obs:32prime">18</a>).</caption>
@@ -588,8 +597,8 @@ class="math inline">\(\ell\)</span></th>
 <th style="text-align: center;"><span
 class="math inline">\(\chi^2\)</span></th>
 <th style="text-align: center;"><span
-class="math inline">\(p\)</span>-value</th>
-<th style="text-align: center;">Max bias</th>
+class="math inline">\(p\)</span>-valeur</th>
+<th style="text-align: center;">Biais max</th>
 <th style="text-align: center;">Verdict</th>
 </tr>
 </thead>
@@ -601,7 +610,7 @@ class="math inline">\(p\)</span>-value</th>
 <td style="text-align: center;">0.562</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.058\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">3</td>
@@ -610,7 +619,7 @@ class="math inline">\(+0.058\%\)</span></td>
 <td style="text-align: center;">0.685</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.115\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">15</td>
@@ -619,7 +628,7 @@ class="math inline">\(+0.115\%\)</span></td>
 <td style="text-align: center;">0.116</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.157\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">15</td>
@@ -628,7 +637,7 @@ class="math inline">\(+0.157\%\)</span></td>
 <td style="text-align: center;">0.899</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.036\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">15</td>
@@ -637,7 +646,7 @@ class="math inline">\(+0.036\%\)</span></td>
 <td style="text-align: center;">0.984</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.097\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">21</td>
@@ -646,7 +655,7 @@ class="math inline">\(+0.097\%\)</span></td>
 <td style="text-align: center;">0.897</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.013\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">21</td>
@@ -655,7 +664,7 @@ class="math inline">\(+0.013\%\)</span></td>
 <td style="text-align: center;">0.911</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.053\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 <tr>
 <td style="text-align: center;">21</td>
@@ -664,381 +673,384 @@ class="math inline">\(+0.053\%\)</span></td>
 <td style="text-align: center;">0.836</td>
 <td style="text-align: center;"><span
 class="math inline">\(+0.264\%\)</span></td>
-<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniforme</td>
 </tr>
 </tbody>
 </table>
 <div class="remark">
-<p><strong>Remark 19</strong>. The complementary case <span
-class="math inline">\(\gcd(\ell,2k)=1\)</span> is genuinely different:
-residue <span class="math inline">\(0\)</span> becomes accessible and
-the distribution is non-uniform; it is treated conditionally by
-Theorem <a href="#thm:E" data-reference-type="ref"
+<p><strong>Remarque 19</strong>. Le cas complémentaire <span
+class="math inline">\(\gcd(\ell,2k)=1\)</span> est différent : le résidu
+<span class="math inline">\(0\)</span> devient accessible et la
+distribution est non uniforme ; il est traité conditionnellement par le
+Théorème <a href="#thm:E" data-reference-type="ref"
 data-reference="thm:E">41</a>.</p>
 </div>
-<h2 id="theorem-b-unconditional-pocklington-certificates">Theorem B:
-unconditional Pocklington certificates</h2>
+<h2 id="théorème-b-certificats-pocklington-inconditionnels">Théorème B :
+certificats Pocklington inconditionnels</h2>
 <div class="definition">
-<p><strong>Definition 20</strong> (Pocklington subfamily). For <span
+<p><strong>Définition 20</strong> (Sous-famille Pocklington). Pour <span
 class="math inline">\(a,b\in\mathbb{N}^{\ast}\)</span>, <span
-class="math inline">\(m(a,b):=2^a3^b-1\)</span> and <span
-class="math inline">\(p(a,b):=3m(m+1)+1=3m^2+3m+1\)</span>, with <span
+class="math inline">\(m(a,b):=2^a3^b-1\)</span> et <span
+class="math inline">\(p(a,b):=3m(m+1)+1=3m^2+3m+1\)</span>, avec <span
 class="math inline">\(D(a,b)=\lfloor
-2a\log_{10}2+(2b+1)\log_{10}3\rfloor+1\)</span> decimal digits.</p>
+2a\log_{10}2+(2b+1)\log_{10}3\rfloor+1\)</span> chiffres décimaux.</p>
 </div>
 <div id="lem:36" class="lemma">
-<p><strong>Lemma 21</strong> (Rigorous). <em>For <span
-class="math inline">\(p(a,b)\)</span> above, <span
-class="math inline">\(p-1=2^a\cdot3^{b+1}\cdot m\)</span>, and <span
-class="math inline">\(F:=2^a\cdot3^{b+1}\)</span> satisfies <span
+<p><strong>Lemme 21</strong> (Rigoureux). <em>Pour <span
+class="math inline">\(p(a,b)\)</span> ci-dessus, <span
+class="math inline">\(p-1=2^a\cdot3^{b+1}\cdot m\)</span>, et <span
+class="math inline">\(F:=2^a\cdot3^{b+1}\)</span> vérifie <span
 class="math inline">\(F&gt;\sqrt p\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><em>Proof.</em> <span
-class="math inline">\(p-1=3m(m+1)=3m\cdot2^a3^b=2^a3^{b+1}m\)</span>.
-Also <span class="math inline">\(p=3m^2+3m+1&lt;3(m+1)^2\)</span>, so
+class="math inline">\(p-1=3m(m+1)=3m\cdot2^a3^b=2^a3^{b+1}m\)</span>. De
+plus <span class="math inline">\(p=3m^2+3m+1&lt;3(m+1)^2\)</span>, donc
 <span class="math inline">\(\sqrt
 p&lt;\sqrt3(m+1)&lt;3(m+1)=2^a3^{b+1}=F\)</span>. ◻</p>
 </div>
 <div id="thm:B" class="theorem">
-<p><strong>Theorem 22</strong> (Rigorous). <em>Let <span
-class="math inline">\(p=p(a,b)\)</span>. Then <span
-class="math inline">\(p\)</span> is prime iff there exist witnesses
-<span class="math inline">\(w_2,w_3\)</span> with, for <span
+<p><strong>Théorème 22</strong> (Rigoureux). <em>Soit <span
+class="math inline">\(p=p(a,b)\)</span>. Alors <span
+class="math inline">\(p\)</span> est premier ssi il existe des témoins
+<span class="math inline">\(w_2,w_3\)</span> tels que, pour <span
 class="math inline">\(\nu\in\{2,3\}\)</span>, <span
 class="math display">\[w_\nu^{\,p-1}\equiv1\pmod p,\qquad
-\gcd\!\big(w_\nu^{(p-1)/\nu}-1,\,p\big)=1.\]</span> In particular
-primality of <span class="math inline">\(p(a,b)\)</span> is decidable
-unconditionally in time polynomial in <span class="math inline">\(\log
-p\)</span>, with witness search restricted to <span
+\gcd\!\big(w_\nu^{(p-1)/\nu}-1,\,p\big)=1.\]</span> En particulier la
+primalité de <span class="math inline">\(p(a,b)\)</span> est décidable
+inconditionnellement en temps polynomial en <span
+class="math inline">\(\log p\)</span>, avec recherche de témoins
+restreinte à <span
 class="math inline">\(\nu\in\{2,3\}\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> The Pocklington–Lehmer theorem applied to <span
-class="math inline">\(p-1=F\cdot m\)</span> of Lemma <a href="#lem:36"
-data-reference-type="ref" data-reference="lem:36">21</a>: <span
-class="math inline">\(F&gt;\sqrt p\)</span> is unconditional and the
-prime divisors of <span class="math inline">\(F\)</span> are <span
+<p><em>Proof.</em> Le théorème de Pocklington–Lehmer appliqué à <span
+class="math inline">\(p-1=F\cdot m\)</span> du Lemme <a href="#lem:36"
+data-reference-type="ref" data-reference="lem:36">21</a> : <span
+class="math inline">\(F&gt;\sqrt p\)</span> est inconditionnel et les
+diviseurs premiers de <span class="math inline">\(F\)</span> sont <span
 class="math inline">\(\{2,3\}\)</span>. ◻</p>
 </div>
 <div id="thm:38" class="theorem">
-<p><strong>Theorem 23</strong> (Rigorous; computational record).
-<em>There is a prime <span
+<p><strong>Théorème 23</strong> (Rigoureux ; record computationnel).
+<em>Il existe un premier <span
 class="math inline">\(p^{\ast}=3m^{\ast}(m^{\ast}+1)+1\)</span>, <span
-class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span>, of
-exactly <span class="math inline">\(29\,998\)</span> decimal digits,
-certified unconditionally via Theorem <a href="#thm:B"
-data-reference-type="ref" data-reference="thm:B">22</a> in <span
-class="math inline">\(3\)</span>h<span
-class="math inline">\(06\)</span>min on a single consumer laptop, with
-witnesses <span class="math inline">\(w_2=5\)</span>, <span
-class="math inline">\(w_3=7\)</span>. The certificate is in §<a
+class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span>, de
+<span class="math inline">\(29\,998\)</span> chiffres décimaux
+exactement, certifié inconditionnellement via le Théorème <a
+href="#thm:B" data-reference-type="ref" data-reference="thm:B">22</a> en
+<span class="math inline">\(3\)</span>h<span
+class="math inline">\(06\)</span>min sur un ordinateur portable grand
+public, avec témoins <span class="math inline">\(w_2=5\)</span>, <span
+class="math inline">\(w_3=7\)</span>. Le certificat figure en §<a
 href="#sec:record" data-reference-type="ref"
 data-reference="sec:record">7</a>.</em></p>
 </div>
 <div id="op:witness" class="openproblem">
-<p><strong>Open Problem 24</strong>. In all four certificates of §<a
-href="#sec:record" data-reference-type="ref"
+<p><strong>Problème ouvert 24</strong>. Dans les quatre certificats de
+§<a href="#sec:record" data-reference-type="ref"
 data-reference="sec:record">7</a>, <span
 class="math inline">\(w_2=5\)</span>, <span
-class="math inline">\(w_3=7\)</span> succeeded. Are <span
-class="math inline">\(5,7\)</span> valid Pocklington witnesses for every
-prime in the subfamily?</p>
+class="math inline">\(w_3=7\)</span> ont fonctionné. Sont-ils des
+témoins Pocklington valides pour tout premier de la sous-famille ?</p>
 </div>
-<h2 id="sec:filters">Three arithmetic filters</h2>
-<p>The Pocklington test is unconditional but costly on candidates
-failing later. A structural congruence and two a-priori sieves remove
-<span class="math inline">\(\approx87\%\)</span> of candidates at zero
-cost.</p>
+<h2 id="sec:filters">Trois filtres arithmétiques</h2>
+<p>Le test Pocklington est inconditionnel mais coûteux sur les candidats
+échouant plus tard. Une congruence structurelle et deux cribles a priori
+retirent <span class="math inline">\(\approx87\%\)</span> des candidats
+à coût nul.</p>
 <div id="thm:310" class="theorem">
-<p><strong>Theorem 25</strong> (Rigorous; mod-<span
-class="math inline">\(6\)</span> identity). <em>For all <span
+<p><strong>Théorème 25</strong> (Rigoureux ; identité mod-<span
+class="math inline">\(6\)</span>). <em>Pour tous <span
 class="math inline">\(a,b\ge1\)</span>, <span
 class="math inline">\(p(a,b)\equiv1\pmod6\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> <span class="math inline">\(m=2^a3^b-1\)</span> is
-odd, so <span class="math inline">\(m(m+1)\)</span> is even and <span
-class="math inline">\(p\equiv1\pmod2\)</span>; and <span
-class="math inline">\(3\mid3m(m+1)\)</span> gives <span
+<p><em>Proof.</em> <span class="math inline">\(m=2^a3^b-1\)</span> est
+impair, donc <span class="math inline">\(m(m+1)\)</span> est pair et
+<span class="math inline">\(p\equiv1\pmod2\)</span> ; et <span
+class="math inline">\(3\mid3m(m+1)\)</span> donne <span
 class="math inline">\(p\equiv1\pmod3\)</span>. ◻</p>
 </div>
 <div id="thm:311" class="theorem">
-<p><strong>Theorem 26</strong> (Rigorous; quadratic reciprocity sieve).
-<em>Let <span class="math inline">\(p=3m(m+1)+1\)</span> and <span
-class="math inline">\(q\ge5\)</span> prime with <span
-class="math inline">\(q\equiv2\pmod3\)</span>. Then <span
+<p><strong>Théorème 26</strong> (Rigoureux ; crible par réciprocité
+quadratique). <em>Soit <span class="math inline">\(p=3m(m+1)+1\)</span>
+et <span class="math inline">\(q\ge5\)</span> premier avec <span
+class="math inline">\(q\equiv2\pmod3\)</span>. Alors <span
 class="math inline">\(q\nmid p\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> <span class="math inline">\(q\mid p\)</span> is
-equivalent to <span class="math inline">\(3m^2+3m+1\equiv0\pmod
-q\)</span>; multiplying by <span class="math inline">\(12\)</span> and
-completing the square, <span class="math inline">\((6m+3)^2\equiv-3\pmod
-q\)</span>. A solution exists iff <span
-class="math inline">\(-3\)</span> is a quadratic residue mod <span
-class="math inline">\(q\)</span>. By quadratic reciprocity <span
+<p><em>Proof.</em> <span class="math inline">\(q\mid p\)</span> équivaut
+à <span class="math inline">\(3m^2+3m+1\equiv0\pmod q\)</span> ; en
+multipliant par <span class="math inline">\(12\)</span> et en complétant
+le carré, <span class="math inline">\((6m+3)^2\equiv-3\pmod q\)</span>.
+Une solution existe ssi <span class="math inline">\(-3\)</span> est
+résidu quadratique mod <span class="math inline">\(q\)</span>. Par
+réciprocité quadratique <span
 class="math inline">\(\big(\tfrac{-3}{q}\big)=\big(\tfrac{-1}{q}\big)\big(\tfrac{3}{q}\big)=+1\)</span>
-iff <span class="math inline">\(q\equiv1\pmod3\)</span>. For <span
-class="math inline">\(q\equiv2\pmod3\)</span> there is no
-solution. ◻</p>
+ssi <span class="math inline">\(q\equiv1\pmod3\)</span>. Pour <span
+class="math inline">\(q\equiv2\pmod3\)</span>, pas de solution. ◻</p>
 </div>
 <div id="cor:312" class="corollary">
-<p><strong>Corollary 27</strong>. <em>In trial division to <span
-class="math inline">\(L\)</span>, only primes <span
-class="math inline">\(q\equiv1\pmod3\)</span> need be tested—half of the
-primes in <span class="math inline">\([5,L]\)</span>.</em></p>
+<p><strong>Corollaire 27</strong>. <em>En division d’essai jusqu’à <span
+class="math inline">\(L\)</span>, seuls les premiers <span
+class="math inline">\(q\equiv1\pmod3\)</span> doivent être testés — la
+moitié des premiers de <span
+class="math inline">\([5,L]\)</span>.</em></p>
 </div>
 <div id="thm:313" class="theorem">
-<p><strong>Theorem 28</strong> (Rigorous; forbidden classes mod <span
-class="math inline">\(7\)</span>). <em>Let <span
+<p><strong>Théorème 28</strong> (Rigoureux ; classes interdites mod
+<span class="math inline">\(7\)</span>). <em>Soit <span
 class="math inline">\(m=2^a3^b-1\)</span>, <span
-class="math inline">\(a,b\ge1\)</span>, and <span
+class="math inline">\(a,b\ge1\)</span>, et <span
 class="math inline">\(F_7:=\{(0,2),(0,3),(1,0),(1,1),(2,4),(2,5)\}\subset\mathbb{Z}/3\mathbb{Z}\times\mathbb{Z}/6\mathbb{Z}\)</span>.
-Then <span class="math inline">\(7\mid p(a,b)\)</span> iff <span
-class="math inline">\((a\bmod3,b\bmod6)\in F_7\)</span>; exactly <span
-class="math inline">\(|F_7|/18=1/3\)</span> of class pairs are
-forbidden.</em></p>
+Alors <span class="math inline">\(7\mid p(a,b)\)</span> ssi <span
+class="math inline">\((a\bmod3,b\bmod6)\in F_7\)</span> ; exactement
+<span class="math inline">\(|F_7|/18=1/3\)</span> des paires de classes
+sont interdites.</em></p>
 </div>
 <div class="proof">
 <p><em>Proof.</em> <span
 class="math inline">\(\mathrm{ord}_7(2)=3\)</span>, <span
-class="math inline">\(\mathrm{ord}_7(3)=6\)</span>, so <span
-class="math inline">\(t:=2^a3^b\bmod7\)</span> depends only on <span
-class="math inline">\((a\bmod3,b\bmod6)\)</span>. Then <span
-class="math inline">\(p\equiv3t^2-3t+1\pmod7\)</span>; multiplying by
-<span class="math inline">\(5\equiv3^{-1}\)</span> gives <span
-class="math inline">\(t^2-t-2\equiv0\)</span>, i.e. <span
+class="math inline">\(\mathrm{ord}_7(3)=6\)</span>, donc <span
+class="math inline">\(t:=2^a3^b\bmod7\)</span> ne dépend que de <span
+class="math inline">\((a\bmod3,b\bmod6)\)</span>. Alors <span
+class="math inline">\(p\equiv3t^2-3t+1\pmod7\)</span> ; en multipliant
+par <span class="math inline">\(5\equiv3^{-1}\)</span>, <span
+class="math inline">\(t^2-t-2\equiv0\)</span>, soit <span
 class="math inline">\((t-2)(t+1)\equiv0\)</span>, <span
-class="math inline">\(t\in\{2,6\}\)</span>. Enumerating the <span
-class="math inline">\(18\)</span> pairs yields exactly <span
-class="math inline">\(F_7\)</span>. (Verified by brute force for <span
-class="math inline">\(1\le a,b\le39\)</span>; see §<a href="#sec:record"
-data-reference-type="ref" data-reference="sec:record">7</a>.) ◻</p>
+class="math inline">\(t\in\{2,6\}\)</span>. L’énumération des <span
+class="math inline">\(18\)</span> paires donne exactement <span
+class="math inline">\(F_7\)</span>. (Vérifié par force brute pour <span
+class="math inline">\(1\le a,b\le39\)</span> ; cf. §<a
+href="#sec:record" data-reference-type="ref"
+data-reference="sec:record">7</a>.) ◻</p>
 </div>
 <div class="remark">
-<p><strong>Remark 29</strong> (Combined effect). The mod-<span
-class="math inline">\(6\)</span> congruence (Theorem <a href="#thm:310"
-data-reference-type="ref" data-reference="thm:310">25</a>) is automatic
-and removes nothing; the <em>two</em> a-priori filters—the reciprocity
-sieve (Theorem <a href="#thm:311" data-reference-type="ref"
-data-reference="thm:311">26</a>, Corollary <a href="#cor:312"
-data-reference-type="ref" data-reference="cor:312">27</a>) and the
-mod-<span class="math inline">\(7\)</span> filter (Theorem <a
-href="#thm:313" data-reference-type="ref"
-data-reference="thm:313">28</a>)—together remove <span
-class="math inline">\(\approx87.1\%\)</span> of candidates before any
-large-integer arithmetic (§<a href="#sec:record"
-data-reference-type="ref" data-reference="sec:record">7</a>, Table <a
-href="#tab:filter" data-reference-type="ref"
-data-reference="tab:filter">11</a>).</p>
+<p><strong>Remarque 29</strong> (Effet combiné). La congruence mod-<span
+class="math inline">\(6\)</span> (Théorème <a href="#thm:310"
+data-reference-type="ref" data-reference="thm:310">25</a>) est
+automatique et n’élimine rien ; les <em>deux</em> filtres a priori — le
+crible par réciprocité (Théorème <a href="#thm:311"
+data-reference-type="ref" data-reference="thm:311">26</a>, Corollaire <a
+href="#cor:312" data-reference-type="ref"
+data-reference="cor:312">27</a>) et le filtre mod-<span
+class="math inline">\(7\)</span> (Théorème <a href="#thm:313"
+data-reference-type="ref" data-reference="thm:313">28</a>) — retirent
+ensemble <span class="math inline">\(\approx87.1\%\)</span> des
+candidats avant toute arithmétique en grande précision (§<a
+href="#sec:record" data-reference-type="ref"
+data-reference="sec:record">7</a>, Table <a href="#tab:filter"
+data-reference-type="ref" data-reference="tab:filter">10</a>).</p>
 </div>
-<h1 id="conditional-results">Conditional results</h1>
+<h1 id="résultats-conditionnels">Résultats conditionnels</h1>
 <div class="hypothesis">
-<p><strong>Hypothesis 30</strong> (H1: Bateman–Horn). For admissible
-<span class="math inline">\((k,\varepsilon)\)</span>, <span
+<p><strong>Hypothèse 30</strong> (H1 : Bateman–Horn). Pour <span
+class="math inline">\((k,\varepsilon)\)</span> admissible, <span
 class="math inline">\(f_{k,\varepsilon}(m):=km(m+1)+\varepsilon\)</span>
-satisfies <span class="math inline">\(\#\{m\le
+vérifie <span class="math inline">\(\#\{m\le
 N:f_{k,\varepsilon}(m)\in\mathbb{P}\}\sim C(f_{k,\varepsilon})\,N/\log
-N\)</span>, with <span
-class="math inline">\(C(f_{k,\varepsilon})\)</span> the Bateman–Horn
-singular series.</p>
+N\)</span>, <span class="math inline">\(C(f_{k,\varepsilon})\)</span> la
+série singulière de Bateman–Horn.</p>
 </div>
 <div class="hypothesis">
-<p><strong>Hypothesis 31</strong> (H2: Cramér–Granville independence).
-For <span class="math inline">\(|j|\le m/2\)</span>, the events <span
-class="math inline">\(\{H^{(k)}_m+2kj\in\mathbb{P}\}\)</span> are
-asymptotically independent in the Cramér model with Granville’s parity
-correction.</p>
+<p><strong>Hypothèse 31</strong> (H2 : indépendance de
+Cramér–Granville). Pour <span class="math inline">\(|j|\le m/2\)</span>,
+les événements <span
+class="math inline">\(\{H^{(k)}_m+2kj\in\mathbb{P}\}\)</span> sont
+asymptotiquement indépendants au sens du modèle de Cramér avec
+correction de parité de Granville.</p>
 </div>
 <div class="hypothesis">
-<p><strong>Hypothesis 32</strong> (H3: <span
-class="math inline">\(j\)</span>-uniformity of the local factor). For
+<p><strong>Hypothèse 32</strong> (H3 : <span
+class="math inline">\(j\)</span>-uniformité du facteur local). Pour
 <span class="math inline">\(|j|\le m/2\)</span>, <span
 class="math inline">\(\tfrac1m\sum_{|j|\le
-m/2}|C_f(j)-C_f(0)|=O(1/(m\log m))\)</span>; for <span
+m/2}|C_f(j)-C_f(0)|=O(1/(m\log m))\)</span> ; pour <span
 class="math inline">\(\ell\in\{2,3\}\)</span>, <span
-class="math inline">\(C_f(j)=C_f(0)\)</span> exactly.</p>
+class="math inline">\(C_f(j)=C_f(0)\)</span> exactement.</p>
 </div>
 <div class="hypothesis">
-<p><strong>Hypothesis 33</strong> (GRH). The Generalised Riemann
-Hypothesis holds for all Dirichlet <span
-class="math inline">\(L\)</span>-functions.</p>
+<p><strong>Hypothèse 33</strong> (GRH). L’Hypothèse de Riemann
+généralisée vaut pour toutes les fonctions <span
+class="math inline">\(L\)</span> de Dirichlet.</p>
 </div>
-<p> <strong>Status.</strong> H1 is widely believed and numerically
-supported; H2 is a model; H3 is new and unproven (Open Problem <a
-href="#op:H3" data-reference-type="ref" data-reference="op:H3">54</a>);
-GRH is the standard analytic hypothesis.</p>
-<h2 id="theorem-c-grh-conditional-bound">Theorem C: GRH-conditional
-bound</h2>
+<p><strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Statut.</strong> H1 est
+largement crue et soutenue numériquement ; H2 est un modèle ; H3 est
+nouvelle et non démontrée (Problème ouvert <a href="#op:H3"
+data-reference-type="ref" data-reference="op:H3">54</a>) ; GRH est
+l’hypothèse analytique standard.</p>
+<h2 id="théorème-c-borne-sous-grh">Théorème C : borne sous GRH</h2>
 <div id="thm:C" class="theorem">
-<p><strong>Theorem 34</strong> (Conditional, GRH). <em>Under GRH, for
+<p><strong>Théorème 34</strong> (Conditionnel, GRH). <em>Sous GRH, pour
 <span class="math inline">\(k\in\mathbb{N}^{\ast}\)</span>, <span
 class="math inline">\(\varepsilon\in E_k\)</span>, <span
-class="math inline">\(m\)</span> with <span
+class="math inline">\(m\)</span> avec <span
 class="math inline">\(\gcd(km(m+1)+\varepsilon,2k)=1\)</span>, <span
 class="math inline">\(|q_{\min}(k,m,\varepsilon)|=O_k(m(\log
-m)^2)\)</span> as <span
+m)^2)\)</span> quand <span
 class="math inline">\(m\to\infty\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Put <span
+<p><em>Proof.</em> Posons <span
 class="math inline">\(A:=km(m+1)+\varepsilon\)</span>, <span
 class="math inline">\(d:=2k\)</span>, <span
-class="math inline">\(\gcd(A,d)=1\)</span>. By the Heath-Brown
-GRH-conditional Linnik bound, the least prime <span
-class="math inline">\(p\equiv A\ (\mathrm{mod}\ d)\)</span> with <span
-class="math inline">\(p&gt;A\)</span> satisfies <span
-class="math inline">\(p\le A+C(d)\sqrt A(\log A)^2\)</span>. Since <span
-class="math inline">\(p=A+2kq\)</span> and <span
+class="math inline">\(\gcd(A,d)=1\)</span>. Par la borne de Heath-Brown
+conditionnelle sous GRH pour le problème de Linnik, le plus petit
+premier <span class="math inline">\(p\equiv A\ (\mathrm{mod}\
+d)\)</span> avec <span class="math inline">\(p&gt;A\)</span> vérifie
+<span class="math inline">\(p\le A+C(d)\sqrt A(\log A)^2\)</span>. Comme
+<span class="math inline">\(p=A+2kq\)</span> et <span
 class="math inline">\(A\sim km^2\)</span>, <span
 class="math inline">\(\sqrt A\sim\sqrt k\,m\)</span>, <span
-class="math inline">\(\log A\sim2\log m\)</span>, we get <span
+class="math inline">\(\log A\sim2\log m\)</span>, on obtient <span
 class="math inline">\(|q_{\min}|\le C(d)\sqrt k\,m\cdot4(\log
 m)^2/(2k)=O_k(m(\log m)^2)\)</span>. ◻</p>
 </div>
 <div class="remark">
-<p><strong>Remark 35</strong>. Theorem <a href="#thm:C"
-data-reference-type="ref" data-reference="thm:C">34</a> sits between the
-trivial <span class="math inline">\(|q_{\min}|\le(m+1)/2\)</span> and
-the heuristic <span class="math inline">\(O(\log m)\)</span>; the
-quadratic gap is Open Problem <a href="#op:central"
-data-reference-type="ref" data-reference="op:central">53</a>. Maynard’s
-theorem gives, unconditionally, some <span
-class="math inline">\(m&#39;\in[m-C,m+C]\)</span> with <span
+<p><strong>Remarque 35</strong>. Le Théorème <a href="#thm:C"
+data-reference-type="ref" data-reference="thm:C">34</a> se situe entre
+la borne triviale <span
+class="math inline">\(|q_{\min}|\le(m+1)/2\)</span> et l’heuristique
+<span class="math inline">\(O(\log m)\)</span> ; le fossé quadratique
+est le Problème ouvert <a href="#op:central" data-reference-type="ref"
+data-reference="op:central">53</a>. Le théorème de Maynard donne,
+inconditionnellement, un <span
+class="math inline">\(m&#39;\in[m-C,m+C]\)</span> avec <span
 class="math inline">\(|q_{\min}(k,m&#39;,\varepsilon)|\le41\)</span>,
-but no individual bound <span
-class="math inline">\(O(m^{1-\delta})\)</span> for all <span
+mais aucune borne individuelle <span
+class="math inline">\(O(m^{1-\delta})\)</span> pour tout <span
 class="math inline">\(m\)</span>.</p>
 </div>
 <figure id="fig:1" data-latex-placement="h">
-<img src="figs_pp/fig1.png" style="width:72.0%" />
-<figcaption>Three-level hierarchy of bounds on <span
-class="math inline">\(|q_{\min}|\)</span> for <span
-class="math inline">\(k=3\)</span>: trivial (unconditional), GRH
-(conditional), heuristic. The gap between the GRH bound and the
-heuristic is quadratic in <span
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig1.png" style="width:72.0%" />
+<figcaption>Hiérarchie à trois niveaux des bornes sur <span
+class="math inline">\(|q_{\min}|\)</span> pour <span
+class="math inline">\(k=3\)</span> : triviale (inconditionnelle), GRH
+(conditionnelle), heuristique. Le fossé entre la borne GRH et
+l’heuristique est quadratique en <span
 class="math inline">\(m\)</span>.</figcaption>
 </figure>
-<h2 id="theorem-d-conditional-law-mathbbeqmid-mm4">Theorem D:
-conditional law <span class="math inline">\(\mathbb{E}[|q|\mid
+<h2 id="théorème-d-loi-conditionnelle-mathbbeqmid-mm4">Théorème D : loi
+conditionnelle <span class="math inline">\(\mathbb{E}[|q|\mid
 m]=m/4\)</span></h2>
 <div id="thm:D" class="theorem">
-<p><strong>Theorem 36</strong> (Conditional, H1+GRH+H3). <em>Fix <span
-class="math inline">\(k=3\)</span>, <span
-class="math inline">\(\varepsilon\in\{\pm1\}\)</span>. Under H1, GRH,
-H3, <span class="math display">\[\mathbb{E}[|q|\mid
+<p><strong>Théorème 36</strong> (Conditionnel, H1+GRH+H3). <em>Fixons
+<span class="math inline">\(k=3\)</span>, <span
+class="math inline">\(\varepsilon\in\{\pm1\}\)</span>. Sous H1, GRH, H3,
+<span class="math display">\[\mathbb{E}[|q|\mid
 m]=\tfrac{m}{4}+O\!\big((\log m)^2/\sqrt m\big),\qquad
 m\to\infty.\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Take <span
-class="math inline">\(\varepsilon=+1\)</span>; <span
-class="math inline">\(\varepsilon=-1\)</span> is symmetric. Set <span
+<p><em>Proof.</em> Prenons <span
+class="math inline">\(\varepsilon=+1\)</span> ; <span
+class="math inline">\(\varepsilon=-1\)</span> est symétrique. Posons
+<span
 class="math inline">\(\rho(j):=P(H_m+6j\in\mathbb{P})+P(H_m-6j\in\mathbb{P})\)</span>.
-Then <span class="math inline">\(\mathbb{E}[|q|\mid
-m]=\sum_{j=0}^{\lfloor m/2\rfloor}j\rho(j)/\sum_{j}\rho(j)\)</span> (no
-hypothesis). Under H1, <span
+Alors <span class="math inline">\(\mathbb{E}[|q|\mid
+m]=\sum_{j=0}^{\lfloor m/2\rfloor}j\rho(j)/\sum_{j}\rho(j)\)</span>
+(sans hypothèse). Sous H1, <span
 class="math inline">\(P(H_m\pm6j\in\mathbb{P})=C_f(j_\pm)/\log(H_m\pm6j)\cdot(1+O(1/\log
-H_m))\)</span>. For <span class="math inline">\(|j|\le m/2\)</span>,
+H_m))\)</span>. Pour <span class="math inline">\(|j|\le m/2\)</span>,
 <span class="math inline">\(\log(H_m\pm6j)=2\log
-m+\log3+O(1/m)\)</span>, so <span
-class="math inline">\(\rho(j)=\rho_0(1+O(1/(m\log m)))\)</span> provided
-<span class="math inline">\(C_f(j)=C_f(0)\)</span> up to <span
-class="math inline">\(O(1/(m\log m))\)</span>. For <span
-class="math inline">\(\ell\in\{2,3\}\)</span> this is exact (<span
-class="math inline">\(\omega_f(2)=\omega_f(3)=0\)</span> on <span
-class="math inline">\(H_m\pm6j\)</span>); for <span
-class="math inline">\(\ell&gt;3\)</span> it is H3. Hence <span
+m+\log3+O(1/m)\)</span>, donc <span
+class="math inline">\(\rho(j)=\rho_0(1+O(1/(m\log m)))\)</span> pourvu
+que <span class="math inline">\(C_f(j)=C_f(0)\)</span> à <span
+class="math inline">\(O(1/(m\log m))\)</span> près. Pour <span
+class="math inline">\(\ell\in\{2,3\}\)</span> c’est exact (<span
+class="math inline">\(\omega_f(2)=\omega_f(3)=0\)</span> sur <span
+class="math inline">\(H_m\pm6j\)</span>) ; pour <span
+class="math inline">\(\ell&gt;3\)</span> c’est H3. D’où <span
 class="math inline">\(\mathbb{E}[|q|\mid
 m]=\sum_{j=0}^{m/2}j/(m/2+1)+O(1/\log m)=m/4+O(1/\log m)\)</span>.
-Finally, under GRH the explicit formula gives, for non-principal <span
-class="math inline">\(\chi\bmod6m\)</span>, <span
+Enfin, sous GRH la formule explicite donne, pour <span
+class="math inline">\(\chi\bmod6m\)</span> non principal, <span
 class="math inline">\(|\sum_{|j|\le m/2}\chi(H_m+6j)|\ll\sqrt m(\log
-m)^2\)</span>, refining the error to <span class="math inline">\(O((\log
+m)^2\)</span>, raffinant l’erreur en <span class="math inline">\(O((\log
 m)^2/\sqrt m)\)</span>. ◻</p>
 </div>
-<div class="tcolorbox">
-<p><strong>Heuristic corollary (geometric identity for <span
-class="math inline">\(C_0\)</span>).</strong> If <span
-class="math inline">\(|q_{\min}|\)</span> is approximately uniform on
-<span class="math inline">\([-(m+1)/2,(m+1)/2]\)</span>, then <span
-class="math inline">\(\mathbb{E}[|q|]\approx(m+1)/4\)</span>; combined
-with the average <span class="math inline">\(m+1\sim\sqrt{p/k}\)</span>,
-<span class="math inline">\(C_0(k):=\langle|q|\rangle/\sqrt
-p\approx\tfrac14\cdot\tfrac1{\sqrt k}=\tfrac1{4\sqrt k}.\)</span> This
-is a geometric identity, confirmed to <span
-class="math inline">\({&lt;}0.02\%\)</span> over <span
+<p><strong>Corollaire heuristique (identité géométrique pour <span
+class="math inline">\(C_0\)</span>).</strong> Si <span
+class="math inline">\(|q_{\min}|\)</span> est approximativement uniforme
+sur <span class="math inline">\([-(m+1)/2,(m+1)/2]\)</span>, alors <span
+class="math inline">\(\mathbb{E}[|q|]\approx(m+1)/4\)</span> ; combiné à
+la moyenne <span class="math inline">\(m+1\sim\sqrt{p/k}\)</span>, <span
+class="math inline">\(C_0(k):=\langle|q|\rangle/\sqrt
+p\approx\tfrac14\cdot\tfrac1{\sqrt k}=\tfrac1{4\sqrt k}.\)</span> C’est
+une identité géométrique, confirmée à <span
+class="math inline">\({&lt;}0.02\%\)</span> sur <span
 class="math inline">\(3\le k\le29\)</span> (§5).</p>
-</div>
-<h2 id="theorem-e-non-degenerate-modular-distribution">Theorem E:
-non-degenerate modular distribution</h2>
+<h2 id="théorème-e-distribution-modulaire-non-dégénérée">Théorème E :
+distribution modulaire non dégénérée</h2>
 <div class="proposition">
-<p><strong>Proposition 37</strong> (Rigorous; forbidden residue).
-<em>Let <span class="math inline">\(\gcd(\ell,2k)=1\)</span>, <span
-class="math inline">\(m_0\in\mathbb{Z}/\ell\mathbb{Z}\)</span>. There is
-a unique <span
+<p><strong>Proposition 37</strong> (Rigoureux ; résidu interdit).
+<em>Soit <span class="math inline">\(\gcd(\ell,2k)=1\)</span>, <span
+class="math inline">\(m_0\in\mathbb{Z}/\ell\mathbb{Z}\)</span>. Il
+existe un unique <span
 class="math inline">\(q^{\ast}\equiv-[km_0(m_0+1)+\varepsilon]/(2k)\pmod\ell\)</span>
-such that a family prime at stratum <span
-class="math inline">\((m_0,\varepsilon)\)</span> has <span
-class="math inline">\(q\not\equiv q^{\ast}\)</span> (as <span
+tel qu’un premier de la famille à la strate <span
+class="math inline">\((m_0,\varepsilon)\)</span> vérifie <span
+class="math inline">\(q\not\equiv q^{\ast}\)</span> (car <span
 class="math inline">\(\ell\nmid p\)</span>).</em></p>
 </div>
 <div class="definition">
-<p><strong>Definition 38</strong>. <span
+<p><strong>Définition 38</strong>. <span
 class="math inline">\(\pi_{\mathrm{perm}}(r;k,\ell):=\tfrac1{\ell|E_k|}\sum_{(m_0,\varepsilon)}\mathbf{1}[r\ne
 q^{\ast}(k,m_0,\varepsilon;\ell)]\)</span>.</p>
 </div>
 <div class="hypothesis">
-<p><strong>Hypothesis 39</strong> (H1<span
-class="math inline">\(&#39;\)</span>: equidistribution of strata). <span
-class="math inline">\(\nu_N(m_0,\varepsilon):=\tfrac1N\#\{n\le
+<p><strong>Hypothèse 39</strong> (H1<span
+class="math inline">\(&#39;\)</span> : équidistribution des strates).
+<span class="math inline">\(\nu_N(m_0,\varepsilon):=\tfrac1N\#\{n\le
 N:m_n\equiv m_0,\
 \varepsilon_n=\varepsilon\}=\tfrac1{\ell|E_k|}+O_{k,\ell}(N^{-1/2})\)</span>,
-a consequence of Bombieri–Vinogradov at fixed modulus.</p>
+conséquence de Bombieri–Vinogradov à module fixé.</p>
 </div>
 <div class="hypothesis">
-<p><strong>Hypothesis 40</strong> (H3<span
-class="math inline">\(&#39;\)</span>: conditional uniformity on
-permitted residues). Conditional on <span class="math inline">\(m\equiv
-m_0\)</span> and <span class="math inline">\(\varepsilon\)</span>, <span
-class="math inline">\(q_{\min}\bmod\ell\)</span> is uniform on the <span
-class="math inline">\(\ell-1\)</span> permitted residues.</p>
+<p><strong>Hypothèse 40</strong> (H3<span
+class="math inline">\(&#39;\)</span> : uniformité conditionnelle sur les
+résidus permis). Conditionnellement à <span
+class="math inline">\(m\equiv m_0\)</span> et <span
+class="math inline">\(\varepsilon\)</span>, <span
+class="math inline">\(q_{\min}\bmod\ell\)</span> est uniforme sur les
+<span class="math inline">\(\ell-1\)</span> résidus permis.</p>
 </div>
 <div id="thm:E" class="theorem">
-<p><strong>Theorem 41</strong> (Conditional, H1<span
+<p><strong>Théorème 41</strong> (Conditionnel, H1<span
 class="math inline">\(&#39;\)</span>+H3<span
-class="math inline">\(&#39;\)</span>). <em>For admissible <span
-class="math inline">\(k\)</span> and <span
-class="math inline">\(\ell\)</span> prime with <span
+class="math inline">\(&#39;\)</span>). <em>Pour <span
+class="math inline">\(k\)</span> admissible et <span
+class="math inline">\(\ell\)</span> premier avec <span
 class="math inline">\(\gcd(\ell,2k)=1\)</span>, <span
 class="math inline">\(F_N(r;k,\ell)=\pi_{\mathrm{perm}}(r;k,\ell)/(\ell-1)+O_{k,\ell}(N^{-1/2})\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> By total probability and H3<span
+<p><em>Proof.</em> Par probabilités totales et H3<span
 class="math inline">\(&#39;\)</span>, <span
 class="math inline">\(F_N(r)=\sum_{(m_0,\varepsilon)}\nu_N(m_0,\varepsilon)\mathbf{1}[r\ne
-q^{\ast}]/(\ell-1)\)</span>. Subtracting <span
-class="math inline">\(\pi_{\mathrm{perm}}(r)/(\ell-1)\)</span> and
-applying the triangle inequality with H1<span
-class="math inline">\(&#39;\)</span> gives the <span
-class="math inline">\(O_{k,\ell}(N^{-1/2})\)</span> error. ◻</p>
+q^{\ast}]/(\ell-1)\)</span>. En soustrayant <span
+class="math inline">\(\pi_{\mathrm{perm}}(r)/(\ell-1)\)</span> et par
+l’inégalité triangulaire avec H1<span
+class="math inline">\(&#39;\)</span>, on obtient l’erreur <span
+class="math inline">\(O_{k,\ell}(N^{-1/2})\)</span>. ◻</p>
 </div>
 <div id="conj:414" class="conjecture">
 <p><strong>Conjecture 42</strong>. <em><span
 class="math inline">\(\limsup_N \sqrt
 N\max_r|F_N(r)-\pi_{\mathrm{perm}}(r)/(\ell-1)|\le
-C_{\mathrm{opt}}(k,\ell)\approx0.5\)</span>, independent of <span
-class="math inline">\(k\)</span> and roughly <span
-class="math inline">\(5\times\)</span> below the triangle-inequality
-bound; a proof needs a Cauchy–Schwarz refinement.</em></p>
+C_{\mathrm{opt}}(k,\ell)\approx0.5\)</span>, indépendant de <span
+class="math inline">\(k\)</span> et environ <span
+class="math inline">\(5\times\)</span> sous la borne par inégalité
+triangulaire ; une preuve nécessiterait un raffinement de
+Cauchy–Schwarz.</em></p>
 </div>
 <table id="tab:pearson">
-<caption>Pearson correlation <span
-class="math inline">\(r(\text{predicted},\text{observed})\)</span> at
-<span class="math inline">\(N=10^6\)</span>; <span
-class="math inline">\(\ast\)</span> marks degenerate cases (Theorem <a
-href="#thm:A" data-reference-type="ref"
+<caption>Corrélation de Pearson <span
+class="math inline">\(r(\text{prédit},\text{observé})\)</span> à <span
+class="math inline">\(N=10^6\)</span> ; <span
+class="math inline">\(\ast\)</span> marque les cas dégénérés
+(Théorème <a href="#thm:A" data-reference-type="ref"
 data-reference="thm:A">17</a>).</caption>
 <thead>
 <tr>
@@ -1123,25 +1135,25 @@ class="math inline">\(\ast\)</span></td>
 </tr>
 </tbody>
 </table>
-<h1 id="heuristic-laws-and-large-scale-numerical-validation">Heuristic
-laws and large-scale numerical validation</h1>
-<p>Three laws, derived under H1+H2 and validated at <span
-class="math inline">\(N\in\{10^6,10^7,10^8\}\)</span>; these are
-predictions, not theorems.</p>
-<h2 id="marginal-law">Marginal law</h2>
-<p>Under H1, <span
+<h1 id="lois-heuristiques-et-validation-numérique-à-grande-échelle">Lois
+heuristiques et validation numérique à grande échelle</h1>
+<p>Trois lois, dérivées sous H1+H2 et validées à <span
+class="math inline">\(N\in\{10^6,10^7,10^8\}\)</span> ; ce sont des
+prédictions, non des théorèmes.</p>
+<h2 id="loi-marginale">Loi marginale</h2>
+<p>Sous H1, <span
 class="math inline">\(P(p_{k,m,\varepsilon,q}\in\mathbb{P})\approx
-C(f_{k,\varepsilon})/(2\log m)\)</span>; with four candidates per step
-and H2-independence, <span class="math inline">\(|q_{\min}|\)</span> is
-approximately geometric with parameter <span
+C(f_{k,\varepsilon})/(2\log m)\)</span> ; avec quatre candidats par pas
+et l’indépendance H2, <span class="math inline">\(|q_{\min}|\)</span>
+est approximativement géométrique de paramètre <span
 class="math inline">\(C_k/\log m\)</span>, <span
-class="math inline">\(C_k:=C(f_{k,+})+C(f_{k,-})\)</span>.</p>
-<p> <strong>Law H1.</strong> <span
+class="math inline">\(C_k:=C(f_{k,+})+C(f_{k,-})\)</span>.
+<strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Loi H1.</strong> <span
 class="math inline">\(\mathbb{E}[|q_{\min}(k,m)|]\sim\log
-m/C_k\)</span>, with <span class="math inline">\(C_k|q_{\min}|/\log
+m/C_k\)</span>, avec <span class="math inline">\(C_k|q_{\min}|/\log
 m\xrightarrow{d}\mathrm{Exp}(1)\)</span>.</p>
 <table id="tab:BH">
-<caption>Bateman–Horn constants for <span
+<caption>Constantes de Bateman–Horn pour <span
 class="math inline">\(f_{k,\varepsilon}(m)=km(m+1)+\varepsilon\)</span>.</caption>
 <thead>
 <tr>
@@ -1181,35 +1193,35 @@ class="math inline">\(1/C_k\)</span></th>
 </tr>
 </tbody>
 </table>
-<p>A correction factor <span class="math inline">\(\rho_k\)</span>
-interpolates the slopes: <span
+<p>Un facteur de correction <span class="math inline">\(\rho_k\)</span>
+interpole les pentes : <span
 class="math inline">\(\mathbb{E}[|q_{\min}|]\approx\alpha_k\log
 m+\beta_k\)</span>, <span
-class="math inline">\(\alpha_k=\rho_k/C_k\)</span>. For <span
+class="math inline">\(\alpha_k=\rho_k/C_k\)</span>. Pour <span
 class="math inline">\(k=21\)</span>, <span
-class="math inline">\(N=10^6\)</span>: <span
+class="math inline">\(N=10^6\)</span> : <span
 class="math inline">\(\alpha_{21}=0.320\)</span> (<span
 class="math inline">\(R^2=0.984\)</span>), <span
 class="math inline">\(\rho_{21}=2.626\)</span>.</p>
 <figure id="fig:2" data-latex-placement="h">
-<img src="figs_pp/fig2.png" style="width:70.0%" />
-<figcaption>Marginal logarithmic law for <span
-class="math inline">\(k=21\)</span> at <span
-class="math inline">\(N=10^6\)</span>: reported linear fit (<span
-class="math inline">\(R^2=0.984\)</span>) versus the theoretical <span
-class="math inline">\(\log m/C_{21}\)</span> (<span
-class="math inline">\(\rho_{21}=1\)</span>), which underestimates by
-<span class="math inline">\(\approx2.6\)</span>.</figcaption>
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig2.png" style="width:70.0%" />
+<figcaption>Loi logarithmique marginale pour <span
+class="math inline">\(k=21\)</span> à <span
+class="math inline">\(N=10^6\)</span> : régression linéaire rapportée
+(<span class="math inline">\(R^2=0.984\)</span>) versus la théorique
+<span class="math inline">\(\log m/C_{21}\)</span> (<span
+class="math inline">\(\rho_{21}=1\)</span>), qui sous-estime d’un
+facteur <span class="math inline">\(\approx2.6\)</span>.</figcaption>
 </figure>
-<h2 id="the-universal-constant-c_0k14sqrt-k">The universal constant
+<h2 id="la-constante-universelle-c_0k14sqrt-k">La constante universelle
 <span class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span></h2>
-<p> <strong>Law H2.</strong> <span
+<p><strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Loi H2.</strong> <span
 class="math inline">\(C_0(k):=\langle|q|\rangle/\sqrt p=\tfrac1{4\sqrt
-k}(1+o(1))\)</span>, conjecturally universal; geometric origin as in
-Theorem <a href="#thm:D" data-reference-type="ref"
+k}(1+o(1))\)</span>, conjecturalement universelle ; origine géométrique
+comme au Théorème <a href="#thm:D" data-reference-type="ref"
 data-reference="thm:D">36</a>.</p>
 <table id="tab:C0">
-<caption>Empirical validation of <span
+<caption>Validation empirique de <span
 class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span>, <span
 class="math inline">\(N=10^7\)</span>.</caption>
 <thead>
@@ -1217,10 +1229,10 @@ class="math inline">\(N=10^7\)</span>.</caption>
 <th style="text-align: center;"><span
 class="math inline">\(k\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(1/(4\sqrt
-k)\)</span> predicted</th>
+k)\)</span> prédit</th>
 <th style="text-align: center;"><span
-class="math inline">\(\langle|q|\rangle/\sqrt p\)</span> measured</th>
-<th style="text-align: center;">Deviation</th>
+class="math inline">\(\langle|q|\rangle/\sqrt p\)</span> mesuré</th>
+<th style="text-align: center;">Déviation</th>
 </tr>
 </thead>
 <tbody>
@@ -1248,144 +1260,145 @@ class="math inline">\(-0.018\%\)</span></td>
 </tbody>
 </table>
 <figure id="fig:3" data-latex-placement="h">
-<img src="figs_pp/fig3.png" style="width:70.0%" />
-<figcaption><span class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span>:
-predicted curve with measured points (Table <a href="#tab:C0"
-data-reference-type="ref" data-reference="tab:C0">6</a>); deviation
-<span class="math inline">\({&lt;}0.03\%\)</span> at the tested <span
-class="math inline">\(k\)</span>, stable across <span
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig3.png" style="width:70.0%" />
+<figcaption><span class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span> :
+courbe prédite avec points mesurés (Table <a href="#tab:C0"
+data-reference-type="ref" data-reference="tab:C0">6</a>) ; déviation
+<span class="math inline">\({&lt;}0.03\%\)</span> aux <span
+class="math inline">\(k\)</span> testés, stable sur <span
 class="math inline">\(3\le k\le29\)</span>.</figcaption>
 </figure>
-<h2 id="the-gap-law-for-k3">The gap law for <span
+<h2 id="la-loi-des-écarts-pour-k3">La loi des écarts pour <span
 class="math inline">\(k=3\)</span></h2>
-<p> <strong>Law H3.</strong> The mean gap satisfies <span
+<p><strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Loi H3.</strong> L’écart
+moyen vérifie <span
 class="math inline">\(\bar\delta(m)\approx0.296\times\log(3m^2+3m+1)\)</span>,
-stable to <span class="math inline">\(\pm0.006\)</span> over five orders
-of magnitude. The constant <span
-class="math inline">\(0.296=1/\mathfrak{S}(f)\)</span> is the reciprocal
-Hardy–Littlewood singular series for <span
-class="math inline">\(f(m)=3m^2+3m+1\)</span>—the only law whose
-constant matches a classical singular series exactly.</p>
+stable à <span class="math inline">\(\pm0.006\)</span> sur cinq ordres
+de grandeur. La constante <span
+class="math inline">\(0.296=1/\mathfrak{S}(f)\)</span> est l’inverse de
+la série singulière de Hardy–Littlewood pour <span
+class="math inline">\(f(m)=3m^2+3m+1\)</span> — la seule loi dont la
+constante coïncide exactement avec une série singulière classique.</p>
 <figure id="fig:4" data-latex-placement="h">
-<img src="figs_pp/fig4.png" style="width:70.0%" />
-<figcaption>Universal gap law <span
-class="math inline">\(\bar\delta(m)\approx0.296\log p\)</span> for <span
-class="math inline">\(k=3\)</span>.</figcaption>
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig4.png" style="width:70.0%" />
+<figcaption>Loi universelle des écarts <span
+class="math inline">\(\bar\delta(m)\approx0.296\log p\)</span> pour
+<span class="math inline">\(k=3\)</span>.</figcaption>
 </figure>
-<div class="tcolorbox">
-<p><strong>Methodological caveat.</strong> Empirical confirmation at
-<span class="math inline">\(N=10^6\)</span>, even with <span
-class="math inline">\(R^2&gt;0.98\)</span>, is not a proof of an
-analytic conjecture (cf. the Mertens conjecture; Skewes-type sign
-changes invisible to <span class="math inline">\(10^{316}\)</span>). We
-report consistency in the tested regime, not asymptotics.</p>
-</div>
-<h1 id="connections-to-the-riemann-zeta-function">Connections to the
-Riemann zeta function</h1>
-<p>Four levels: (I) heuristic via the explicit formula; (II)–(III)
-conditional under GRH; (IV) the analytic-negative result, now both a
-decisive statistical refutation and an unconditional theorem.</p>
-<h2 id="level-i-zeros-govern-layer-oscillations">Level I: zeros govern
-layer oscillations</h2>
-<p>Fix <span class="math inline">\(k=3\)</span>, <span
+<p><strong>Précaution méthodologique.</strong> Une confirmation
+empirique à <span class="math inline">\(N=10^6\)</span>, même avec <span
+class="math inline">\(R^2&gt;0.98\)</span>, n’est pas une preuve d’une
+conjecture analytique (cf. la conjecture de Mertens ; changements de
+signe de type Skewes invisibles jusqu’à <span
+class="math inline">\(10^{316}\)</span>). Nous rapportons une cohérence
+dans le régime testé, non un comportement asymptotique.</p>
+<h1 id="connexions-à-la-fonction-zêta-de-riemann">Connexions à la
+fonction zêta de Riemann</h1>
+<p>Quatre niveaux : (I) heuristique via la formule explicite ;
+(II)–(III) conditionnels sous GRH ; (IV) le résultat analytique-négatif,
+désormais à la fois réfutation statistique décisive et théorème
+inconditionnel.</p>
+<h2
+id="niveau-i-les-zéros-gouvernent-les-oscillations-des-couches">Niveau I
+: les zéros gouvernent les oscillations des couches</h2>
+<p>Fixons <span class="math inline">\(k=3\)</span>, <span
 class="math inline">\(L_m:=\{p\in\mathbb{P}:p\in[H_m-3m,H_m+3m]\}\)</span>,
-<span class="math inline">\(n_m:=|L_m|\)</span>; the half-width <span
-class="math inline">\(3m\asymp\sqrt{H_m}\)</span> is the critical
-scale.</p>
-<p> <strong>Connection I.</strong> From the explicit formula one
-derives, to leading order, <span class="math display">\[\begin{equation}
+<span class="math inline">\(n_m:=|L_m|\)</span> ; la demi-largeur <span
+class="math inline">\(3m\asymp\sqrt{H_m}\)</span> est l’échelle
+critique. <strong class="etag et-heur">▪ HEURISTIQUE</strong> <strong>Connexion
+I.</strong> De la formule explicite on dérive, à l’ordre dominant, <span
+class="math display">\[\begin{equation}
 \label{eq:35}
 n_m-\langle
 n_m\rangle=-\sum_\gamma\frac{H_m^{1/2+i\gamma}-(H_m-3m)^{1/2+i\gamma}}{1/2+i\gamma}+O(\log^2
 H_m).
-\end{equation}\]</span> Here the relevant object is the <em>variance of
-the layer count</em> over a <span
-class="math inline">\(\sqrt{H_m}\)</span>-window: the sum on the right
-has root-mean-square of order <span
-class="math inline">\(\sqrt{h}=H_m^{1/4}\)</span> under RH (Selberg
-variance, §<a href="#sec:level4" data-reference-type="ref"
-data-reference="sec:level4">6.3</a>), <em>not</em> a per-zero amplitude
-that could be read off individually. This is the precise sense in which
-the zeros enter.</p>
-<h2 id="levels-iiiii-conditional-implications">Levels II–III:
-conditional implications</h2>
-<p> <strong>Connection II.</strong> Under H1+GRH+H3, Theorem <a
-href="#thm:D" data-reference-type="ref" data-reference="thm:D">36</a>
-holds with error <span class="math inline">\(O((\log m)^2/\sqrt
-m)\)</span>.</p>
-<p> <strong>Connection III.</strong> Under GRH, <span
-class="math inline">\(|q_{\min}|=O_k(m(\log m)^2)\)</span> (Theorem <a
+\end{equation}\]</span> L’objet pertinent est la <em>variance du
+comptage de couche</em> sur une fenêtre de largeur <span
+class="math inline">\(\sqrt{H_m}\)</span> : le membre de droite a un
+écart quadratique moyen d’ordre <span
+class="math inline">\(\sqrt{h}=H_m^{1/4}\)</span> sous RH (variance de
+Selberg, §<a href="#sec:level4" data-reference-type="ref"
+data-reference="sec:level4">6.3</a>), <em>non</em> une amplitude
+par-zéro lisible individuellement. C’est le sens précis dans lequel les
+zéros interviennent.</p>
+<h2 id="niveaux-iiiii-implications-conditionnelles">Niveaux II–III :
+implications conditionnelles</h2>
+<p><strong class="etag et-cond">▪ CONDITIONNEL</strong> <strong>Connexion II.</strong>
+Sous H1+GRH+H3, le Théorème <a href="#thm:D" data-reference-type="ref"
+data-reference="thm:D">36</a> vaut avec erreur <span
+class="math inline">\(O((\log m)^2/\sqrt m)\)</span>. <strong class="etag et-cond">▪ CONDITIONNEL</strong> <strong>Connexion III.</strong> Sous GRH, <span
+class="math inline">\(|q_{\min}|=O_k(m(\log m)^2)\)</span> (Théorème <a
 href="#thm:C" data-reference-type="ref"
 data-reference="thm:C">34</a>).</p>
 <div class="remark">
-<p><strong>Remark 43</strong>. Only “GRH <span
-class="math inline">\(\Rightarrow\)</span> Theorem <a href="#thm:D"
-data-reference-type="ref" data-reference="thm:D">36</a>” is established;
-the converse is not claimed. The agreement <span
-class="math inline">\(R^2=0.9999\)</span> on <span
-class="math inline">\(10^8\)</span> primes is consistent with GRH but is
-not evidence for it.</p>
+<p><strong>Remarque 43</strong>. Seule « GRH <span
+class="math inline">\(\Rightarrow\)</span> Théorème <a href="#thm:D"
+data-reference-type="ref" data-reference="thm:D">36</a> » est établie ;
+la réciproque n’est pas revendiquée. L’accord <span
+class="math inline">\(R^2=0.9999\)</span> sur <span
+class="math inline">\(10^8\)</span> premiers est cohérent avec GRH mais
+n’en constitue pas une évidence.</p>
 </div>
-<h2 id="sec:level4">Level IV: the decisive exclusion and its
-unconditional proof</h2>
-<p>We come to the analytically most robust finding. Earlier-reported
-spectral correlations between <span
-class="math inline">\(Q(r):=\sum_{n\le r}q_n\)</span> and the zeros of
-<span class="math inline">\(\zeta\)</span> are statistical artefacts;
-moreover the absence of any surviving linear <span
-class="math inline">\(\zeta\)</span>-signal is provable
-unconditionally.</p>
-<h3 id="the-spurious-regression-mechanism">The spurious-regression
-mechanism</h3>
-<p><span class="math inline">\(Q(p_N)\)</span> is massively
-autocorrelated: consecutive values share <span
-class="math inline">\(N-1\)</span> summands, so <span
+<h2 id="sec:level4">Niveau IV : l’exclusion décisive et sa preuve
+inconditionnelle</h2>
+<p>Nous arrivons au résultat analytiquement le plus robuste. Les
+corrélations spectrales précédemment rapportées entre <span
+class="math inline">\(Q(r):=\sum_{n\le r}q_n\)</span> et les zéros de
+<span class="math inline">\(\zeta\)</span> sont des artefacts
+statistiques ; de plus, l’absence de tout signal linéaire survivant de
+<span class="math inline">\(\zeta\)</span> est démontrable
+inconditionnellement.</p>
+<h3 id="le-mécanisme-de-régression-spurieuse">Le mécanisme de régression
+spurieuse</h3>
+<p><span class="math inline">\(Q(p_N)\)</span> est massivement
+auto-corrélé : les valeurs consécutives partagent <span
+class="math inline">\(N-1\)</span> termes, donc <span
 class="math inline">\(\mathop{\mathrm{Cov}}(Q(p_N),Q(p_{N+1}))\approx\mathop{\mathrm{Var}}(Q(p_N))\)</span>.
-Any Pearson correlation between <span class="math inline">\(Q\)</span>
-and a smooth function of <span class="math inline">\(N\)</span> is
-inflated—the integrated-process spurious regression of
-Granger–Newbold.</p>
+Toute corrélation de Pearson entre <span
+class="math inline">\(Q\)</span> et une fonction lisse de <span
+class="math inline">\(N\)</span> est gonflée — la régression spurieuse
+entre processus intégrés de Granger–Newbold. <strong class="etag et-neg">▪ NÉGATIF</strong></p>
 <div id="obs:62" class="observation">
-<p><strong>Observation 44</strong>. The <span
-class="math inline">\(p\)</span>-values of order <span
-class="math inline">\(10^{-142}\)</span> reported in earlier
-(unpublished) computations for <span
-class="math inline">\(r(Q(r),\cos(\gamma_1\log p))\)</span> are
-artefacts of the <span class="math inline">\(I(1)\)</span> structure of
+<p><strong>Observation 44</strong>. Les <span
+class="math inline">\(p\)</span>-valeurs d’ordre <span
+class="math inline">\(10^{-142}\)</span> rapportées dans des calculs
+antérieurs (non publiés) pour <span
+class="math inline">\(r(Q(r),\cos(\gamma_1\log p))\)</span> sont des
+artefacts de la structure <span class="math inline">\(I(1)\)</span> de
 <span class="math inline">\(Q\)</span>.</p>
 </div>
-<h3 id="three-permutation-tests-on-the-pure-residual">Three permutation
-tests on the pure residual</h3>
-<p>Decompose <span class="math inline">\(Q(r)=\alpha\sqrt{p_r}+\beta
-D_N(r)+Q^{\mathrm{pure}}_r\)</span>, <span
+<h3 id="trois-tests-de-permutation-sur-le-résidu-pur">Trois tests de
+permutation sur le résidu pur</h3>
+<p>On décompose <span class="math inline">\(Q(r)=\alpha\sqrt{p_r}+\beta
+D_N(r)+Q^{\mathrm{pur}}_r\)</span>, <span
 class="math inline">\(D_N(r):=\sum_{n\le
-r}(\{\sqrt{p_n/3}\}-\tfrac12)\)</span> (geometric trend <span
-class="math inline">\(51.9\%\)</span>; <span
+r}(\{\sqrt{p_n/3}\}-\tfrac12)\)</span> (tendance géométrique <span
+class="math inline">\(51.9\%\)</span> ; <span
 class="math inline">\(D_N\)</span> <span
-class="math inline">\(44.8\%\)</span>; residual <span
-class="math inline">\(3.3\%\)</span>). Three independent permutation
-tests (shuffle; block-<span class="math inline">\(50\)</span>; Theiler
-surrogate) at <span class="math inline">\(N=10^4\)</span>, <span
-class="math inline">\(5000\)</span> replications.</p>
+class="math inline">\(44.8\%\)</span> ; résidu <span
+class="math inline">\(3.3\%\)</span>). Trois tests de permutation
+indépendants (mélange ; blocs-<span class="math inline">\(50\)</span> ;
+substitut de Theiler) à <span class="math inline">\(N=10^4\)</span>,
+<span class="math inline">\(5000\)</span> répétitions.</p>
 <table id="tab:perm">
-<caption>Permutation tests on <span
-class="math inline">\(Q^{\mathrm{pure}}\)</span> (<span
+<caption>Tests de permutation sur <span
+class="math inline">\(Q^{\mathrm{pur}}\)</span> (<span
 class="math inline">\(5000\)</span> reps, <span
 class="math inline">\(N=10^4\)</span>).</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Méthode</th>
 <th style="text-align: center;"><span
 class="math inline">\(z(\gamma_1)\)</span></th>
 <th style="text-align: center;"><span
-class="math inline">\(p\)</span>-value</th>
-<th style="text-align: center;">Observed sig.</th>
-<th style="text-align: center;">Perm. mean</th>
+class="math inline">\(p\)</span>-valeur</th>
+<th style="text-align: center;">Sig. obs.</th>
+<th style="text-align: center;">Moy. perm.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Shuffle</td>
+<td style="text-align: left;">Mélange</td>
 <td style="text-align: center;"><span
 class="math inline">\(-0.23\sigma\)</span></td>
 <td style="text-align: center;">0.550</td>
@@ -1395,7 +1408,7 @@ class="math inline">\(8/15\)</span></td>
 class="math inline">\(13.5/15\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Block (50)</td>
+<td style="text-align: left;">Blocs (50)</td>
 <td style="text-align: center;"><span
 class="math inline">\(-0.21\sigma\)</span></td>
 <td style="text-align: center;">0.547</td>
@@ -1416,41 +1429,43 @@ class="math inline">\(13.5/15\)</span></td>
 </tr>
 </tbody>
 </table>
+<p><strong class="etag et-neg">▪ NÉGATIF</strong></p>
 <div id="prop:63" class="proposition">
-<p><strong>Proposition 45</strong>. <em>Under all three methods,
-correlations between <span
-class="math inline">\(Q^{\mathrm{pure}}\)</span> and <span
-class="math inline">\(\cos(\gamma_i\log p)\)</span> are not significant
-(<span class="math inline">\(z\in[-0.23,-0.02]\sigma\)</span>): the
-observed signal is weaker than a random cumulative sum.</em></p>
+<p><strong>Proposition 45</strong>. <em>Sous les trois méthodes, les
+corrélations entre <span class="math inline">\(Q^{\mathrm{pur}}\)</span>
+et <span class="math inline">\(\cos(\gamma_i\log p)\)</span> ne sont pas
+significatives (<span
+class="math inline">\(z\in[-0.23,-0.02]\sigma\)</span>) : le signal
+observé est plus faible qu’une somme cumulative aléatoire.</em></p>
 </div>
-<h3 id="the-decisive-bias-free-test-at-n108">The decisive bias-free test
-at <span class="math inline">\(N=10^8\)</span></h3>
-<p>Work directly on increments <span
-class="math inline">\(d_n:=\{\sqrt{p_n/3}\}-\tfrac12\)</span>, fitting
-<span
+<h3 id="le-test-sans-biais-décisif-à-n108">Le test sans biais décisif à
+<span class="math inline">\(N=10^8\)</span></h3>
+<p>On travaille directement sur les incréments <span
+class="math inline">\(d_n:=\{\sqrt{p_n/3}\}-\tfrac12\)</span>, en
+ajustant <span
 class="math inline">\(d_n\approx\sum_{i=1}^{10}(a_i\cos(\gamma_i\log
-p_n)+b_i\sin(\gamma_i\log p_n))+c_0\)</span> with <span
-class="math inline">\(\gamma_i\)</span> the first <span
-class="math inline">\(10\)</span> ordinates. Amplitudes <span
-class="math inline">\(A_i=\sqrt{a_i^2+b_i^2}\)</span> versus a
-permutation baseline.</p>
+p_n)+b_i\sin(\gamma_i\log p_n))+c_0\)</span> avec <span
+class="math inline">\(\gamma_i\)</span> les <span
+class="math inline">\(10\)</span> premières ordonnées. Amplitudes <span
+class="math inline">\(A_i=\sqrt{a_i^2+b_i^2}\)</span> versus une base de
+permutation.</p>
+<p><strong class="etag et-neg">▪ NÉGATIF</strong></p>
 <div id="prop:64" class="proposition">
-<p><strong>Proposition 46</strong> (decisive). <em>For each of the first
-<span class="math inline">\(10\)</span> ordinates, at <span
-class="math inline">\(N=10^8\)</span>: <span
-class="math inline">\(0/10\)</span> amplitudes significant at <span
-class="math inline">\(5\%\)</span>; <span
+<p><strong>Proposition 46</strong> (décisive). <em>Pour chacune des
+<span class="math inline">\(10\)</span> premières ordonnées, à <span
+class="math inline">\(N=10^8\)</span> : <span
+class="math inline">\(0/10\)</span> amplitudes significatives à <span
+class="math inline">\(5\%\)</span> ; <span
 class="math inline">\(R^2=1.16\times10^{-7}\)</span>, <span
-class="math inline">\(z=-2.20\sigma\)</span>; <span
-class="math inline">\(R^2\)</span> decreases by <span
-class="math inline">\(\approx6000\)</span> from <span
-class="math inline">\(N=10^4\)</span> to <span
-class="math inline">\(10^8\)</span>, the <span
-class="math inline">\(1/N\)</span> null scaling.</em></p>
+class="math inline">\(z=-2.20\sigma\)</span> ; <span
+class="math inline">\(R^2\)</span> décroît d’un facteur <span
+class="math inline">\(\approx6000\)</span> de <span
+class="math inline">\(N=10^4\)</span> à <span
+class="math inline">\(10^8\)</span>, l’échelle <span
+class="math inline">\(1/N\)</span> de l’hypothèse nulle.</em></p>
 </div>
 <table id="tab:conv">
-<caption>Convergence of the increment test with scale <span
+<caption>Convergence du test sur incréments avec l’échelle <span
 class="math inline">\(N\)</span>.</caption>
 <thead>
 <tr>
@@ -1459,7 +1474,7 @@ class="math inline">\(N\)</span></th>
 <th style="text-align: center;"><span
 class="math inline">\(p_{\max}\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(R^2\)</span>
-(10 zeros)</th>
+(10 zéros)</th>
 <th style="text-align: center;"><span
 class="math inline">\(z\)</span>-score</th>
 </tr>
@@ -1508,274 +1523,212 @@ class="math inline">\(-2.20\sigma\)</span></td>
 </tbody>
 </table>
 <figure id="fig:5" data-latex-placement="h">
-<img src="figs_pp/fig5.png" />
-<figcaption>Left: <span class="math inline">\(R^2\)</span> decays as
-<span class="math inline">\(1/N\)</span> (null hypothesis); at <span
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig5.png" />
+<figcaption>À gauche : <span class="math inline">\(R^2\)</span> décroît
+en <span class="math inline">\(1/N\)</span> (hypothèse nulle) ; à <span
 class="math inline">\(N=10^8\)</span>, <span
-class="math inline">\(R^2=1.16\times10^{-7}\)</span>. Right: three
-permutation tests; the observed <span
-class="math inline">\(8/15\)</span> is well below the permutation mean
-<span class="math inline">\(13.5/15\)</span>.</figcaption>
+class="math inline">\(R^2=1.16\times10^{-7}\)</span>. À droite : trois
+tests de permutation ; les <span class="math inline">\(8/15\)</span>
+observés sont bien sous la moyenne de permutation <span
+class="math inline">\(13.5/15\)</span>.</figcaption>
 </figure>
-<h3 id="from-statistics-to-an-unconditional-theorem">From statistics to
-an unconditional theorem</h3>
-<p>The tests establish absence statistically. We now prove it. Fix <span
-class="math inline">\(\gamma\in\mathbb{R}\)</span> and define the
-regression amplitude at frequency <span
+<h3 id="de-la-statistique-à-un-théorème-inconditionnel">De la
+statistique à un théorème inconditionnel</h3>
+<p>Les tests établissent l’absence statistiquement. Nous la démontrons.
+Fixons <span class="math inline">\(\gamma\in\mathbb{R}\)</span> et
+définissons l’amplitude de régression à la fréquence <span
 class="math inline">\(\gamma\)</span>, <span
 class="math display">\[\begin{equation}
 \label{eq:AN}
 A_N(\gamma):=\frac{2}{\pi(X)}\Big|\sum_{p\le
 X}\big(\{\sqrt{p/3}\}-\tfrac12\big)\,p^{-i\gamma}\Big|,\qquad N=\pi(X).
-\end{equation}\]</span> The signed sawtooth <span
-class="math inline">\(\psi_0(t):=\{t\}-\tfrac12\)</span> admits Vaaler’s
-trigonometric approximation: for every <span
-class="math inline">\(H\ge1\)</span> there are coefficients with <span
-class="math inline">\(a_h,b_h\ll1/|h|\)</span> (<span
+\end{equation}\]</span> La dent-de-scie signée <span
+class="math inline">\(\psi_0(t):=\{t\}-\tfrac12\)</span> admet
+l’approximation trigonométrique de Vaaler : pour tout <span
+class="math inline">\(H\ge1\)</span> il existe des coefficients avec
+<span class="math inline">\(a_h,b_h\ll1/|h|\)</span> (<span
 class="math inline">\(h\ne0\)</span>), <span
-class="math inline">\(b_0=1/(H+1)\)</span>, and <span
+class="math inline">\(b_0=1/(H+1)\)</span>, et <span
 class="math display">\[\begin{equation}
 \label{eq:vaaler}
 \Big|\psi_0(t)-\sum_{1\le|h|\le H}a_h e(ht)\Big|\le\sum_{0\le|h|\le
 H}b_h e(ht),\qquad e(x):=e^{2\pi i x}.
-\end{equation}\]</span> Define the square-root-phase prime exponential
-sum <span class="math display">\[\begin{equation}
+\end{equation}\]</span> On définit la somme d’exponentielles de premiers
+à phase en racine carrée <span class="math display">\[\begin{equation}
 \label{eq:T}
 T(h,\gamma;X):=\sum_{p\le X}e\!\big(h\sqrt{p/3}\big)\,p^{-i\gamma}.
 \end{equation}\]</span></p>
 <div id="lem:T" class="lemma">
-<p><strong>Lemma 47</strong> (Square-root-phase cancellation). <em>Fix
-<span class="math inline">\(\gamma\in\mathbb{R}\)</span>. <em>(i)
-Unconditional.</em> <span
-class="math inline">\(T(h,\gamma;X)=o(\pi(X))\)</span> as <span
-class="math inline">\(X\to\infty\)</span>, uniformly for <span
-class="math inline">\(h\)</span> in any fixed range. <em>(ii) Type II
-input (deferred).</em> There is an absolute <span
-class="math inline">\(\delta_0&gt;0\)</span> such that, granting the
-standard bilinear (Type II) estimate of Open Problem <a
-href="#op:typeII" data-reference-type="ref"
+<p><strong>Lemme 47</strong> (Cancellation à phase racine carrée).
+<em>Fixons <span class="math inline">\(\gamma\in\mathbb{R}\)</span>.
+<em>(i) Inconditionnel.</em> <span
+class="math inline">\(T(h,\gamma;X)=o(\pi(X))\)</span> quand <span
+class="math inline">\(X\to\infty\)</span>, uniformément pour <span
+class="math inline">\(h\)</span> dans une plage fixée. <em>(ii) Entrée
+de Type II (différée).</em> Il existe <span
+class="math inline">\(\delta_0&gt;0\)</span> absolu tel que, en
+admettant l’estimation bilinéaire (Type II) standard du Problème
+ouvert <a href="#op:typeII" data-reference-type="ref"
 data-reference="op:typeII">55</a>, <span
 class="math display">\[T(h,\gamma;X)\ll_\gamma
-h^{1/2}\,X^{1-\delta_0+o(1)}\qquad\text{uniformly for }1\le h\le
+h^{1/2}\,X^{1-\delta_0+o(1)}\qquad\text{uniformément pour }1\le h\le
 X^{1/4}.\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof: (i) is Balog; (ii) is Type I complete, Type II
-deferred.</em> Write <span
+<p><em>Démonstration : (i) c’est Balog ; (ii) Type I complète, Type II
+différée.</em> Écrivons <span
 class="math inline">\(p^{-i\gamma}=e\!\big(-\tfrac{\gamma}{2\pi}\log
-p\big)\)</span>, so the phase is <span
+p\big)\)</span>, de sorte que la phase est <span
 class="math inline">\(\phi(t)=h\sqrt{t/3}-\tfrac{\gamma}{2\pi}\log
-t\)</span> with <span class="math inline">\(\phi&#39;&#39;(t)\asymp
--h\,t^{-3/2}\)</span> for <span class="math inline">\(t\asymp
-X\)</span>. Apply Vaughan’s identity to split <span
-class="math inline">\(\sum_{p\le X}\Lambda(n)e(\phi(n))/\log\)</span>
-into Type I sums <span class="math inline">\(\sum_{d\le
-D}\sum_{\ell}c_d\,e(\phi(d\ell))\)</span> and Type II sums <span
+t\)</span> avec <span class="math inline">\(\phi&#39;&#39;(t)\asymp
+-h\,t^{-3/2}\)</span> pour <span class="math inline">\(t\asymp
+X\)</span>. On applique l’identité de Vaughan pour scinder <span
+class="math inline">\(\sum_{p\le X}\Lambda(n)e(\phi(n))/\log\)</span> en
+sommes de Type I <span class="math inline">\(\sum_{d\le
+D}\sum_{\ell}c_d\,e(\phi(d\ell))\)</span> et de Type II <span
 class="math inline">\(\sum_{M&lt;m\le2M}\sum_{n}a_m b_n
-e(\phi(mn))\)</span> with <span
-class="math inline">\(D=X^{1/3}\)</span>. <em>Type I.</em> Inner sums
-over <span class="math inline">\(\ell\)</span> are handled by the
-second-derivative (van der Corput) test: <span
-class="math inline">\(\sum_{\ell\asymp L}e(\phi(d\ell))\ll
-L|\phi&#39;&#39;|^{1/2}X^{?}+|\phi&#39;&#39;|^{-1/2}\ll (hL/\sqrt
-X)^{1/2}L+(\sqrt X/h)^{1/2}\)</span>, which after summation in <span
-class="math inline">\(d\)</span> yields a power saving <span
-class="math inline">\(\ll h^{1/2}X^{1-\delta_1}\)</span> for an explicit
-<span class="math inline">\(\delta_1&gt;0\)</span> (exponent-pair /
-Graham–Kolesnik estimates apply since <span
-class="math inline">\(\phi\)</span> is of class <span
-class="math inline">\(\sqrt{\cdot}\)</span>). <em>Type II.</em> By
-Cauchy–Schwarz in <span class="math inline">\(m\)</span> and the
-second-derivative test on the difference <span
+e(\phi(mn))\)</span> avec <span
+class="math inline">\(D=X^{1/3}\)</span>. <em>Type I.</em> Les sommes
+intérieures en <span class="math inline">\(\ell\)</span> sont contrôlées
+par le test de la dérivée seconde (van der Corput), ce qui donne après
+sommation en <span class="math inline">\(d\)</span> une économie de
+puissance <span class="math inline">\(\ll h^{1/2}X^{1-\delta_1}\)</span>
+pour un <span class="math inline">\(\delta_1&gt;0\)</span> explicite
+(les estimations par paires d’exposants / Graham–Kolesnik s’appliquent,
+<span class="math inline">\(\phi\)</span> étant de classe <span
+class="math inline">\(\sqrt{\cdot}\)</span>). <em>Type II.</em> Par
+Cauchy–Schwarz en <span class="math inline">\(m\)</span> et le test de
+la dérivée seconde sur la différence <span
 class="math inline">\(\phi(mn)-\phi(mn&#39;)=h(\sqrt{mn/3}-\sqrt{mn&#39;/3})-\tfrac{\gamma}{2\pi}\log(n/n&#39;)\)</span>,
-whose <span class="math inline">\(n\)</span>-derivative is
-non-degenerate, one expects <span class="math inline">\(\ll
-h^{1/2}X^{1-\delta_2+o(1)}\)</span>; this bilinear (Type II) estimate is
-the technical core, standard in method, and its detailed quantitative
-verification is deferred to Open Problem <a href="#op:typeII"
-data-reference-type="ref" data-reference="op:typeII">55</a>. Granting it
-with exponent <span class="math inline">\(\delta_2&gt;0\)</span> and
-setting <span
-class="math inline">\(\delta_0=\min(\delta_1,\delta_2)\)</span> gives
-(ii). Statement (i) needs no Type II input: it follows unconditionally
-from Balog’s equidistribution of <span class="math inline">\(\{\sqrt
-p\}\)</span> together with partial summation against the slowly varying
-weight <span class="math inline">\(p^{-i\gamma}\)</span>. ◻</p>
+dont la dérivée en <span class="math inline">\(n\)</span> est non
+dégénérée, on attend <span class="math inline">\(\ll
+h^{1/2}X^{1-\delta_2+o(1)}\)</span> ; cette estimation bilinéaire (Type
+II) est le cœur technique, standard en méthode, et sa vérification
+quantitative détaillée est différée au Problème ouvert <a
+href="#op:typeII" data-reference-type="ref"
+data-reference="op:typeII">55</a>. En l’admettant avec exposant <span
+class="math inline">\(\delta_2&gt;0\)</span> et en posant <span
+class="math inline">\(\delta_0=\min(\delta_1,\delta_2)\)</span> on
+obtient (ii). L’énoncé (i) ne requiert aucune entrée de Type II : il
+découle inconditionnellement de l’équidistribution de <span
+class="math inline">\(\{\sqrt p\}\)</span> de Balog, par sommation
+d’Abel contre le poids lentement variable <span
+class="math inline">\(p^{-i\gamma}\)</span>. ◻</p>
 </div>
 <div id="thm:67" class="theorem">
-<p><strong>Theorem 48</strong> (Unconditional convergence; conditional
-rate). <em>Let <span class="math inline">\(\gamma\in\mathbb{R}\)</span>
-be fixed. <em>(a) Unconditional.</em> <span
-class="math inline">\(A_N(\gamma)\to0\)</span> as <span
-class="math inline">\(X\to\infty\)</span>; consequently no ordinate of
-<span class="math inline">\(\zeta\)</span> carries a surviving linear
-signal in the increments <span class="math inline">\(d_n\)</span>.
-<em>(b) Explicit rate (conditional).</em> Granting the standard Type II
-estimate of Lemma <a href="#lem:T" data-reference-type="ref"
-data-reference="lem:T">47</a>(ii) (Open Problem <a href="#op:typeII"
+<p><strong>Théorème 48</strong> (Convergence inconditionnelle ; taux
+conditionnel). <em>Soit <span
+class="math inline">\(\gamma\in\mathbb{R}\)</span> fixé. <em>(a)
+Inconditionnel.</em> <span
+class="math inline">\(A_N(\gamma)\to0\)</span> quand <span
+class="math inline">\(X\to\infty\)</span> ; par conséquent aucune
+ordonnée de <span class="math inline">\(\zeta\)</span> ne porte de
+signal linéaire survivant dans les incréments <span
+class="math inline">\(d_n\)</span>. <em>(b) Taux explicite
+(conditionnel).</em> En admettant l’estimation Type II standard du
+Lemme <a href="#lem:T" data-reference-type="ref"
+data-reference="lem:T">47</a>(ii) (Problème ouvert <a href="#op:typeII"
 data-reference-type="ref" data-reference="op:typeII">55</a>), <span
-class="math inline">\(A_N(\gamma)\ll_\gamma X^{-\delta}\)</span> with
+class="math inline">\(A_N(\gamma)\ll_\gamma X^{-\delta}\)</span> avec
 <span
 class="math inline">\(\delta=\min(1/4,\delta_0)-o(1)\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> By <a href="#eq:vaaler" data-reference-type="eqref"
-data-reference="eq:vaaler">[eq:vaaler]</a> with <span
+<p><em>Proof.</em> Par <a href="#eq:vaaler" data-reference-type="eqref"
+data-reference="eq:vaaler">[eq:vaaler]</a> avec <span
 class="math inline">\(H=X^{1/4}\)</span>, <span
 class="math display">\[\Big|\sum_{p\le
 X}\psi_0(\sqrt{p/3})p^{-i\gamma}\Big|\ll \frac{\pi(X)}{H}+\sum_{1\le
-h\le H}\frac1h\,|T(h,\gamma;X)|,\]</span> the first term from the <span
-class="math inline">\(b_0\)</span>-mass and the <span
-class="math inline">\(b_h\)</span>-side reducing to the same sums <span
-class="math inline">\(T\)</span>. By Lemma <a href="#lem:T"
+h\le H}\frac1h\,|T(h,\gamma;X)|,\]</span> le premier terme provenant de
+la masse <span class="math inline">\(b_0\)</span> et le côté <span
+class="math inline">\(b_h\)</span> se réduisant aux mêmes sommes <span
+class="math inline">\(T\)</span>. Par le Lemme <a href="#lem:T"
 data-reference-type="ref" data-reference="lem:T">47</a>, <span
 class="math inline">\(\sum_{h\le H}h^{-1}|T(h,\gamma;X)|\ll
-X^{1-\delta_0+o(1)}\sum_{h\le H}h^{-1/2}\ll
-X^{1-\delta_0+1/8+o(1)}\)</span>; absorbing <span
-class="math inline">\(1/8\)</span> into <span
-class="math inline">\(o(1)\)</span> after re-optimising <span
-class="math inline">\(H\)</span> gives <span class="math inline">\(\ll
-X^{1-\delta_0+o(1)}\)</span>. Dividing by <span
+X^{1-\delta_0+o(1)}\)</span> après réoptimisation de <span
+class="math inline">\(H\)</span>. En divisant par <span
 class="math inline">\(\pi(X)\asymp X/\log X\)</span>, <span
-class="math display">\[A_N(\gamma)\ll
-\frac1H+X^{-\delta_0+o(1)}=X^{-1/4}+X^{-\delta_0+o(1)}\ll_\gamma
-X^{-\delta}.\]</span> This is (b). For (a), the convergence <span
-class="math inline">\(A_N(\gamma)\to0\)</span> holds unconditionally
-already from Lemma <a href="#lem:T" data-reference-type="ref"
-data-reference="lem:T">47</a>(i) (Balog), without any Type II
-input. ◻</p>
+class="math inline">\(A_N(\gamma)\ll
+H^{-1}+X^{-\delta_0+o(1)}=X^{-1/4}+X^{-\delta_0+o(1)}\ll_\gamma
+X^{-\delta}.\)</span> C’est (b). Pour (a), la convergence <span
+class="math inline">\(A_N(\gamma)\to0\)</span> vaut déjà
+inconditionnellement à partir du Lemme <a href="#lem:T"
+data-reference-type="ref" data-reference="lem:T">47</a>(i) (Balog), sans
+aucune entrée de Type II. ◻</p>
 </div>
 <div class="remark">
-<p><strong>Remark 49</strong> (Honest status). The convergence <span
-class="math inline">\(A_N(\gamma)\to0\)</span> is unconditional and
-complete (Balog). The <em>explicit</em> power saving <span
-class="math inline">\(X^{-\delta}\)</span> rests on the Type II bilinear
-estimate inside Lemma <a href="#lem:T" data-reference-type="ref"
-data-reference="lem:T">47</a>, which is standard in method but whose
-fully written-out constant we isolate rather than overstate; see Open
-Problem <a href="#op:typeII" data-reference-type="ref"
+<p><strong>Remarque 49</strong> (Statut honnête). La convergence <span
+class="math inline">\(A_N(\gamma)\to0\)</span> est inconditionnelle et
+complète (Balog). L’économie de puissance <em>explicite</em> <span
+class="math inline">\(X^{-\delta}\)</span> repose sur l’estimation
+bilinéaire de Type II du Lemme <a href="#lem:T"
+data-reference-type="ref" data-reference="lem:T">47</a>, standard en
+méthode mais dont nous isolons la constante plutôt que de la surévaluer
+; voir Problème ouvert <a href="#op:typeII" data-reference-type="ref"
 data-reference="op:typeII">55</a>.</p>
 </div>
-<h2 id="the-conditional-mechanism">The conditional mechanism</h2>
+<h2 id="le-mécanisme-conditionnel">Le mécanisme conditionnel</h2>
 <div id="thm:65" class="theorem">
-<p><strong>Theorem 50</strong> (Conditional, RH). <em>Under RH, for the
-critical window <span class="math inline">\(h=c\sqrt x\)</span>, the
-layer-count variance satisfies <span
+<p><strong>Théorème 50</strong> (Conditionnel, RH). <em>Sous RH, pour la
+fenêtre critique <span class="math inline">\(h=c\sqrt x\)</span>, la
+variance du comptage de couche vérifie <span
 class="math inline">\(\tfrac1X\int_X^{2X}(N(x)-\langle
-N\rangle(x))^2\,dx\ll\sqrt X(\log X)^2\)</span>, whence <span
+N\rangle(x))^2\,dx\ll\sqrt X(\log X)^2\)</span>, d’où <span
 class="math inline">\(\mathop{\mathrm{RMS}}(N-\langle N\rangle)\ll
-X^{1/4}\log X\)</span>, i.e. the per-prime <span
-class="math inline">\(\zeta\)</span>-footprint on the layer occupancy is
-<span class="math inline">\(\ll p^{-1/4}(\log p)^2\)</span>.</em></p>
+X^{1/4}\log X\)</span>, soit une empreinte de <span
+class="math inline">\(\zeta\)</span> par premier <span
+class="math inline">\(\ll p^{-1/4}(\log p)^2\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> This is the Selberg variance for primes in short
-intervals: under RH, <span
+<p><em>Proof.</em> C’est la variance de Selberg pour les premiers en
+intervalles courts : sous RH, <span
 class="math inline">\(\int_X^{2X}(\psi(x+h)-\psi(x)-h)^2\,dx\ll Xh(\log
-X)^2\)</span> for <span class="math inline">\(h\le X\)</span> (Selberg;
-Goldston–Montgomery; Montgomery–Soundararajan). With <span
-class="math inline">\(h=c\sqrt x\)</span> the normalised fluctuation per
-layer is <span class="math inline">\(\ll\sqrt h\,\log X=X^{1/4}\log
-X\)</span>; dividing by the layer occupancy <span
-class="math inline">\(\asymp\sqrt x/\log x\)</span> gives the per-prime
-bound <span class="math inline">\(p^{-1/4}(\log p)^2\)</span>. ◻</p>
+X)^2\)</span> pour <span class="math inline">\(h\le X\)</span> (Selberg
+; Goldston–Montgomery ; Montgomery–Soundararajan). Avec <span
+class="math inline">\(h=c\sqrt x\)</span>, la fluctuation normalisée par
+couche est <span class="math inline">\(\ll\sqrt h\,\log X=X^{1/4}\log
+X\)</span> ; en divisant par l’occupation de couche <span
+class="math inline">\(\asymp\sqrt x/\log x\)</span> on obtient la borne
+par premier <span class="math inline">\(p^{-1/4}(\log
+p)^2\)</span>. ◻</p>
 </div>
 <div class="remark">
-<p><strong>Remark 51</strong>. At <span
-class="math inline">\(N=10^8\)</span> the <span
-class="math inline">\(O(p^{-1/4})\)</span> per-prime footprint is five
-orders of magnitude below sampling noise; a direct spectral observation
-would require <span class="math inline">\(N\gtrsim10^{16}\)</span>. The
-zeros act as statistical constraints at scale <span
-class="math inline">\(\sqrt x\)</span>, not as spectral frequencies—this
-is the mechanism behind Theorem <a href="#thm:67"
-data-reference-type="ref" data-reference="thm:67">48</a>.</p>
+<p><strong>Remarque 51</strong>. À <span
+class="math inline">\(N=10^8\)</span>, l’empreinte <span
+class="math inline">\(O(p^{-1/4})\)</span> par premier est cinq ordres
+de grandeur sous le bruit d’échantillonnage ; une observation spectrale
+directe nécessiterait <span
+class="math inline">\(N\gtrsim10^{16}\)</span>. Les zéros agissent comme
+contraintes statistiques à l’échelle <span class="math inline">\(\sqrt
+x\)</span>, non comme fréquences spectrales — c’est le mécanisme du
+Théorème <a href="#thm:67" data-reference-type="ref"
+data-reference="thm:67">48</a>.</p>
 </div>
-<table id="tab:14">
-<caption>Four-level structure of the connection <span
-class="math inline">\(\zeta(s)\leftrightarrow(m,\varepsilon,q)\)</span>.</caption>
-<thead>
-<tr>
-<th style="text-align: center;">Level</th>
-<th style="text-align: left;">Statement</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: center;">Hypothesis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">I</td>
-<td style="text-align: left;">Zeros govern <span
-class="math inline">\(n_m\)</span> variance (scale <span
-class="math inline">\(\sqrt h\)</span>)</td>
-<td style="text-align: left;">Heuristic</td>
-<td style="text-align: center;">Riemann–von Mangoldt</td>
-</tr>
-<tr>
-<td style="text-align: center;">II</td>
-<td style="text-align: left;"><span
-class="math inline">\(\mathbb{E}[|q|\mid m]=m/4\)</span></td>
-<td style="text-align: left;">Conditional</td>
-<td style="text-align: center;">H1+GRH+H3</td>
-</tr>
-<tr>
-<td style="text-align: center;">III</td>
-<td style="text-align: left;"><span
-class="math inline">\(|q_{\min}|=O_k(m\log^2m)\)</span></td>
-<td style="text-align: left;">Conditional</td>
-<td style="text-align: center;">GRH</td>
-</tr>
-<tr>
-<td style="text-align: center;"><span
-class="math inline">\(\zeta\)</span>-footprint</td>
-<td style="text-align: left;"><span class="math inline">\(\ll
-p^{-1/4}\)</span> per prime</td>
-<td style="text-align: left;">Conditional</td>
-<td style="text-align: center;">RH (Selberg)</td>
-</tr>
-<tr>
-<td style="text-align: center;">IV (stat.)</td>
-<td style="text-align: left;"><span class="math inline">\(Q(r)\)</span>
-has no spectral signal</td>
-<td style="text-align: left;">Negative (decisive)</td>
-<td style="text-align: center;">none (<span
-class="math inline">\(3\)</span> perm. <span
-class="math inline">\(+\,10^8\)</span>)</td>
-</tr>
-<tr>
-<td style="text-align: center;">IV (anal.)</td>
-<td style="text-align: left;"><span
-class="math inline">\(A_N(\gamma)\to0\)</span> (rate cond.)</td>
-<td style="text-align: left;"><strong>Rigorous</strong></td>
-<td style="text-align: center;">none (Thm <a href="#thm:67"
-data-reference-type="ref" data-reference="thm:67">48</a>(a))</td>
-</tr>
-</tbody>
-</table>
-<h1 id="sec:record">The computational record: a <span
-class="math inline">\(29\,998\)</span>-digit prime</h1>
-<h2 id="the-primequest-algorithm">The PrimeQuest algorithm</h2>
-<p>PrimeQuest searches <span class="math inline">\(p=3m(m+1)+1\)</span>,
-<span class="math inline">\(m=2^a3^b-1\)</span>, by zigzag expansion
-from a calibrated centre <span class="math inline">\(a_0=b_0=\lfloor
-D/(2\log_{10}6)\rfloor\approx0.643D\)</span>. Pipeline: (i) mod-<span
-class="math inline">\(7\)</span> filter (<span
+<h1 id="sec:record">Le record computationnel : un premier de <span
+class="math inline">\(29\,998\)</span> chiffres</h1>
+<h2 id="lalgorithme-primequest">L’algorithme PrimeQuest</h2>
+<p>PrimeQuest cherche <span class="math inline">\(p=3m(m+1)+1\)</span>,
+<span class="math inline">\(m=2^a3^b-1\)</span>, par expansion en zigzag
+autour d’un centre calibré <span class="math inline">\(a_0=b_0=\lfloor
+D/(2\log_{10}6)\rfloor\approx0.643D\)</span>. Pipeline : (i) filtre
+mod-<span class="math inline">\(7\)</span> (<span
 class="math inline">\(O(1)\)</span>, <span
-class="math inline">\(33\%\)</span>); (ii) reciprocity sieve (<span
-class="math inline">\(q\equiv1\bmod3\)</span>, <span
-class="math inline">\(\approx54\%\)</span>); (iii) Miller–Rabin; (iv)
-Pocklington witness search for <span
-class="math inline">\(\nu\in\{2,3\}\)</span>. Checkpoints every <span
-class="math inline">\(60\)</span>s enable exact restart.</p>
-<h2 id="four-unconditional-certificates">Four unconditional
-certificates</h2>
+class="math inline">\(33\%\)</span>) ; (ii) crible par réciprocité
+(<span class="math inline">\(q\equiv1\bmod3\)</span>, <span
+class="math inline">\(\approx54\%\)</span>) ; (iii) Miller–Rabin ; (iv)
+recherche de témoins Pocklington pour <span
+class="math inline">\(\nu\in\{2,3\}\)</span>. Points de contrôle toutes
+les <span class="math inline">\(60\)</span>s pour un redémarrage
+exact.</p>
+<h2 id="quatre-certificats-inconditionnels">Quatre certificats
+inconditionnels</h2>
 <table id="tab:certs">
-<caption>Pocklington certificates (PrimeQuest); <span
+<caption>Certificats Pocklington (PrimeQuest) ; <span
 class="math inline">\(w_2=5\)</span>, <span
-class="math inline">\(w_3=7\)</span> in every case.</caption>
+class="math inline">\(w_3=7\)</span> dans tous les cas.</caption>
 <thead>
 <tr>
-<th style="text-align: center;">Digits of <span
+<th style="text-align: center;">Chiffres de <span
 class="math inline">\(p\)</span></th>
 <th style="text-align: center;"><span
 class="math inline">\(a\)</span></th>
@@ -1783,9 +1736,9 @@ class="math inline">\(a\)</span></th>
 class="math inline">\(b\)</span></th>
 <th style="text-align: center;"><span
 class="math inline">\(b/a\)</span></th>
-<th style="text-align: center;">MR tests</th>
-<th style="text-align: center;">Elim.</th>
-<th style="text-align: center;">Wall time</th>
+<th style="text-align: center;">Tests MR</th>
+<th style="text-align: center;">Élim.</th>
+<th style="text-align: center;">Temps</th>
 </tr>
 </thead>
 <tbody>
@@ -1829,45 +1782,45 @@ class="math inline">\(87.1\%\)</span></td>
 </tr>
 </tbody>
 </table>
-<h4 id="the-29998-digit-certificate.">The <span
-class="math inline">\(29\,998\)</span>-digit certificate.</h4>
-<p>For <span
+<h4 id="le-certificat-de-29998-chiffres.">Le certificat de <span
+class="math inline">\(29\,998\)</span> chiffres.</h4>
+<p>Pour <span
 class="math inline">\(p^{\ast}=3m^{\ast}(m^{\ast}+1)+1\)</span>, <span
-class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span>: <span
-class="math display">\[p^{\ast}-1=F\cdot m^{\ast},\quad
-F=2^{19435}\cdot3^{19174}\ (14\,999\text{ digits}),\quad
+class="math inline">\(m^{\ast}=2^{19435}\cdot3^{19173}-1\)</span> :
+<span class="math display">\[p^{\ast}-1=F\cdot m^{\ast},\quad
+F=2^{19435}\cdot3^{19174}\ (14\,999\text{ chiffres}),\quad
 F&gt;\sqrt{p^{\ast}},\]</span> <span class="math display">\[w_2=5:\
 5^{\,p^{\ast}-1}\equiv1,\ \gcd(5^{(p^{\ast}-1)/2}-1,p^{\ast})=1;\quad
 w_3=7:\ 7^{\,p^{\ast}-1}\equiv1,\
-\gcd(7^{(p^{\ast}-1)/3}-1,p^{\ast})=1.\]</span> The leading <span
-class="math inline">\(40\)</span> and trailing <span
-class="math inline">\(20\)</span> digits, <span
+\gcd(7^{(p^{\ast}-1)/3}-1,p^{\ast})=1.\]</span> Les <span
+class="math inline">\(40\)</span> premiers et <span
+class="math inline">\(20\)</span> derniers chiffres, <span
 class="math inline">\(1602087359509060348500037851549319056715\cdots16930852697403293697\)</span>,
-were reconstructed from scratch and matched exactly in the independent
-verification of §<a href="#sec:verif" data-reference-type="ref"
-data-reference="sec:verif">7.3</a>.</p>
+ont été reconstruits de zéro et concordent exactement avec la
+vérification indépendante de §<a href="#sec:verif"
+data-reference-type="ref" data-reference="sec:verif">7.3</a>.</p>
 <table id="tab:filter">
-<caption>Filter statistics for the <span
-class="math inline">\(29\,998\)</span>-digit record (<span
-class="math inline">\(2\,221\)</span> pairs tested).</caption>
+<caption>Statistiques de filtrage pour le record de <span
+class="math inline">\(29\,998\)</span> chiffres (<span
+class="math inline">\(2\,221\)</span> paires testées).</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Stage</th>
-<th style="text-align: center;">Pairs eliminated</th>
+<th style="text-align: left;">Étape</th>
+<th style="text-align: center;">Paires éliminées</th>
 <th style="text-align: center;">Fraction</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">Mod-<span class="math inline">\(7\)</span>
-filter (Theorem <a href="#thm:313" data-reference-type="ref"
-data-reference="thm:313">28</a>)</td>
+<td style="text-align: left;">Filtre mod-<span
+class="math inline">\(7\)</span> (Théorème <a href="#thm:313"
+data-reference-type="ref" data-reference="thm:313">28</a>)</td>
 <td style="text-align: center;">740</td>
 <td style="text-align: center;"><span
 class="math inline">\(33.32\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Reciprocity sieve (Theorem <a
+<td style="text-align: left;">Crible par réciprocité (Théorème <a
 href="#thm:311" data-reference-type="ref"
 data-reference="thm:311">26</a>)</td>
 <td style="text-align: center;">1195</td>
@@ -1875,25 +1828,25 @@ data-reference="thm:311">26</a>)</td>
 class="math inline">\(53.80\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;"><em>Subtotal, a-priori filters</em></td>
+<td style="text-align: left;"><em>Sous-total, filtres a priori</em></td>
 <td style="text-align: center;"><em>1935</em></td>
 <td style="text-align: center;"><em><span
 class="math inline">\(87.12\%\)</span></em></td>
 </tr>
 <tr>
-<td style="text-align: left;">Miller–Rabin (composites)</td>
+<td style="text-align: left;">Miller–Rabin (composés)</td>
 <td style="text-align: center;">285</td>
 <td style="text-align: center;"><span
 class="math inline">\(12.83\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Total eliminated</strong></td>
+<td style="text-align: left;"><strong>Total éliminé</strong></td>
 <td style="text-align: center;"><strong>2220</strong></td>
 <td style="text-align: center;"><strong><span
 class="math inline">\(99.95\%\)</span></strong></td>
 </tr>
 <tr>
-<td style="text-align: left;">Prime found</td>
+<td style="text-align: left;">Premier trouvé</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;"><span
 class="math inline">\(0.045\%\)</span></td>
@@ -1901,228 +1854,183 @@ class="math inline">\(0.045\%\)</span></td>
 </tbody>
 </table>
 <figure id="fig:6" data-latex-placement="h">
-<img src="figs_pp/fig6.png" />
-<figcaption>Left: the two a-priori filters remove <span
-class="math inline">\(87.1\%\)</span> of candidates before any
-large-integer arithmetic; with Miller–Rabin the cumulative elimination
-reaches <span class="math inline">\(99.95\%\)</span>. Right: Pocklington
-scalability <span class="math inline">\(\tau\propto D^{2.5}\)</span>;
-projection to <span class="math inline">\(D=50\,000\)</span> gives <span
+<img alt="Figure — famille paramétrique de premiers" src="figs_pp/fig6.png" />
+<figcaption>À gauche : les deux filtres a priori retirent <span
+class="math inline">\(87.1\%\)</span> des candidats avant toute
+arithmétique en grande précision ; avec Miller–Rabin l’élimination
+cumulée atteint <span class="math inline">\(99.95\%\)</span>. À droite :
+scalabilité Pocklington <span class="math inline">\(\tau\propto
+D^{2.5}\)</span> ; projection à <span
+class="math inline">\(D=50\,000\)</span> : <span
 class="math inline">\(6\)</span>–<span
 class="math inline">\(10\)</span>h.</figcaption>
 </figure>
-<h2 id="sec:verif">Independent verification</h2>
-<p>The four conditions were re-verified in a separate environment
-(Python 3.12, exact <code>pow</code>, single core, no probabilistic
-step).</p>
-<p> <strong>Verification record.</strong> Step 1: <span
-class="math inline">\(m^{\ast}\)</span> (<span
-class="math inline">\(14\,999\)</span> digits) and <span
+<h2 id="sec:verif">Vérification indépendante</h2>
+<p>Les quatre conditions ont été re-vérifiées dans un environnement
+séparé (Python 3.12, <code>pow</code> exact, monocœur, aucune étape
+probabiliste). <strong class="etag et-rig">▪ RIGOUREUX</strong> <strong>Compte
+rendu.</strong> Étape 1 : <span class="math inline">\(m^{\ast}\)</span>
+(<span class="math inline">\(14\,999\)</span> chiffres) et <span
 class="math inline">\(p^{\ast}\)</span> (<span
-class="math inline">\(29\,998\)</span> digits) recomputed; leading <span
-class="math inline">\(40\)</span>/trailing <span
-class="math inline">\(20\)</span> digits match. Step 2: <span
-class="math inline">\(2\log_2F=99650.142&gt;\log_2
-p^{\ast}=99648.557\)</span> (margin <span
-class="math inline">\(\approx1.58\)</span> bits). Steps 3–4: both
-witness conditions hold. Wall time <span
+class="math inline">\(29\,998\)</span> chiffres) recalculés ; <span
+class="math inline">\(40\)</span> premiers/<span
+class="math inline">\(20\)</span> derniers chiffres concordent. Étape 2
+: <span class="math inline">\(2\log_2F=99650.142&gt;\log_2
+p^{\ast}=99648.557\)</span> (marge <span
+class="math inline">\(\approx1.58\)</span> bit). Étapes 3–4 : les deux
+conditions de témoins valent. Temps <span
 class="math inline">\(6945\)</span>s <span
-class="math inline">\(\approx\)</span> 1h56min. <em>Conclusion:</em>
-<span class="math inline">\(p^{\ast}\)</span> is unconditionally
-prime.</p>
+class="math inline">\(\approx\)</span> 1h56min. <em>Conclusion :</em>
+<span class="math inline">\(p^{\ast}\)</span> est inconditionnellement
+premier.</p>
 <div class="remark">
-<p><strong>Remark 52</strong>. Independent verification is <span
-class="math inline">\(\approx1.6\times\)</span> faster than the search:
-it runs exactly four modular exponentiations on the known candidate,
-bypassing the sieve, the filters, and the Miller–Rabin pre-screen.
-Scaling <span class="math inline">\(\tau\propto D^{2.5}\)</span> (GMP
-FFT) projects <span class="math inline">\(6\)</span>–<span
-class="math inline">\(10\)</span>h to <span
-class="math inline">\(50\,000\)</span> digits.</p>
+<p><strong>Remarque 52</strong>. La vérification indépendante est <span
+class="math inline">\(\approx1.6\times\)</span> plus rapide que la
+recherche : elle exécute exactement quatre exponentiations modulaires
+sur le candidat connu, court-circuitant le crible, les filtres et le
+pré-filtrage Miller–Rabin. L’échelle <span
+class="math inline">\(\tau\propto D^{2.5}\)</span> (GMP FFT) projette
+<span class="math inline">\(6\)</span>–<span
+class="math inline">\(10\)</span>h à <span
+class="math inline">\(50\,000\)</span> chiffres.</p>
 </div>
-<h1 id="open-problems">Open problems</h1>
+<h1 id="problèmes-ouverts">Problèmes ouverts</h1>
 <div id="op:central" class="openproblem">
-<p><strong>Open Problem 53</strong> (Central unconditional bound). Prove
-<span
+<p><strong>Problème ouvert 53</strong> (Borne centrale
+inconditionnelle). Démontrer <span
 class="math inline">\(|q_{\min}(k,m,\varepsilon)|=O(m^{1-\delta})\)</span>
-for some <span class="math inline">\(\delta&gt;0\)</span>,
-unconditionally. The gap to Theorem <a href="#thm:C"
-data-reference-type="ref" data-reference="thm:C">34</a> is
-quadratic.</p>
+pour un <span class="math inline">\(\delta&gt;0\)</span>,
+inconditionnellement. Le fossé avec le Théorème <a href="#thm:C"
+data-reference-type="ref" data-reference="thm:C">34</a> est
+quadratique.</p>
 </div>
 <div id="op:H3" class="openproblem">
-<p><strong>Open Problem 54</strong> (Unconditional Theorem <a
-href="#thm:D" data-reference-type="ref" data-reference="thm:D">36</a>).
-Prove <span class="math inline">\(\mathbb{E}[|q|\mid
-m]=m/4+o(m)\)</span> unconditionally; the barrier is the <span
-class="math inline">\(\log^2m\)</span> factor in PNT-in-AP of moduli
-<span class="math inline">\(\sim N^{1/2}\)</span> (Montgomery’s
-conjecture would resolve it).</p>
+<p><strong>Problème ouvert 54</strong> (Théorème <a href="#thm:D"
+data-reference-type="ref" data-reference="thm:D">36</a> inconditionnel).
+Démontrer <span class="math inline">\(\mathbb{E}[|q|\mid
+m]=m/4+o(m)\)</span> inconditionnellement ; la barrière est le facteur
+<span class="math inline">\(\log^2m\)</span> dans PNT-en-AP de modules
+<span class="math inline">\(\sim N^{1/2}\)</span> (la conjecture de
+Montgomery la résoudrait).</p>
 </div>
 <div id="op:typeII" class="openproblem">
-<p><strong>Open Problem 55</strong> (Type II <span
-class="math inline">\(\sqrt{\cdot}\)</span>-phase bound). Write out the
-bilinear (Type II) estimate of Lemma <a href="#lem:T"
-data-reference-type="ref" data-reference="lem:T">47</a> with an explicit
-constant, thereby locking the ceiling <span
-class="math inline">\(A_N(\gamma)\ll X^{-1/4+\varepsilon}\)</span>.</p>
+<p><strong>Problème ouvert 55</strong> (Borne Type II à phase <span
+class="math inline">\(\sqrt{\cdot}\)</span>). Rédiger l’estimation
+bilinéaire (Type II) du Lemme <a href="#lem:T" data-reference-type="ref"
+data-reference="lem:T">47</a> avec constante explicite, verrouillant
+ainsi le plafond <span class="math inline">\(A_N(\gamma)\ll
+X^{-1/4+\varepsilon}\)</span>.</p>
 </div>
 <div id="conj:O10" class="conjecture">
-<p><strong>Conjecture 56</strong> (O10, optimal rate). <em><span
+<p><strong>Conjecture 56</strong> (O10, taux optimal). <em><span
 class="math inline">\(A_N(\gamma)\ll X^{-1/2+\varepsilon}\)</span>
-(equivalently <span class="math inline">\(R^2\ll
-N^{-1+\varepsilon}\)</span>), by square-root cancellation in <span
-class="math inline">\(\sum_m e(-2i\gamma\log m)\cdot(\text{centred layer
-moment})\)</span>. Numerically <span
-class="math inline">\(A_N(\gamma_1)\sim X^{-0.59}\)</span>, below the
-rigorous ceiling <span class="math inline">\(X^{-1/4}\)</span> and
-consistent with <span class="math inline">\(X^{-1/2}\)</span>.</em></p>
+(équivalent à <span class="math inline">\(R^2\ll
+N^{-1+\varepsilon}\)</span>), par cancellation racine-carrée dans <span
+class="math inline">\(\sum_m e(-2i\gamma\log m)\cdot(\text{moment de
+couche centré})\)</span>. Numériquement <span
+class="math inline">\(A_N(\gamma_1)\sim X^{-0.59}\)</span>, sous le
+plafond rigoureux <span class="math inline">\(X^{-1/4}\)</span> et
+compatible avec <span class="math inline">\(X^{-1/2}\)</span>.</em></p>
 </div>
 <div id="op:w" class="openproblem">
-<p><strong>Open Problem 57</strong> (Universal witnesses). Prove or
-disprove that <span class="math inline">\(w_2=5\)</span>, <span
-class="math inline">\(w_3=7\)</span> are Pocklington witnesses for every
-prime in the <span class="math inline">\(3\)</span>-smooth
-subfamily.</p>
+<p><strong>Problème ouvert 57</strong> (Témoins universels). Démontrer
+ou réfuter que <span class="math inline">\(w_2=5\)</span>, <span
+class="math inline">\(w_3=7\)</span> sont des témoins Pocklington pour
+tout premier de la sous-famille <span
+class="math inline">\(3\)</span>-friable.</p>
 </div>
 <div class="openproblem">
-<p><strong>Open Problem 58</strong> (Generalised filters). For <span
-class="math inline">\(\ell\equiv1\pmod3\)</span> derive <span
+<p><strong>Problème ouvert 58</strong> (Filtres généralisés). Pour <span
+class="math inline">\(\ell\equiv1\pmod3\)</span> dériver <span
 class="math inline">\(F_\ell:=\{(a\bmod\mathrm{ord}_\ell2,\
-b\bmod\mathrm{ord}_\ell3):\ell\mid p(a,b)\}\)</span>; for <span
-class="math inline">\(\ell=13\)</span> (period <span
+b\bmod\mathrm{ord}_\ell3):\ell\mid p(a,b)\}\)</span> ; pour <span
+class="math inline">\(\ell=13\)</span> (période <span
 class="math inline">\(36\)</span>) <span
-class="math inline">\(\approx15\%\)</span> extra elimination, possibly
-pushing pre-MR elimination above <span
+class="math inline">\(\approx15\%\)</span> d’élimination supplémentaire,
+portant possiblement l’élimination pré-MR au-delà de <span
 class="math inline">\(90\%\)</span>.</p>
 </div>
 <h1 id="conclusion">Conclusion</h1>
-<p>Each prime <span class="math inline">\(p&gt;k+1\)</span> admits a
-canonical decomposition <span
-class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span> with <span
-class="math inline">\(|q|\)</span> minimal, and the three-axis structure
-of <span class="math inline">\((m,\varepsilon,q)\)</span> admits, on
-each axis, a precise law—rigorous, conditional, or heuristic, each
-tagged.</p>
-<p>The rigorous backbone consists of <em>two unconditional pillars</em>:
-the <em>constructive</em> pillar (Theorem <a href="#thm:B"
-data-reference-type="ref" data-reference="thm:B">22</a> and the <span
-class="math inline">\(29\,998\)</span>-digit certified record) and the
-<em>analytic-negative</em> pillar (Theorem <a href="#thm:67"
-data-reference-type="ref" data-reference="thm:67">48</a>: <span
-class="math inline">\(A_N(\gamma)\to0\)</span> unconditionally),
-together with the exact structural law (Theorem <a href="#thm:A"
-data-reference-type="ref" data-reference="thm:A">17</a>, the degenerate
-axis) and the elementary ossature of §2. The conditional content
-(Theorems <a href="#thm:C" data-reference-type="ref"
-data-reference="thm:C">34</a>, <a href="#thm:D"
-data-reference-type="ref" data-reference="thm:D">36</a>, <a
-href="#thm:E" data-reference-type="ref" data-reference="thm:E">41</a>,
-<a href="#thm:65" data-reference-type="ref"
-data-reference="thm:65">50</a>) establishes, under GRH/RH/Bateman–Horn,
-quantitative laws on the size, conditional mean, modular distribution,
-and <span class="math inline">\(\zeta\)</span>-footprint of <span
-class="math inline">\(q_{\min}\)</span>. The heuristic content (H1, H2,
-H3) predicts a logarithmic marginal law, the geometric constant <span
-class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span>, and a
-Hardy–Littlewood gap law. The negative result closes, with both
-statistical and analytic certainty, the question of a spectral link
-between <span class="math inline">\(Q(r)\)</span> and the zeros of <span
-class="math inline">\(\zeta\)</span>: they are not spectral frequencies
-of <span class="math inline">\(Q(r)\)</span>.</p>
-<p>The methodological techniques—the three-way permutation framework,
-the increment-based bias-free test, the reduction to square-root-phase
-prime sums, and the epistemic labelling of every assertion—transfer to
-other settings where prime sequences are summed and analysed spectrally.
-The paper settles no classical question; it maps a territory in which
-such questions take a particularly sharp, falsifiable form.</p>
-<h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2>
-<p>The author thanks YOSHI of the BibM@th forum for careful early
-feedback, and the developers of NumPy, SciPy, SymPy, Matplotlib, gmpy2
-and GMP. Computations used consumer hardware only.</p>
-<h2 class="unnumbered" id="data-availability">Data availability</h2>
-<p>All numerical data, source code, and certificate-verification scripts
-will be deposited at Zenodo upon acceptance, in verifiable
-machine-readable form.</p>
+<p>Tout premier <span class="math inline">\(p&gt;k+1\)</span> admet une
+décomposition canonique <span
+class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span> avec <span
+class="math inline">\(|q|\)</span> minimal, et la structure en trois
+axes de <span class="math inline">\((m,\varepsilon,q)\)</span> admet,
+sur chaque axe, une loi précise — rigoureuse, conditionnelle ou
+heuristique, chacune étiquetée.</p>
+<p>L’ossature rigoureuse comprend <em>deux piliers inconditionnels</em>
+: le pilier <em>constructif</em> (Théorème <a href="#thm:B"
+data-reference-type="ref" data-reference="thm:B">22</a> et le record
+certifié de <span class="math inline">\(29\,998\)</span> chiffres) et le
+pilier <em>analytique-négatif</em> (Théorème <a href="#thm:67"
+data-reference-type="ref" data-reference="thm:67">48</a> : <span
+class="math inline">\(A_N(\gamma)\to0\)</span> inconditionnellement),
+ainsi que la loi structurelle exacte (Théorème <a href="#thm:A"
+data-reference-type="ref" data-reference="thm:A">17</a>, l’axe dégénéré)
+et l’ossature élémentaire du §2. Le contenu conditionnel (Théorèmes <a
+href="#thm:C" data-reference-type="ref" data-reference="thm:C">34</a>,
+<a href="#thm:D" data-reference-type="ref"
+data-reference="thm:D">36</a>, <a href="#thm:E"
+data-reference-type="ref" data-reference="thm:E">41</a>, <a
+href="#thm:65" data-reference-type="ref" data-reference="thm:65">50</a>)
+établit, sous GRH/RH/Bateman–Horn, des lois quantitatives sur la taille,
+l’espérance conditionnelle, la distribution modulaire et l’empreinte
+<span class="math inline">\(\zeta\)</span> de <span
+class="math inline">\(q_{\min}\)</span>. Le contenu heuristique (H1, H2,
+H3) prédit une loi marginale logarithmique, la constante géométrique
+<span class="math inline">\(C_0(k)=1/(4\sqrt k)\)</span>, et une loi des
+écarts de Hardy–Littlewood. Le résultat négatif clôt, avec certitude
+statistique et analytique, la question d’un lien spectral entre <span
+class="math inline">\(Q(r)\)</span> et les zéros de <span
+class="math inline">\(\zeta\)</span> : ils ne sont pas des fréquences
+spectrales de <span class="math inline">\(Q(r)\)</span>.</p>
+<p>Les techniques méthodologiques — le cadre à trois permutations, le
+test sans biais sur incréments, la réduction aux sommes de premiers à
+phase racine carrée, et l’étiquetage épistémique — se transfèrent à
+d’autres cadres où des suites de premiers sont sommées et analysées
+spectralement. Le manuscrit ne tranche aucune question classique ; il
+cartographie un territoire où ces questions prennent une forme
+particulièrement nette et falsifiable.</p>
+<h2 class="unnumbered" id="remerciements">Remerciements</h2>
+<p>L’auteur remercie YOSHI du forum BibM@th pour ses retours attentifs,
+et les développeurs de NumPy, SciPy, SymPy, Matplotlib, gmpy2 et GMP.
+Les calculs ont utilisé du matériel grand public uniquement.</p>
+<h2 class="unnumbered" id="disponibilité-des-données">Disponibilité des
+données</h2>
+<p>Toutes les données, le code source et les scripts de vérification
+seront déposés sur Zenodo après acceptation, sous forme vérifiable et
+lisible par machine.</p>
 <div class="thebibliography">
 <p><span>99</span> M. Agrawal, N. Kayal, N. Saxena, <em>PRIMES is in
-P</em>, Ann. of Math. (2) <strong>160</strong> (2004), 781–793. S. L.
-Aletheia-Zomlefer, L. Fukshansky, S. R. Garcia, <em>The Bateman–Horn
-conjecture</em>, Expo. Math. <strong>38</strong> (2020), 430–479. A.
+P</em>, Ann. of Math. (2) <strong>160</strong> (2004), 781–793. A.
 Balog, <em>On the fractional parts of <span
 class="math inline">\(p^\theta\)</span></em>, Arch. Math. (Basel)
-<strong>44</strong> (1985), 362–367. R. C. Baker, G. Harman, J. Pintz,
-<em>The difference between consecutive primes, II</em>, Proc. LMS (3)
-<strong>83</strong> (2001), 532–562. P. T. Bateman, R. A. Horn, <em>A
+<strong>44</strong> (1985), 362–367. P. T. Bateman, R. A. Horn, <em>A
 heuristic asymptotic formula…</em>, Math. Comp. <strong>16</strong>
-(1962), 363–367. E. Bombieri, <em>On the large sieve</em>, Mathematika
-<strong>12</strong> (1965), 201–225. J. Brillhart, D. H. Lehmer, J. L.
-Selfridge, <em>New primality criteria…</em>, Math. Comp.
-<strong>29</strong> (1975), 620–647. M. Cipolla, <em>La determinazione
-asintotica dell’<span class="math inline">\(n\)</span>-esimo numero
-primo</em>, Rend. Accad. Napoli <strong>8</strong> (1902), 132–166. D.
-A. Cox, <em>Primes of the Form <span
-class="math inline">\(x^2+ny^2\)</span></em>, Wiley, 1989. H. Cramér,
-<em>On the order of magnitude…</em>, Acta Arith. <strong>2</strong>
-(1936), 23–46. H. Davenport, <em>Multiplicative Number Theory</em>, 3rd
-ed., GTM 74, Springer, 2000. P. G. L. Dirichlet, <em>Beweis des
-Satzes…</em>, Abh. Kön. Preuss. Akad. Wiss. (1837), 45–81. D. A.
-Goldston, H. L. Montgomery, <em>Pair correlation of zeros and primes in
-short intervals</em>, in: Analytic Number Theory and Diophantine
-Problems, Birkhäuser, 1987, 183–203. S. W. Graham, G. Kolesnik, <em>Van
-der Corput’s Method of Exponential Sums</em>, LMS Lecture Notes 126,
-CUP, 1991. C. W. J. Granger, P. Newbold, <em>Spurious regressions in
-econometrics</em>, J. Econometrics <strong>2</strong> (1974), 111–120.
-T. Granlund et al., <em>GNU Multiple Precision Arithmetic Library</em>,
-v6.3.0, 2023. A. Granville, <em>Harald Cramér and the distribution of
-prime numbers</em>, Scand. Actuar. J. (1995), 12–28. G. H. Hardy, J. E.
-Littlewood, <em>Some problems of ‘Partitio Numerorum’ III</em>, Acta
-Math. <strong>44</strong> (1923), 1–70. D. R. Heath-Brown, <em>Zero-free
+(1962), 363–367. J. Brillhart, D. H. Lehmer, J. L. Selfridge, <em>New
+primality criteria…</em>, Math. Comp. <strong>29</strong> (1975),
+620–647. P. G. L. Dirichlet, <em>Beweis des Satzes…</em>, Abh. Kön.
+Preuss. Akad. Wiss. (1837), 45–81. C. W. J. Granger, P. Newbold,
+<em>Spurious regressions in econometrics</em>, J. Econometrics
+<strong>2</strong> (1974), 111–120. G. H. Hardy, J. E. Littlewood,
+<em>Some problems of ‘Partitio Numerorum’ III</em>, Acta Math.
+<strong>44</strong> (1923), 1–70. D. R. Heath-Brown, <em>Zero-free
 regions…and the least prime in an AP</em>, Proc. LMS (3)
-<strong>64</strong> (1992), 265–338. K. Ireland, M. Rosen, <em>A
-Classical Introduction to Modern Number Theory</em>, 2nd ed., GTM 84,
-Springer, 1990. H. Iwaniec, E. Kowalski, <em>Analytic Number
-Theory</em>, AMS Colloq. 53, 2004. J. Maynard, <em>Small gaps between
+<strong>64</strong> (1992), 265–338. J. Maynard, <em>Small gaps between
 primes</em>, Ann. of Math. (2) <strong>181</strong> (2015), 383–413. H.
-L. Montgomery, <em>The pair correlation of zeros of the zeta
-function</em>, Proc. Sympos. Pure Math. 24, AMS, 1973, 181–193. H. L.
-Montgomery, K. Soundararajan, <em>Primes in short intervals</em>, Comm.
-Math. Phys. <strong>252</strong> (2004), 589–617. A. M. Odlyzko, <em>On
-the distribution of spacings between zeros of the zeta function</em>,
-Math. Comp. <strong>48</strong> (1987), 273–308. A. M. Odlyzko, H. J. J.
-te Riele, <em>Disproof of the Mertens conjecture</em>, J. Reine Angew.
-Math. <strong>357</strong> (1985), 138–160. H. C. Pocklington, <em>The
-determination of the prime or composite nature of large numbers…</em>,
-Proc. Camb. Phil. Soc. <strong>18</strong> (1914–16), 29–30. M. O.
-Rabin, <em>Probabilistic algorithm for testing primality</em>, J. Number
-Theory <strong>12</strong> (1980), 128–138. A. Selberg, <em>On the
-normal density of primes in small intervals…</em>, Arch. Math. Naturvid.
-<strong>47</strong> (1943), 87–105. J. Theiler et al., <em>Testing for
-nonlinearity in time series: the method of surrogate data</em>, Physica
-D <strong>58</strong> (1992), 77–94. E. C. Titchmarsh, <em>The Theory of
-the Riemann Zeta-Function</em>, 2nd ed., OUP, 1986. R. C. Vaughan,
-<em>An elementary method in prime number theory</em>, Acta Arith.
-<strong>37</strong> (1980), 111–115. I. M. Vinogradov, <em>Some theorems
-concerning the theory of primes</em>, Mat. Sbornik <strong>2</strong>
-(1937), 179–194. H. Weyl, <em>Über die Gleichverteilung von Zahlen
-mod. Eins</em>, Math. Ann. <strong>77</strong> (1916), 313–352.</p>
+L. Montgomery, K. Soundararajan, <em>Primes in short intervals</em>,
+Comm. Math. Phys. <strong>252</strong> (2004), 589–617. H. C.
+Pocklington, <em>The determination of the prime or composite nature of
+large numbers…</em>, Proc. Camb. Phil. Soc. <strong>18</strong>
+(1914–16), 29–30. A. Selberg, <em>On the normal density of primes in
+small intervals…</em>, Arch. Math. Naturvid. <strong>47</strong> (1943),
+87–105. J. Theiler et al., <em>Testing for nonlinearity in time series:
+the method of surrogate data</em>, Physica D <strong>58</strong> (1992),
+77–94. R. C. Vaughan, <em>An elementary method in prime number
+theory</em>, Acta Arith. <strong>37</strong> (1980), 111–115. H. Weyl,
+<em>Über die Gleichverteilung von Zahlen mod. Eins</em>, Math. Ann.
+<strong>77</strong> (1916), 313–352.</p>
 </div>
-<h1 id="independent-verification-script">Independent verification
-script</h1>
-<pre><code>import sys
-sys.set_int_max_str_digits(40000)
-a, b = 19435, 19173
-m = 2**a * 3**b - 1          # 14999 decimal digits
-p = 3 * m * (m + 1) + 1      # 29998 decimal digits
-assert len(str(p)) == 29998
-assert str(p)[:40]  == &quot;1602087359509060348500037851549319056715&quot;
-assert str(p)[-20:] == &quot;16930852697403293697&quot;
-F = 2**a * 3**(b + 1)        # F^2 &gt; p  &lt;=&gt;  2 log2 F &gt; log2 p
-assert F * F &gt; p
-from math import gcd
-assert pow(5, p - 1, p) == 1 and gcd(pow(5, (p - 1)//2, p) - 1, p) == 1
-assert pow(7, p - 1, p) == 1 and gcd(pow(7, (p - 1)//3, p) - 1, p) == 1
-print(&quot;All four Pocklington-Lehmer conditions verified; p is unconditionally prime.&quot;)</code></pre>
 </article>
 <footer class="footer"><p>&copy; Hassane Bakkaoui &middot; <a href="../index.html">recherche</a></p></footer>
 </body>
