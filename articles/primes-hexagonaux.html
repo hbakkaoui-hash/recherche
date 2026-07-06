@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unconditional certificates for p = 3m(m+1)+1 · H. Bakkaoui</title>
-<meta name="description" content="Unconditional primality certificates and deterministic witnesses for the 3-smooth hexagonal family p = 3m(m+1)+1. Hassane Bakkaoui.">
-  <link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/primes-hexagonaux.html">
+<title>Certificats de primalité inconditionnels pour p = 3m(m+1)+1 · H. Bakkaoui</title>
+<meta name="description" content="Certificats de primalité inconditionnels pour la famille hexagonale 3-lisse p = 3m(m+1)+1 : témoins de Pocklington déterministes (réciprocité quadratique et cubique) et filtres arithmétiques. Hassane Bakkaoui.">
+<link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/primes-hexagonaux.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
 <link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="article.css">
+<link rel="stylesheet" href="article.css?v=3">
 <script src="mathjax-setup.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
@@ -24,243 +25,247 @@
     </div>
   </div>
 <div class="tcolorbox">
-<p>All quantitative claims are labelled <em>rigorous</em>
-(unconditional, proved) or <em>computational</em> (verified by exact
-arithmetic over an explicit finite range). The two witness theorems and
-the three filters are rigorous. The <span
-class="math inline">\(29\,998\)</span>-digit prime is a genuine,
-independently re-verified certificate, but it is <em>not</em> a record
-by general standards (general-purpose ECPP reaches comparable sizes, and
-<span class="math inline">\(N-1\)</span> provable primes of special form
-reach millions of digits); we report it only as a demonstration of the
-framework on commodity hardware, and as the largest certificate within
-<em>this</em> subfamily. The paper resolves no classical open
-problem.</p>
+<p>Toute affirmation quantitative est étiquetée <em>rigoureuse</em>
+(inconditionnelle, démontrée) ou <em>calculatoire</em> (vérifiée par
+arithmétique exacte sur une plage finie explicite). Les deux théorèmes
+de témoins et les trois filtres sont rigoureux. Le premier de <span
+class="math inline">\(29\,998\)</span> chiffres est un certificat
+authentique, re-vérifié indépendamment, mais ce n’est <em>pas</em> un
+record au sens général (l’ECPP généraliste atteint des tailles
+comparables, et les premiers prouvables de forme spéciale par <span
+class="math inline">\(N-1\)</span> atteignent des millions de chiffres)
+; nous le rapportons uniquement comme démonstration du cadre sur
+matériel grand public, et comme le plus grand certificat au sein de
+<em>cette</em> sous-famille. L’article ne résout aucun problème ouvert
+classique.</p>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>Proving unconditionally that a given integer is prime is a central
-task of computational number theory. For generic large primes, the most
-practical route is the Pocklington–Lehmer criterion <span
-class="citation" data-cites="Pocklington BLS"></span>: exhibit a fully
-factored divisor <span class="math inline">\(F&gt;\sqrt p\)</span> of
-<span class="math inline">\(p-1\)</span> and verify witnesses. The key
-difficulty is finding such an <span
+<p>Démontrer inconditionnellement qu’un entier donné est premier est une
+tâche centrale de la théorie algorithmique des nombres. Pour un grand
+premier générique, la voie la plus pratique est le critère de
+Pocklington–Lehmer <span class="citation"
+data-cites="Pocklington BLS"></span> : exhiber un diviseur entièrement
+factorisé <span class="math inline">\(F&gt;\sqrt p\)</span> de <span
+class="math inline">\(p-1\)</span> et vérifier des témoins. La
+difficulté principale est de trouver un tel <span
 class="math inline">\(F\)</span>.</p>
-<p>The subfamily <span class="math display">\[p=3m(m+1)+1,\qquad
-m=2^{a}3^{b}-1,\qquad a,b\in\mathbb{N}^{*},\]</span> is constructed so
-that <span class="math inline">\(m+1=2^{a}3^{b}\)</span> is <span
-class="math inline">\(3\)</span>-smooth by design, making <span
-class="math inline">\(F=2^{a}3^{b+1}\)</span> fully factored and
-satisfying <span class="math inline">\(F&gt;\sqrt p\)</span> for every
-<span class="math inline">\((a,b)\)</span> without any condition on
-<span class="math inline">\(p\)</span>. Equivalently, <span
-class="math inline">\(p=3m^2+3m+1=(m+1)^3-m^3\)</span> is a centred
-hexagonal number, and the family is the locus where its <span
-class="math inline">\(N-1\)</span> certificate is unconditional and
-minimal.</p>
+<p>La sous-famille <span class="math display">\[p=3m(m+1)+1,\qquad
+m=2^{a}3^{b}-1,\qquad a,b\in\mathbb{N}^{*},\]</span> est construite de
+sorte que <span class="math inline">\(m+1=2^{a}3^{b}\)</span> soit <span
+class="math inline">\(3\)</span>-friable par construction, rendant <span
+class="math inline">\(F=2^{a}3^{b+1}\)</span> entièrement factorisé et
+vérifiant <span class="math inline">\(F&gt;\sqrt p\)</span> pour tout
+<span class="math inline">\((a,b)\)</span> sans aucune condition sur
+<span class="math inline">\(p\)</span>. De façon équivalente, <span
+class="math inline">\(p=3m^2+3m+1=(m+1)^3-m^3\)</span> est un nombre
+hexagonal centré, et la famille est le lieu où son certificat <span
+class="math inline">\(N-1\)</span> est inconditionnel et minimal.</p>
 <h2 class="unnumbered" id="contributions">Contributions</h2>
-<p>This paper makes two kinds of contribution.</p>
-<p><em>(A) Deterministic Pocklington witnesses (rigorous, new).</em> In
-every certificate produced by the <span
-class="math inline">\(N-1\)</span> method one must exhibit, for each
-prime <span class="math inline">\(q\mid F\)</span>, a witness <span
-class="math inline">\(w_q\)</span> with <span
-class="math inline">\(w_q^{(p-1)/q}\not\equiv 1\)</span>. Here <span
-class="math inline">\(q\in\{2,3\}\)</span>. Earlier computations used
-the fixed witnesses <span class="math inline">\(w_2=5,\ w_3=7\)</span>
-and observed that they always worked; whether this holds for the whole
-subfamily was left open. We settle it: <span
-class="math inline">\(w_2=5\)</span> and <span
-class="math inline">\(w_3=7\)</span> are <em>not</em> universal, but
-their validity is governed by exact congruences in <span
-class="math inline">\((a,b)\)</span>:</p>
+<p>Cet article apporte deux types de contribution.</p>
+<p><em>(A) Témoins de Pocklington déterministes (rigoureux,
+nouveau).</em> Dans tout certificat produit par la méthode <span
+class="math inline">\(N-1\)</span>, on doit exhiber, pour chaque premier
+<span class="math inline">\(q\mid F\)</span>, un témoin <span
+class="math inline">\(w_q\)</span> tel que <span
+class="math inline">\(w_q^{(p-1)/q}\not\equiv 1\)</span>. Ici <span
+class="math inline">\(q\in\{2,3\}\)</span>. Les calculs antérieurs
+utilisaient les témoins fixes <span class="math inline">\(w_2=5,\
+w_3=7\)</span> et observaient qu’ils fonctionnaient toujours ; savoir si
+cela vaut pour toute la sous-famille restait ouvert. Nous le tranchons :
+<span class="math inline">\(w_2=5\)</span> et <span
+class="math inline">\(w_3=7\)</span> ne sont <em>pas</em> universels,
+mais leur validité est régie par des congruences exactes en <span
+class="math inline">\((a,b)\)</span> :</p>
 <ul>
-<li><p>Theorem <a href="#thm:w2" data-reference-type="ref"
-data-reference="thm:w2">10</a>: <span
-class="math inline">\(w_2=5\)</span> is valid <span
-class="math inline">\(\iff a-b\equiv 1,2\pmod 4\)</span> (quadratic
-reciprocity);</p></li>
-<li><p>Theorem <a href="#thm:w3" data-reference-type="ref"
-data-reference="thm:w3">14</a>: <span
-class="math inline">\(w_3=7\)</span> is valid <span
-class="math inline">\(\iff m\not\equiv 2\pmod 7\)</span> (cubic
-reciprocity).</p></li>
+<li><p>Théorème <a href="#thm:w2" data-reference-type="ref"
+data-reference="thm:w2">10</a> : <span
+class="math inline">\(w_2=5\)</span> est valide <span
+class="math inline">\(\iff a-b\equiv 1,2\pmod 4\)</span> (réciprocité
+quadratique) ;</p></li>
+<li><p>Théorème <a href="#thm:w3" data-reference-type="ref"
+data-reference="thm:w3">14</a> : <span
+class="math inline">\(w_3=7\)</span> est valide <span
+class="math inline">\(\iff m\not\equiv 2\pmod 7\)</span> (réciprocité
+cubique).</p></li>
 </ul>
-<p>These give a deterministic witness-selection rule (Corollary <a
-href="#cor:det" data-reference-type="ref"
-data-reference="cor:det">18</a>), making the search provably correct
-rather than reliant on the luck of fixed witnesses.</p>
-<p><em>(B) Arithmetic filters and a computational demonstration.</em>
-Three elementary congruence theorems (§<a href="#sec:filters"
-data-reference-type="ref" data-reference="sec:filters">3</a>) remove
-<span class="math inline">\(\approx 87\%\)</span> of candidate pairs
-<span class="math inline">\((a,b)\)</span> before any large-number
-arithmetic. A multi-core implementation (§<a href="#sec:algo"
+<p>Ceci fournit une règle déterministe de sélection des témoins
+(Corollaire <a href="#cor:det" data-reference-type="ref"
+data-reference="cor:det">18</a>), rendant la recherche prouvablement
+correcte plutôt que tributaire de la chance de témoins fixes.</p>
+<p><em>(B) Filtres arithmétiques et démonstration computationnelle.</em>
+Trois théorèmes de congruence élémentaires (§<a href="#sec:filters"
+data-reference-type="ref" data-reference="sec:filters">3</a>) retirent
+<span class="math inline">\(\approx 87\%\)</span> des paires candidates
+<span class="math inline">\((a,b)\)</span> avant toute arithmétique en
+grands nombres. Une implémentation multi-cœurs (§<a href="#sec:algo"
 data-reference-type="ref" data-reference="sec:algo">5</a>–§<a
 href="#sec:results" data-reference-type="ref"
-data-reference="sec:results">6</a>) produced four unconditional
-certificates, the largest of <span
-class="math inline">\(29\,998\)</span> digits, on a consumer laptop.</p>
-<h2 class="unnumbered" id="position">Position</h2>
-<p>This note is a follow-up to <span class="citation"
-data-cites="series"></span>, which develops the heuristic and
-conditional analytic theory of the full family <span
-class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span>. The present
-paper isolates the structurally distinguished <span
-class="math inline">\(3\)</span>-smooth subfamily (<span
-class="math inline">\(\varepsilon=+1\)</span>, <span
+data-reference="sec:results">6</a>) a produit quatre certificats
+inconditionnels, le plus grand de <span
+class="math inline">\(29\,998\)</span> chiffres, sur un ordinateur
+portable grand public.</p>
+<h2 class="unnumbered" id="positionnement">Positionnement</h2>
+<p>Cette note fait suite à <span class="citation"
+data-cites="series"></span>, qui développe la théorie analytique
+heuristique et conditionnelle de la famille complète <span
+class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span>. Le présent
+article isole la sous-famille <span
+class="math inline">\(3\)</span>-friable structurellement distinguée
+(<span class="math inline">\(\varepsilon=+1\)</span>, <span
 class="math inline">\(q=0\)</span>, <span
-class="math inline">\(m+1=2^a3^b\)</span>) on which the Pocklington
-method, and now also the witness selection, become unconditional and
-explicit. This is a short note: its genuinely new content is the
-deterministic witness characterisation of §<a href="#sec:witnesses"
-data-reference-type="ref" data-reference="sec:witnesses">4</a>
-(Theorems <a href="#thm:w2" data-reference-type="ref"
-data-reference="thm:w2">10</a> and <a href="#thm:w3"
-data-reference-type="ref" data-reference="thm:w3">14</a>, Corollary <a
-href="#cor:det" data-reference-type="ref"
-data-reference="cor:det">18</a>); the arithmetic filters (§<a
+class="math inline">\(m+1=2^a3^b\)</span>) sur laquelle la méthode de
+Pocklington, et désormais aussi la sélection des témoins, deviennent
+inconditionnelles et explicites. C’est une note courte : son contenu
+authentiquement nouveau est la caractérisation déterministe des témoins
+de §<a href="#sec:witnesses" data-reference-type="ref"
+data-reference="sec:witnesses">4</a> (Théorèmes <a href="#thm:w2"
+data-reference-type="ref" data-reference="thm:w2">10</a> et <a
+href="#thm:w3" data-reference-type="ref" data-reference="thm:w3">14</a>,
+Corollaire <a href="#cor:det" data-reference-type="ref"
+data-reference="cor:det">18</a>) ; les filtres arithmétiques (§<a
 href="#sec:filters" data-reference-type="ref"
-data-reference="sec:filters">3</a>) and the certificate (§<a
+data-reference="sec:filters">3</a>) et le certificat (§<a
 href="#sec:results" data-reference-type="ref"
-data-reference="sec:results">6</a>) recall and specialise material
-from <span class="citation" data-cites="series"></span>, and are
-included for self-containedness.</p>
-<h1 id="sec:subfamily">The Pocklington subfamily</h1>
+data-reference="sec:results">6</a>) reprennent et spécialisent du
+matériel de <span class="citation" data-cites="series"></span>, et sont
+inclus pour rendre la note autonome.</p>
+<h1 id="sec:subfamily">La sous-famille de Pocklington</h1>
 <div id="def:fam" class="definition">
-<p><strong>Definition 1</strong>. For integers <span
-class="math inline">\(a,b\ge 1\)</span>, set <span
-class="math inline">\(m(a,b)=2^{a}3^{b}-1\)</span> and <span
-class="math inline">\(p(a,b)=3m(m+1)+1=3m^2+3m+1\)</span>. Its decimal
-digit count is <span class="math inline">\(D(a,b)=\lfloor
+<p><strong>Définition 1</strong>. Pour des entiers <span
+class="math inline">\(a,b\ge 1\)</span>, on pose <span
+class="math inline">\(m(a,b)=2^{a}3^{b}-1\)</span> et <span
+class="math inline">\(p(a,b)=3m(m+1)+1=3m^2+3m+1\)</span>. Son nombre de
+chiffres décimaux est <span class="math inline">\(D(a,b)=\lfloor
 2a\log_{10}2+(2b+1)\log_{10}3\rfloor+1\)</span>.</p>
 </div>
 <div id="lem:F" class="lemma">
-<p><strong>Lemma 2</strong> (Explicit factorisation). <em>For <span
-class="math inline">\(p\)</span> as in Definition <a href="#def:fam"
-data-reference-type="ref" data-reference="def:fam">1</a>, <span
+<p><strong>Lemme 2</strong> (Factorisation explicite). <em>Pour <span
+class="math inline">\(p\)</span> comme dans la Définition <a
+href="#def:fam" data-reference-type="ref"
+data-reference="def:fam">1</a>, <span
 class="math display">\[p-1=2^{a}3^{b+1}\,m,\qquad
 F:=2^{a}3^{b+1}&gt;\sqrt p.\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Since <span
+<p><em>Proof.</em> Comme <span
 class="math inline">\(m+1=2^{a}3^{b}\)</span>, <span
 class="math inline">\(p-1=3m(m+1)=3m\cdot
-2^{a}3^{b}=2^{a}3^{b+1}m\)</span>. As <span
-class="math inline">\(p=3m^2+3m+1&lt;3(m+1)^2\)</span>, we get <span
+2^{a}3^{b}=2^{a}3^{b+1}m\)</span>. Comme <span
+class="math inline">\(p=3m^2+3m+1&lt;3(m+1)^2\)</span>, on obtient <span
 class="math inline">\(\sqrt
 p&lt;\sqrt3\,(m+1)&lt;3(m+1)=2^{a}3^{b+1}=F\)</span>. ◻</p>
 </div>
 <div id="thm:pock" class="theorem">
-<p><strong>Theorem 3</strong> (Pocklington–Lehmer certificate <span
-class="citation" data-cites="Pocklington BLS"></span>). <em>Let <span
-class="math inline">\(p=p(a,b)\)</span>. Then <span
-class="math inline">\(p\)</span> is prime iff there exist <span
-class="math inline">\(w_2,w_3\)</span> such that, for <span
+<p><strong>Théorème 3</strong> (Certificat de Pocklington–Lehmer <span
+class="citation" data-cites="Pocklington BLS"></span>). <em>Soit <span
+class="math inline">\(p=p(a,b)\)</span>. Alors <span
+class="math inline">\(p\)</span> est premier ssi il existe <span
+class="math inline">\(w_2,w_3\)</span> tels que, pour <span
 class="math inline">\(q\in\{2,3\}\)</span>, <span
 class="math display">\[w_q^{\,p-1}\equiv 1\pmod p,\qquad
 \gcd\!\bigl(w_q^{(p-1)/q}-1,\,p\bigr)=1.\]</span></em></p>
 </div>
 <div id="cor:two" class="corollary">
-<p><strong>Corollary 4</strong>. <em>By Lemma <a href="#lem:F"
+<p><strong>Corollaire 4</strong>. <em>Par le Lemme <a href="#lem:F"
 data-reference-type="ref" data-reference="lem:F">2</a>, <span
-class="math inline">\(F&gt;\sqrt p\)</span> holds unconditionally and
-the only primes dividing <span class="math inline">\(F\)</span> are
-<span class="math inline">\(2,3\)</span>; hence the certificate needs at
-most the two witnesses <span
+class="math inline">\(F&gt;\sqrt p\)</span> vaut inconditionnellement et
+les seuls premiers divisant <span class="math inline">\(F\)</span> sont
+<span class="math inline">\(2,3\)</span> ; le certificat ne requiert
+donc au plus que les deux témoins <span
 class="math inline">\(w_2,w_3\)</span>.</em></p>
 </div>
-<p>For <span class="math inline">\(p\)</span> prime, <span
-class="math inline">\(w_q^{p-1}\equiv1\)</span> is automatic (Fermat),
-and the second condition is equivalent to <span
-class="math inline">\(w_q^{(p-1)/q}\not\equiv1\pmod p\)</span>. Since
-(Theorem <a href="#thm:mod6" data-reference-type="ref"
+<p>Pour <span class="math inline">\(p\)</span> premier, <span
+class="math inline">\(w_q^{p-1}\equiv1\)</span> est automatique
+(Fermat), et la seconde condition équivaut à <span
+class="math inline">\(w_q^{(p-1)/q}\not\equiv1\pmod p\)</span>. Comme
+(Théorème <a href="#thm:mod6" data-reference-type="ref"
 data-reference="thm:mod6">5</a>) <span
-class="math inline">\(p\equiv1\pmod6\)</span>, both <span
-class="math inline">\((p-1)/2\)</span> and <span
-class="math inline">\((p-1)/3\)</span> are integers, and <span
+class="math inline">\(p\equiv1\pmod6\)</span>, à la fois <span
+class="math inline">\((p-1)/2\)</span> et <span
+class="math inline">\((p-1)/3\)</span> sont entiers, et <span
 class="math display">\[\begin{equation}
 \label{eq:wit}
-w_2\text{ valid}\iff w_2\text{ is a quadratic non-residue mod }p,\qquad
-w_3\text{ valid}\iff w_3\text{ is a cubic non-residue mod }p.
+w_2\text{ valide}\iff w_2\text{ est un non-résidu quadratique mod
+}p,\qquad
+w_3\text{ valide}\iff w_3\text{ est un non-résidu cubique mod }p.
 \end{equation}\]</span></p>
-<h1 id="sec:filters">Three arithmetic filters</h1>
+<h1 id="sec:filters">Trois filtres arithmétiques</h1>
 <div id="thm:mod6" class="theorem">
-<p><strong>Theorem 5</strong> (mod <span
-class="math inline">\(6\)</span>). <em>For all <span
+<p><strong>Théorème 5</strong> (mod <span
+class="math inline">\(6\)</span>). <em>Pour tous <span
 class="math inline">\(a,b\ge1\)</span>, <span
 class="math inline">\(p(a,b)\equiv1\pmod6\)</span>.</em></p>
 </div>
 <div class="proof">
 <p><em>Proof.</em> <span class="math inline">\(m=2^{a}3^{b}-1\)</span>
-is odd, so <span class="math inline">\(m(m+1)\)</span> is even and <span
-class="math inline">\(p=3m(m+1)+1\)</span> is odd; and <span
-class="math inline">\(3\mid 3m(m+1)\)</span> gives <span
-class="math inline">\(p\equiv1\pmod3\)</span>. By CRT, <span
+est impair, donc <span class="math inline">\(m(m+1)\)</span> est pair et
+<span class="math inline">\(p=3m(m+1)+1\)</span> est impair ; et <span
+class="math inline">\(3\mid 3m(m+1)\)</span> donne <span
+class="math inline">\(p\equiv1\pmod3\)</span>. Par le théorème des
+restes chinois, <span
 class="math inline">\(p\equiv1\pmod6\)</span>. ◻</p>
 </div>
 <div id="thm:sieve" class="theorem">
-<p><strong>Theorem 6</strong> (<span
-class="math inline">\((-3)\)</span>-sieve; quadratic reciprocity).
-<em>Let <span class="math inline">\(m\in\mathbb{N}^{*}\)</span>, <span
-class="math inline">\(p=3m(m+1)+1\)</span>, and <span
-class="math inline">\(q\ge5\)</span> a prime with <span
-class="math inline">\(q\equiv2\pmod3\)</span>. Then <span
+<p><strong>Théorème 6</strong> (crible <span
+class="math inline">\((-3)\)</span> ; réciprocité quadratique).
+<em>Soient <span class="math inline">\(m\in\mathbb{N}^{*}\)</span>,
+<span class="math inline">\(p=3m(m+1)+1\)</span>, et <span
+class="math inline">\(q\ge5\)</span> un premier avec <span
+class="math inline">\(q\equiv2\pmod3\)</span>. Alors <span
 class="math inline">\(q\nmid p\)</span>.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> <span class="math inline">\(q\mid p\)</span> is
-equivalent to <span class="math inline">\(3m^2+3m+1\equiv0\pmod
-q\)</span>; completing the square, <span
-class="math inline">\((6m+3)^2\equiv-3\pmod q\)</span>, so <span
-class="math inline">\(-3\)</span> must be a quadratic residue mod <span
-class="math inline">\(q\)</span>. By quadratic reciprocity <span
-class="citation" data-cites="IR"></span>, <span
-class="math inline">\(\left(\frac{-3}{q}\right)=+1\)</span> iff <span
-class="math inline">\(q\equiv1\pmod3\)</span>. For <span
-class="math inline">\(q\equiv2\pmod3\)</span> there is no solution, so
-<span class="math inline">\(q\nmid p\)</span>. ◻</p>
+<p><em>Proof.</em> <span class="math inline">\(q\mid p\)</span> équivaut
+à <span class="math inline">\(3m^2+3m+1\equiv0\pmod q\)</span> ; en
+complétant le carré, <span class="math inline">\((6m+3)^2\equiv-3\pmod
+q\)</span>, donc <span class="math inline">\(-3\)</span> doit être un
+résidu quadratique mod <span class="math inline">\(q\)</span>. Par
+réciprocité quadratique <span class="citation" data-cites="IR"></span>,
+<span class="math inline">\(\left(\frac{-3}{q}\right)=+1\)</span> ssi
+<span class="math inline">\(q\equiv1\pmod3\)</span>. Pour <span
+class="math inline">\(q\equiv2\pmod3\)</span> il n’y a pas de solution,
+donc <span class="math inline">\(q\nmid p\)</span>. ◻</p>
 </div>
 <div id="cor:sieve" class="corollary">
-<p><strong>Corollary 7</strong>. <em>In trial division up to <span
-class="math inline">\(L\)</span>, only primes <span
-class="math inline">\(q\equiv1\pmod3\)</span> need be tested, i.e. half
-of the primes in <span class="math inline">\([5,L]\)</span> by
+<p><strong>Corollaire 7</strong>. <em>Dans la division d’essai jusqu’à
+<span class="math inline">\(L\)</span>, seuls les premiers <span
+class="math inline">\(q\equiv1\pmod3\)</span> doivent être testés, soit
+la moitié des premiers de <span class="math inline">\([5,L]\)</span> par
 Dirichlet.</em></p>
 </div>
 <div id="thm:mod7" class="theorem">
-<p><strong>Theorem 8</strong> (Forbidden classes mod <span
-class="math inline">\(7\)</span>). <em>Let <span
-class="math inline">\(m=2^{a}3^{b}-1\)</span>. With <span
+<p><strong>Théorème 8</strong> (Classes interdites mod <span
+class="math inline">\(7\)</span>). <em>Soit <span
+class="math inline">\(m=2^{a}3^{b}-1\)</span>. Avec <span
 class="math inline">\(\mathcal
 F_7=\{(0,2),(0,3),(1,0),(1,1),(2,4),(2,5)\}\subset
 \mathbb{Z}/3\times\mathbb{Z}/6\)</span>, <span
 class="math display">\[7\mid p(a,b)\iff (a\bmod3,\,b\bmod6)\in\mathcal
-F_7 ,\]</span> exactly <span class="math inline">\(1/3\)</span> of all
-residue classes.</em></p>
+F_7 ,\]</span> soit exactement <span class="math inline">\(1/3\)</span>
+de toutes les classes de résidus.</em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Since <span
-class="math inline">\(\mathrm{ord}_7(2)=3\)</span> and <span
+<p><em>Proof.</em> Comme <span
+class="math inline">\(\mathrm{ord}_7(2)=3\)</span> et <span
 class="math inline">\(\mathrm{ord}_7(3)=6\)</span>, <span
-class="math inline">\(t:=2^{a}3^{b}\bmod7\)</span> depends only on <span
-class="math inline">\((a\bmod3,b\bmod6)\)</span>, and <span
+class="math inline">\(t:=2^{a}3^{b}\bmod7\)</span> ne dépend que de
+<span class="math inline">\((a\bmod3,b\bmod6)\)</span>, et <span
 class="math inline">\(m\equiv t-1\)</span>, <span
-class="math inline">\(p\equiv3t^2-3t+1\pmod7\)</span>. Multiplying <span
-class="math inline">\(7\mid p\)</span> by <span
-class="math inline">\(5\equiv3^{-1}\)</span> gives <span
-class="math inline">\(t^2-t-2\equiv0\)</span>, i.e. <span
-class="math inline">\((t-2)(t+1)\equiv0\)</span>, so <span
-class="math inline">\(t\in\{2,6\}\)</span>. Enumerating the <span
-class="math inline">\(18\)</span> values of <span
+class="math inline">\(p\equiv3t^2-3t+1\pmod7\)</span>. En multipliant
+<span class="math inline">\(7\mid p\)</span> par <span
+class="math inline">\(5\equiv3^{-1}\)</span> on obtient <span
+class="math inline">\(t^2-t-2\equiv0\)</span>, c.-à-d. <span
+class="math inline">\((t-2)(t+1)\equiv0\)</span>, donc <span
+class="math inline">\(t\in\{2,6\}\)</span>. L’énumération des <span
+class="math inline">\(18\)</span> valeurs de <span
 class="math inline">\(t\)</span> (Table <a href="#tab:t"
-data-reference-type="ref" data-reference="tab:t">1</a>) yields exactly
+data-reference-type="ref" data-reference="tab:t">1</a>) donne exactement
 <span class="math inline">\(\mathcal F_7\)</span>. ◻</p>
 </div>
 <table id="tab:t">
 <caption><span class="math inline">\(t(r,s)=2^{r}3^{s}\bmod7\)</span>.
-Bold entries (<span class="math inline">\(t\in\{2,6\}\)</span>) give
-<span class="math inline">\(7\mid p\)</span>.</caption>
+Les entrées en gras (<span class="math inline">\(t\in\{2,6\}\)</span>)
+donnent <span class="math inline">\(7\mid p\)</span>.</caption>
 <thead>
 <tr>
 <th style="text-align: center;"><span class="math inline">\(r\backslash
@@ -304,185 +309,189 @@ s\)</span></th>
 </tbody>
 </table>
 <div class="remark">
-<p><em>Remark 9</em> (Combined efficiency). The mod-<span
-class="math inline">\(6\)</span> identity is automatic. The two a-priori
-filters (Corollary <a href="#cor:sieve" data-reference-type="ref"
-data-reference="cor:sieve">7</a> and Theorem <a href="#thm:mod7"
-data-reference-type="ref" data-reference="thm:mod7">8</a>) together
-remove <span class="math inline">\(\approx 87\%\)</span> of candidates
-before any large-number arithmetic; see Table <a href="#tab:filter"
-data-reference-type="ref" data-reference="tab:filter">5</a>.</p>
+<p><em>Remarque 9</em> (Efficacité combinée). L’identité mod-<span
+class="math inline">\(6\)</span> est automatique. Les deux filtres a
+priori (Corollaire <a href="#cor:sieve" data-reference-type="ref"
+data-reference="cor:sieve">7</a> et Théorème <a href="#thm:mod7"
+data-reference-type="ref" data-reference="thm:mod7">8</a>) retirent
+ensemble <span class="math inline">\(\approx 87\%\)</span> des candidats
+avant toute arithmétique en grands nombres ; voir Table <a
+href="#tab:filter" data-reference-type="ref"
+data-reference="tab:filter">5</a>.</p>
 </div>
-<h1 id="sec:witnesses">Deterministic Pocklington witnesses</h1>
-<p>This section is the theoretical core. By <a href="#eq:wit"
-data-reference-type="eqref" data-reference="eq:wit">[eq:wit]</a>, the
-validity of a fixed witness is a residuosity question. We resolve both
-witnesses exactly.</p>
-<h2 id="the-witness-w_25">The witness <span
+<h1 id="sec:witnesses">Témoins de Pocklington déterministes</h1>
+<p>Cette section est le cœur théorique. Par <a href="#eq:wit"
+data-reference-type="eqref" data-reference="eq:wit">[eq:wit]</a>, la
+validité d’un témoin fixe est une question de résiduosité. Nous
+résolvons exactement les deux témoins.</p>
+<h2 id="le-témoin-w_25">Le témoin <span
 class="math inline">\(w_2=5\)</span></h2>
 <div id="thm:w2" class="theorem">
-<p><strong>Theorem 10</strong> (<span
-class="math inline">\(w_2=5\)</span>; rigorous). <em>For <span
-class="math inline">\(p=p(a,b)\)</span> prime, <span
-class="math inline">\(w_2=5\)</span> is a valid Pocklington witness if
-and only if <span class="math display">\[m\equiv 1\text{ or }3\pmod5
+<p><strong>Théorème 10</strong> (<span
+class="math inline">\(w_2=5\)</span> ; rigoureux). <em>Pour <span
+class="math inline">\(p=p(a,b)\)</span> premier, <span
+class="math inline">\(w_2=5\)</span> est un témoin de Pocklington valide
+si et seulement si <span class="math display">\[m\equiv 1\text{ ou
+}3\pmod5
 \qquad\Longleftrightarrow\qquad
-a-b\equiv 1\text{ or }2\pmod4 .\]</span></em></p>
+a-b\equiv 1\text{ ou }2\pmod4 .\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> By <a href="#eq:wit" data-reference-type="eqref"
+<p><em>Proof.</em> Par <a href="#eq:wit" data-reference-type="eqref"
 data-reference="eq:wit">[eq:wit]</a>, <span
-class="math inline">\(w_2=5\)</span> is valid iff <span
-class="math inline">\(\left(\frac{5}{p}\right)=-1\)</span>. As <span
-class="math inline">\(5\equiv1\pmod4\)</span>, quadratic reciprocity
-gives <span
+class="math inline">\(w_2=5\)</span> est valide ssi <span
+class="math inline">\(\left(\frac{5}{p}\right)=-1\)</span>. Comme <span
+class="math inline">\(5\equiv1\pmod4\)</span>, la réciprocité
+quadratique donne <span
 class="math inline">\(\left(\frac{5}{p}\right)=\left(\frac{p}{5}\right)\)</span>,
-and <span class="math inline">\(\left(\frac{p}{5}\right)=-1\)</span> iff
+et <span class="math inline">\(\left(\frac{p}{5}\right)=-1\)</span> ssi
 <span class="math inline">\(p\equiv2,3\pmod5\)</span>. Modulo <span
 class="math inline">\(5\)</span>, <span
-class="math inline">\(p=3m(m+1)+1\)</span> takes the values <span
-class="math inline">\(1,2,4,2,1\)</span> for <span
-class="math inline">\(m\equiv0,1,2,3,4\)</span>; hence <span
-class="math inline">\(p\equiv2,3\pmod5\)</span> (the value <span
-class="math inline">\(3\)</span> never occurs) iff <span
-class="math inline">\(m\equiv1,3\pmod5\)</span>. Finally <span
-class="math inline">\(m+1=2^{a}3^{b}\)</span> and <span
-class="math inline">\(3\equiv2^{3}\pmod5\)</span> give <span
-class="math inline">\(m+1\equiv2^{\,a+3b}\pmod5\)</span> with <span
-class="math inline">\(\mathrm{ord}_5(2)=4\)</span>, so <span
-class="math inline">\(m\equiv1\iff a+3b\equiv1\)</span> and <span
-class="math inline">\(m\equiv3\iff a+3b\equiv2\pmod4\)</span>. Since
-<span class="math inline">\(a+3b\equiv a-b\pmod4\)</span>, the claim
-follows. ◻</p>
+class="math inline">\(p=3m(m+1)+1\)</span> prend les valeurs <span
+class="math inline">\(1,2,4,2,1\)</span> pour <span
+class="math inline">\(m\equiv0,1,2,3,4\)</span> ; donc <span
+class="math inline">\(p\equiv2,3\pmod5\)</span> (la valeur <span
+class="math inline">\(3\)</span> n’apparaît jamais) ssi <span
+class="math inline">\(m\equiv1,3\pmod5\)</span>. Enfin <span
+class="math inline">\(m+1=2^{a}3^{b}\)</span> et <span
+class="math inline">\(3\equiv2^{3}\pmod5\)</span> donnent <span
+class="math inline">\(m+1\equiv2^{\,a+3b}\pmod5\)</span> avec <span
+class="math inline">\(\mathrm{ord}_5(2)=4\)</span>, d’où <span
+class="math inline">\(m\equiv1\iff a+3b\equiv1\)</span> et <span
+class="math inline">\(m\equiv3\iff a+3b\equiv2\pmod4\)</span>. Comme
+<span class="math inline">\(a+3b\equiv a-b\pmod4\)</span>, la conclusion
+suit. ◻</p>
 </div>
 <div class="remark">
-<p><em>Remark 11</em>. For <span
+<p><em>Remarque 11</em>. Pour <span
 class="math inline">\(a-b\equiv0,3\pmod4\)</span>, <span
-class="math inline">\(5\)</span> is a quadratic residue and <span
-class="math inline">\(w_2=5\)</span> <em>fails</em>; the least quadratic
-non-residue is then a valid witness.</p>
+class="math inline">\(5\)</span> est un résidu quadratique et <span
+class="math inline">\(w_2=5\)</span> <em>échoue</em> ; le plus petit
+non-résidu quadratique est alors un témoin valide.</p>
 </div>
-<h2 id="an-explicit-eisenstein-prime">An explicit Eisenstein prime</h2>
+<h2 id="un-premier-deisenstein-explicite">Un premier d’Eisenstein
+explicite</h2>
 <div id="lem:pi" class="lemma">
-<p><strong>Lemma 12</strong>. <em>Let <span
-class="math inline">\(\omega=e^{2\pi i/3}\)</span>. Then in <span
+<p><strong>Lemme 12</strong>. <em>Soit <span
+class="math inline">\(\omega=e^{2\pi i/3}\)</span>. Alors dans <span
 class="math inline">\(\mathbb{Z}[\omega]\)</span>, <span
 class="math display">\[p=(m+1)^3-m^3=\pi\,\overline\pi,\qquad
-\pi:=(1+m)-m\omega,\qquad N(\pi)=p,\]</span> so <span
-class="math inline">\(\pi\)</span> is a prime of <span
-class="math inline">\(\mathbb{Z}[\omega]\)</span> above <span
-class="math inline">\(p\)</span>. Consequently <span
-class="math inline">\(7\)</span> is a cubic residue mod <span
-class="math inline">\(p\)</span> iff <span
-class="math inline">\(\left(\frac{7}{\pi}\right)_{\!3}=1\)</span>, where
+\pi:=(1+m)-m\omega,\qquad N(\pi)=p,\]</span> de sorte que <span
+class="math inline">\(\pi\)</span> est un premier de <span
+class="math inline">\(\mathbb{Z}[\omega]\)</span> au-dessus de <span
+class="math inline">\(p\)</span>. Par conséquent <span
+class="math inline">\(7\)</span> est un résidu cubique mod <span
+class="math inline">\(p\)</span> ssi <span
+class="math inline">\(\left(\frac{7}{\pi}\right)_{\!3}=1\)</span>, où
 <span
-class="math inline">\(\left(\frac{\cdot}{\pi}\right)_{\!3}\)</span> is
-the cubic residue symbol.</em></p>
+class="math inline">\(\left(\frac{\cdot}{\pi}\right)_{\!3}\)</span> est
+le symbole de résidu cubique.</em></p>
 </div>
 <div class="proof">
 <p><em>Proof.</em> <span
-class="math inline">\(3m^2+3m+1=(m+1)^3-m^3\)</span> (centred hexagonal
-identity). With <span class="math inline">\(X^3-Y^3=(X-Y)(X-\omega
-Y)(X-\omega^2Y)\)</span>, <span class="math inline">\(X=m+1\)</span>,
-<span class="math inline">\(Y=m\)</span>: <span
+class="math inline">\(3m^2+3m+1=(m+1)^3-m^3\)</span> (identité
+hexagonale centrée). Avec <span
+class="math inline">\(X^3-Y^3=(X-Y)(X-\omega Y)(X-\omega^2Y)\)</span>,
+<span class="math inline">\(X=m+1\)</span>, <span
+class="math inline">\(Y=m\)</span> : <span
 class="math inline">\(p=\bigl((1+m)-\omega m\bigr)\bigl((1+m)-\omega^2
-m\bigr)\)</span>. A direct computation gives <span
-class="math inline">\(N(\pi)=(1+m)^2-(1+m)(-m)+m^2=1+3m+3m^2=p\)</span>;
-since <span class="math inline">\(p\equiv1\pmod3\)</span> is prime it
-splits into two conjugate primes of norm <span
-class="math inline">\(p\)</span>, and <span
-class="math inline">\(\pi\)</span> is one of them. ◻</p>
+m\bigr)\)</span>. Un calcul direct donne <span
+class="math inline">\(N(\pi)=(1+m)^2-(1+m)(-m)+m^2=1+3m+3m^2=p\)</span>
+; comme <span class="math inline">\(p\equiv1\pmod3\)</span> est premier,
+il se scinde en deux premiers conjugués de norme <span
+class="math inline">\(p\)</span>, et <span
+class="math inline">\(\pi\)</span> est l’un d’eux. ◻</p>
 </div>
-<h2 id="the-witness-w_37">The witness <span
+<h2 id="le-témoin-w_37">Le témoin <span
 class="math inline">\(w_3=7\)</span></h2>
-<p>The proof rests on the following proposition, which holds for the
-broader family <span class="math inline">\(p=3m^2+3m+1\)</span> subject
-only to <span class="math inline">\(m\equiv2\pmod3\)</span>.</p>
+<p>La preuve repose sur la proposition suivante, valable pour la famille
+plus large <span class="math inline">\(p=3m^2+3m+1\)</span> soumise à la
+seule condition <span class="math inline">\(m\equiv2\pmod3\)</span>.</p>
 <div id="prop:cubic" class="proposition">
-<p><strong>Proposition 13</strong> (Cubic character of <span
-class="math inline">\(7\)</span>). <em>Let <span
-class="math inline">\(p=3m^2+3m+1\)</span> be prime, <span
-class="math inline">\(p\neq7\)</span>, with <span
-class="math inline">\(m\equiv2\pmod3\)</span>. Then <span
-class="math display">\[7\text{ is a cubic residue mod }p\iff m\equiv
-2\text{ or }6\pmod7 .\]</span></em></p>
+<p><strong>Proposition 13</strong> (Caractère cubique de <span
+class="math inline">\(7\)</span>). <em>Soit <span
+class="math inline">\(p=3m^2+3m+1\)</span> premier, <span
+class="math inline">\(p\neq7\)</span>, avec <span
+class="math inline">\(m\equiv2\pmod3\)</span>. Alors <span
+class="math display">\[7\text{ est un résidu cubique mod }p\iff m\equiv
+2\text{ ou }6\pmod7 .\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> Factor <span
-class="math inline">\(7=\lambda\overline\lambda\)</span> with <span
+<p><em>Proof.</em> Factorisons <span
+class="math inline">\(7=\lambda\overline\lambda\)</span> avec <span
 class="math inline">\(\lambda=3+\omega\)</span>, <span
 class="math inline">\(\overline\lambda=2-\omega\)</span> (<span
-class="math inline">\(N(\lambda)=7\)</span>). Their <em>primary</em>
-associates (those <span class="math inline">\(\equiv2\bmod3\)</span>)
-are <span
-class="math inline">\(\lambda^{*}=2+3\omega=-\omega^2\lambda\)</span>
-and <span
+class="math inline">\(N(\lambda)=7\)</span>). Leurs associés
+<em>primaires</em> (ceux <span
+class="math inline">\(\equiv2\bmod3\)</span>) sont <span
+class="math inline">\(\lambda^{*}=2+3\omega=-\omega^2\lambda\)</span> et
+<span
 class="math inline">\(\overline\lambda^{*}=-1-3\omega=-\omega\,\overline\lambda\)</span>,
-equivalently <span
-class="math inline">\(\lambda=-\omega\,\lambda^{*}\)</span> and <span
+de façon équivalente <span
+class="math inline">\(\lambda=-\omega\,\lambda^{*}\)</span> et <span
 class="math inline">\(\overline\lambda=-\omega^2\,\overline\lambda^{*}\)</span>.
-Since <span class="math inline">\(m\equiv2\pmod3\)</span>, the primary
-associate of <span class="math inline">\(\pi=(1+m)-m\omega\)</span> is
+Comme <span class="math inline">\(m\equiv2\pmod3\)</span>, l’associé
+primaire de <span class="math inline">\(\pi=(1+m)-m\omega\)</span> est
 <span class="math display">\[\pi^{*}=-\omega^{2}\pi=(1+2m)+(1+m)\omega
-\qquad(1+2m\equiv2,\ 1+m\equiv0\bmod3).\]</span> The cubic symbol
-depends only on the prime ideal in its lower entry, so <span
+\qquad(1+2m\equiv2,\ 1+m\equiv0\bmod3).\]</span> Le symbole cubique ne
+dépend que de l’idéal premier en argument inférieur, donc <span
 class="math inline">\(\left(\frac{7}{\pi}\right)_{\!3}=\left(\frac{7}{\pi^{*}}\right)_{\!3}\)</span>.
-By multiplicativity and <span
+Par multiplicativité et <span
 class="math inline">\(\left(\frac{-1}{\cdot}\right)_{\!3}=1\)</span>,
 <span class="math display">\[\left(\frac{7}{\pi^{*}}\right)_{\!3}
 =\left(\frac{\omega}{\pi^{*}}\right)_{\!3}\left(\frac{\lambda^{*}}{\pi^{*}}\right)_{\!3}\cdot
 \left(\frac{\omega^2}{\pi^{*}}\right)_{\!3}\left(\frac{\overline\lambda^{*}}{\pi^{*}}\right)_{\!3},\]</span>
-and <span
-class="math inline">\(\left(\frac{\omega}{\pi^{*}}\right)_{\!3}\left(\frac{\omega^2}{\pi^{*}}\right)_{\!3}=\left(\frac{\omega^3}{\pi^{*}}\right)_{\!3}=1\)</span>:
-the units cancel. Eisenstein’s law of cubic reciprocity <span
-class="citation" data-cites="IR"></span>, applied to the primary primes
-<span
+et <span
+class="math inline">\(\left(\frac{\omega}{\pi^{*}}\right)_{\!3}\left(\frac{\omega^2}{\pi^{*}}\right)_{\!3}=\left(\frac{\omega^3}{\pi^{*}}\right)_{\!3}=1\)</span>
+: les unités s’annulent. La loi de réciprocité cubique d’Eisenstein
+<span class="citation" data-cites="IR"></span>, appliquée aux premiers
+primaires <span
 class="math inline">\(\lambda^{*},\overline\lambda^{*},\pi^{*}\)</span>,
-gives <span
+donne <span
 class="math inline">\(\left(\frac{\lambda^{*}}{\pi^{*}}\right)_{\!3}=\left(\frac{\pi^{*}}{\lambda^{*}}\right)_{\!3}\)</span>
-and similarly for <span
-class="math inline">\(\overline\lambda^{*}\)</span>, so <span
+et de même pour <span
+class="math inline">\(\overline\lambda^{*}\)</span>, d’où <span
 class="math display">\[\left(\frac{7}{\pi}\right)_{\!3}=\left(\frac{\pi^{*}}{\lambda^{*}}\right)_{\!3}\cdot\left(\frac{\pi^{*}}{\overline\lambda^{*}}\right)_{\!3}.\]</span>
-We evaluate in <span
+Nous évaluons dans <span
 class="math inline">\(\mathbb{Z}[\omega]/(\lambda^{*})\cong\mathbb{F}_7\)</span>
-and <span
+et <span
 class="math inline">\(\mathbb{Z}[\omega]/(\overline\lambda^{*})\cong\mathbb{F}_7\)</span>.
-From <span class="math inline">\(\lambda^{*}=2+3\omega\equiv0\)</span>
-we get <span class="math inline">\(\omega\equiv4\pmod7\)</span> (and
-<span class="math inline">\(\omega^2\equiv2\)</span>); from <span
+De <span class="math inline">\(\lambda^{*}=2+3\omega\equiv0\)</span> on
+tire <span class="math inline">\(\omega\equiv4\pmod7\)</span> (et <span
+class="math inline">\(\omega^2\equiv2\)</span>) ; de <span
 class="math inline">\(\overline\lambda^{*}=-1-3\omega\equiv0\)</span>,
-<span class="math inline">\(\omega\equiv2\)</span> (and <span
-class="math inline">\(\omega^2\equiv4\)</span>). Hence <span
+<span class="math inline">\(\omega\equiv2\)</span> (et <span
+class="math inline">\(\omega^2\equiv4\)</span>). D’où <span
 class="math display">\[\pi^{*}\equiv(1+2m)+4(1+m)=5-m \ (\mathrm{mod}\
 \lambda^{*}),\qquad
 \pi^{*}\equiv(1+2m)+2(1+m)=3+4m \ (\mathrm{mod}\
-\overline\lambda^{*}).\]</span> Since <span
+\overline\lambda^{*}).\]</span> Comme <span
 class="math inline">\(\left(\frac{\alpha}{\theta}\right)_{\!3}\equiv\alpha^{(N(\theta)-1)/3}=\alpha^{2}\pmod\theta\)</span>
-for <span class="math inline">\(N(\theta)=7\)</span>, we have <span
+pour <span class="math inline">\(N(\theta)=7\)</span>, on a <span
 class="math inline">\(\left(\frac{\pi^{*}}{\lambda^{*}}\right)_{\!3}\equiv(5-m)^2\)</span>
-and <span
+et <span
 class="math inline">\(\left(\frac{\pi^{*}}{\overline\lambda^{*}}\right)_{\!3}\equiv(3+4m)^2\)</span>
-in <span class="math inline">\(\mathbb{F}_7\)</span>, each lying in the
-cube-roots subgroup <span
-class="math inline">\(\{1,2,4\}=\{1,\omega,\omega^2\}\)</span> under the
-identifications above (<span
+dans <span class="math inline">\(\mathbb{F}_7\)</span>, chacun
+appartenant au sous-groupe des racines cubiques <span
+class="math inline">\(\{1,2,4\}=\{1,\omega,\omega^2\}\)</span> sous les
+identifications ci-dessus (<span
 class="math inline">\(\omega\mapsto4\)</span> resp. <span
-class="math inline">\(\omega\mapsto2\)</span>). Multiplying in <span
-class="math inline">\(\{1,\omega,\omega^2\}\)</span>, the product equals
-<span class="math inline">\(1\)</span> exactly for <span
-class="math inline">\(m\equiv2,6\pmod7\)</span>; this is the finite
-verification of Table <a href="#tab:cubic" data-reference-type="ref"
-data-reference="tab:cubic">2</a>. (The omitted classes <span
-class="math inline">\(m\equiv1,5\pmod7\)</span> give <span
-class="math inline">\(5-m\equiv0\)</span> or <span
-class="math inline">\(3+4m\equiv0\)</span>, i.e. <span
+class="math inline">\(\omega\mapsto2\)</span>). En multipliant dans
+<span class="math inline">\(\{1,\omega,\omega^2\}\)</span>, le produit
+vaut <span class="math inline">\(1\)</span> exactement pour <span
+class="math inline">\(m\equiv2,6\pmod7\)</span> ; c’est la vérification
+finie de la Table <a href="#tab:cubic" data-reference-type="ref"
+data-reference="tab:cubic">2</a>. (Les classes omises <span
+class="math inline">\(m\equiv1,5\pmod7\)</span> donnent <span
+class="math inline">\(5-m\equiv0\)</span> ou <span
+class="math inline">\(3+4m\equiv0\)</span>, c.-à-d. <span
 class="math inline">\(7\mid p\)</span>.) ◻</p>
 </div>
 <table id="tab:cubic">
-<caption>Finite evaluation in <span
+<caption>Évaluation finie dans <span
 class="math inline">\(\mathbb{F}_7\)</span> (Proposition <a
 href="#prop:cubic" data-reference-type="ref"
-data-reference="prop:cubic">13</a>); <span
+data-reference="prop:cubic">13</a>) ; <span
 class="math inline">\(\omega\mapsto4\)</span> mod <span
 class="math inline">\(\lambda^{*}\)</span>, <span
 class="math inline">\(\omega\mapsto2\)</span> mod <span
@@ -530,7 +539,7 @@ class="math inline">\(2\)</span></td>
 <td style="text-align: center;"><span
 class="math inline">\(\omega\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span>
-(residue)</td>
+(résidu)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><span
@@ -572,112 +581,114 @@ class="math inline">\(1\)</span></td>
 <td style="text-align: center;"><span
 class="math inline">\(1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span>
-(residue)</td>
+(résidu)</td>
 </tr>
 </tbody>
 </table>
 <div id="thm:w3" class="theorem">
-<p><strong>Theorem 14</strong> (<span
-class="math inline">\(w_3=7\)</span>; rigorous). <em>For <span
-class="math inline">\(p=p(a,b)\)</span> prime, <span
-class="math inline">\(w_3=7\)</span> is a valid Pocklington witness if
-and only if <span class="math display">\[m\not\equiv2\pmod7
+<p><strong>Théorème 14</strong> (<span
+class="math inline">\(w_3=7\)</span> ; rigoureux). <em>Pour <span
+class="math inline">\(p=p(a,b)\)</span> premier, <span
+class="math inline">\(w_3=7\)</span> est un témoin de Pocklington valide
+si et seulement si <span class="math display">\[m\not\equiv2\pmod7
 \qquad\Longleftrightarrow\qquad
 (a\bmod3,b\bmod6)\notin\{(0,1),(1,5),(2,3)\}.\]</span></em></p>
 </div>
 <div class="proof">
-<p><em>Proof.</em> If <span class="math inline">\(p=7\)</span> then
-<span class="math inline">\(m=1\)</span> and <span
-class="math inline">\(\pi\)</span> is associate to <span
-class="math inline">\(\lambda\)</span>, so <span
-class="math inline">\(w_3=7\)</span> does not apply; discard this case.
-For <span class="math inline">\(p&gt;7\)</span>: since <span
+<p><em>Proof.</em> Si <span class="math inline">\(p=7\)</span> alors
+<span class="math inline">\(m=1\)</span> et <span
+class="math inline">\(\pi\)</span> est associé à <span
+class="math inline">\(\lambda\)</span>, donc <span
+class="math inline">\(w_3=7\)</span> ne s’applique pas ; on écarte ce
+cas. Pour <span class="math inline">\(p&gt;7\)</span> : comme <span
 class="math inline">\(b\ge1\)</span>, <span
-class="math inline">\(3\mid3^b\)</span>, so <span
-class="math inline">\(m+1\equiv0\pmod3\)</span>, i.e. <span
-class="math inline">\(m\equiv2\pmod3\)</span>; and <span
-class="math inline">\(m+1=2^{a}3^{b}\)</span> is coprime to <span
-class="math inline">\(7\)</span>, so <span
-class="math inline">\(m\not\equiv6\pmod7\)</span>; finally <span
-class="math inline">\(m\equiv1,5\pmod7\)</span> give <span
-class="math inline">\(7\mid p\)</span> (Theorem <a href="#thm:mod7"
-data-reference-type="ref" data-reference="thm:mod7">8</a>), excluded.
-Thus <span class="math inline">\(m\bmod7\in\{0,2,3,4\}\)</span> and
+class="math inline">\(3\mid3^b\)</span>, donc <span
+class="math inline">\(m+1\equiv0\pmod3\)</span>, c.-à-d. <span
+class="math inline">\(m\equiv2\pmod3\)</span> ; et <span
+class="math inline">\(m+1=2^{a}3^{b}\)</span> est premier avec <span
+class="math inline">\(7\)</span>, donc <span
+class="math inline">\(m\not\equiv6\pmod7\)</span> ; enfin <span
+class="math inline">\(m\equiv1,5\pmod7\)</span> donnent <span
+class="math inline">\(7\mid p\)</span> (Théorème <a href="#thm:mod7"
+data-reference-type="ref" data-reference="thm:mod7">8</a>), exclus.
+Ainsi <span class="math inline">\(m\bmod7\in\{0,2,3,4\}\)</span> et la
 Proposition <a href="#prop:cubic" data-reference-type="ref"
-data-reference="prop:cubic">13</a> applies: <span
-class="math inline">\(7\)</span> is a cubic residue iff <span
-class="math inline">\(m\equiv2\)</span> or <span
-class="math inline">\(6\pmod7\)</span>, hence (as <span
-class="math inline">\(m\not\equiv6\)</span>) iff <span
-class="math inline">\(m\equiv2\pmod7\)</span>. By <a href="#eq:wit"
+data-reference="prop:cubic">13</a> s’applique : <span
+class="math inline">\(7\)</span> est un résidu cubique ssi <span
+class="math inline">\(m\equiv2\)</span> ou <span
+class="math inline">\(6\pmod7\)</span>, donc (comme <span
+class="math inline">\(m\not\equiv6\)</span>) ssi <span
+class="math inline">\(m\equiv2\pmod7\)</span>. Par <a href="#eq:wit"
 data-reference-type="eqref" data-reference="eq:wit">[eq:wit]</a>, <span
-class="math inline">\(w_3=7\)</span> is valid iff <span
-class="math inline">\(7\)</span> is a cubic <em>non</em>-residue,
-i.e. <span class="math inline">\(m\not\equiv2\pmod7\)</span>. The
-translation to <span class="math inline">\((a\bmod3,b\bmod6)\)</span>
-follows from <span class="math inline">\(m\equiv2\pmod7\iff
-m+1\equiv3\pmod7\)</span>, whose solutions in Table <a href="#tab:t"
-data-reference-type="ref" data-reference="tab:t">1</a> are <span
-class="math inline">\(\{(0,1),(1,5),(2,3)\}\)</span>. ◻</p>
+class="math inline">\(w_3=7\)</span> est valide ssi <span
+class="math inline">\(7\)</span> est un <em>non</em>-résidu cubique,
+c.-à-d. <span class="math inline">\(m\not\equiv2\pmod7\)</span>. La
+traduction en <span class="math inline">\((a\bmod3,b\bmod6)\)</span>
+découle de <span class="math inline">\(m\equiv2\pmod7\iff
+m+1\equiv3\pmod7\)</span>, dont les solutions dans la Table <a
+href="#tab:t" data-reference-type="ref" data-reference="tab:t">1</a>
+sont <span class="math inline">\(\{(0,1),(1,5),(2,3)\}\)</span>. ◻</p>
 </div>
 <div class="remark">
-<p><em>Remark 15</em> (Role of <span
-class="math inline">\(3\)</span>-smoothness). Proposition <a
+<p><em>Remarque 15</em> (Rôle de la <span
+class="math inline">\(3\)</span>-friabilité). La Proposition <a
 href="#prop:cubic" data-reference-type="ref"
-data-reference="prop:cubic">13</a> distinguishes <em>two</em> residue
-classes (<span class="math inline">\(m\equiv2,6\)</span>) and holds for
-any <span class="math inline">\(m\equiv2\pmod3\)</span>. It is the <span
-class="math inline">\(3\)</span>-smoothness <span
-class="math inline">\(m+1=2^{a}3^{b}\)</span> that both forces <span
-class="math inline">\(m\equiv2\pmod3\)</span> (fixing the primary
-normalisation of <span class="math inline">\(\pi\)</span>) and excludes
-<span class="math inline">\(m\equiv6\pmod7\)</span>, collapsing the
-criterion to the single congruence <span
-class="math inline">\(m\equiv2\pmod7\)</span>. Without smoothness, cubic
-residuosity of <span class="math inline">\(7\)</span> depends on <span
+data-reference="prop:cubic">13</a> distingue <em>deux</em> classes de
+résidus (<span class="math inline">\(m\equiv2,6\)</span>) et vaut pour
+tout <span class="math inline">\(m\equiv2\pmod3\)</span>. C’est la <span
+class="math inline">\(3\)</span>-friabilité <span
+class="math inline">\(m+1=2^{a}3^{b}\)</span> qui à la fois force <span
+class="math inline">\(m\equiv2\pmod3\)</span> (fixant la normalisation
+primaire de <span class="math inline">\(\pi\)</span>) et exclut <span
+class="math inline">\(m\equiv6\pmod7\)</span>, réduisant le critère à
+l’unique congruence <span class="math inline">\(m\equiv2\pmod7\)</span>.
+Sans friabilité, la résiduosité cubique de <span
+class="math inline">\(7\)</span> dépend de <span
 class="math inline">\(m\bmod21\)</span> (Proposition <a
 href="#prop:cubicgen" data-reference-type="ref"
-data-reference="prop:cubicgen">16</a>), not <span
-class="math inline">\(m\bmod7\)</span> alone.</p>
+data-reference="prop:cubicgen">16</a>), et non de <span
+class="math inline">\(m\bmod7\)</span> seul.</p>
 </div>
-<h2 id="the-cubic-character-of-7-for-the-general-family">The cubic
-character of <span class="math inline">\(7\)</span> for the general
-family</h2>
-<p>The same computation resolves cubic residuosity of <span
-class="math inline">\(7\)</span> for <em>every</em> prime <span
-class="math inline">\(p=3m^2+3m+1\)</span>, not only the <span
-class="math inline">\(3\)</span>-smooth subfamily. This settles, as a
-theorem, the cubic character of <span class="math inline">\(7\)</span>
-for the full family <span class="math inline">\(p=3m^2+3m+1\)</span>,
-extending the analysis of <span class="citation"
-data-cites="series"></span> beyond the subfamily.</p>
+<h2 id="le-caractère-cubique-de-7-pour-la-famille-générale">Le caractère
+cubique de <span class="math inline">\(7\)</span> pour la famille
+générale</h2>
+<p>Le même calcul résout la résiduosité cubique de <span
+class="math inline">\(7\)</span> pour <em>tout</em> premier <span
+class="math inline">\(p=3m^2+3m+1\)</span>, et pas seulement la
+sous-famille <span class="math inline">\(3\)</span>-friable. Ceci
+établit, comme théorème, le caractère cubique de <span
+class="math inline">\(7\)</span> pour la famille complète <span
+class="math inline">\(p=3m^2+3m+1\)</span>, prolongeant l’analyse
+de <span class="citation" data-cites="series"></span> au-delà de la
+sous-famille.</p>
 <div id="prop:cubicgen" class="proposition">
-<p><strong>Proposition 16</strong> (Cubic character of <span
-class="math inline">\(7\)</span>, general family). <em>Let <span
-class="math inline">\(p=3m^2+3m+1\)</span> be prime, <span
-class="math inline">\(p\neq7\)</span>. Then <span
-class="math inline">\(7\)</span> is a cubic residue modulo <span
-class="math inline">\(p\)</span> if and only if <span
-class="math display">\[m\equiv 0,\,2,\,10,\,18,\ \text{or}\ 20
-\pmod{21},\]</span> equivalently, according to <span
-class="math inline">\(m\bmod3\)</span>, if and only if the condition of
-Table <a href="#tab:cubicgen" data-reference-type="ref"
-data-reference="tab:cubicgen">3</a> holds. Exactly <span
-class="math inline">\(5\)</span> of the <span
-class="math inline">\(15\)</span> admissible classes modulo <span
-class="math inline">\(21\)</span> are cubic-residue classes.</em></p>
+<p><strong>Proposition 16</strong> (Caractère cubique de <span
+class="math inline">\(7\)</span>, famille générale). <em>Soit <span
+class="math inline">\(p=3m^2+3m+1\)</span> premier, <span
+class="math inline">\(p\neq7\)</span>. Alors <span
+class="math inline">\(7\)</span> est un résidu cubique modulo <span
+class="math inline">\(p\)</span> si et seulement si <span
+class="math display">\[m\equiv 0,\,2,\,10,\,18,\ \text{ou}\ 20
+\pmod{21},\]</span> de façon équivalente, selon <span
+class="math inline">\(m\bmod3\)</span>, si et seulement si la condition
+de la Table <a href="#tab:cubicgen" data-reference-type="ref"
+data-reference="tab:cubicgen">3</a> est vérifiée. Exactement <span
+class="math inline">\(5\)</span> des <span
+class="math inline">\(15\)</span> classes admissibles modulo <span
+class="math inline">\(21\)</span> sont des classes de résidu
+cubique.</em></p>
 </div>
 <table id="tab:cubicgen">
-<caption>Cubic character of <span class="math inline">\(7\)</span> by
-residue of <span class="math inline">\(m\bmod3\)</span>; primary
-associate <span class="math inline">\(\pi^{*}=u\pi\)</span> of <span
-class="math inline">\(\pi=(1+m)-m\omega\)</span>, reduced modulo <span
-class="math inline">\(\lambda^{*}\)</span> (<span
-class="math inline">\(\omega\equiv4\)</span>) and <span
+<caption>Caractère cubique de <span class="math inline">\(7\)</span>
+selon le résidu de <span class="math inline">\(m\bmod3\)</span> ;
+associé primaire <span class="math inline">\(\pi^{*}=u\pi\)</span> de
+<span class="math inline">\(\pi=(1+m)-m\omega\)</span>, réduit modulo
+<span class="math inline">\(\lambda^{*}\)</span> (<span
+class="math inline">\(\omega\equiv4\)</span>) et <span
 class="math inline">\(\overline\lambda^{*}\)</span> (<span
-class="math inline">\(\omega\equiv2\)</span>) in <span
-class="math inline">\(\mathbb{F}_7\)</span>. The row <span
-class="math inline">\(m\equiv2\)</span> is Proposition <a
+class="math inline">\(\omega\equiv2\)</span>) dans <span
+class="math inline">\(\mathbb{F}_7\)</span>. La ligne <span
+class="math inline">\(m\equiv2\)</span> est la Proposition <a
 href="#prop:cubic" data-reference-type="ref"
 data-reference="prop:cubic">13</a>.</caption>
 <thead>
@@ -693,7 +704,7 @@ class="math inline">\(\pi^{*}\!\!\bmod\lambda^{*}\)</span></th>
 <th style="text-align: center;"><span
 class="math inline">\(\pi^{*}\!\!\bmod\overline\lambda^{*}\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(7\)</span>
-cubic residue <span class="math inline">\(\iff\)</span></th>
+résidu cubique <span class="math inline">\(\iff\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -742,126 +753,131 @@ class="math inline">\(4m+3\)</span></td>
 </tbody>
 </table>
 <div class="proof">
-<p><em>Proof.</em> As in Proposition <a href="#prop:cubic"
-data-reference-type="ref" data-reference="prop:cubic">13</a>, the
-primary associate of <span
-class="math inline">\(\pi=(1+m)-m\omega\)</span> is <span
-class="math inline">\(\pi^{*}=u\pi\)</span>, where <span
-class="math inline">\(u=-1,-\omega,-\omega^2\)</span> according as <span
-class="math inline">\(m\equiv0,1,2\pmod3\)</span> — the unique unit
-making the leading coefficient <span
-class="math inline">\(\equiv2\pmod3\)</span>. In every case the unit
-factors cancel in <span
+<p><em>Proof.</em> Comme dans la Proposition <a href="#prop:cubic"
+data-reference-type="ref" data-reference="prop:cubic">13</a>, l’associé
+primaire de <span class="math inline">\(\pi=(1+m)-m\omega\)</span> est
+<span class="math inline">\(\pi^{*}=u\pi\)</span>, où <span
+class="math inline">\(u=-1,-\omega,-\omega^2\)</span> selon que <span
+class="math inline">\(m\equiv0,1,2\pmod3\)</span> — l’unique unité
+rendant le coefficient dominant <span
+class="math inline">\(\equiv2\pmod3\)</span>. Dans tous les cas les
+facteurs unités s’annulent dans <span
 class="math inline">\(\left(\frac{7}{\pi}\right)_{\!3}=\left(\frac{\pi^{*}}{\lambda^{*}}\right)_{\!3}\left(\frac{\pi^{*}}{\overline\lambda^{*}}\right)_{\!3}\)</span>
-(the argument of Proposition <a href="#prop:cubic"
-data-reference-type="ref" data-reference="prop:cubic">13</a> uses only
-<span
-class="math inline">\(\left(\frac{-1}{\cdot}\right)_{\!3}=1\)</span> and
+(l’argument de la Proposition <a href="#prop:cubic"
+data-reference-type="ref" data-reference="prop:cubic">13</a> n’utilise
+que <span
+class="math inline">\(\left(\frac{-1}{\cdot}\right)_{\!3}=1\)</span> et
 <span
 class="math inline">\(\left(\frac{\omega}{\cdot}\right)_{\!3}\left(\frac{\omega^2}{\cdot}\right)_{\!3}=1\)</span>,
-which hold for any associate). Reducing <span
+valables pour tout associé). En réduisant <span
 class="math inline">\(\pi^{*}\)</span> modulo <span
-class="math inline">\(\lambda^{*}\)</span> and <span
-class="math inline">\(\overline\lambda^{*}\)</span> gives the linear
-forms of Table <a href="#tab:cubicgen" data-reference-type="ref"
-data-reference="tab:cubicgen">3</a>; squaring (the exponent <span
-class="math inline">\((7-1)/3=2\)</span>) and combining in <span
-class="math inline">\(\{1,\omega,\omega^2\}\)</span> yields <span
+class="math inline">\(\lambda^{*}\)</span> et <span
+class="math inline">\(\overline\lambda^{*}\)</span> on obtient les
+formes linéaires de la Table <a href="#tab:cubicgen"
+data-reference-type="ref" data-reference="tab:cubicgen">3</a> ; en
+élevant au carré (l’exposant <span
+class="math inline">\((7-1)/3=2\)</span>) et en combinant dans <span
+class="math inline">\(\{1,\omega,\omega^2\}\)</span> on obtient <span
 class="math inline">\(\left(\frac{7}{\pi}\right)_{\!3}=1\)</span>
-exactly on the listed classes. A direct check confirms <span
-class="math inline">\(0\)</span> exceptions over all <span
-class="math inline">\(1797\)</span> such primes with <span
-class="math inline">\(m&lt;9000\)</span> (Appendix). ◻</p>
+exactement sur les classes listées. Une vérification directe confirme
+<span class="math inline">\(0\)</span> exception sur l’ensemble des
+<span class="math inline">\(1797\)</span> tels premiers avec <span
+class="math inline">\(m&lt;9000\)</span> (Annexe). ◻</p>
 </div>
 <div class="remark">
-<p><em>Remark 17</em>. In the present <span
-class="math inline">\(3\)</span>-smooth subfamily one has <span
-class="math inline">\(m\equiv2\pmod3\)</span> and <span
-class="math inline">\(m\not\equiv6\pmod7\)</span> (by <span
-class="math inline">\(3\)</span>-smoothness), so only the class <span
-class="math inline">\(m\equiv2\pmod7\)</span> survives, recovering
-Theorem <a href="#thm:w3" data-reference-type="ref"
+<p><em>Remarque 17</em>. Dans la présente sous-famille <span
+class="math inline">\(3\)</span>-friable on a <span
+class="math inline">\(m\equiv2\pmod3\)</span> et <span
+class="math inline">\(m\not\equiv6\pmod7\)</span> (par <span
+class="math inline">\(3\)</span>-friabilité), de sorte que seule la
+classe <span class="math inline">\(m\equiv2\pmod7\)</span> subsiste, ce
+qui redonne le Théorème <a href="#thm:w3" data-reference-type="ref"
 data-reference="thm:w3">14</a>.</p>
 </div>
-<h2 id="deterministic-witness-selection">Deterministic witness
-selection</h2>
+<h2 id="sélection-déterministe-des-témoins">Sélection déterministe des
+témoins</h2>
 <div id="cor:det" class="corollary">
-<p><strong>Corollary 18</strong>. <em>The fixed pair <span
-class="math inline">\((w_2,w_3)=(5,7)\)</span> is <em>not</em> valid for
-all primes of the subfamily; its validity is the conjunction <span
-class="math inline">\(a-b\equiv1,2\pmod4\)</span> and <span
-class="math inline">\(m\not\equiv2\pmod7\)</span>. A correct witness
-choice is determined by the residue class of <span
-class="math inline">\((a,b)\)</span>: <span
+<p><strong>Corollaire 18</strong>. <em>La paire fixe <span
+class="math inline">\((w_2,w_3)=(5,7)\)</span> n’est <em>pas</em> valide
+pour tous les premiers de la sous-famille ; sa validité est la
+conjonction <span class="math inline">\(a-b\equiv1,2\pmod4\)</span> et
+<span class="math inline">\(m\not\equiv2\pmod7\)</span>. Un choix
+correct de témoins est déterminé par la classe de résidus de <span
+class="math inline">\((a,b)\)</span> : <span
 class="math display">\[w_2=\begin{cases}5,&amp; a-b\equiv1,2\ (4),\\
-\text{least quadratic non-residue},&amp;\text{else;}\end{cases}\qquad
-w_3=\begin{cases}7,&amp; m\not\equiv2\ (7),\\ \text{least cubic
-non-residue},&amp; m\equiv2\ (7).\end{cases}\]</span> In the case <span
-class="math inline">\(m\equiv2\pmod7\)</span> a cubic non-residue is
-found deterministically by testing small primes: cubic non-residues form
-two-thirds of <span
-class="math inline">\((\mathbb{Z}/p\mathbb{Z})^{*}\)</span>, so one is
-reached after a bounded search. Hence the certificate search is provably
-correct, rather than reliant on fixed witnesses succeeding by
-chance.</em></p>
+\text{plus petit non-résidu quadratique},&amp;\text{sinon
+;}\end{cases}\qquad
+w_3=\begin{cases}7,&amp; m\not\equiv2\ (7),\\ \text{plus petit
+non-résidu cubique},&amp; m\equiv2\
+(7).\end{cases}\]</span> Dans le cas <span
+class="math inline">\(m\equiv2\pmod7\)</span>, un non-résidu cubique se
+trouve de manière déterministe en testant les petits premiers : les
+non-résidus cubiques forment les deux tiers de <span
+class="math inline">\((\mathbb{Z}/p\mathbb{Z})^{*}\)</span>, si bien
+qu’on en atteint un après une recherche bornée. La recherche de
+certificat est donc prouvablement correcte, plutôt que tributaire du
+succès fortuit de témoins fixes.</em></p>
 </div>
-<h1 id="sec:algo">The PrimeQuest algorithm</h1>
-<p>For target digit count <span class="math inline">\(D\)</span> the
-search centre is <span class="math inline">\(a_0=b_0=\lfloor
-D/(2\log_{10}6)\rfloor\approx
-0.643\,D\)</span>, and the zigzag expands outward, enumerating for each
-<span class="math inline">\(a\)</span> all <span
-class="math inline">\(b\)</span> with <span
+<h1 id="sec:algo">L’algorithme PrimeQuest</h1>
+<p>Pour un nombre de chiffres cible <span
+class="math inline">\(D\)</span>, le centre de recherche est <span
+class="math inline">\(a_0=b_0=\lfloor D/(2\log_{10}6)\rfloor\approx
+0.643\,D\)</span>, et le zigzag s’étend vers l’extérieur, énumérant pour
+chaque <span class="math inline">\(a\)</span> tous les <span
+class="math inline">\(b\)</span> avec <span
 class="math inline">\(|D(a,b)-D|\le\tau\)</span> (<span
-class="math inline">\(\tau=10\)</span>). Each pair passes through a
-four-stage pipeline:</p>
+class="math inline">\(\tau=10\)</span>). Chaque paire traverse un
+pipeline à quatre étages :</p>
 <ol>
-<li><p><strong>mod-<span class="math inline">\(7\)</span>
-filter</strong> (Theorem <a href="#thm:mod7" data-reference-type="ref"
-data-reference="thm:mod7">8</a>): reject if <span
-class="math inline">\((a\bmod3,b\bmod6)\in\mathcal F_7\)</span>. Cost
-<span class="math inline">\(O(1)\)</span>.</p></li>
-<li><p><strong>Sieve</strong> (Corollary <a href="#cor:sieve"
-data-reference-type="ref" data-reference="cor:sieve">7</a>): for primes
-<span class="math inline">\(q\equiv1\pmod3\)</span>, <span
-class="math inline">\(q\le L\)</span>, reject if <span
+<li><p><strong>filtre mod-<span
+class="math inline">\(7\)</span></strong> (Théorème <a href="#thm:mod7"
+data-reference-type="ref" data-reference="thm:mod7">8</a>) : rejet si
+<span class="math inline">\((a\bmod3,b\bmod6)\in\mathcal F_7\)</span>.
+Coût <span class="math inline">\(O(1)\)</span>.</p></li>
+<li><p><strong>Crible</strong> (Corollaire <a href="#cor:sieve"
+data-reference-type="ref" data-reference="cor:sieve">7</a>) : pour les
+premiers <span class="math inline">\(q\equiv1\pmod3\)</span>, <span
+class="math inline">\(q\le
+L\)</span>, rejet si <span
 class="math inline">\(p\equiv0\)</span>.</p></li>
-<li><p><strong>Miller–Rabin</strong>: <span
-class="math inline">\(k\)</span> rounds on <span
+<li><p><strong>Miller–Rabin</strong> : <span
+class="math inline">\(k\)</span> tours sur <span
 class="math inline">\(p(a,b)\)</span>.</p></li>
-<li><p><strong>Pocklington</strong>: select witnesses by Corollary <a
-href="#cor:det" data-reference-type="ref"
-data-reference="cor:det">18</a> and verify Theorem <a href="#thm:pock"
-data-reference-type="ref" data-reference="thm:pock">3</a>.</p></li>
+<li><p><strong>Pocklington</strong> : sélectionner les témoins par le
+Corollaire <a href="#cor:det" data-reference-type="ref"
+data-reference="cor:det">18</a> et vérifier le Théorème <a
+href="#thm:pock" data-reference-type="ref"
+data-reference="thm:pock">3</a>.</p></li>
 </ol>
-<p>Pairs are distributed over CPU cores; checkpoint-resume every <span
-class="math inline">\(60\)</span> s allows exact restart. We note that
-stage 4 is now deterministic: by Corollary <a href="#cor:det"
-data-reference-type="ref" data-reference="cor:det">18</a> the witnesses
-are read off <span class="math inline">\((a,b)\)</span> rather than
-searched.</p>
+<p>Les paires sont réparties sur les cœurs CPU ; la reprise sur points
+de contrôle toutes les <span class="math inline">\(60\)</span> s permet
+un redémarrage exact. Notons que l’étape 4 est désormais déterministe :
+par le Corollaire <a href="#cor:det" data-reference-type="ref"
+data-reference="cor:det">18</a> les témoins se lisent sur <span
+class="math inline">\((a,b)\)</span> au lieu d’être recherchés.</p>
 <div class="remark">
-<p><em>Remark 19</em> (MR round reduction). Miller–Rabin is
-deterministic for primes (every prime passes every round); reducing the
-initial round count carries zero risk of discarding a true prime, and
-rare composites are removed by confirmation rounds and by
-Pocklington.</p>
+<p><em>Remarque 19</em> (Réduction du nombre de tours MR). Miller–Rabin
+est déterministe pour les premiers (tout premier passe tout tour) ;
+réduire le nombre initial de tours ne présente aucun risque d’écarter un
+vrai premier, et les rares composés sont éliminés par les tours de
+confirmation et par Pocklington.</p>
 </div>
-<h1 id="sec:results">Computational results</h1>
-<p>Table <a href="#tab:certs" data-reference-type="ref"
-data-reference="tab:certs">4</a> lists four unconditional certificates;
-in each case the witnesses chosen by Corollary <a href="#cor:det"
-data-reference-type="ref" data-reference="cor:det">18</a> were <span
+<h1 id="sec:results">Résultats computationnels</h1>
+<p>La Table <a href="#tab:certs" data-reference-type="ref"
+data-reference="tab:certs">4</a> liste quatre certificats
+inconditionnels ; dans chaque cas les témoins choisis par le
+Corollaire <a href="#cor:det" data-reference-type="ref"
+data-reference="cor:det">18</a> étaient <span
 class="math inline">\(w_2=5\)</span>, <span
-class="math inline">\(w_3=7\)</span> (all four pairs satisfy <span
-class="math inline">\(a-b\equiv1,2\pmod4\)</span> and <span
+class="math inline">\(w_3=7\)</span> (les quatre paires vérifient <span
+class="math inline">\(a-b\equiv1,2\pmod4\)</span> et <span
 class="math inline">\(m\not\equiv2\pmod7\)</span>).</p>
 <table id="tab:certs">
-<caption>Pocklington certificates from the PrimeQuest
-campaign.</caption>
+<caption>Certificats de Pocklington issus de la campagne
+PrimeQuest.</caption>
 <thead>
 <tr>
-<th style="text-align: right;">Digits of <span
+<th style="text-align: right;">Chiffres de <span
 class="math inline">\(p\)</span></th>
 <th style="text-align: right;"><span
 class="math inline">\(a\)</span></th>
@@ -869,9 +885,9 @@ class="math inline">\(a\)</span></th>
 class="math inline">\(b\)</span></th>
 <th style="text-align: right;"><span
 class="math inline">\(b/a\)</span></th>
-<th style="text-align: right;">MR tests</th>
-<th style="text-align: right;">Elim.</th>
-<th style="text-align: right;">Wall time</th>
+<th style="text-align: right;">tests MR</th>
+<th style="text-align: right;">Élim.</th>
+<th style="text-align: right;">Temps réel</th>
 </tr>
 </thead>
 <tbody>
@@ -937,44 +953,44 @@ class="math inline">\(06\)</span> min</td>
 </tr>
 </tbody>
 </table>
-<p>For the <span class="math inline">\(29\,998\)</span>-digit prime
-<span class="math inline">\(p=3m(m+1)+1\)</span>, <span
+<p>Pour le premier de <span class="math inline">\(29\,998\)</span>
+chiffres <span class="math inline">\(p=3m(m+1)+1\)</span>, <span
 class="math inline">\(m=2^{19435}3^{19173}-1\)</span> (<span
-class="math inline">\(14\,999\)</span> digits): <span
+class="math inline">\(14\,999\)</span> chiffres) : <span
 class="math display">\[p-1=F\cdot m,\quad F=2^{19435}3^{19174}\
-(14\,999\text{ digits}),\quad F&gt;\sqrt p,\]</span> <span
+(14\,999\text{ chiffres}),\quad F&gt;\sqrt p,\]</span> <span
 class="math display">\[w_2=5:\ 5^{p-1}\equiv1,\
 \gcd(5^{(p-1)/2}-1,p)=1;\qquad
-w_3=7:\ 7^{p-1}\equiv1,\ \gcd(7^{(p-1)/3}-1,p)=1.\]</span> The
-certificate was independently re-verified in a separate environment
-(exact <code>pow</code>, single core); the four conditions hold and
-<span
+w_3=7:\ 7^{p-1}\equiv1,\ \gcd(7^{(p-1)/3}-1,p)=1.\]</span> Le certificat
+a été re-vérifié indépendamment dans un environnement séparé
+(<code>pow</code> exact, un seul cœur) ; les quatre conditions sont
+vérifiées et <span
 class="math inline">\(2\log_2F=99650.142&gt;\log_2p=99648.557\)</span>
-(margin <span class="math inline">\(\approx1.58\)</span> bit), so <span
-class="math inline">\(p\)</span> is unconditionally prime.</p>
+(marge <span class="math inline">\(\approx1.58\)</span> bit), donc <span
+class="math inline">\(p\)</span> est inconditionnellement premier.</p>
 <table id="tab:filter">
-<caption>Filter statistics for the <span
-class="math inline">\(29\,998\)</span>-digit record (<span
-class="math inline">\(2\,221\)</span> pairs tested).</caption>
+<caption>Statistiques de filtrage pour le record de <span
+class="math inline">\(29\,998\)</span> chiffres (<span
+class="math inline">\(2\,221\)</span> paires testées).</caption>
 <thead>
 <tr>
-<th style="text-align: left;">Stage</th>
-<th style="text-align: right;">Pairs eliminated</th>
+<th style="text-align: left;">Étage</th>
+<th style="text-align: right;">Paires éliminées</th>
 <th style="text-align: right;">Fraction</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">mod-<span class="math inline">\(7\)</span>
-filter (Thm <a href="#thm:mod7" data-reference-type="ref"
-data-reference="thm:mod7">8</a>)</td>
+<td style="text-align: left;">filtre mod-<span
+class="math inline">\(7\)</span> (Thm <a href="#thm:mod7"
+data-reference-type="ref" data-reference="thm:mod7">8</a>)</td>
 <td style="text-align: right;"><span
 class="math inline">\(740\)</span></td>
 <td style="text-align: right;"><span
 class="math inline">\(33.3\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Sieve (Cor. <a href="#cor:sieve"
+<td style="text-align: left;">Crible (Cor. <a href="#cor:sieve"
 data-reference-type="ref" data-reference="cor:sieve">7</a>)</td>
 <td style="text-align: right;"><span
 class="math inline">\(1\,195\)</span></td>
@@ -982,21 +998,21 @@ class="math inline">\(1\,195\)</span></td>
 class="math inline">\(53.8\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Miller–Rabin (composites)</td>
+<td style="text-align: left;">Miller–Rabin (composés)</td>
 <td style="text-align: right;"><span
 class="math inline">\(285\)</span></td>
 <td style="text-align: right;"><span
 class="math inline">\(12.8\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Total eliminated</td>
+<td style="text-align: left;">Total éliminé</td>
 <td style="text-align: right;"><span
 class="math inline">\(2\,220\)</span></td>
 <td style="text-align: right;"><span
 class="math inline">\(87.1\%\)</span></td>
 </tr>
 <tr>
-<td style="text-align: left;">Prime found</td>
+<td style="text-align: left;">Premier trouvé</td>
 <td style="text-align: right;"><span
 class="math inline">\(1\)</span></td>
 <td style="text-align: right;"><span
@@ -1005,103 +1021,105 @@ class="math inline">\(0.045\%\)</span></td>
 </tbody>
 </table>
 <div class="remark">
-<p><em>Remark 20</em>. The sieve fraction (<span
-class="math inline">\(53.8\%\)</span> above) depends on the
-trial-division bound <span class="math inline">\(L\)</span>: a larger
-<span class="math inline">\(L\)</span> removes more composites before
-Miller–Rabin. The figure <span
-class="math inline">\(\approx87\%\)</span> for the two a-priori filters
-is therefore relative to the <span class="math inline">\(L\)</span> used
-in this run, not an absolute constant. The mod-<span
-class="math inline">\(7\)</span> fraction (<span
-class="math inline">\(33.3\%\)</span>, Theorem <a href="#thm:mod7"
-data-reference-type="ref" data-reference="thm:mod7">8</a>) is exact and
-<span class="math inline">\(L\)</span>-independent.</p>
+<p><em>Remarque 20</em>. La fraction du crible (<span
+class="math inline">\(53.8\%\)</span> ci-dessus) dépend de la borne de
+division d’essai <span class="math inline">\(L\)</span> : un <span
+class="math inline">\(L\)</span> plus grand retire davantage de composés
+avant Miller–Rabin. Le chiffre <span
+class="math inline">\(\approx87\%\)</span> pour les deux filtres a
+priori est donc relatif au <span class="math inline">\(L\)</span>
+utilisé dans cette exécution, et non une constante absolue. La fraction
+mod-<span class="math inline">\(7\)</span> (<span
+class="math inline">\(33.3\%\)</span>, Théorème <a href="#thm:mod7"
+data-reference-type="ref" data-reference="thm:mod7">8</a>) est exacte et
+indépendante de <span class="math inline">\(L\)</span>.</p>
 </div>
-<h1 id="sec:perf">Performance and scaling</h1>
-<p>The dominant cost is Miller–Rabin: one round on a <span
-class="math inline">\(D\)</span>-digit modulus costs <span
-class="math inline">\(O(D^2\log D\log\log D)\)</span> bit operations via
-FFT multiplication <span class="citation" data-cites="GMP"></span>.
-Empirically, wall time per MR event scales as <span
-class="math inline">\(\tau\propto D^{2.5}\)</span> over the tested
-range, consistent with the FFT complexity; with only two distinct <span
-class="math inline">\(D\)</span> (20k and 30k) no fit could discriminate
-exponents in <span class="math inline">\([2.3,2.7]\)</span>.
-Extrapolating <span class="math inline">\(D^{2.5}\)</span> to <span
-class="math inline">\(D=50\,000\)</span> projects <span
+<h1 id="sec:perf">Performance et passage à l’échelle</h1>
+<p>Le coût dominant est Miller–Rabin : un tour sur un module de <span
+class="math inline">\(D\)</span> chiffres coûte <span
+class="math inline">\(O(D^2\log D\log\log D)\)</span> opérations
+binaires via la multiplication FFT <span class="citation"
+data-cites="GMP"></span>. Empiriquement, le temps réel par événement MR
+croît comme <span class="math inline">\(\tau\propto D^{2.5}\)</span> sur
+la plage testée, cohérent avec la complexité FFT ; avec seulement deux
+valeurs distinctes de <span class="math inline">\(D\)</span> (20k et
+30k) aucun ajustement ne pouvait discriminer les exposants dans <span
+class="math inline">\([2.3,2.7]\)</span>. En extrapolant <span
+class="math inline">\(D^{2.5}\)</span> à <span
+class="math inline">\(D=50\,000\)</span> on projette <span
 class="math inline">\(6\)</span>–<span class="math inline">\(10\)</span>
-hours on the same hardware; this is an extrapolation, not a
-measurement.</p>
-<h1 id="sec:open">Open problems</h1>
+heures sur le même matériel ; il s’agit d’une extrapolation, non d’une
+mesure.</p>
+<h1 id="sec:open">Problèmes ouverts</h1>
 <ol>
-<li><p><strong>Generalised filters.</strong> For primes <span
+<li><p><strong>Filtres généralisés.</strong> Pour les premiers <span
 class="math inline">\(\ell\equiv1\pmod3\)</span>, <span
-class="math inline">\(\ell\in\{13,19,31,\dots\}\)</span>, derive <span
+class="math inline">\(\ell\in\{13,19,31,\dots\}\)</span>, dériver <span
 class="math inline">\(\mathcal
 F_\ell=\{(a\bmod\mathrm{ord}_\ell2,\,b\bmod\mathrm{ord}_\ell3):\ell\mid
-p\}\)</span>. For <span class="math inline">\(\ell=13\)</span> the
-period is <span class="math inline">\(36\)</span> and the filter removes
-a further <span class="math inline">\(\approx2/13\)</span> of
-candidates; combining several small <span
-class="math inline">\(\ell\)</span> may push pre-MR elimination above
-<span class="math inline">\(90\%\)</span>.</p></li>
-<li><p><strong>Witnesses for general <span
-class="math inline">\(k\)</span>.</strong> For the broader family <span
-class="math inline">\(p=km(m+1)+\varepsilon\)</span>, identify the
-residue conditions under which a small fixed witness certifies the
-relevant factor, extending Theorems <a href="#thm:w2"
+p\}\)</span>. Pour <span class="math inline">\(\ell=13\)</span> la
+période est <span class="math inline">\(36\)</span> et le filtre retire
+encore <span class="math inline">\(\approx2/13\)</span> des candidats ;
+combiner plusieurs petits <span class="math inline">\(\ell\)</span>
+pourrait porter l’élimination pré-MR au-delà de <span
+class="math inline">\(90\%\)</span>.</p></li>
+<li><p><strong>Témoins pour <span class="math inline">\(k\)</span>
+général.</strong> Pour la famille plus large <span
+class="math inline">\(p=km(m+1)+\varepsilon\)</span>, identifier les
+conditions de résidus sous lesquelles un petit témoin fixe certifie le
+facteur pertinent, prolongeant les Théorèmes <a href="#thm:w2"
 data-reference-type="ref" data-reference="thm:w2">10</a>–<a
 href="#thm:w3" data-reference-type="ref" data-reference="thm:w3">14</a>
-beyond <span class="math inline">\(k=3\)</span>.</p></li>
+au-delà de <span class="math inline">\(k=3\)</span>.</p></li>
 </ol>
-<p><em>(The earlier open problem on the universality of <span
-class="math inline">\(w_2=5,w_3=7\)</span> is now resolved, negatively,
-by Theorems <a href="#thm:w2" data-reference-type="ref"
+<p><em>(Le problème ouvert antérieur sur l’universalité de <span
+class="math inline">\(w_2=5,w_3=7\)</span> est désormais résolu, par la
+négative, par les Théorèmes <a href="#thm:w2" data-reference-type="ref"
 data-reference="thm:w2">10</a>–<a href="#thm:w3"
-data-reference-type="ref" data-reference="thm:w3">14</a>; and the
-question of the cubic character of <span
-class="math inline">\(7\)</span> for the full family <span
-class="math inline">\(p=3m^2+3m+1\)</span> is resolved by Proposition <a
-href="#prop:cubicgen" data-reference-type="ref"
+data-reference-type="ref" data-reference="thm:w3">14</a> ; et la
+question du caractère cubique de <span class="math inline">\(7\)</span>
+pour la famille complète <span
+class="math inline">\(p=3m^2+3m+1\)</span> est résolue par la
+Proposition <a href="#prop:cubicgen" data-reference-type="ref"
 data-reference="prop:cubicgen">16</a>.)</em></p>
 <h1 id="conclusion">Conclusion</h1>
-<p>For the <span class="math inline">\(3\)</span>-smooth subfamily <span
-class="math inline">\(p=3m(m+1)+1\)</span>, <span
-class="math inline">\(m=2^{a}3^{b}-1\)</span>, the Pocklington–Lehmer
-certificate is unconditional and minimal, and — the main new point — the
-two required witnesses are <em>deterministically characterised</em>:
-<span class="math inline">\(w_2=5\)</span> is valid iff <span
-class="math inline">\(a-b\equiv1,2\pmod4\)</span> (Theorem <a
-href="#thm:w2" data-reference-type="ref"
-data-reference="thm:w2">10</a>), and <span
-class="math inline">\(w_3=7\)</span> iff <span
-class="math inline">\(m\not\equiv2\pmod7\)</span> (Theorem <a
+<p>Pour la sous-famille <span class="math inline">\(3\)</span>-friable
+<span class="math inline">\(p=3m(m+1)+1\)</span>, <span
+class="math inline">\(m=2^{a}3^{b}-1\)</span>, le certificat de
+Pocklington–Lehmer est inconditionnel et minimal, et — point nouveau
+principal — les deux témoins requis sont <em>caractérisés de manière
+déterministe</em> : <span class="math inline">\(w_2=5\)</span> est
+valide ssi <span class="math inline">\(a-b\equiv1,2\pmod4\)</span>
+(Théorème <a href="#thm:w2" data-reference-type="ref"
+data-reference="thm:w2">10</a>), et <span
+class="math inline">\(w_3=7\)</span> ssi <span
+class="math inline">\(m\not\equiv2\pmod7\)</span> (Théorème <a
 href="#thm:w3" data-reference-type="ref"
-data-reference="thm:w3">14</a>), the latter via cubic reciprocity
-through the explicit Eisenstein factorisation <span
-class="math inline">\(p=(m+1)^3-m^3\)</span>. Together with three
-elementary filters removing <span
-class="math inline">\(\approx87\%\)</span> of candidates, this yields a
-provably correct, low-overhead certification pipeline, demonstrated by
-certificates up to <span class="math inline">\(29\,998\)</span> digits
-on commodity hardware. The contribution is structural and explicit
-rather than record-breaking: the value lies in identifying a family
-where both the certificate and its witnesses become exact arithmetic
-statements.</p>
-<h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
-<p>The author thanks the developers of <code>gmpy2</code> and GMP. This
-work was carried out with the assistance of a large language model
-(Claude, Anthropic) acting as a research collaborator; all quantitative
-claims were re-verified by exact integer arithmetic (Appendix), and all
-proofs rely only on classical results (quadratic and cubic reciprocity,
+data-reference="thm:w3">14</a>), ce dernier via la réciprocité cubique
+au moyen de la factorisation d’Eisenstein explicite <span
+class="math inline">\(p=(m+1)^3-m^3\)</span>. Avec trois filtres
+élémentaires retirant <span class="math inline">\(\approx87\%\)</span>
+des candidats, on obtient un pipeline de certification prouvablement
+correct et à faible surcoût, démontré par des certificats jusqu’à <span
+class="math inline">\(29\,998\)</span> chiffres sur matériel grand
+public. La contribution est structurelle et explicite plutôt que
+destinée à battre un record : la valeur réside dans l’identification
+d’une famille où le certificat et ses témoins deviennent des énoncés
+arithmétiques exacts.</p>
+<h1 class="unnumbered" id="remerciements">Remerciements</h1>
+<p>L’auteur remercie les développeurs de <code>gmpy2</code> et de GMP.
+Ce travail a été mené avec l’assistance d’un grand modèle de langage
+(Claude, Anthropic) agissant comme collaborateur de recherche ; toutes
+les affirmations quantitatives ont été re-vérifiées par arithmétique
+entière exacte (Annexe), et toutes les preuves ne reposent que sur des
+résultats classiques (réciprocité quadratique et cubique,
 Pocklington–Lehmer).</p>
-<h1 id="verification-by-exact-arithmetic">Verification by exact
-arithmetic</h1>
-<p>The witness theorems were checked against direct computation over all
-primes of the family with <span class="math inline">\(1\le
-a,b\le129\)</span> (<span class="math inline">\(276\)</span> primes;
-<span class="math inline">\(0\)</span> exceptions).</p>
+<h1 id="vérification-par-arithmétique-exacte">Vérification par
+arithmétique exacte</h1>
+<p>Les théorèmes de témoins ont été confrontés au calcul direct sur tous
+les premiers de la famille avec <span class="math inline">\(1\le
+a,b\le129\)</span> (<span class="math inline">\(276\)</span> premiers ;
+<span class="math inline">\(0\)</span> exception).</p>
 <div class="footnotesize">
 <pre><code>from sympy import isprime
 INVALID_w3 = {(0,1),(1,5),(2,3)}
@@ -1112,23 +1130,23 @@ for a in range(1, 130):
         p = 3*m*(m+1) + 1
         if not isprime(p): continue
         n += 1
-        w2_valid = pow(5,(p-1)//2,p) != 1        # 5 is a quadratic non-residue
-        w3_valid = pow(7,(p-1)//3,p) != 1        # 7 is a cubic non-residue
-        if w2_valid != (((a-b) % 4) in (1,2)):           vA += 1   # Theorem 4.1
+        w2_valid = pow(5,(p-1)//2,p) != 1        # 5 est un non-residu quadratique
+        w3_valid = pow(7,(p-1)//3,p) != 1        # 7 est un non-residu cubique
+        if w2_valid != (((a-b) % 4) in (1,2)):           vA += 1   # Theoreme 4.1
         predB = (m % 7 != 2) and ((a%3, b%6) not in INVALID_w3)
-        if w3_valid != predB:                            vB += 1   # Theorem 4.5
+        if w3_valid != predB:                            vB += 1   # Theoreme 4.5
 print(n, vA, vB)        # -&gt; 276 0 0</code></pre>
 </div>
-<p>Proposition <a href="#prop:cubicgen" data-reference-type="ref"
-data-reference="prop:cubicgen">16</a> (general cubic character of <span
-class="math inline">\(7\)</span>) was checked over all <span
-class="math inline">\(p=3m^2+3m+1\)</span> prime with <span
+<p>La Proposition <a href="#prop:cubicgen" data-reference-type="ref"
+data-reference="prop:cubicgen">16</a> (caractère cubique général de
+<span class="math inline">\(7\)</span>) a été vérifiée sur tous les
+<span class="math inline">\(p=3m^2+3m+1\)</span> premiers avec <span
 class="math inline">\(m&lt;9000\)</span> (<span
-class="math inline">\(1797\)</span> primes; <span
-class="math inline">\(0\)</span> exceptions):</p>
+class="math inline">\(1797\)</span> premiers ; <span
+class="math inline">\(0\)</span> exception) :</p>
 <div class="footnotesize">
 <pre><code>from sympy import isprime
-RES21 = {0,2,10,18,20}                  # Proposition 4.7: residue classes mod 21
+RES21 = {0,2,10,18,20}                  # Proposition 4.7 : classes de residus mod 21
 viol = n = 0
 for m in range(2, 9000):
     p = 3*m*m + 3*m + 1
@@ -1137,23 +1155,21 @@ for m in range(2, 9000):
     if (pow(7,(p-1)//3,p)==1) != (m % 21 in RES21): viol += 1
 print(n, viol)         # -&gt; 1797 0</code></pre>
 </div>
-<p>The <span class="math inline">\(29\,998\)</span>-digit certificate is
-re-verified by four modular exponentiations:</p>
+<p>Le certificat de <span class="math inline">\(29\,998\)</span>
+chiffres est re-vérifié par quatre exponentiations modulaires :</p>
 <div class="footnotesize">
 <pre><code>a, b = 19435, 19173
 m = 2**a * 3**b - 1;  p = 3*m*(m+1) + 1;  F = 2**a * 3**(b+1)
 assert F*F &gt; p
 assert pow(5,p-1,p)==1 and __import__(&#39;math&#39;).gcd(pow(5,(p-1)//2,p)-1,p)==1
 assert pow(7,p-1,p)==1 and __import__(&#39;math&#39;).gcd(pow(7,(p-1)//3,p)-1,p)==1
-# =&gt; p is unconditionally prime</code></pre>
+# =&gt; p est inconditionnellement premier</code></pre>
 </div>
 <div class="thebibliography">
 <p><span>9</span> H. Bakkaoui, <em>A parametric family of primes <span
 class="math inline">\(p=km(m+1)+\varepsilon+2kq\)</span>: heuristic
 laws, conditional theorems, and unconditional primality
-certificates</em>, arXiv:2606.16189 [math.NT] (2026), <a
-href="https://doi.org/10.48550/arXiv.2606.16189"
-class="uri">https://doi.org/10.48550/arXiv.2606.16189</a>. M. Agrawal,
+certificates</em>, arXiv:2606.16189 [math.NT] (2026). M. Agrawal,
 N. Kayal, N. Saxena, <em>PRIMES is in P</em>, Ann. of Math.
 <strong>160</strong> (2004), 781–793. T. Granlund and the GMP team,
 <em>GNU Multiple Precision Arithmetic Library</em>, v6.3.0, 2023.
