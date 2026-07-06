@@ -158,6 +158,21 @@ const MATHS = [
     lien: { url: "https://oeis.org/A397433", label: "OEIS A397433" }
   },
   {
+    titre: "Familles polygonales de premiers — explorateur interactif",
+    tags: ["Visualisation", "Interactif"],
+    resume: `Explorateur qui <strong>généralise à tout paramètre $k$</strong> : les entiers se
+      rangent en <strong>polygones centrés à $2k$ côtés</strong> (le cas $k=3$ redonne le
+      réseau hexagonal), et les premiers $p=k\\,n(n+1)+\\varepsilon+2kq$ sont coloriés selon
+      leur décomposition canonique $(m,\\varepsilon,q)$ à $|q|$ minimal — généralisation de
+      $p\\equiv\\pm1\\pmod{2k}$. Choisissez $k$, le nombre d'étages, isolez chaque famille
+      $(\\varepsilon,q)$ ; sous 6 étages chaque point affiche son numéro — avec export PNG.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    html: "polygones-premiers.html"
+  },
+  {
     titre: "Spirales de premiers — visualisation interactive",
     tags: ["Visualisation", "Interactif"],
     resume: `Une visualisation interactive des <strong>familles paramétriques de nombres
@@ -172,21 +187,6 @@ const MATHS = [
     zenodo: null,
     arxiv: null,
     html: "spirale-premiers.html"
-  },
-  {
-    titre: "Familles polygonales de premiers — explorateur interactif",
-    tags: ["Visualisation", "Interactif"],
-    resume: `Explorateur qui <strong>généralise à tout paramètre $k$</strong> : les entiers se
-      rangent en <strong>polygones centrés à $2k$ côtés</strong> (le cas $k=3$ redonne le
-      réseau hexagonal), et les premiers $p=k\\,n(n+1)+\\varepsilon+2kq$ sont coloriés selon
-      leur décomposition canonique $(m,\\varepsilon,q)$ à $|q|$ minimal — généralisation de
-      $p\\equiv\\pm1\\pmod{2k}$. Choisissez $k$, le nombre d'étages, isolez chaque famille
-      $(\\varepsilon,q)$ ; sous 6 étages chaque point affiche son numéro — avec export PNG.`,
-    pdfFR: null,
-    pdfEN: null,
-    zenodo: null,
-    arxiv: null,
-    html: "polygones-premiers.html"
   },
   {
     titre: "Note — Problème d'Erdős #458 : réduction, classification et vérification jusqu'à $10^{12}$",

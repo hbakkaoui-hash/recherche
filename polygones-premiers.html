@@ -165,11 +165,16 @@ function ensureData(k,N){
   const s=2*k, rot=Math.PI/2+Math.PI/s;
   const pos=[[0,0]];
   for(let m=1;m<=N;m++){
+    const ring=[];
     for(let e=0;e<s;e++){
       const aA=2*Math.PI*e/s+rot, aB=2*Math.PI*(e+1)/s+rot;
       const Ax=m*Math.cos(aA),Ay=m*Math.sin(aA),Bx=m*Math.cos(aB),By=m*Math.sin(aB);
-      for(let t=0;t<m;t++){ const f=t/m; pos.push([Ax+(Bx-Ax)*f, Ay+(By-Ay)*f]); }
+      for(let t=0;t<m;t++){ const f=t/m; ring.push([Ax+(Bx-Ax)*f, Ay+(By-Ay)*f]); }
     }
+    // décale la numérotation pour que la couronne FINISSE sur le sommet v_{s-1}
+    // => H_m = k·m(m+1)+1 tombe sur ce sommet, pour tout k (7,19,37,61,… alignés)
+    const L=ring.length, start=((s-1)*m+1)%L;
+    for(let j=0;j<L;j++) pos.push(ring[(start+j)%L]);
   }
   const total=pos.length;
   const lists={}, counts={}; FAM.forEach(f=>{lists[keyf(f.eps,f.q)]=[];counts[keyf(f.eps,f.q)]=0;});
