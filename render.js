@@ -14,6 +14,8 @@ function carte(item) {
   if (item.pdfFR)  liens.push(lien(item.pdfFR,  'PDF (FR)',      'link-pdf'));
   if (item.pdfEN)  liens.push(lien(item.pdfEN,  'PDF (EN)',      'link-pdf'));
   if (item.lien)   liens.push(lien(item.lien.url, item.lien.label + ' →', 'link-ext'));
+  if (Array.isArray(item.liens))
+    item.liens.forEach(l => liens.push(lien(l.url, l.label + ' →', 'link-ext')));
 
   const liensHTML = liens.length
     ? `<div class="card-links">${liens.join('')}</div>`

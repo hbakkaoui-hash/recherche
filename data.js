@@ -150,12 +150,17 @@ const MATHS = [
       $\\lfloor\\log_2 d\\rfloor$ quand $d$ parcourt les diviseurs de $n$). Reliée au problème
       d'Erdős #448 (conjecture $\\tau^{+}(n)<\\varepsilon\\,\\tau(n)$ réfutée par Erdős–Tenenbaum,
       1981). Publiée après relecture éditoriale, avec b-file de 10 000 termes et programmes
-      vérifiés (PARI, Python, Mathematica).`,
+      vérifiés (PARI, Python, Mathematica). La suite est désormais <strong>reliée sur trois
+      plateformes</strong> : l'entrée OEIS, la page du problème, et la formalisation Lean 4 / Mathlib.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    lien: { url: "https://oeis.org/A397433", label: "OEIS A397433" }
+    liens: [
+      { url: "https://oeis.org/A397433", label: "OEIS A397433" },
+      { url: "https://www.erdosproblems.com/448", label: "Problème #448" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/448.lean", label: "Formalisation Lean" }
+    ]
   },
   {
     titre: "Familles polygonales de premiers — explorateur interactif",
