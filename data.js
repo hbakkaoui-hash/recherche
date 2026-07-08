@@ -212,17 +212,21 @@ const MATHS = [
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
     tags: ["Lean 4", "Mathlib"],
-    resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4</strong> au sein du dépôt
-      <em>formal-conjectures</em> de Google DeepMind. Ces formalisations traduisent l'énoncé
-      d'un problème en un langage <strong>vérifié par ordinateur</strong> (Lean 4 / Mathlib),
-      garantissant sa correction logique ligne à ligne — une étape vers des mathématiques dont
-      chaque déduction est certifiée par la machine. Première contribution fusionnée (PR #4274,
-      problème #448), sur un dépôt qui rassemble de nombreuses conjectures ainsi mises en forme.`,
+    resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4 / Mathlib</strong> au sein du
+      dépôt <em>formal-conjectures</em> de Google DeepMind, où chaque énoncé est traduit en un
+      langage <strong>vérifié par ordinateur</strong>, dont la correction logique est certifiée
+      ligne à ligne par la machine. <strong>Deux problèmes contribués</strong> : le problème
+      <strong>#448</strong> (contribution fusionnée) et le problème <strong>#667</strong>
+      (en revue) — une démarche vers des mathématiques dont chaque déduction est vérifiée.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    lien: { url: "https://github.com/google-deepmind/formal-conjectures", label: "Le dépôt" }
+    liens: [
+      { url: "https://github.com/google-deepmind/formal-conjectures", label: "Le dépôt" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/4274", label: "PR #4274 (#448)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/4370", label: "PR #4370 (#667)" }
+    ]
   }
 ];
 
