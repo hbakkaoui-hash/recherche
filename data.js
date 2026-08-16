@@ -232,15 +232,84 @@ const MATHS = [
 
 const PROJETS = [
   {
-    titre: "BakTaxi",
-    tags: ["Application web", "PWA", "Supabase"],
-    resume: `Plateforme web de mise en relation entre <strong>chauffeurs de taxi</strong>
-      et clients (anciennement TAXI-LINK, puis TaxiLoc). Application installable (PWA),
-      base de données Supabase, fonctionnement hors-ligne.`,
+    titre: "Brickbak — bac à briques 3D",
+    tags: ["Jeu éducatif", "3D", "Construction"],
+    resume: `Un <strong>bac à briques 3D</strong> où l'on bâtit maisons, véhicules et animaux
+      brique par brique. Catalogue riche (briques, pentes, portes, bonhomme, animaux),
+      <strong>six décors</strong> — prairie, ville, plage, neige, désert, espace —, annulation,
+      sauvegarde, partage et modèles d'exemple. Pensé pour la créativité et la motricité fine
+      des enfants.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://brickbak.vercel.app/", label: "Ouvrir l'application" }
+  },
+  {
+    titre: "OpenCraft Sandbox — mon monde à construire",
+    tags: ["Jeu éducatif", "3D", "Enfants"],
+    resume: `Un atelier de création 3D façon <strong>maison de poupée numérique</strong> :
+      on monte les murs, on installe une famille et on rejoue les scènes du quotidien
+      (cuisine, café, supermarché, école). 48 meubles, 60 aliments, emboîtement automatique
+      sur points d'attache, et des <strong>personnages inclusifs</strong> (fauteuil roulant,
+      canne, appareil auditif…).`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://opencraft-azure.vercel.app/", label: "Ouvrir l'application" }
+  },
+  {
+    titre: "Kumibak — casse-tête 3D à pièces emboîtables",
+    tags: ["Jeu éducatif", "3D", "Casse-tête"],
+    resume: `Un casse-tête 3D inspiré des <strong>kumiki japonais</strong> : replacer dans le
+      bon ordre des pièces de bois qui s'emboîtent en volume. Moteur d'emboîtement réel,
+      profondeur d'imbrication réglable, trois niveaux — Découverte, Moyen, Hardcore. Un jeu
+      de logique et de patience qui muscle la vision dans l'espace, pour petits et grands.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://kumiki-tawny.vercel.app/", label: "Ouvrir l'application" }
+  },
+  {
+    titre: "bakOccas' — véhicules d'occasion",
+    tags: ["Application web", "Next.js", "Supabase"],
+    resume: `Une place d'annonces automobile <strong>inversée</strong> : l'acheteur décrit ce
+      qu'il cherche et reçoit ses correspondances, le vendeur voit qui cherche déjà son
+      véhicule. Au cœur de l'app, un <strong>moteur de correspondance</strong> acheteur ↔
+      vendeur : on vend à une demande réelle, pas dans le vide.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://bakoccas.vercel.app/", label: "Ouvrir l'application" }
+  },
+  {
+    titre: "BakTaxi — annonces entre professionnels du taxi",
+    tags: ["Application web", "PWA", "Temps réel"],
+    resume: `La place d'annonces des <strong>professionnels du taxi</strong> (Île-de-France) :
+      location véhicule + licence, location-gérance, <strong>licence ADS</strong> seule,
+      remplacement, vente de matériel. Annonces partagées en temps réel, filtres par zone et
+      budget, et un score de compatibilité selon le profil. (Anciennement TAXI-LINK / TaxiLoc.)`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
     lien: { url: "https://hbakkaoui-hash.github.io/baktaxi/", label: "Ouvrir l'application" }
+  },
+  {
+    titre: "Farāʾiḍ — calculateur successoral islamique",
+    tags: ["Utilité publique", "Trilingue", "Gratuit"],
+    resume: `Un calculateur qui répartit un héritage selon le <strong>droit successoral
+      islamique</strong> (avis majoritaire) : tous les héritiers, actif net et déductions,
+      exclusion (ḥajb), ʿawl et radd, options d'école, résultats détaillés et export PDF.
+      Fiches pédagogiques (versets, sources). Trilingue AR · FR · EN,
+      <strong>gratuit et sans publicité</strong>.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    lien: { url: "https://hbakkaoui-hash.github.io/faraid/", label: "Ouvrir l'application" }
   }
 ];
