@@ -37,10 +37,13 @@ function carte(item) {
 function remplir(id, items) {
   const el = document.getElementById(id);
   if (el) el.innerHTML = items.map(carte).join('');
+  const c = document.getElementById(id + '-count');
+  if (c) c.textContent = items.length;
 }
 
-remplir('physique-grid', PHYSIQUE);
-remplir('maths-grid', MATHS);
-remplir('projets-grid', PROJETS);
+if (typeof PHYSIQUE !== 'undefined') remplir('physique-grid', PHYSIQUE);
+if (typeof MATHS   !== 'undefined') remplir('maths-grid',   MATHS);
+if (typeof PROJETS !== 'undefined') remplir('projets-grid', PROJETS);
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const _y = document.getElementById('year');
+if (_y) _y.textContent = new Date().getFullYear();

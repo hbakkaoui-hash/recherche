@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
+<link rel="manifest" href="site.webmanifest?v=3">
+<meta name="theme-color" content="#0e0f13">
+
+<title>Mathématiques — Hassane Bakkaoui</title>
+<meta name="description" content="Travaux de Hassane Bakkaoui en théorie des nombres : familles paramétriques de nombres premiers, problèmes d'Erdős, contribution à l'OEIS (suite A397433) et formalisations Lean.">
+<meta name="author" content="Hassane Bakkaoui">
+<link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/mathematiques.html">
+
+<link rel="stylesheet" href="styles.css?v=20260816a">
+
+<!-- Rendu des formules LaTeX -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      macros: { lcm: "\\operatorname{lcm}", fpole: "\\infty^{*}" }
+    },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea'] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="theme-maths">
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><img src="assets/logo-hb.png?v=2" alt="Logo HB" class="nav-logo-img"> H. Bakkaoui</a>
+  <div class="nav-links">
+    <a href="mathematiques.html" class="active">Mathématiques</a>
+    <a href="physique.html">Physique</a>
+    <a href="projets.html">Projets</a>
+    <a href="index.html#apropos">À propos</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Accueil</a> · Mathématiques</p>
+    <h1>Mathématiques</h1>
+    <p class="lead">Théorie des nombres : familles paramétriques de nombres premiers,
+      certificats de primalité, problèmes d'Erdős, contribution à l'OEIS (suite A397433)
+      et formalisations en Lean 4.</p>
+    <span class="count"><span id="maths-grid-count"></span> travaux</span>
+  </div>
+</header>
+
+<main class="page-main">
+  <div id="maths-grid" class="grid"></div>
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Hassane Bakkaoui · Chercheur indépendant ·
+    <a href="index.html">Accueil</a></p>
+</footer>
+
+<script src="data.js?v=20260708c"></script>
+<script src="render.js?v=20260816a"></script>
+</body>
+</html>

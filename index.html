@@ -30,23 +30,7 @@
      de COLLE_ICI_LE_CODE, puis dé-commente la ligne. Ne change pas le name. -->
 <!-- <meta name="google-site-verification" content="COLLE_ICI_LE_CODE"> -->
 
-<link rel="stylesheet" href="styles.css?v=20260703f">
-
-<!-- Rendu des formules LaTeX -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      macros: {
-        lcm: "\\operatorname{lcm}",
-        fpole: "\\infty^{*}"
-      }
-    },
-    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea'] }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="styles.css?v=20260816a">
 
 <!-- ===== Données structurées (schema.org / JSON-LD) =====
      Dit à Google : « cette personne est un chercheur, et voici ses articles ».
@@ -161,9 +145,9 @@
   <nav class="nav">
     <span class="nav-logo"><img src="assets/logo-hb.png?v=2" alt="Logo HB" class="nav-logo-img"> H. Bakkaoui</span>
     <div class="nav-links">
-      <a href="#maths">Mathématiques</a>
-      <a href="#physique">Physique</a>
-      <a href="#projets">Projets</a>
+      <a href="mathematiques.html">Mathématiques</a>
+      <a href="physique.html">Physique</a>
+      <a href="projets.html">Projets</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
     </div>
@@ -179,7 +163,7 @@
       théorie des nombres.
     </p>
     <div class="hero-actions">
-      <a href="#maths" class="btn btn-primary">Voir les publications ↓</a>
+      <a href="mathematiques.html" class="btn btn-primary">Voir les publications →</a>
       <a href="mailto:bakkahassa@hotmail.com" class="btn btn-ghost">Me contacter</a>
     </div>
   </div>
@@ -222,31 +206,34 @@
     </section>
   </noscript>
 
-  <section id="maths" class="section">
+  <section class="section">
     <div class="section-head">
-      <h2 class="section-title">Mathématiques</h2>
-      <p class="section-intro">Théorie des nombres : familles de nombres premiers, problèmes d'Erdős, et contribution à l'OEIS (suite A397433).</p>
+      <h2 class="section-title">Explorer</h2>
+      <p class="section-intro">Trois domaines de travail, désormais sur trois pages. Choisissez par où commencer.</p>
     </div>
-    <div id="maths-grid" class="grid"></div>
-  </section>
-
-  <section id="physique" class="section section-alt">
-    <div class="section-head">
-      <h2 class="section-title">Physique — Programme « Dualité d'échelle compactifiée »</h2>
-      <p class="section-intro">
-        Six unités autonomes explorant une même idée : faire de l'échelle une
-        dimension interne compacte et en déduire la physique. L'Unité 3 en donne la synthèse.
-      </p>
+    <div class="portals">
+      <a class="portal portal-maths" href="mathematiques.html">
+        <span class="portal-eyebrow">Théorie des nombres</span>
+        <h3>Mathématiques</h3>
+        <p>Familles paramétriques de nombres premiers, problèmes d'Erdős, contribution à l'OEIS
+          (suite A397433) et formalisations Lean.</p>
+        <span class="portal-go">Voir les travaux <span class="arrow">→</span></span>
+      </a>
+      <a class="portal portal-physique" href="physique.html">
+        <span class="portal-eyebrow">Dualité d'échelle compactifiée</span>
+        <h3>Physique</h3>
+        <p>Six unités autonomes explorant une même idée : faire de l'échelle une dimension
+          interne compacte, et en déduire gravité, cosmologie et mécanique quantique.</p>
+        <span class="portal-go">Voir le programme <span class="arrow">→</span></span>
+      </a>
+      <a class="portal portal-projets" href="projets.html">
+        <span class="portal-eyebrow">Applications &amp; outils</span>
+        <h3>Projets</h3>
+        <p>Jeux éducatifs 3D, applications d'annonces et un outil d'utilité publique — des idées
+          portées jusqu'au logiciel.</p>
+        <span class="portal-go">Voir les projets <span class="arrow">→</span></span>
+      </a>
     </div>
-    <div id="physique-grid" class="grid"></div>
-  </section>
-
-  <section id="projets" class="section">
-    <div class="section-head">
-      <h2 class="section-title">Projets</h2>
-      <p class="section-intro">Applications et outils logiciels.</p>
-    </div>
-    <div id="projets-grid" class="grid"></div>
   </section>
 
   <section id="apropos" class="section section-alt">
@@ -284,7 +271,6 @@
   <p>© <span id="year"></span> Hassane Bakkaoui · Chercheur indépendant</p>
 </footer>
 
-<script src="data.js?v=20260708c"></script>
-<script src="render.js?v=20260708a"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
