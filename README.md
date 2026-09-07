@@ -16,3 +16,10 @@ Site vitrine regroupant mes travaux de recherche en **physique théorique** et e
 - `papers/` — versions PDF des articles.
 
 Le site est statique (aucune compilation) et publié via **GitHub Pages**.
+
+## Licence
+
+Le contenu de ce dépôt est diffusé sous licence **Creative Commons Attribution
+4.0 International (CC BY 4.0)** — <https://creativecommons.org/licenses/by/4.0/>.
+C'est la licence retenue pour les dépôts Zenodo associés à ces travaux ; le
+présent dépôt s'y aligne. Texte intégral : [`LICENSE`](LICENSE).
