@@ -71,13 +71,13 @@ function remplir(id, items) {
   .bibtex > summary { cursor: pointer; font-size: .85rem; letter-spacing: .04em;
     text-transform: uppercase; opacity: .75; user-select: none; }
   .bibtex > summary:hover { opacity: 1; }
-  .bibtex-body { position: relative; margin-top: .6rem; }
+  .bibtex-body { margin-top: .6rem; }
   .bibtex-code { margin: 0; padding: .85rem 1rem; overflow-x: auto;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: .78rem; line-height: 1.5; white-space: pre;
     background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.12);
     border-radius: 8px; }
-  .bibtex-copy { position: absolute; top: .45rem; right: .45rem; z-index: 1;
+  .bibtex-copy { display: block; margin: 0 0 .45rem auto;
     font: inherit; font-size: .72rem; padding: .2rem .6rem; cursor: pointer;
     color: inherit; background: rgba(255,255,255,.10);
     border: 1px solid rgba(255,255,255,.22); border-radius: 6px; }
