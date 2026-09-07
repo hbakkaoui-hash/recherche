@@ -107,7 +107,7 @@ const PHYSIQUE = [
 const MATHS = [
   {
     titre: "Une famille paramétrique de nombres premiers $p=k\\,m(m+1)+e+2kq$",
-    tags: ["math.NT", "arXiv"],
+    tags: ["math.GM", "arXiv"],
     resume: `Étude de la famille paramétrique $p_{k,m,e,q}=k\\,m(m+1)+e+2kq$
       ($k,m\\in\\mathbb{N}^{*}$, $e\\in\\{+1,-1\\}$, $q\\in\\mathbb{Z}$), qui généralise le
       fait élémentaire que tout premier $p>3$ vérifie $p\\equiv\\pm 1 \\ (\\mathrm{mod}\\ 6)$.
@@ -163,6 +163,22 @@ const MATHS = [
     ]
   },
   {
+    titre: "Suite $r(n)$ — OEIS A399440 (problème d'Erdős #449)",
+    tags: ["math.NT", "OEIS"],
+    resume: `Suite r(n) — OEIS A399440 (problème d'Erdős #449). Nombre de paires de diviseurs
+      (d,e) de n avec d &lt; e &lt; 2d. Publiée le 2026-09-03, b-file de 10 000 termes,
+      programmes Maple/Mathematica/PARI/Python. Diffère de A174903 à partir de n = 60.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    liens: [
+      { url: "https://oeis.org/A399440", label: "OEIS A399440" },
+      { url: "https://www.erdosproblems.com/449", label: "Problème #449" },
+      { url: "https://github.com/teorth/erdosproblems/pull/397", label: "PR #397 (lien OEIS sur #449)" }
+    ]
+  },
+  {
     titre: "Familles polygonales de premiers — explorateur interactif",
     tags: ["Visualisation", "Interactif"],
     resume: `Explorateur qui <strong>généralise à tout paramètre $k$</strong> : les entiers se
@@ -207,7 +223,11 @@ const MATHS = [
     pdfEN: "papers/erdos458_EN.pdf",
     zenodo: null,
     arxiv: null,
-    html: "articles/erdos458.html"
+    html: "articles/erdos458.html",
+    liens: [
+      { url: "https://doi.org/10.5281/zenodo.20671980", label: "DOI Zenodo" },
+      { url: "https://www.erdosproblems.com/458", label: "Problème #458" }
+    ]
   },
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
@@ -215,9 +235,12 @@ const MATHS = [
     resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4 / Mathlib</strong> au sein du
       dépôt <em>formal-conjectures</em> de Google DeepMind, où chaque énoncé est traduit en un
       langage <strong>vérifié par ordinateur</strong>, dont la correction logique est certifiée
-      ligne à ligne par la machine. <strong>Deux problèmes contribués</strong> : le problème
-      <strong>#448</strong> (contribution fusionnée) et le problème <strong>#667</strong>
-      (en revue) — une démarche vers des mathématiques dont chaque déduction est vérifiée.`,
+      ligne à ligne par la machine. <strong>Trois problèmes contribués.</strong>
+      <strong>#448</strong> : formalisation fusionnée (PR #4274) et référence OEIS ajoutée
+      (PR #4399). <strong>#449</strong> : inégalité de Cauchy–Schwarz dyadique prouvée sans
+      <code>sorry</code>, énoncé principal en <code>sorry</code> (PR #5210, en attente de
+      revue). <strong>#667</strong> : formalisation statement-only (PR #4370, en attente de
+      revue).`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
@@ -225,6 +248,8 @@ const MATHS = [
     liens: [
       { url: "https://github.com/google-deepmind/formal-conjectures", label: "Le dépôt" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4274", label: "PR #4274 (#448)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/4399", label: "PR #4399 (#448, OEIS)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/5210", label: "PR #5210 (#449)" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4370", label: "PR #4370 (#667)" }
     ]
   }
