@@ -246,20 +246,6 @@ const PROJETS = [
     lien: { url: "https://brickbak.vercel.app/", label: "Ouvrir l'application" }
   },
   {
-    titre: "OpenCraft Sandbox — mon monde à construire",
-    tags: ["Jeu éducatif", "3D", "Enfants"],
-    resume: `Un atelier de création 3D façon <strong>maison de poupée numérique</strong> :
-      on monte les murs, on installe une famille et on rejoue les scènes du quotidien
-      (cuisine, café, supermarché, école). 48 meubles, 60 aliments, emboîtement automatique
-      sur points d'attache, et des <strong>personnages inclusifs</strong> (fauteuil roulant,
-      canne, appareil auditif…).`,
-    pdfFR: null,
-    pdfEN: null,
-    zenodo: null,
-    arxiv: null,
-    lien: { url: "https://opencraft-azure.vercel.app/", label: "Ouvrir l'application" }
-  },
-  {
     titre: "Kumibak — casse-tête 3D à pièces emboîtables",
     tags: ["Jeu éducatif", "3D", "Casse-tête"],
     resume: `Un casse-tête 3D inspiré des <strong>kumiki japonais</strong> : replacer dans le
