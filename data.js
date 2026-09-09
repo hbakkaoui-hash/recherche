@@ -20,6 +20,15 @@ const PHYSIQUE = [
     pdfEN: "papers/u1_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671269",
     arxiv: null,
+    bibtex: `@misc{bakkaoui2026unite1,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Quantum Existence Discontinuity (HDEQ): A Framework for Intrinsic Decoherence and Preferred-Basis Selection}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671269},
+  url          = {https://doi.org/10.5281/zenodo.20671269}
+}`,
     html: "articles/unite1.html"
   },
   {
@@ -36,6 +45,15 @@ const PHYSIQUE = [
     pdfEN: "papers/u2_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671328",
     arxiv: null,
+    bibtex: `@misc{bakkaoui2026unite2,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Compactified Scale Duality in Gravity: from the Singular Black Hole to Falsifiable Inflation}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671328},
+  url          = {https://doi.org/10.5281/zenodo.20671328}
+}`,
     html: "articles/unite2.html"
   },
   {
@@ -52,6 +70,15 @@ const PHYSIQUE = [
     pdfEN: "papers/u3_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671446",
     arxiv: null,
+    bibtex: `@misc{bakkaoui2026unite3,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Compactified Scale Duality: a Geometric Route toward the Unification of the Quantum and Gravitation}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671446},
+  url          = {https://doi.org/10.5281/zenodo.20671446}
+}`,
     html: "articles/unite3.html"
   },
   {
@@ -68,6 +95,15 @@ const PHYSIQUE = [
     pdfEN: "papers/u4_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671560",
     arxiv: null,
+    bibtex: `@misc{bakkaoui2026unite4,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Gravitational collapse, metastable false vacuum, isocurvature, and exact Mukhanov--Sasaki spectrum. A compactified scale-duality field: pole metastability and inflationary prediction}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671560},
+  url          = {https://doi.org/10.5281/zenodo.20671560}
+}`,
     html: "articles/unite4.html"
   },
   {
@@ -83,6 +119,15 @@ const PHYSIQUE = [
     pdfEN: "papers/u5_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.20671840",
     arxiv: null,
+    bibtex: `@misc{bakkaoui2026unite5,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Unit 5 --- Spherical compactification of scale space: latitude as a directed renormalization coordinate, the $\\infty^{*}$ lock lifted at the cost of winding and duality}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671840},
+  url          = {https://doi.org/10.5281/zenodo.20671840}
+}`,
     html: "articles/unite5.html"
   },
   {
@@ -100,6 +145,11 @@ const PHYSIQUE = [
     pdfEN: "papers/u6_EN.pdf",
     zenodo: "https://doi.org/10.5281/zenodo.21142465",
     arxiv: null,
+    // <!-- DOI EN ATTENTE DU CONTRÔLE R4 -->
+    // Aucun champ `bibtex` pour l'Unité 6 : deux DOI concurrents circulent
+    // (10.5281/zenodo.21142465 dans le JSON-LD du site, 10.5281/zenodo.21142466
+    // dans l'enregistrement Zenodo). Le bloc BibTeX ne sera écrit qu'après le
+    // contrôle DOI de R4 — un BibTeX est fait pour être copié par des tiers.
     html: "articles/unite6.html"
   }
 ];
@@ -107,7 +157,7 @@ const PHYSIQUE = [
 const MATHS = [
   {
     titre: "Une famille paramétrique de nombres premiers $p=k\\,m(m+1)+e+2kq$",
-    tags: ["math.NT", "arXiv"],
+    tags: ["math.GM", "arXiv"],
     resume: `Étude de la famille paramétrique $p_{k,m,e,q}=k\\,m(m+1)+e+2kq$
       ($k,m\\in\\mathbb{N}^{*}$, $e\\in\\{+1,-1\\}$, $q\\in\\mathbb{Z}$), qui généralise le
       fait élémentaire que tout premier $p>3$ vérifie $p\\equiv\\pm 1 \\ (\\mathrm{mod}\\ 6)$.
@@ -120,6 +170,16 @@ const MATHS = [
     pdfEN: null,
     zenodo: null,
     arxiv: "https://arxiv.org/abs/2606.16189",
+    bibtex: `@misc{bakkaoui2026parametricprimes,
+  author        = {Bakkaoui, Hassane},
+  title         = {{A parametric family of primes $p=km(m+1)+\\varepsilon +2kq$: heuristic laws, conditional theorems, and unconditional primality certificates}},
+  year          = {2026},
+  eprint        = {2606.16189},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.GM},
+  doi           = {10.48550/arXiv.2606.16189},
+  url           = {https://doi.org/10.48550/arXiv.2606.16189}
+}`,
     html: "articles/primes-parametriques.html"
   },
   {
@@ -139,6 +199,16 @@ const MATHS = [
     pdfEN: null,
     zenodo: null,
     arxiv: "https://arxiv.org/abs/2606.18859",
+    bibtex: `@misc{bakkaoui2026hexagonalcertificates,
+  author        = {Bakkaoui, Hassane},
+  title         = {{Unconditional Primality Certificates for the Hexagonal 3-smooth Family p = 3m(m+1) + 1: Deterministic Pocklington Witnesses and Arithmetic Filters}},
+  year          = {2026},
+  eprint        = {2606.18859},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.GM},
+  doi           = {10.48550/arXiv.2606.18859},
+  url           = {https://doi.org/10.48550/arXiv.2606.18859}
+}`,
     html: "articles/primes-hexagonaux.html"
   },
   {
@@ -156,10 +226,40 @@ const MATHS = [
     pdfEN: null,
     zenodo: null,
     arxiv: null,
+    bibtex: `@misc{oeisA397433,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Sequence A397433 in The On-Line Encyclopedia of Integer Sequences}},
+  year         = {2026},
+  howpublished = {OEIS Foundation Inc., published 3 July 2026},
+  url          = {https://oeis.org/A397433}
+}`,
     liens: [
       { url: "https://oeis.org/A397433", label: "OEIS A397433" },
       { url: "https://www.erdosproblems.com/448", label: "Problème #448" },
       { url: "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/448.lean", label: "Formalisation Lean" }
+    ]
+  },
+  {
+    titre: "Suite $r(n)$ — OEIS A399440 (problème d'Erdős #449)",
+    tags: ["math.NT", "OEIS"],
+    resume: `Suite r(n) — OEIS A399440 (problème d'Erdős #449). Nombre de paires de diviseurs
+      (d,e) de n avec d &lt; e &lt; 2d. Publiée le 2026-09-03, b-file de 10 000 termes,
+      programmes Maple/Mathematica/PARI/Python. Diffère de A174903 à partir de n = 60.`,
+    pdfFR: null,
+    pdfEN: null,
+    zenodo: null,
+    arxiv: null,
+    bibtex: `@misc{oeisA399440,
+  author       = {Bakkaoui, Hassane},
+  title        = {{Sequence A399440 in The On-Line Encyclopedia of Integer Sequences}},
+  year         = {2026},
+  howpublished = {OEIS Foundation Inc., published 3 September 2026},
+  url          = {https://oeis.org/A399440}
+}`,
+    liens: [
+      { url: "https://oeis.org/A399440", label: "OEIS A399440" },
+      { url: "https://www.erdosproblems.com/449", label: "Problème #449" },
+      { url: "https://github.com/teorth/erdosproblems/pull/397", label: "PR #397 (lien OEIS sur #449)" }
     ]
   },
   {
@@ -207,7 +307,21 @@ const MATHS = [
     pdfEN: "papers/erdos458_EN.pdf",
     zenodo: null,
     arxiv: null,
-    html: "articles/erdos458.html"
+    html: "articles/erdos458.html",
+    bibtex: `@misc{bakkaoui2026erdos458,
+  author       = {Bakkaoui, Hassane},
+  title        = {{A reduction, a classification, and a verification up to $10^{12}$ for Erd\\H{o}s problem \\#458}},
+  year         = {2026},
+  month        = jun,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20671980},
+  url          = {https://doi.org/10.5281/zenodo.20671980},
+  note         = {Concept DOI (toutes versions)}
+}`,
+    liens: [
+      { url: "https://doi.org/10.5281/zenodo.20671980", label: "DOI Zenodo" },
+      { url: "https://www.erdosproblems.com/458", label: "Problème #458" }
+    ]
   },
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
@@ -215,16 +329,29 @@ const MATHS = [
     resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4 / Mathlib</strong> au sein du
       dépôt <em>formal-conjectures</em> de Google DeepMind, où chaque énoncé est traduit en un
       langage <strong>vérifié par ordinateur</strong>, dont la correction logique est certifiée
-      ligne à ligne par la machine. <strong>Deux problèmes contribués</strong> : le problème
-      <strong>#448</strong> (contribution fusionnée) et le problème <strong>#667</strong>
-      (en revue) — une démarche vers des mathématiques dont chaque déduction est vérifiée.`,
+      ligne à ligne par la machine. <strong>Trois problèmes contribués.</strong>
+      <strong>#448</strong> : formalisation fusionnée (PR #4274) et référence OEIS ajoutée
+      (PR #4399). <strong>#449</strong> : inégalité de Cauchy–Schwarz dyadique prouvée sans
+      <code>sorry</code>, énoncé principal en <code>sorry</code> (PR #5210, en attente de
+      revue). <strong>#667</strong> : formalisation statement-only (PR #4370, en attente de
+      revue).`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
+    bibtex: `@misc{formalconjectures2026erdos448,
+  author       = {{The Formal Conjectures Authors}},
+  title        = {{FormalConjectures/ErdosProblems/448.lean}},
+  year         = {2026},
+  howpublished = {D\\'ep\\^ot google-deepmind/formal-conjectures},
+  url          = {https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/448.lean},
+  note         = {Contribution de Hassane Bakkaoui ; pull request \\#4274, fusionn\\'ee le 23 juin 2026}
+}`,
     liens: [
       { url: "https://github.com/google-deepmind/formal-conjectures", label: "Le dépôt" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4274", label: "PR #4274 (#448)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/4399", label: "PR #4399 (#448, OEIS)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/5210", label: "PR #5210 (#449)" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4370", label: "PR #4370 (#667)" }
     ]
   }
