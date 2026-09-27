@@ -212,54 +212,33 @@ const MATHS = [
     html: "articles/primes-hexagonaux.html"
   },
   {
-    titre: "Suite $\\tau^{+}(n)$ — OEIS A397433 (fonction d'Erdős–Ford)",
+    titre: "Six suites OEIS — la répartition des diviseurs (Erdős #446, #448, #449)",
     tags: ["math.NT", "OEIS"],
-    resume: `Contribution <strong>publiée à l'OEIS</strong> : la suite <strong>A397433</strong>,
-      qui recense la fonction $\\tau^{+}(n)$ — le nombre de blocs dyadiques $[2^k,2^{k+1})$
-      contenant au moins un diviseur de $n$ (soit le nombre de valeurs distinctes de
-      $\\lfloor\\log_2 d\\rfloor$ quand $d$ parcourt les diviseurs de $n$). Reliée au problème
-      d'Erdős #448 (conjecture $\\tau^{+}(n)<\\varepsilon\\,\\tau(n)$ réfutée par Erdős–Tenenbaum,
-      1981). Publiée après relecture éditoriale, avec b-file de 10 000 termes et programmes
-      vérifiés (PARI, Python, Mathematica). La suite est désormais <strong>reliée sur trois
-      plateformes</strong> : l'entrée OEIS, la page du problème, et la formalisation Lean 4 / Mathlib.`,
+    resume: `<strong>Six suites publiées à l'OEIS</strong> (juin–septembre 2026), toutes sur une
+      même question : les diviseurs d'un entier sont-ils étalés ou groupés&nbsp;?
+      <strong>#448</strong> — $\\tau^{+}(n)$, nombre d'octaves $[2^k,2^{k+1})$ contenant un diviseur
+      de $n$ (A397433). <strong>#449</strong> — $r(n)$, paires de diviseurs $d \lt e \lt 2d$ (A399440,
+      qui diffère de A174903 dès $n=60$). <strong>#446</strong> — les valeurs <em>rationnelles
+      exactes</em> de $\\delta(n)$ et $\\delta_1(n)$ (A399690/691, A399697/698), rendues calculables
+      par la périodicité de période $\\operatorname{ppcm}(n+1,\\dots,2n-1)$. Valeurs en arithmétique
+      exacte, recoupées par deux algorithmes et une source indépendante (S.&nbsp;Cambie, #692).`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
-    bibtex: `@misc{oeisA397433,
+    html: "articles/suites-oeis-erdos.html",
+    bibtex: `@misc{oeisBakkaouiDivisors,
   author       = {Bakkaoui, Hassane},
-  title        = {{Sequence A397433 in The On-Line Encyclopedia of Integer Sequences}},
+  title        = {{Six sequences on the distribution of divisors (OEIS A397433, A399440, A399690, A399691, A399697, A399698)}},
   year         = {2026},
-  howpublished = {OEIS Foundation Inc., published 3 July 2026},
-  url          = {https://oeis.org/A397433}
+  howpublished = {The On-Line Encyclopedia of Integer Sequences (OEIS Foundation Inc.)},
+  url          = {https://oeis.org/search?q=author:\\%22Hassane+Bakkaoui\\%22}
 }`,
     liens: [
-      { url: "https://oeis.org/A397433", label: "OEIS A397433" },
+      { url: "https://oeis.org/search?q=author%3A%22Hassane+Bakkaoui%22", label: "Toutes les suites (OEIS)" },
+      { url: "https://www.erdosproblems.com/446", label: "Problème #446" },
       { url: "https://www.erdosproblems.com/448", label: "Problème #448" },
-      { url: "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/448.lean", label: "Formalisation Lean" }
-    ]
-  },
-  {
-    titre: "Suite $r(n)$ — OEIS A399440 (problème d'Erdős #449)",
-    tags: ["math.NT", "OEIS"],
-    resume: `Suite r(n) — OEIS A399440 (problème d'Erdős #449). Nombre de paires de diviseurs
-      (d,e) de n avec d &lt; e &lt; 2d. Publiée le 2026-09-03, b-file de 10 000 termes,
-      programmes Maple/Mathematica/PARI/Python. Diffère de A174903 à partir de n = 60.`,
-    pdfFR: null,
-    pdfEN: null,
-    zenodo: null,
-    arxiv: null,
-    bibtex: `@misc{oeisA399440,
-  author       = {Bakkaoui, Hassane},
-  title        = {{Sequence A399440 in The On-Line Encyclopedia of Integer Sequences}},
-  year         = {2026},
-  howpublished = {OEIS Foundation Inc., published 3 September 2026},
-  url          = {https://oeis.org/A399440}
-}`,
-    liens: [
-      { url: "https://oeis.org/A399440", label: "OEIS A399440" },
-      { url: "https://www.erdosproblems.com/449", label: "Problème #449" },
-      { url: "https://github.com/teorth/erdosproblems/pull/397", label: "PR #397 (lien OEIS sur #449)" }
+      { url: "https://www.erdosproblems.com/449", label: "Problème #449" }
     ]
   },
   {
