@@ -305,19 +305,20 @@ const MATHS = [
   {
     titre: "Contributions Lean — google-deepmind/formal-conjectures",
     tags: ["Lean 4", "Mathlib"],
-    resume: `Formalisation de problèmes d'Erdős en <strong>Lean 4 / Mathlib</strong> au sein du
-      dépôt <em>formal-conjectures</em> de Google DeepMind, où chaque énoncé est traduit en un
-      langage <strong>vérifié par ordinateur</strong>, dont la correction logique est certifiée
-      ligne à ligne par la machine. <strong>Trois problèmes contribués.</strong>
-      <strong>#448</strong> : formalisation fusionnée (PR #4274) et référence OEIS ajoutée
-      (PR #4399). <strong>#449</strong> : inégalité de Cauchy–Schwarz dyadique prouvée sans
-      <code>sorry</code>, énoncé principal en <code>sorry</code> (PR #5210, en attente de
-      revue). <strong>#667</strong> : formalisation statement-only (PR #4370, en attente de
-      revue).`,
+    resume: `Formalisation d'énoncés de problèmes d'Erdős en <strong>Lean 4 / Mathlib</strong> au
+      sein du dépôt <em>formal-conjectures</em> de Google DeepMind — des traductions vérifiées
+      <strong>typographiquement</strong> par la machine, reliées à la base
+      <em>teorth/erdosproblems</em> (site erdosproblems.com). <strong>Quatre problèmes.</strong>
+      <strong>#448</strong> : cycle complet (formalisation fusionnée, référence OEIS, « Yes » sur la
+      page du problème). <strong>#446</strong> : ordre de Ford et densité définie <em>par
+      période</em> (PR #6429, en revue). <strong>#449</strong> : onze théorèmes dont neuf prouvés,
+      deux <code>sorry</code> restants (PR #5210, en revue). <strong>#667</strong> : énoncé
+      (PR #4370, en revue).`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
     arxiv: null,
+    html: "articles/formalisation-lean-erdos.html",
     bibtex: `@misc{formalconjectures2026erdos448,
   author       = {{The Formal Conjectures Authors}},
   title        = {{FormalConjectures/ErdosProblems/448.lean}},
@@ -329,7 +330,7 @@ const MATHS = [
     liens: [
       { url: "https://github.com/google-deepmind/formal-conjectures", label: "Le dépôt" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4274", label: "PR #4274 (#448)" },
-      { url: "https://github.com/google-deepmind/formal-conjectures/pull/4399", label: "PR #4399 (#448, OEIS)" },
+      { url: "https://github.com/google-deepmind/formal-conjectures/pull/6429", label: "PR #6429 (#446)" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/5210", label: "PR #5210 (#449)" },
       { url: "https://github.com/google-deepmind/formal-conjectures/pull/4370", label: "PR #4370 (#667)" }
     ]

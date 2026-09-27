@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formaliser les problèmes d'Erdős en Lean 4 · H. Bakkaoui</title>
+<meta name="description" content="Contributions de Hassane Bakkaoui au dépôt google-deepmind/formal-conjectures : formalisation en Lean 4 des énoncés des problèmes d'Erdős #446, #448, #449, #667, et liaison à erdosproblems.com.">
+<link rel="canonical" href="https://hbakkaoui-hash.github.io/recherche/articles/formalisation-lean-erdos.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="article.css?v=3">
+<style>
+  .paper pre { background:#0b0d12; border:1px solid var(--border); border-radius:8px; padding:0.9rem 1.1rem; overflow-x:auto; margin:1.2rem 0; }
+  .paper pre code { font-family: ui-monospace,"Cascadia Code",Consolas,monospace; font-size:0.86rem; color:#cdd6e6; background:none; padding:0; border:0; }
+  .paper code { font-family: ui-monospace,"Cascadia Code",Consolas,monospace; font-size:0.88em; color:#e0e6f2; background:rgba(255,255,255,0.06); padding:0.05em 0.35em; border-radius:5px; }
+</style>
+<script src="mathjax-setup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body class="article-body">
+<div class="article-top"><a class="back" href="../index.html">&larr; Retour au site</a></div>
+<article class="paper">
+  <div class="paper-head">
+    <div class="paper-tags"><span class="tag">Lean 4</span><span class="tag">Mathlib</span></div>
+    <h1 class="paper-title">Formaliser les problèmes d'Erdős en Lean 4</h1>
+    <p class="paper-author">Hassane Bakkaoui &middot; Chercheur indépendant &middot; septembre 2026</p>
+    <div class="paper-links">
+      <a href="https://github.com/google-deepmind/formal-conjectures" target="_blank" rel="noopener">formal-conjectures</a>
+      <a href="https://github.com/teorth/erdosproblems" target="_blank" rel="noopener">erdosproblems</a>
+      <a href="https://github.com/hbakkaoui-hash" target="_blank" rel="noopener">Profil GitHub</a>
+    </div>
+  </div>
+
+  <p>Depuis juin 2026, je contribue au dépôt
+  <a href="https://github.com/google-deepmind/formal-conjectures" target="_blank" rel="noopener"><code>google-deepmind/formal-conjectures</code></a>,
+  qui rassemble des <strong>énoncés</strong> mathématiques écrits en Lean 4. Quatre problèmes
+  d'Erdős y sont passés par moi : les <strong>#446</strong>, <strong>#448</strong>,
+  <strong>#449</strong> et <strong>#667</strong>.</p>
+  <p>En parallèle, j'ai relié ces travaux à la base
+  <a href="https://github.com/teorth/erdosproblems" target="_blank" rel="noopener"><code>teorth/erdosproblems</code></a>,
+  qui alimente le site erdosproblems.com.</p>
+
+  <h1 id="enonce-formalise">Ce qu'« énoncé formalisé » veut dire</h1>
+  <p>Une confusion fréquente mérite d'être levée d'emblée.</p>
+  <p><code>formal-conjectures</code> ne collecte <strong>pas des preuves</strong>. Il collecte des
+  <em>traductions d'énoncés</em> en Lean, avec le corps laissé en <code>sorry</code> — un trou
+  volontaire. Le travail consiste à écrire, sans ambiguïté et dans un langage que la machine
+  vérifie <strong>typographiquement</strong>, ce que le problème affirme exactement.</p>
+  <p>C'est moins glorieux qu'une preuve, et plus délicat qu'il n'y paraît. Une formalisation
+  d'énoncé peut être fausse de trois façons : elle peut dire autre chose que le problème (mauvaise
+  quantification, mauvais intervalle), elle peut être vide de contenu (un énoncé trivialement vrai
+  ou trivialement faux), ou elle peut ne pas compiler. Les deux premières ne se détectent pas
+  automatiquement — seulement par relecture humaine.</p>
+  <p>Quand une preuve formelle complète existe ailleurs, on l'indique par un attribut :</p>
+  <pre><code>@[category research solved, AMS 11, formal_proof using lean4 at "https://github.com/..."]</code></pre>
+
+  <h1 id="les-contributions">Les contributions</h1>
+
+  <h2 id="depot-fc">Dépôt <code>formal-conjectures</code></h2>
+  <table>
+    <thead><tr><th>PR</th><th>Problème</th><th>Lignes</th><th>État</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://github.com/google-deepmind/formal-conjectures/pull/4274" target="_blank" rel="noopener">#4274</a></td>
+          <td><strong>448</strong> — \(\tau^{+}(n)<\varepsilon\,\tau(n)\) pour presque tout \(n\) ?</td>
+          <td>+130</td><td><strong>fusionnée</strong> le 16 juin 2026</td></tr>
+      <tr><td><a href="https://github.com/google-deepmind/formal-conjectures/pull/4399" target="_blank" rel="noopener">#4399</a></td>
+          <td>ajout de la référence OEIS A397433 dans <code>448.lean</code></td>
+          <td>+2</td><td><strong>fusionnée</strong> le 5 juillet 2026</td></tr>
+      <tr><td><a href="https://github.com/google-deepmind/formal-conjectures/pull/4370" target="_blank" rel="noopener">#4370</a></td>
+          <td><strong>667</strong></td><td>+103</td><td>ouverte</td></tr>
+      <tr><td><a href="https://github.com/google-deepmind/formal-conjectures/pull/5210" target="_blank" rel="noopener">#5210</a></td>
+          <td><strong>449</strong> — \(r(n)<\varepsilon\,\tau(n)\) ?</td>
+          <td>+258</td><td>ouverte</td></tr>
+      <tr><td><a href="https://github.com/google-deepmind/formal-conjectures/pull/6429" target="_blank" rel="noopener">#6429</a></td>
+          <td><strong>446</strong> — croissance de \(\delta(n)\) ; \(\delta_1 = o(\delta)\) ?</td>
+          <td>+124</td><td>ouverte</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="depot-teorth">Dépôt <code>teorth/erdosproblems</code></h2>
+  <table>
+    <thead><tr><th>PR</th><th>Objet</th><th>État</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://github.com/teorth/erdosproblems/pull/333" target="_blank" rel="noopener">#333</a></td>
+          <td>relier le problème 448 à A397433</td><td><strong>fusionnée</strong> le 5 juillet 2026</td></tr>
+      <tr><td><a href="https://github.com/teorth/erdosproblems/pull/397" target="_blank" rel="noopener">#397</a></td>
+          <td>relier le problème 449 à A399440</td><td><strong>fusionnée</strong> le 4 septembre 2026</td></tr>
+      <tr><td><a href="https://github.com/teorth/erdosproblems/pull/446" target="_blank" rel="noopener">#446</a></td>
+          <td>relier le problème 446 à A399690, A399691, A399697, A399698</td>
+          <td><strong>fusionnée</strong> le 23 septembre 2026</td></tr>
+    </tbody>
+  </table>
+  <p>Les trois sont en ligne : les A-numéros apparaissent aujourd'hui sur les pages des
+  problèmes.</p>
+
+  <h1 id="le-448">Le 448 — le seul cycle complet à ce jour</h1>
+  <p><code>448.lean</code> est fusionné, et la page erdosproblems.com/448 porte désormais, au champ
+  « Formalised statement? », un lien <strong>« Yes »</strong> vers le fichier. La boucle est fermée
+  dans les deux sens : depuis le site on atteint la formalisation, depuis la formalisation on
+  atteint la suite OEIS A397433.</p>
+  <p>C'est le modèle que je cherche à reproduire sur les autres problèmes.</p>
+
+  <h1 id="le-446">Le 446 — l'état de l'art déjà formalisé ailleurs</h1>
+  <p><code>446.lean</code> (PR #6429, 125 lignes) formalise :</p>
+  <ul>
+    <li>l'ordre exact de Ford : <code>delta =Θ[atTop] growth446</code>, avec
+      \(\text{growth446}(n) = 1/\!\left((\log n)^{\alpha}\,(\log\log n)^{3/2}\right)\) ;</li>
+    <li>la minoration <code>∀ r ≥ 1, delta =O[atTop] (deltaR r)</code> ;</li>
+    <li>et la réponse négative à la seconde question, sous forme
+      <code>answer(False) ↔ deltaR 1 =o[atTop] delta</code>.</li>
+  </ul>
+  <p>Le choix technique qui m'importe : \(\delta(n)\) et \(\delta_r(n)\) n'y sont <strong>pas</strong>
+  définis par une densité abstraite, mais <strong>par comptage sur une période</strong> :</p>
+  <pre><code>def intervalLcm (n : ℕ) : ℕ := (Finset.Ioo n (2 * n)).lcm id</code></pre>
+  <p>Comme l'ensemble est périodique modulo ce ppcm, la densité est la proportion de résidus — donc
+  un objet <strong>calculable</strong>. C'est ce qui relie le fichier Lean aux quatre suites OEIS du
+  même problème : ce sont littéralement les mêmes nombres.</p>
+  <p>Ce fichier cite une preuve formelle externe, hébergée sur
+  <a href="https://github.com/plby/lean-proofs" target="_blank" rel="noopener"><code>plby/lean-proofs</code></a>,
+  dont les auteurs formels sont des systèmes automatiques et l'auteur informel Kevin Ford lui-même.
+  Je n'ai pas prouvé ces théorèmes ; j'ai écrit leur énoncé et pointé vers qui les a prouvés.</p>
+
+  <h1 id="le-449">Le 449 — le cas le plus substantiel</h1>
+  <p><code>449.lean</code> (PR #5210, 259 lignes) contient <strong>onze théorèmes, dont neuf
+  effectivement prouvés</strong> — parmi eux l'inégalité de Ford qui relie \(r(n)\) à
+  \(\tau^{+}(n)\). Deux <code>sorry</code> subsistent, sur l'énoncé principal et sur la positivité
+  de la densité.</p>
+  <p>C'est la contribution où j'ai écrit le plus de preuve réelle, et non de simple traduction.</p>
+
+  <h1 id="lecons">Ce que j'ai appris, et une erreur à ne pas répéter</h1>
+  <p><strong>On n'édite pas le travail en cours d'autrui.</strong> J'ai modifié une fiche OEIS
+  pendant qu'un autre contributeur y travaillait et qu'une discussion éditoriale était ouverte. Un
+  éditeur me l'a signalé, en me renvoyant à la règle
+  <a href="https://oeis.org/wiki/AVOID_INTERFERING_EDITS" target="_blank" rel="noopener">AVOID INTERFERING EDITS</a>.
+  Elle dit ceci, et c'est juste :</p>
+  <blockquote>
+    <p>Quand vous passez devant une porte ouverte à l'hôpital et que vous voyez une équipe de
+    médecins au travail sur un patient, vous n'entrez pas pour aider.</p>
+  </blockquote>
+  <p>La règle précise aussi qu'un utilisateur ne doit pas contourner sa limite de brouillons en
+  éditant ceux des autres. C'est exactement ce que j'avais fait sans le voir. La contribution a été
+  retirée, et j'ai retenu la leçon : <strong>une limite est une limite, pas un obstacle à
+  contourner.</strong></p>
+  <p><strong>Les relecteurs sont la valeur du système.</strong> Sur mes soumissions OEIS, Andrew
+  Howroyd a relevé une référence dupliquée entre deux champs ; Michel Marcus, un champ de données
+  sous-rempli ; Hugo Pfoertner, qu'une suite « dénominateur » ne doit pas recopier tout l'appareil
+  critique de la suite « numérateur ». Aucune de ces remarques ne portait sur les mathématiques.
+  Toutes ont amélioré le résultat.</p>
+
+  <h1 id="calibration">Calibration</h1>
+  <p>Formaliser un énoncé déjà démontré est une <strong>contribution</strong>, pas un
+  <strong>progrès</strong>. Je n'ai démontré aucun théorème nouveau. Le travail consiste à traduire
+  fidèlement, à vérifier, à relier — et à ne pas se raconter que c'est autre chose.</p>
+  <p>L'assistance d'un outil d'IA a été utilisée pour les calculs et la rédaction, et déclarée dans
+  chaque soumission concernée. Les mathématiques, les vérifications et la responsabilité du dépôt
+  sont miennes.</p>
+
+  <hr>
+  <p style="color:var(--text-muted);font-size:0.95rem">Profil GitHub :
+  <a href="https://github.com/hbakkaoui-hash" target="_blank" rel="noopener">hbakkaoui-hash</a></p>
+</article>
+</body>
+</html>
