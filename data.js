@@ -311,9 +311,10 @@ const MATHS = [
       <em>teorth/erdosproblems</em> (site erdosproblems.com). <strong>Quatre problèmes.</strong>
       <strong>#448</strong> : cycle complet (formalisation fusionnée, référence OEIS, « Yes » sur la
       page du problème). <strong>#446</strong> : ordre de Ford et densité définie <em>par
-      période</em> (PR #6429, en revue). <strong>#449</strong> : onze théorèmes dont neuf prouvés,
-      deux <code>sorry</code> restants (PR #5210, en revue). <strong>#667</strong> : énoncé
-      (PR #4370, en revue).`,
+      période</em> (PR #6429, approuvée en revue). <strong>#449</strong> : onze théorèmes dont
+      neuf prouvés, deux <code>sorry</code> restants (PR #5210, en revue). <strong>#667</strong> :
+      énoncé <strong>fusionné le 9 octobre 2026</strong>, la fiche du problème est passée à
+      « formalisé » automatiquement.`,
     pdfFR: null,
     pdfEN: null,
     zenodo: null,
