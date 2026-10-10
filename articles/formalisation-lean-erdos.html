@@ -135,6 +135,48 @@
   de la densité.</p>
   <p>C'est la contribution où j'ai écrit le plus de preuve réelle, et non de simple traduction.</p>
 
+  <h1 id="verification">Vérifier une preuve que l'on n'a pas écrite</h1>
+  <p>Quand un fichier porte l'attribut <code>formal_proof</code>, il affirme quelque chose de fort :
+  qu'il existe, à telle adresse, une preuve formelle <em>de cet énoncé-ci</em>. C'est une assertion
+  versée dans une base de référence, que d'autres citeront. Un relecteur, <a
+  href="https://github.com/bocowgill" target="_blank" rel="noopener">bocowgill</a>, a demandé sur
+  mes PR #446 et #449 de quoi l'étayer. La demande était juste.</p>
+
+  <p>J'ai donc construit un contrôle public et reproductible :
+  <a href="https://github.com/hbakkaoui-hash/verify-erdos-proofs" target="_blank" rel="noopener"><code>verify-erdos-proofs</code></a>.
+  Un workflow, déclenché à la main, extrait le dépôt de la preuve au <strong>commit épinglé</strong>
+  sur une machine neuve, compile le module visé contre Lean v4.33.0 et Mathlib, et affiche la
+  clôture d'axiomes :</p>
+  <pre><code>'Erdos446.erdos_446'     depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos449.not_erdos_449' depends on axioms: [propext, Classical.choice, Quot.sound]</code></pre>
+  <p>Trois axiomes, ceux du noyau de Lean, et rien d'autre : aucun <code>sorryAx</code>, donc aucun
+  trou. C'est exactement la liste que déclare la configuration de vérification livrée avec chaque
+  preuve.</p>
+
+  <p>Restait la moitié la plus délicate : une preuve sans trou ne vaut que si elle démontre
+  <em>mon</em> énoncé. Je l'ai fait établir par le compilateur plutôt que par la lecture. Le fichier
+  <a href="https://github.com/hbakkaoui-hash/verify-erdos-proofs/blob/main/bridge/Bridge449.lean" target="_blank" rel="noopener"><code>Bridge449.lean</code></a>
+  réécrit la conclusion de ma PR à partir de copies de mes propres définitions, puis la démontre en
+  invoquant le théorème épinglé <strong>seul</strong>, sans la moindre tactique :</p>
+  <pre><code>theorem fc_erdos_449 :
+    ¬ ∀ ε : ℝ, 0 &lt; ε →
+      Set.HasDensityFC {n : ℕ | (FC.r n : ℝ) &lt; ε * (n.divisors.card : ℝ)} 1 :=
+  Erdos449.not_erdos_449</code></pre>
+  <p>Lean n'accepte cela que si les deux énoncés sont <strong>définitionnellement égaux</strong>.
+  Quatre contrôles <code>rfl</code> vérifient au passage que mes copies sont bien les notions
+  qu'utilise la preuve épinglée. L'ensemble compile, et <code>fc_erdos_449</code> hérite des mêmes
+  trois axiomes.</p>
+
+  <p>Une limite, que je préfère énoncer moi-même : ce n'est pas l'outil de comparaison officiel du
+  projet, auquel je n'ai pas accès, et les quatre définitions du pont sont des copies saisies à la
+  main, qu'un lecteur doit encore confronter au fichier d'origine. Le reste est vérifié par la
+  machine, et n'importe qui peut relancer le contrôle.</p>
+
+  <p>Un détail technique mérite d'être noté, parce qu'il m'a coûté une exécution : <code>lake
+  build</code> n'exécute pas le crochet <code>post_update</code> du projet, qui applique neuf
+  correctifs de compatibilité aux dépendances. Sans eux, la compilation échoue sur des modules
+  entièrement étrangers au problème traité.</p>
+
   <h1 id="lecons">Ce que j'ai appris, et une erreur à ne pas répéter</h1>
   <p><strong>On n'édite pas le travail en cours d'autrui.</strong> J'ai modifié une fiche OEIS
   pendant qu'un autre contributeur y travaillait et qu'une discussion éditoriale était ouverte. Un
