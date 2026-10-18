@@ -115,7 +115,7 @@
       \(\text{growth446}(n) = 1/\!\left((\log n)^{\alpha}\,(\log\log n)^{3/2}\right)\) ;</li>
     <li>la minoration <code>∀ r ≥ 1, delta =O[atTop] (deltaR r)</code> ;</li>
     <li>et la réponse négative à la seconde question, sous forme
-      <code>answer(False) ↔ deltaR 1 =o[atTop] delta</code>.</li>
+      <code>¬ deltaR 1 =o[atTop] delta</code>.</li>
   </ul>
   <p>Le choix technique qui m'importe : \(\delta(n)\) et \(\delta_r(n)\) n'y sont <strong>pas</strong>
   définis par une densité abstraite, mais <strong>par comptage sur une période</strong> :</p>
@@ -167,10 +167,18 @@
   qu'utilise la preuve épinglée. L'ensemble compile, et <code>fc_erdos_449</code> hérite des mêmes
   trois axiomes.</p>
 
-  <p>Une limite, que je préfère énoncer moi-même : ce n'est pas l'outil de comparaison officiel du
-  projet, auquel je n'ai pas accès, et les quatre définitions du pont sont des copies saisies à la
-  main, qu'un lecteur doit encore confronter au fichier d'origine. Le reste est vérifié par la
-  machine, et n'importe qui peut relancer le contrôle.</p>
+  <p>J'avais signalé moi-même la faiblesse de ce dispositif : les quatre définitions du pont sont
+  des copies saisies à la main, qu'un lecteur devait encore confronter au fichier d'origine. Le
+  relecteur a fait cette confrontation et l'a close, constatant que les quatre copies coïncident
+  exactement après renommage. Une limite demeure, que je maintiens : ce n'est pas l'outil de
+  comparaison officiel du projet, auquel je n'ai pas accès. Le reste est vérifié par la machine, et
+  n'importe qui peut relancer le contrôle.</p>
+
+  <p>Une mise en garde de méthode, apprise deux fois. Le dépôt reçoit des dizaines de contributions
+  par jour, et une branche prend vite deux cents commits de retard ; un vert de CI vieux de dix
+  jours ne prouve alors plus rien. En octobre, la suppression de la syntaxe <code>answer(...)</code>
+  a rendu mes deux fichiers non compilables du jour au lendemain, sans qu'aucun signal ne l'indique.
+  Rafraîchir une branche avant toute relance est devenu une règle.</p>
 
   <p>Un détail technique mérite d'être noté, parce qu'il m'a coûté une exécution : <code>lake
   build</code> n'exécute pas le crochet <code>post_update</code> du projet, qui applique neuf
